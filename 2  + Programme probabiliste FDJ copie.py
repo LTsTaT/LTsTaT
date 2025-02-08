@@ -2,9 +2,6 @@
  # Programme probabiliste Française des jeux
  # 01/02/2025 - 12:11
 
-
-
-
 import argparse
 import random
 import numpy as np
