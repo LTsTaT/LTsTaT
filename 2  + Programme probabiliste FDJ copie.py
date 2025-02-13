@@ -1,44 +1,27 @@
 
- # Programme probabiliste Française des jeux
- # 01/02/2025 - 12:11
+# Programme probabiliste FDJ
+# 13/02 22:30
 
-import argparse
-import random
 import numpy as np
-import pandas as pd
-import itertools
 import matplotlib.pyplot as plt
-from statsmodels.tsa.arima.model import ARIMA
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+import pandas as pd
+from scipy.stats import poisson, bernoulli, binom, zipf, gamma, dirichlet
+import requests
+from bs4 import BeautifulSoup
+import json
+import time
+import itertools
+from collections import Counter
 from sklearn.model_selection import train_test_split, GridSearchCV, TimeSeriesSplit
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 from sklearn.calibration import CalibratedClassifierCV
-from scipy.stats import f_oneway, binom, uniform, norm, poisson, ttest_ind, chi2_contingency
-from collections import Counter
-import gzip
-import base64
-import io
-import json
-import logging
-from typing import List, Dict, Any, Union
-
-# Optionnel : Importation d'optuna pour l'optimisation bayésienne
-try:
-    import optuna
-except ImportError:
-    optuna = None
-
-# Deep learning imports
+from scipy.stats import chi2_contingency
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, LSTM
 from tensorflow.keras.optimizers import Adam
-
-# Configuration du logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
 
 # ============================
 # Fonctions de chargement et de vérification
@@ -102,45 +85,10 @@ from tensorflow.keras.optimizers import Adam
 # Configuration du logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-
-# ============================
-# Fonctions de chargement et de vérification
-# ============================
-
-def charger_historique_loto(historique_loto_compressed: str) -> List[Dict[str, Any]]:
-    """
-    Décode et décompresse l'historique des tirages du loto intégré en Base64 et Gzip.
-    Chaque tirage est attendu sous la forme d'un dictionnaire avec :
-       - "main": liste de 5 nombres (boules principales, de 1 à 49)
-       - "chance": un nombre (numéro chance, de 1 à 10)
-    """
-    try:
-        compressed_data = base64.b64decode(historique_loto_compressed)
-        with gzip.GzipFile(fileobj=io.BytesIO(compressed_data)) as f:
-            data = json.load(f)
-        # On suppose que les données sont déjà dans le format voulu.
-        logging.info("Chargement et décompression des données réussi.")
-        return data
-    except (base64.binascii.Error, gzip.BadGzipFile, json.JSONDecodeError, ValueError) as e:
-        logging.error(f"Erreur lors du chargement des données : {e}")
-        return []
-
-
-def verifier_donnees(data: List[Dict[str, Any]]) -> None:
-    """
-    Vérifie que chaque entrée de l'historique possède les clés "main" et "chance".
-    (Ici, aucune validation poussée n'est effectuée puisque l'intégration réelle respecte ce format.)
-    """
-    if not isinstance(data, list):
-        raise ValueError("Les données doivent être une liste.")
-    for entry in data:
-        if not isinstance(entry, dict) or "main" not in entry or "chance" not in entry:
-            raise ValueError("Chaque entrée doit être un dictionnaire avec les clés 'main' et 'chance'.")
-
-
 # ============================
 # Fonctions d'analyse statistique
 # ============================
+
 def calculer_mesures_statistiques(data: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
     Calcule des mesures de tendance centrale et de dispersion séparément pour :
@@ -261,7 +209,6 @@ def series(data: List[Dict[str, Any]]) -> None:
     plt.legend()
     plt.show()
 
-
 def grille(data: List[Dict[str, Any]]) -> None:
     """
     Crée une grille de fréquences pour les boules principales.
@@ -304,8 +251,9 @@ def montecarlo(data: List[Dict[str, Any]]) -> None:
 
 
 # ============================
-# Implémentations complètes des fonctions TODO
+# Implémentations des fonctions TODO
 # ============================
+
 def theoremes_limites(data: List[Dict[str, Any]]) -> None:
     """
     Illustre le théorème central limite en affichant la distribution des moyennes d'échantillons
@@ -387,8 +335,7 @@ def methodes_bayesiennes(data: List[Dict[str, Any]]) -> None:
     plt.legend()
     plt.show()
 
-
-def algorithmes_specifiques(data: List[Dict[str, Any]]) -> None:
+ef algorithmes_specifiques(data: List[Dict[str, Any]]) -> None:
     """
     Implémente un algorithme spécifique : un clustering (K-means) des tirages enrichis,
     visualisé via PCA. Seules les caractéristiques des boules principales sont utilisées.
@@ -488,11 +435,118 @@ def tests_hypotheses(data: List[Dict[str, Any]]) -> None:
         logging.info("Association significative détectée pour le numéro cible entre les groupes.")
     else:
         logging.info("Aucune association significative détectée pour le numéro cible entre les groupes.")
+      
+
+# ==========================
+# LOIS MATHÉMATIQUES POUR L'ANALYSE DES TIRAGES
+# ==========================
+
+def plot_poisson(data, num_to_test):
+    """
+    Affiche la distribution de Poisson basée sur la fréquence d'apparition d'un numéro donné.
+    """
+    mean_appearance = np.mean([entry.count(num_to_test) for entry in data])
+    x = np.arange(0, max(mean_appearance + 5, 10))  
+    poisson_dist = poisson.pmf(x, mean_appearance)
+    
+    plt.bar(x, poisson_dist, color='skyblue', alpha=0.7)
+    plt.xlabel("Nombre d'apparitions")
+    plt.ylabel("Probabilité")
+    plt.title(f"Loi de Poisson - Numéro {num_to_test}")
+    plt.show()
+
+def simulate_bernoulli(data, num_to_test):
+    """
+    Simule la distribution de Bernoulli pour voir si un numéro apparaît ou non dans un tirage.
+    """
+    p = sum(1 for entry in data if num_to_test in entry) / len(data)
+    bernoulli_dist = bernoulli.rvs(p, size=1000)
+    
+    plt.hist(bernoulli_dist, bins=2, density=True, color='lightcoral', alpha=0.7, rwidth=0.8)
+    plt.xticks([0, 1], ['Absent', 'Présent'])
+    plt.ylabel("Probabilité")
+    plt.title(f"Loi de Bernoulli - Numéro {num_to_test}")
+    plt.show()
+
+def plot_binomial(data, num_to_test):
+    """
+    Affiche la distribution binomiale du nombre d'apparitions d'un numéro donné.
+    """
+    n = len(data)  
+    p = sum(1 for entry in data if num_to_test in entry) / n
+    x = np.arange(0, 20)
+    binomial_dist = binom.pmf(x, n, p)
+    
+    plt.bar(x, binomial_dist, color='purple', alpha=0.7)
+    plt.xlabel("Nombre d'apparitions")
+    plt.ylabel("Probabilité")
+    plt.title(f"Loi Binomiale - Numéro {num_to_test}")
+    plt.show()
+
+def plot_zipf(data):
+    """
+    Affiche la distribution de Zipf pour analyser quels numéros sont les plus souvent joués.
+    """
+    num_counts = {num: sum(entry.count(num) for entry in data) for num in range(1, 50)}
+    sorted_nums = sorted(num_counts.keys(), key=lambda x: -num_counts[x])
+    frequencies = np.array([num_counts[num] for num in sorted_nums])
+    rank = np.arange(1, len(frequencies) + 1)
+    
+    plt.loglog(rank, frequencies, marker="o", linestyle="None", color='orange')
+    plt.xlabel("Rang du numéro")
+    plt.ylabel("Fréquence")
+    plt.title("Loi de Zipf - Distribution des numéros")
+    plt.show()
+
+def plot_gamma(data):
+    """
+    Analyse la somme des numéros des tirages avec une distribution Gamma.
+    """
+    sums = [sum(entry) for entry in data]
+    shape, loc, scale = gamma.fit(sums)
+    x = np.linspace(min(sums), max(sums), 100)
+    gamma_dist = gamma.pdf(x, shape, loc, scale)
+    
+    plt.hist(sums, bins=20, density=True, color='green', alpha=0.6)
+    plt.plot(x, gamma_dist, 'r', label="Distribution Gamma ajustée")
+    plt.xlabel("Somme des numéros")
+    plt.ylabel("Densité")
+    plt.legend()
+    plt.title("Loi Gamma - Somme des numéros")
+    plt.show()
+
+def plot_dirichlet(data):
+    """
+    Visualisation de la distribution de Dirichlet pour voir les dépendances conjointes des numéros.
+    """
+    occurences = [sum(entry.count(num) for entry in data) for num in range(1, 50)]
+    alpha = np.array(occurences) + 1  
+    dirichlet_sample = dirichlet.rvs(alpha, size=1000)
+    
+    plt.hist(dirichlet_sample[:, 0], bins=20, alpha=0.6, color='cyan')
+    plt.xlabel("Probabilité d'apparition")
+    plt.ylabel("Densité")
+    plt.title("Loi de Dirichlet - Probabilité conjointe")
+    plt.show()
+
+def markov_transition_matrix(data):
+    """
+    Crée une matrice de transition de Markov pour voir si un numéro influence les suivants.
+    """
+    transitions = {}
+    for entry in data:
+        for i in range(len(entry) - 1):
+            pair = (entry[i], entry[i + 1])
+            transitions[pair] = transitions.get(pair, 0) + 1
+    
+    transition_df = pd.DataFrame(transitions, index=["Count"]).T
+    transition_df = transition_df.div(transition_df.sum(axis=0), axis=1)
 
 
 # ============================
 # Feature Engineering Avancé
 # ============================
+
 def feature_engineering(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Enrichit chaque entrée avec des caractéristiques additionnelles calculées à partir des boules principales.
@@ -532,6 +586,7 @@ def load_exogenous_data() -> Dict[int, Dict[str, Any]]:
 # ============================
 # Modèles Prédictifs
 # ============================
+
 def predictive_model_logistic(data: List[Dict[str, Any]], target_number: int = 7) -> None:
     """
     Modèle prédictif simple avec régression logistique.
@@ -787,10 +842,12 @@ def predictive_model_lstm(data: List[Dict[str, Any]], target_number: int = 7, wi
 # ============================
 # Fonction main et gestion des arguments
 # ============================
+
 def main() -> None:
     # Données intégrées compressées (gzip, encodées en Base64)
     # ATTENTION : La chaîne ci-dessous doit être remplacée par les données réelles,
     # chaque entrée devant être un dictionnaire avec les clés "main" et "chance".
+ 
     historique_loto_compressed = """
 H4sIAAAAAAAAA+3SMQqDMAwF0L9xFIfU9OjDhtESVViKlBhG9HeLpGQFQ9F9+nSdx5FuaRxzrJMr
 ... (données complètes attendues ici)
@@ -865,3 +922,17 @@ H4sIAAAAAAAAA+3SMQqDMAwF0L9xFIfU9OjDhtESVViKlBhG9HeLpGQFQ9F9+nSdx5FuaRxzrJMr
 
 if __name__ == "__main__":
     main()
+
+------------------------
+#Ajout DeepSeek 13/02
+-----------------------
+
+✅ Loi de Poisson (Fréquence d'apparition d'un numéro).
+✅ Loi de Bernoulli (Présence ou absence d'un numéro dans un tirage).
+✅ Loi Binomiale (Nombre d'apparitions d'un numéro sur plusieurs tirages).
+✅ Loi de Zipf (Analyse des numéros les plus souvent joués).
+✅ Loi Gamma (Analyse de la somme des numéros).
+✅ Loi de Dirichlet (Probabilité conjointe des numéros).
+✅ Processus de Markov (Dépendance entre numéros tirés).
+
+
