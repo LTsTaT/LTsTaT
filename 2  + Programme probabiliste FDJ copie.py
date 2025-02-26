@@ -523,18 +523,21 @@ def plot_dirichlet(data):
     plt.show()
 
 def markov_transition_matrix(data):
-    """
-    Crée une matrice de transition de Markov pour voir si un numéro influence les suivants.
-    """
-    transitions = {}
-    for entry in data:
-        for i in range(len(entry) - 1):
-            pair = (entry[i], entry[i + 1])
-            transitions[pair] = transitions.get(pair, 0) + 1
+    """Crée une matrice de transition de Markov pour voir si un numéro influence les suivants."""
+    all_nums = list(range(1, 50))
+    transition_counts = np.zeros((49, 49))
     
-    transition_df = pd.DataFrame(transitions, index=["Count"]).T
-    transition_df = transition_df.div(transition_df.sum(axis=0), axis=1)
-
+    for i in range(1, len(data)):
+        prev_nums = set(data[i-1]['main'])
+        current_nums = set(data[i]['main'])
+        
+        for p in prev_nums:
+            for c in current_nums:
+                transition_counts[p-1][c-1] += 1
+                
+    transition_df = pd.DataFrame(transition_counts, index=all_nums, columns=all_nums)
+    transition_df = transition_df.div(transition_df.sum(axis=1), axis=0)
+    return transition_df  # Ajout d'un return
 
 # ============================
 # Feature Engineering Avancé
