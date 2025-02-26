@@ -256,86 +256,79 @@ def montecarlo(data: List[Dict[str, Any]]) -> None:
 
 def theoremes_limites(data: List[Dict[str, Any]]) -> None:
     """
-    Illustre le théorème central limite en affichant la distribution des moyennes d'échantillons
-    calculées à partir de toutes les boules principales.
+    Illustre le théorème central limite avec la distribution des sommes des boules principales.
     """
     verifier_donnees(data)
-    logging.info("Illustration du Théorème Central Limite (boules principales)...")
-    all_main = [num for entry in data for num in entry['main']]
-    all_main = np.array(all_main)
-    sample_size = 30
-    num_samples = 1000
-    sample_means = [np.mean(np.random.choice(all_main, size=sample_size, replace=True))
-                    for _ in range(num_samples)]
-    sample_means = np.array(sample_means)
+    sums = [sum(entry['main']) for entry in data]
+    
     plt.figure(figsize=(10, 6))
-    plt.hist(sample_means, bins=30, density=True, alpha=0.6, color='g')
-    mu = np.mean(all_main)
-    sigma = np.std(all_main) / np.sqrt(sample_size)
-    x = np.linspace(min(sample_means), max(sample_means), 100)
-    plt.plot(x, norm.pdf(x, mu, sigma), 'r', linewidth=2)
-    plt.title("Illustration du Théorème Central Limite (boules principales)")
-    plt.xlabel("Moyenne d'échantillon")
+    plt.hist(sums, bins=20, density=True, alpha=0.6, color='g', label='Sommes observées')
+    
+    # Ajustement d'une distribution normale
+    mu, std = np.mean(sums), np.std(sums)
+    xmin, xmax = min(sums), max(sums)
+    x = np.linspace(xmin, xmax, 100)
+    p = (1/(std * np.sqrt(2 * np.pi))) * np.exp(-(x - mu)**2 / (2 * std**2))
+    plt.plot(x, p, 'k', linewidth=2, label='Distribution normale')
+    
+    plt.title("Théorème Central Limite - Distribution des sommes")
+    plt.xlabel("Somme des boules principales")
     plt.ylabel("Densité")
+    plt.legend()
     plt.show()
 
 
 def estimation(data: List[Dict[str, Any]]) -> None:
     """
-    Effectue une estimation par ajustement d'une loi normale sur la somme des boules principales.
+    Calcule des intervalles de confiance à 95% pour la moyenne des numéros.
     """
     verifier_donnees(data)
-    logging.info("Estimation des paramètres de la somme des boules principales avec une loi normale...")
-    series_sum = [sum(entry['main']) for entry in data]
-    mu, std = norm.fit(series_sum)
-    logging.info(f"Paramètres estimés: mu = {mu:.2f}, std = {std:.2f}")
-    plt.figure(figsize=(10, 6))
-    plt.hist(series_sum, bins=30, density=True, alpha=0.6, color='b')
-    xmin, xmax = plt.xlim()
-    x = np.linspace(xmin, xmax, 100)
-    p = norm.pdf(x, mu, std)
-    plt.plot(x, p, 'k', linewidth=2)
-    plt.title("Ajustement d'une loi normale à la somme (boules principales)")
-    plt.xlabel("Somme des boules principales")
-    plt.ylabel("Densité")
+    numbers = [num for entry in data for num in entry['main']]
+    
+    # Bootstrap
+    n_bootstraps = 1000
+    boot_means = []
+    for _ in range(n_bootstraps):
+        sample = np.random.choice(numbers, size=len(numbers), replace=True)
+        boot_means.append(np.mean(sample))
+    
+    # Intervalle de confiance
+    lower = np.percentile(boot_means, 2.5)
+    upper = np.percentile(boot_means, 97.5)
+    
+    plt.hist(boot_means, bins=30, alpha=0.7)
+    plt.axvline(lower, color='r', linestyle='--')
+    plt.axvline(upper, color='r', linestyle='--')
+    plt.title(f"Intervalle de confiance à 95%: [{lower:.2f}, {upper:.2f}]")
+    plt.xlabel("Moyenne des numéros")
     plt.show()
 
 
 def methodes_bayesiennes(data: List[Dict[str, Any]]) -> None:
     """
-    Applique une méthode bayésienne (mise à jour Beta) pour estimer la probabilité d'apparition
-    des numéros dans les boules principales.
+    Implémente une inférence bayésienne simple pour estimer la probabilité d'un numéro.
     """
     verifier_donnees(data)
-    logging.info("Application des méthodes bayésiennes pour les boules principales...")
-    main_counts = Counter()
-    for entry in data:
-        main_counts.update(entry['main'])
-    total = sum(main_counts.values())
-    bayes_probs = {}
-    for num, count in main_counts.items():
-        alpha_post = 1 + count
-        beta_post = 1 + total - count
-        bayes_probs[num] = alpha_post / (alpha_post + beta_post)
-    logging.info("Probabilités estimées par méthode bayésienne (boules principales) :")
-    for num, prob in bayes_probs.items():
-        logging.info(f"Numéro {num}: probabilité = {prob:.3f}")
+    target_num = 7
+    prior_alpha = 1  # Prior uniforme
+    
+    # Compter les occurrences
+    counts = Counter(num for entry in data for num in entry['main'])
+    observed = counts.get(target_num, 0)
+    total = len(data) * 5  # 5 numéros par tirage
+    
+    # Posterior Beta distribution
     from scipy.stats import beta
-    plt.figure(figsize=(12, 8))
-    x_vals = np.linspace(0, 1, 100)
-    for i, num in enumerate(sorted(list(main_counts.keys()))[:5]):
-        count = main_counts[num]
-        alpha_post = 1 + count
-        beta_post = 1 + total - count
-        y_vals = beta.pdf(x_vals, alpha_post, beta_post)
-        plt.plot(x_vals, y_vals, label=f"Numéro {num} (α={alpha_post}, β={beta_post})")
-    plt.title("Distributions Beta a posteriori (boules principales)")
+    posterior = beta(prior_alpha + observed, prior_alpha + total - observed)
+    
+    x = np.linspace(0, 0.2, 1000)
+    plt.plot(x, posterior.pdf(x))
+    plt.title(f"Distribution a posteriori pour le numéro {target_num}")
     plt.xlabel("Probabilité")
     plt.ylabel("Densité")
-    plt.legend()
     plt.show()
 
-ef algorithmes_specifiques(data: List[Dict[str, Any]]) -> None:
+def algorithmes_specifiques(data: List[Dict[str, Any]]) -> None:
     """
     Implémente un algorithme spécifique : un clustering (K-means) des tirages enrichis,
     visualisé via PCA. Seules les caractéristiques des boules principales sont utilisées.
