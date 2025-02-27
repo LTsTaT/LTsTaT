@@ -1,11 +1,13 @@
 
 # Programme probabiliste FDJ
-# 13/02 22:30
+# 26/02 16:15
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from scipy.stats import poisson, bernoulli, binom, zipf, gamma, dirichlet
+from scipy.stats import poisson, bernoulli, binom, zipf, gamma, dirichlet, ttest_ind  # ttest_ind ajouté ici
+import random
+from scipy.stats import norm, ttest_ind, beta
 import requests
 from bs4 import BeautifulSoup
 import json
