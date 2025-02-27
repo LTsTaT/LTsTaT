@@ -438,7 +438,7 @@ def plot_poisson(data, num_to_test):
     """
     Affiche la distribution de Poisson basée sur la fréquence d'apparition d'un numéro donné.
     """
-    mean_appearance = np.mean([entry.count(num_to_test) for entry in data])
+    mean_appearance = np.mean([entry['main'].count(num_to_test) for entry in data])
     x = np.arange(0, max(mean_appearance + 5, 10))  
     poisson_dist = poisson.pmf(x, mean_appearance)
     
@@ -452,7 +452,7 @@ def simulate_bernoulli(data, num_to_test):
     """
     Simule la distribution de Bernoulli pour voir si un numéro apparaît ou non dans un tirage.
     """
-    p = sum(1 for entry in data if num_to_test in entry) / len(data)
+    p = sum(1 for entry in data if num_to_test in entry['main']) / len(data))
     bernoulli_dist = bernoulli.rvs(p, size=1000)
     
     plt.hist(bernoulli_dist, bins=2, density=True, color='lightcoral', alpha=0.7, rwidth=0.8)
@@ -466,7 +466,7 @@ def plot_binomial(data, num_to_test):
     Affiche la distribution binomiale du nombre d'apparitions d'un numéro donné.
     """
     n = len(data)  
-    p = sum(1 for entry in data if num_to_test in entry) / n
+    p = sum(1 for entry in data if num_to_test in entry['main']) / len(data)
     x = np.arange(0, 20)
     binomial_dist = binom.pmf(x, n, p)
     
@@ -480,7 +480,7 @@ def plot_zipf(data):
     """
     Affiche la distribution de Zipf pour analyser quels numéros sont les plus souvent joués.
     """
-    num_counts = {num: sum(entry.count(num) for entry in data) for num in range(1, 50)}
+    num_counts = {num: sum(entry['main'].count(num) for entry in data) for num in range(1, 50)}
     sorted_nums = sorted(num_counts.keys(), key=lambda x: -num_counts[x])
     frequencies = np.array([num_counts[num] for num in sorted_nums])
     rank = np.arange(1, len(frequencies) + 1)
@@ -495,7 +495,7 @@ def plot_gamma(data):
     """
     Analyse la somme des numéros des tirages avec une distribution Gamma.
     """
-    sums = [sum(entry) for entry in data]
+    sums = [sum(entry['main']) for entry in data]
     shape, loc, scale = gamma.fit(sums)
     x = np.linspace(min(sums), max(sums), 100)
     gamma_dist = gamma.pdf(x, shape, loc, scale)
@@ -512,7 +512,7 @@ def plot_dirichlet(data):
     """
     Visualisation de la distribution de Dirichlet pour voir les dépendances conjointes des numéros.
     """
-    occurences = [sum(entry.count(num) for entry in data) for num in range(1, 50)]
+    occurences = [sum(entry['main'].count(num) for entry in data) for num in range(1, 50)]
     alpha = np.array(occurences) + 1  
     dirichlet_sample = dirichlet.rvs(alpha, size=1000)
     
