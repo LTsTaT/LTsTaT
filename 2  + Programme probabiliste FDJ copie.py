@@ -1,6 +1,6 @@
 
 # Programme probabiliste FDJ
-# 26/02 16:15
+# 28/02 11:00
 
 import base64
 import gzip
@@ -945,16 +945,5 @@ H4sIAAAAAAAAA+3SMQqDMAwF0L9xFIfU9OjDhtESVViKlBhG9HeLpGQFQ9F9+nSdx5FuaRxzrJMr
 if __name__ == "__main__":
     main()
 
-------------------------
-#Ajout DeepSeek 13/02
------------------------
-
-✅ Loi de Poisson (Fréquence d'apparition d'un numéro).
-✅ Loi de Bernoulli (Présence ou absence d'un numéro dans un tirage).
-✅ Loi Binomiale (Nombre d'apparitions d'un numéro sur plusieurs tirages).
-✅ Loi de Zipf (Analyse des numéros les plus souvent joués).
-✅ Loi Gamma (Analyse de la somme des numéros).
-✅ Loi de Dirichlet (Probabilité conjointe des numéros).
-✅ Processus de Markov (Dépendance entre numéros tirés).
 
 
