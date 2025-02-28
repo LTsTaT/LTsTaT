@@ -10,15 +10,15 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from scipy.stats import poisson, bernoulli, binom, zipf, gamma, dirichlet, ttest_ind  # ttest_ind ajouté ici
+from scipy.stats import poisson, bernoulli, binom, zipf, gamma, dirichlet, ttest_ind, norm, beta
 import random
-from scipy.stats import norm, ttest_ind, beta
 import requests
 from bs4 import BeautifulSoup
 import json
 import time
 import itertools
 from collections import Counter
+from typing import List, Dict, Any, Optional
 from sklearn.model_selection import train_test_split, GridSearchCV, TimeSeriesSplit
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
@@ -478,7 +478,7 @@ def simulate_bernoulli(data, num_to_test):
     """
     Simule la distribution de Bernoulli pour voir si un numéro apparaît ou non dans un tirage.
     """
-    p = sum(1 for entry in data if num_to_test in entry['main']) / len(data))
+    p = sum(1 for entry in data if num_to_test in entry['main']) / len(data)
     bernoulli_dist = bernoulli.rvs(p, size=1000)
     
     plt.hist(bernoulli_dist, bins=2, density=True, color='lightcoral', alpha=0.7, rwidth=0.8)
