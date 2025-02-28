@@ -30,7 +30,23 @@ from tensorflow.keras.optimizers import Adam
 # ============================
 
 def charger_historique_loto(historique_loto_compressed: str) -> List[Dict[str, Any]]:
-    # ... (votre code inchangé)
+    """Décode et décompresse l'historique des tirages du loto intégré en Base64 et Gzip, avec validation des données."""
+    try:
+        compressed_data = base64.b64decode(historique_loto_compressed)
+        with gzip.GzipFile(fileobj=io.BytesIO(compressed_data)) as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            raise ValueError("Les données du loto doivent être une liste.")
+        for entry in data:
+            if not isinstance(entry, dict):
+                raise ValueError("Chaque entrée doit être un dictionnaire.")
+            if 'value' not in entry or not isinstance(entry['value'], list) or len(entry['value']) == 0:
+                raise ValueError("Chaque dictionnaire doit contenir une clé 'value' associée à une liste non vide de nombres.")
+        logging.info("Chargement et décompression des données réussi.")
+        return data
+    except (base64.binascii.Error, gzip.BadGzipFile, json.JSONDecodeError, ValueError) as e:
+        logging.error(f"Erreur lors du chargement des données : {e}")
+        return []
 
 def verifier_donnees(data: List[Dict[str, Any]]) -> None:
     """
