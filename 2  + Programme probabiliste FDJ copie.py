@@ -2,6 +2,11 @@
 # Programme probabiliste FDJ
 # 26/02 16:15
 
+import base64
+import gzip
+import io
+import logging
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -19,6 +24,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, StackingClassifier
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 from scipy.stats import chi2_contingency
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
