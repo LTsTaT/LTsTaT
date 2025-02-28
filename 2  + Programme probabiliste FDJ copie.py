@@ -1,6 +1,6 @@
 
-# Programme probabiliste FDJ
-# 28/02 11:00
+# Modèle probabiliste FDJ
+# 28/02 17:11
 
 import base64
 import gzip
@@ -28,10 +28,21 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from scipy.stats import chi2_contingency
+
+# Deep learning imports
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, LSTM
 from tensorflow.keras.optimizers import Adam
+
+# Optionnel : Importation d'optuna pour l'optimisation bayésienne
+try:
+    import optuna
+except ImportError:
+    optuna = None
+
+# Configuration du logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # ============================
 # Fonctions de chargement et de vérification
@@ -94,22 +105,6 @@ def verifier_donnees(data: List[Dict[str, Any]]) -> None:
 
         if not 1 <= chance <= 10:
             raise ValueError(f"La clé 'chance' de l'entrée {i} doit être comprise entre 1 et 10.")
-
-
-# Optionnel : Importation d'optuna pour l'optimisation bayésienne
-try:
-    import optuna
-except ImportError:
-    optuna = None
-
-# Deep learning imports
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, LSTM
-from tensorflow.keras.optimizers import Adam
-
-# Configuration du logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # ============================
 # Fonctions d'analyse statistique
