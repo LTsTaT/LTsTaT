@@ -1224,86 +1224,119 @@
             updateDrawDates();
         }
 
-        async function loadRealData() {
-    try {
-        console.log("📊 Chargement des données réelles depuis History.csv...");
-        
-        const response = await fetch('https://raw.githubusercontent.com/LTsTaT/LTsTaT/main/History.csv');
-        
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP: ${response.status}`);
-        }
-        
-        const csvText = await response.text();
-        console.log("✅ CSV chargé avec succès");
-        
-        const lignes = csvText.split('\n').filter(ligne => ligne.trim() !== '');
-        
-        if (lignes.length <= 1) {
-            throw new Error("Fichier CSV vide ou sans données");
-        }
-        
-        const entetes = lignes[0].split(';');
-        console.log("En-têtes détectés:", entetes);
-        
-        const historiqueReel = [];
-        
-        for (let i = 1; i < lignes.length; i++) {
-            const colonnes = lignes[i].split(';');
-            
-            if (colonnes.length >= 7) {
-                try {
-                    const tirage = {
-                        date: colonnes[0].trim(),
-                        numbers: [
-                            parseInt(colonnes[1]),
-                            parseInt(colonnes[2]),
-                            parseInt(colonnes[3]),
-                            parseInt(colonnes[4]),
-                            parseInt(colonnes[5])
-                        ].filter(num => !isNaN(num)).sort((a, b) => a - b),
-                        chance: parseInt(colonnes[6])
-                    };
-                    
-                    // Vérifier que c'est un tirage valide
-                    if (tirage.numbers.length === 5 && 
-                        tirage.numbers.every(num => num >= 1 && num <= 49) && 
-                        !isNaN(tirage.chance) && tirage.chance >= 1 && tirage.chance <= 10) {
-                        historiqueReel.push(tirage);
-                    }
-                } catch (e) {
-                    console.warn("Ligne ignorée:", lignes[i], e);
+        function loadRealData() {
+            try {
+                let csvContent = realLotoDataCSV;
+                
+                if (csvContent.startsWith('\ufeff')) {
+                    csvContent = csvContent.substring(1);
                 }
+
+                let rows = csvContent.split(/[\r\n]+/)
+                                     .map(row => row.trim())
+                                     .filter(row => row.length > 0);
+
+                if (rows.length === 0) {
+                    throw new Error("Les données intégrées sont vides.");
+                }
+
+                const delimiter = rows[0].includes(';') ? ';' : ',';
+                let headerRowString = rows.shift();
+                const headerRow = headerRowString.split(delimiter).map(h => h.trim().toLowerCase());
+                
+                const requiredHeaders = ['date', 'boule_1', 'boule_2', 'boule_3', 'boule_4', 'boule_5', 'numero_chance'];
+                const missingHeaders = requiredHeaders.filter(h => !headerRow.includes(h));
+                
+                if (missingHeaders.length > 0) {
+                    throw new Error(`En-têtes manquants: ${missingHeaders.join(', ')}. En-têtes trouvés: ${headerRow.join(', ')}`);
+                }
+
+                historicalData = {
+                    draws: [],
+                    frequencies: {},
+                    chanceFrequencies: {}
+                };
+                
+                const dateIndex = headerRow.indexOf('date');
+                const chanceIndex = headerRow.indexOf('numero_chance');
+                const ballIndices = [
+                    headerRow.indexOf('boule_1'),
+                    headerRow.indexOf('boule_2'), 
+                    headerRow.indexOf('boule_3'),
+                    headerRow.indexOf('boule_4'),
+                    headerRow.indexOf('boule_5')
+                ];
+
+                for (let row of rows) {
+                    const values = row.split(delimiter).map(v => v.trim());
+                    
+                    if (values.length !== headerRow.length) continue;
+                    
+                    try {
+                        const dateStr = values[dateIndex];
+                        const mainNumbers = ballIndices.map(index => {
+                            const num = parseInt(values[index]);
+                            return isNaN(num) ? null : num;
+                        }).filter(num => num !== null && num >= 1 && num <= 49);
+                        
+                        if (mainNumbers.length !== 5 || new Set(mainNumbers).size !== 5) {
+                            continue;
+                        }
+                        
+                        const luckyNumber = parseInt(values[chanceIndex]);
+                        if (isNaN(luckyNumber) || luckyNumber < 1 || luckyNumber > 10) {
+                            continue;
+                        }
+                        
+                        mainNumbers.sort((a, b) => a - b);
+                        
+                        historicalData.draws.push({
+                            date: dateStr,
+                            numbers: mainNumbers,
+                            chance: luckyNumber
+                        });
+                        
+                    } catch (error) {
+                        console.warn('Erreur lors du traitement d\'une ligne:', error);
+                        continue;
+                    }
+                }
+                
+                if (historicalData.draws.length === 0) {
+                    throw new Error('Aucun tirage valide trouvé dans les données intégrées.');
+                }
+                
+                historicalData.draws.sort((a, b) => {
+                    return new Date(b.date) - new Date(a.date);
+                });
+                
+                filteredDraws = [...historicalData.draws];
+                recalculateFrequencies();
+                
+                isRealDataLoaded = true;
+                updateStats();
+                updateDrawDates();
+                populateYearSelectors();
+                displayLatestDraw();
+                
+                document.getElementById('dataStatus').innerHTML = `<span class="success-box" style="display: block;">
+                    ✓ Données réelles chargées avec succès : <strong>${historicalData.draws.length} tirages valides</strong>
+                </span>`;
+                
+                document.getElementById('appStatus').innerHTML = `Analyse statistique et prédictive du Loto Français`;
+                
+                if (charts.frequencyChart) {
+                    updateFrequencyChart();
+                }
+                
+            } catch (error) {
+                console.error('Erreur lors du chargement des données intégrées:', error);
+                document.getElementById('dataStatus').innerHTML = `<span class="info-box" style="display: block; background: #f8d7da; border-color: #f5c6cb; color: #721c24;">
+                    ❌ Erreur de Chargement : ${error.message || 'Format de données invalide'}
+                </span>`;
+                initApp();
             }
         }
-        
-        console.log(`✅ ${historiqueReel.length} tirages valides chargés sur ${lignes.length - 1} lignes`);
-        
-        if (historiqueReel.length === 0) {
-            throw new Error("Aucun tirage valide trouvé dans le CSV");
-        }
-        
-        // Mettre à jour les données globales
-        historicalData.draws = historiqueReel;
-        filteredDraws = [...historiqueReel];
-        
-        // Recalculer les fréquences
-        recalculateFrequencies();
-        updateStats();
-        updateDrawDates();
-        
-        console.log("🎉 Données réelles intégrées avec succès !");
-        return true;
-        
-    } catch (error) {
-        console.error('❌ Erreur chargement CSV:', error);
-        console.log("🔄 Utilisation des données simulées...");
-        
-        // Générer des données simulées en backup
-        generateSimulatedData();
-        return false;
-    }
-}
 
         function generateSimulatedData() {
             historicalData = {
