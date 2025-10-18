@@ -1224,17 +1224,27 @@
             updateDrawDates();
         }
 
-    async function loadRealData() {
+        async function loadRealData() {
     try {
-        console.log("📊 Chargement des données réelles...");
+        console.log("📊 Chargement des données réelles depuis History.csv...");
         
         const response = await fetch('https://raw.githubusercontent.com/LTsTaT/LTsTaT/main/History.csv');
-        const csvText = await response.text();
         
-        console.log("✅ CSV chargé, traitement en cours...");
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        
+        const csvText = await response.text();
+        console.log("✅ CSV chargé avec succès");
         
         const lignes = csvText.split('\n').filter(ligne => ligne.trim() !== '');
+        
+        if (lignes.length <= 1) {
+            throw new Error("Fichier CSV vide ou sans données");
+        }
+        
         const entetes = lignes[0].split(';');
+        console.log("En-têtes détectés:", entetes);
         
         const historiqueReel = [];
         
@@ -1242,29 +1252,38 @@
             const colonnes = lignes[i].split(';');
             
             if (colonnes.length >= 7) {
-                const tirage = {
-                    date: colonnes[0],
-                    numbers: [
-                        parseInt(colonnes[1]),
-                        parseInt(colonnes[2]),
-                        parseInt(colonnes[3]),
-                        parseInt(colonnes[4]),
-                        parseInt(colonnes[5])
-                    ].sort((a, b) => a - b),
-                    chance: parseInt(colonnes[6])
-                };
-                
-                // Vérifier que tous les numéros sont valides
-                if (tirage.numbers.every(num => num >= 1 && num <= 49) && 
-                    tirage.chance >= 1 && tirage.chance <= 10) {
-                    historiqueReel.push(tirage);
+                try {
+                    const tirage = {
+                        date: colonnes[0].trim(),
+                        numbers: [
+                            parseInt(colonnes[1]),
+                            parseInt(colonnes[2]),
+                            parseInt(colonnes[3]),
+                            parseInt(colonnes[4]),
+                            parseInt(colonnes[5])
+                        ].filter(num => !isNaN(num)).sort((a, b) => a - b),
+                        chance: parseInt(colonnes[6])
+                    };
+                    
+                    // Vérifier que c'est un tirage valide
+                    if (tirage.numbers.length === 5 && 
+                        tirage.numbers.every(num => num >= 1 && num <= 49) && 
+                        !isNaN(tirage.chance) && tirage.chance >= 1 && tirage.chance <= 10) {
+                        historiqueReel.push(tirage);
+                    }
+                } catch (e) {
+                    console.warn("Ligne ignorée:", lignes[i], e);
                 }
             }
         }
         
-        console.log(`✅ ${historiqueReel.length} tirages valides chargés`);
+        console.log(`✅ ${historiqueReel.length} tirages valides chargés sur ${lignes.length - 1} lignes`);
         
-        // Mettre à jour les données
+        if (historiqueReel.length === 0) {
+            throw new Error("Aucun tirage valide trouvé dans le CSV");
+        }
+        
+        // Mettre à jour les données globales
         historicalData.draws = historiqueReel;
         filteredDraws = [...historiqueReel];
         
@@ -1273,16 +1292,15 @@
         updateStats();
         updateDrawDates();
         
-        // Mettre à jour les graphiques
-        if (charts.frequencyChart) {
-            updateFrequencyChart();
-        }
-        
+        console.log("🎉 Données réelles intégrées avec succès !");
         return true;
         
     } catch (error) {
         console.error('❌ Erreur chargement CSV:', error);
-        alert('Erreur lors du chargement des données. Utilisation des données simulées.');
+        console.log("🔄 Utilisation des données simulées...");
+        
+        // Générer des données simulées en backup
+        generateSimulatedData();
         return false;
     }
 }
