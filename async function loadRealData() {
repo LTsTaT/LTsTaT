@@ -1224,7 +1224,7 @@
             updateDrawDates();
         }
 
-        async async function loadRealData() {
+        async function loadRealData() {
     try {
         console.log("📊 Chargement depuis Google Sheets...");
         
