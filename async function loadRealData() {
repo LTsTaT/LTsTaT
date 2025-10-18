@@ -1214,7 +1214,8 @@
             initApp();
             createNumberGrids();
             document.getElementById('mlModel').addEventListener('change', showMLExplanation);
-            loadRealData();
+            // loadRealData(); // Désactivé pour éviter les erreurs
+generateSimulatedData(); // Utilise les données simulées
         });
 
         function initApp() {
