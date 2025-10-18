@@ -1224,7 +1224,7 @@
             updateDrawDates();
         }
 
-        async function loadRealData() {
+        async async function loadRealData() {
     try {
         console.log("📊 Chargement depuis Google Sheets...");
         
@@ -1274,8 +1274,10 @@
                     }
                 } catch (e) {
                     compteurInvalides++;
-                    console.warn("Ligne ignorée:", lignes[i]);
+                    // Pas de console.warn pour éviter de spammer la console
                 }
+            } else {
+                compteurInvalides++;
             }
         }
         
@@ -1296,25 +1298,16 @@
         
         console.log("🎉 Données Google Sheets intégrées !");
         
-        // Afficher un message à l'utilisateur
-        setTimeout(() => {
-            alert(`✅ Historique chargé : ${historiqueReel.length} tirages réels (${compteurInvalides} ignorés)`);
-        }, 1000);
-        
         return true;
         
     } catch (error) {
         console.error('❌ Erreur Google Sheets:', error);
-        
-        setTimeout(() => {
-            alert("❌ Erreur chargement données. Utilisation des données simulées.");
-        }, 500);
+        console.log("🔄 Utilisation des données simulées...");
         
         generateSimulatedData();
         return false;
     }
 }
-
         function generateSimulatedData() {
             historicalData = {
                 draws: [],
