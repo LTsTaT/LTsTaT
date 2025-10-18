@@ -1224,119 +1224,96 @@
             updateDrawDates();
         }
 
-        function loadRealData() {
-            try {
-                let csvContent = realLotoDataCSV;
-                
-                if (csvContent.startsWith('\ufeff')) {
-                    csvContent = csvContent.substring(1);
-                }
-
-                let rows = csvContent.split(/[\r\n]+/)
-                                     .map(row => row.trim())
-                                     .filter(row => row.length > 0);
-
-                if (rows.length === 0) {
-                    throw new Error("Les données intégrées sont vides.");
-                }
-
-                const delimiter = rows[0].includes(';') ? ';' : ',';
-                let headerRowString = rows.shift();
-                const headerRow = headerRowString.split(delimiter).map(h => h.trim().toLowerCase());
-                
-                const requiredHeaders = ['date', 'boule_1', 'boule_2', 'boule_3', 'boule_4', 'boule_5', 'numero_chance'];
-                const missingHeaders = requiredHeaders.filter(h => !headerRow.includes(h));
-                
-                if (missingHeaders.length > 0) {
-                    throw new Error(`En-têtes manquants: ${missingHeaders.join(', ')}. En-têtes trouvés: ${headerRow.join(', ')}`);
-                }
-
-                historicalData = {
-                    draws: [],
-                    frequencies: {},
-                    chanceFrequencies: {}
-                };
-                
-                const dateIndex = headerRow.indexOf('date');
-                const chanceIndex = headerRow.indexOf('numero_chance');
-                const ballIndices = [
-                    headerRow.indexOf('boule_1'),
-                    headerRow.indexOf('boule_2'), 
-                    headerRow.indexOf('boule_3'),
-                    headerRow.indexOf('boule_4'),
-                    headerRow.indexOf('boule_5')
-                ];
-
-                for (let row of rows) {
-                    const values = row.split(delimiter).map(v => v.trim());
+        async function loadRealData() {
+    try {
+        console.log("📊 Chargement depuis Google Sheets...");
+        
+        const response = await fetch('https://docs.google.com/spreadsheets/d/1U64tTfb_MZETS_sV3kCU89W_1EZBQrzoB1SeEE6aIaY/export?format=csv');
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        
+        const csvText = await response.text();
+        console.log("✅ Google Sheets chargé avec succès");
+        
+        const lignes = csvText.split('\n').filter(ligne => ligne.trim() !== '');
+        
+        if (lignes.length <= 1) {
+            throw new Error("Fichier CSV vide ou sans données");
+        }
+        
+        console.log("En-têtes détectés:", lignes[0].split(';'));
+        
+        const historiqueReel = [];
+        let compteurValides = 0;
+        let compteurInvalides = 0;
+        
+        for (let i = 1; i < lignes.length; i++) {
+            const colonnes = lignes[i].split(';');
+            
+            if (colonnes.length >= 7) {
+                try {
+                    const numbers = [
+                        parseInt(colonnes[1]), parseInt(colonnes[2]),
+                        parseInt(colonnes[3]), parseInt(colonnes[4]), 
+                        parseInt(colonnes[5])
+                    ].filter(num => !isNaN(num) && num >= 1 && num <= 49);
                     
-                    if (values.length !== headerRow.length) continue;
+                    const chance = parseInt(colonnes[6]);
                     
-                    try {
-                        const dateStr = values[dateIndex];
-                        const mainNumbers = ballIndices.map(index => {
-                            const num = parseInt(values[index]);
-                            return isNaN(num) ? null : num;
-                        }).filter(num => num !== null && num >= 1 && num <= 49);
-                        
-                        if (mainNumbers.length !== 5 || new Set(mainNumbers).size !== 5) {
-                            continue;
-                        }
-                        
-                        const luckyNumber = parseInt(values[chanceIndex]);
-                        if (isNaN(luckyNumber) || luckyNumber < 1 || luckyNumber > 10) {
-                            continue;
-                        }
-                        
-                        mainNumbers.sort((a, b) => a - b);
-                        
-                        historicalData.draws.push({
-                            date: dateStr,
-                            numbers: mainNumbers,
-                            chance: luckyNumber
+                    if (numbers.length === 5 && !isNaN(chance) && chance >= 1 && chance <= 10) {
+                        historiqueReel.push({
+                            date: colonnes[0].trim(),
+                            numbers: numbers.sort((a, b) => a - b),
+                            chance: chance
                         });
-                        
-                    } catch (error) {
-                        console.warn('Erreur lors du traitement d\'une ligne:', error);
-                        continue;
+                        compteurValides++;
+                    } else {
+                        compteurInvalides++;
                     }
+                } catch (e) {
+                    compteurInvalides++;
+                    console.warn("Ligne ignorée:", lignes[i]);
                 }
-                
-                if (historicalData.draws.length === 0) {
-                    throw new Error('Aucun tirage valide trouvé dans les données intégrées.');
-                }
-                
-                historicalData.draws.sort((a, b) => {
-                    return new Date(b.date) - new Date(a.date);
-                });
-                
-                filteredDraws = [...historicalData.draws];
-                recalculateFrequencies();
-                
-                isRealDataLoaded = true;
-                updateStats();
-                updateDrawDates();
-                populateYearSelectors();
-                displayLatestDraw();
-                
-                document.getElementById('dataStatus').innerHTML = `<span class="success-box" style="display: block;">
-                    ✓ Données réelles chargées avec succès : <strong>${historicalData.draws.length} tirages valides</strong>
-                </span>`;
-                
-                document.getElementById('appStatus').innerHTML = `Analyse statistique et prédictive du Loto Français`;
-                
-                if (charts.frequencyChart) {
-                    updateFrequencyChart();
-                }
-                
-            } catch (error) {
-                console.error('Erreur lors du chargement des données intégrées:', error);
-                document.getElementById('dataStatus').innerHTML = `<span class="info-box" style="display: block; background: #f8d7da; border-color: #f5c6cb; color: #721c24;">
-                    ❌ Erreur de Chargement : ${error.message || 'Format de données invalide'}
-                </span>`;
-                initApp();
             }
         }
+        
+        console.log(`✅ ${compteurValides} tirages valides | ❌ ${compteurInvalides} lignes ignorées`);
+        
+        if (historiqueReel.length === 0) {
+            throw new Error("Aucun tirage valide trouvé");
+        }
+        
+        // Mise à jour des données
+        historicalData.draws = historiqueReel;
+        filteredDraws = [...historiqueReel];
+        
+        // Recalculer les fréquences
+        recalculateFrequencies();
+        updateStats();
+        updateDrawDates();
+        
+        console.log("🎉 Données Google Sheets intégrées !");
+        
+        // Afficher un message à l'utilisateur
+        setTimeout(() => {
+            alert(`✅ Historique chargé : ${historiqueReel.length} tirages réels (${compteurInvalides} ignorés)`);
+        }, 1000);
+        
+        return true;
+        
+    } catch (error) {
+        console.error('❌ Erreur Google Sheets:', error);
+        
+        setTimeout(() => {
+            alert("❌ Erreur chargement données. Utilisation des données simulées.");
+        }, 500);
+        
+        generateSimulatedData();
+        return false;
+    }
+}
 
         function generateSimulatedData() {
             historicalData = {
