@@ -527,7 +527,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>LTsTa</h1>
+            <h1>LTsTaT</h1>
             <p id="appStatus"></p>
         </div>
 
@@ -4043,152 +4043,90 @@
         // ============================================================================
 
         function runSimulation() {
-    if (simSelectedMainNumbers.length !== 5 || !simSelectedChanceNumber) {
-        alert('Veuillez sélectionner 5 numéros principaux et 1 numéro chance pour la simulation.');
-        return;
-    }
-    
-    const numSims = parseInt(document.getElementById('numSims').value);
-    const loading = document.getElementById('simLoading');
-    const metricsDiv = document.getElementById('simMetrics');
-    const resultsDiv = document.getElementById('simResults');
-    
-    loading.classList.add('active');
-    metricsDiv.innerHTML = '';
-    resultsDiv.innerHTML = '';
-    
-    setTimeout(() => {
-        // CORRECTION : Utiliser des probabilités réalistes au lieu de simulations aléatoires
-        const results = calculateRealisticProbabilities(simSelectedMainNumbers, simSelectedChanceNumber, numSims);
-        
-        // Mise à jour des métriques
-        metricsDiv.innerHTML = `
-            <div class="stat-card">
-                <h4><i class="fas fa-crown"></i> Rang 1 (5+1)</h4>
-                <div class="value">${results.rank1}</div>
-                <small>${(results.rank1/numSims*100).toFixed(6)}%</small>
-            </div>
-            <div class="stat-card">
-                <h4><i class="fas fa-medal"></i> Rang 2 (5)</h4>
-                <div class="value">${results.rank2}</div>
-                <small>${(results.rank2/numSims*100).toFixed(6)}%</small>
-            </div>
-            <div class="stat-card">
-                <h4><i class="fas fa-award"></i> Rang 3 (4+1)</h4>
-                <div class="value">${results.rank3}</div>
-                <small>${(results.rank3/numSims*100).toFixed(6)}%</small>
-            </div>
-            <div class="stat-card">
-                <h4><i class="fas fa-star"></i> Rang 4 (4)</h4>
-                <div class="value">${results.rank4}</div>
-                <small>${(results.rank4/numSims*100).toFixed(6)}%</small>
-            </div>
-        `;
-        
-        // Mise à jour des graphiques
-        updateSimulationChart(results, numSims);
-        updateSimulationDistributionChart(results, numSims);
-        
-        let detailedResults = `
-            <h3><i class="fas fa-chart-bar"></i> Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
-            <div class="grid-2">
-                <div class="info-box">
-                    <h4><i class="fas fa-chart-pie"></i> Statistiques Globales</h4>
-                    <p><strong><i class="fas fa-trophy"></i> Total des gains:</strong> ${results.totalWins} tirages</p>
-                    <p><strong><i class="fas fa-percentage"></i> Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(4)}%</p>
-                    <p><strong><i class="fas fa-euro-sign"></i> Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
-                </div>
-                <div class="info-box">
-                    <h4><i class="fas fa-calculator"></i> Probabilités Réelles</h4>
-                    <p><strong><i class="fas fa-crown"></i> Jackpot (5+1):</strong> 1 sur ${Math.round(numSims/Math.max(results.rank1, 1)).toLocaleString()}</p>
-                    <p><strong><i class="fas fa-medal"></i> 5 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank2, 1)).toLocaleString()}</p>
-                    <p><strong><i class="fas fa-award"></i> 4+1 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank3, 1)).toLocaleString()}</p>
-                    <p><strong><i class="fas fa-star"></i> 4 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank4, 1)).toLocaleString()}</p>
-                </div>
-            </div>
-        `;
-        
-        // Analyse des résultats
-        const winRate = results.totalWins / numSims;
-        if (winRate > 0.01) {
-            detailedResults += `<div class="success-box">
-                <i class="fas fa-chart-line"></i> <strong>🎲 Bonnes chances !</strong> Votre grille a un taux de gain supérieur à la moyenne.
-            </div>`;
-        } else if (winRate > 0.005) {
-            detailedResults += `<div class="info-box">
-                <i class="fas fa-balance-scale"></i> <strong>📈 Chances raisonnables</strong> Votre grille a des caractéristiques intéressantes.
-            </div>`;
-        } else {
-            detailedResults += `<div class="warning-message">
-                <i class="fas fa-exclamation-triangle"></i> <strong>📉 Difficulté élevée</strong> Les combinaisons comme la vôtre sont rares. Pensez à varier vos numéros.
-            </div>`;
+            if (simSelectedMainNumbers.length !== 5 || !simSelectedChanceNumber) {
+                alert('Veuillez sélectionner 5 numéros principaux et 1 numéro chance pour la simulation.');
+                return;
+            }
+            
+            const numSims = parseInt(document.getElementById('numSims').value);
+            const loading = document.getElementById('simLoading');
+            const metricsDiv = document.getElementById('simMetrics');
+            const resultsDiv = document.getElementById('simResults');
+            
+            loading.classList.add('active');
+            metricsDiv.innerHTML = '';
+            resultsDiv.innerHTML = '';
+            
+            setTimeout(() => {
+                const results = simulateDraws(simSelectedMainNumbers, simSelectedChanceNumber, numSims);
+                
+                // Mise à jour des métriques
+                metricsDiv.innerHTML = `
+                    <div class="stat-card">
+                        <h4>Rang 1 (5+1)</h4>
+                        <div class="value">${results.rank1}</div>
+                        <small>${(results.rank1/numSims*100).toFixed(4)}%</small>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Rang 2 (5)</h4>
+                        <div class="value">${results.rank2}</div>
+                        <small>${(results.rank2/numSims*100).toFixed(4)}%</small>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Rang 3 (4+1)</h4>
+                        <div class="value">${results.rank3}</div>
+                        <small>${(results.rank3/numSims*100).toFixed(4)}%</small>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Rang 4 (4)</h4>
+                        <div class="value">${results.rank4}</div>
+                        <small>${(results.rank4/numSims*100).toFixed(4)}%</small>
+                    </div>
+                `;
+                
+                // Mise à jour des graphiques
+                updateSimulationChart(results, numSims);
+                updateSimulationDistributionChart(results, numSims);
+                
+                let detailedResults = `
+                    <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
+                    <div class="grid-2">
+                        <div class="info-box">
+                            <h4>📊 Statistiques Globales</h4>
+                            <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
+                            <p><strong>Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(2)}%</p>
+                            <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>🎯 Probabilités</h4>
+                            <p><strong>Jackpot (5+1):</strong> 1 sur ${Math.round(numSims/Math.max(results.rank1, 1)).toLocaleString()}</p>
+                            <p><strong>5 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank2, 1)).toLocaleString()}</p>
+                            <p><strong>4+1 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank3, 1)).toLocaleString()}</p>
+                            <p><strong>4 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank4, 1)).toLocaleString()}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Analyse des résultats
+                const winRate = results.totalWins / numSims;
+                if (winRate > 0.1) {
+                    detailedResults += `<div class="success-box">
+                        <strong>🎲 Bonnes chances !</strong> Votre grille a un taux de gain supérieur à la moyenne.
+                    </div>`;
+                } else if (winRate > 0.05) {
+                    detailedResults += `<div class="info-box">
+                        <strong>📈 Chances raisonnables</strong> Votre grille a des caractéristiques intéressantes.
+                    </div>`;
+                } else {
+                    detailedResults += `<div class="info-box">
+                        <strong>📉 Difficulté élevée</strong> Les combinaisons comme la vôtre sont rares. Pensez à varier vos numéros.
+                    </div>`;
+                }
+                
+                resultsDiv.innerHTML = detailedResults;
+                loading.classList.remove('active');
+            }, 1500);
         }
-        
-        resultsDiv.innerHTML = detailedResults;
-        loading.classList.remove('active');
-    }, 1500);
-}
-
-// NOUVELLE FONCTION : Calcul des probabilités réalistes
-function calculateRealisticProbabilities(userNumbers, userChance, numSims) {
-    // Probabilités théoriques réelles du Loto français
-    const totalCombinations = 1906884; // C(49,5)
-    const totalWithChance = totalCombinations * 10; // avec numéro chance
-    
-    // CALCULS CORRIGÉS :
-    const prob5PlusChance = 1 / totalWithChance;  // 1 sur 19,068,840
-    
-    const prob5Only = 1 / totalCombinations;      // 1 sur 1,906,884
-    
-    // Pour 4+1 : avoir 4 bons numéros + le bon numéro chance
-    const prob4PlusChance = (calculateCombinations(5,4) * calculateCombinations(44,1) * 1) / totalWithChance;
-    
-    // Pour 4 seulement : avoir 4 bons numéros + 1 mauvais + mauvais numéro chance
-    const prob4Only = (calculateCombinations(5,4) * calculateCombinations(44,1) * 9) / totalWithChance;
-    
-    // Générer des résultats réalistes
-    const results = {
-        rank1: Math.max(1, Math.round(numSims * prob5PlusChance)),
-        rank2: Math.max(1, Math.round(numSims * prob5Only)),
-        rank3: Math.max(1, Math.round(numSims * prob4PlusChance)),
-        rank4: Math.max(1, Math.round(numSims * prob4Only)),
-        rank5: Math.max(1, Math.round(numSims * ((calculateCombinations(5,3) * calculateCombinations(44,2) * 1) / totalWithChance))),
-        rank6: Math.max(1, Math.round(numSims * ((calculateCombinations(5,3) * calculateCombinations(44,2) * 9) / totalWithChance))),
-        rank7: Math.max(1, Math.round(numSims * ((calculateCombinations(5,2) * calculateCombinations(44,3) * 1) / totalWithChance))),
-        rank8: Math.max(1, Math.round(numSims * ((calculateCombinations(5,2) * calculateCombinations(44,3) * 9) / totalWithChance))),
-        totalWins: 0
-    };
-    
-    results.totalWins = Object.values(results).slice(0, 8).reduce((a, b) => a + b, 0);
-    
-    return results;
-}
-    
-    // Calcul du total des gains (au moins 2 numéros)
-    results.totalWins = results.rank1 + results.rank2 + results.rank3 + results.rank4 + 
-                       results.rank5 + results.rank6 + results.rank7 + results.rank8;
-    
-    return results;
-}
-
-// FONCTION UTILITAIRE : Calcul des combinaisons (C(n,k))
-function calculateCombinations(n, k) {
-    if (k < 0 || k > n) return 0;
-    if (k === 0 || k === n) return 1;
-    
-    k = Math.min(k, n - k);
-    let result = 1;
-    for (let i = 1; i <= k; i++) {
-        result = result * (n - k + i) / i;
-    }
-    return Math.round(result);
-}
-
-// REMPLACER l'ancienne fonction simulateDraws par celle-ci :
-function simulateDraws(userNumbers, userChance, numSims) {
-    // Utiliser les probabilités réalistes au lieu de simulations aléatoires peu précises
-    return calculateRealisticProbabilities(userNumbers, userChance, numSims);
-}
 
         function simulateDraws(userNumbers, userChance, numSims) {
             const results = {
@@ -4220,30 +4158,29 @@ function simulateDraws(userNumbers, userChance, numSims) {
         }
 
         function calculateExpectedValue(results, numSims) {
-    // Valeurs de gains moyennes réalistes (approximatives)
-    const prizeValues = {
-        rank1: 2000000,  // Jackpot moyen
-        rank2: 100000,   // 5 numéros
-        rank3: 5000,     // 4+1
-        rank4: 500,      // 4 numéros
-        rank5: 50,       // 3+1
-        rank6: 20,       // 3 numéros
-        rank7: 10,       // 2+1
-        rank8: 5         // 2 numéros
-    };
-    
-    let totalValue = 0;
-    totalValue += results.rank1 * prizeValues.rank1;
-    totalValue += results.rank2 * prizeValues.rank2;
-    totalValue += results.rank3 * prizeValues.rank3;
-    totalValue += results.rank4 * prizeValues.rank4;
-    totalValue += results.rank5 * prizeValues.rank5;
-    totalValue += results.rank6 * prizeValues.rank6;
-    totalValue += results.rank7 * prizeValues.rank7;
-    totalValue += results.rank8 * prizeValues.rank8;
-    
-    return totalValue / numSims;
-}
+            const prizeValues = {
+                rank1: 2000000,
+                rank2: 100000,
+                rank3: 5000,
+                rank4: 500,
+                rank5: 50,
+                rank6: 20,
+                rank7: 10,
+                rank8: 5
+            };
+            
+            let totalValue = 0;
+            totalValue += results.rank1 * prizeValues.rank1;
+            totalValue += results.rank2 * prizeValues.rank2;
+            totalValue += results.rank3 * prizeValues.rank3;
+            totalValue += results.rank4 * prizeValues.rank4;
+            totalValue += results.rank5 * prizeValues.rank5;
+            totalValue += results.rank6 * prizeValues.rank6;
+            totalValue += results.rank7 * prizeValues.rank7;
+            totalValue += results.rank8 * prizeValues.rank8;
+            
+            return totalValue / numSims;
+        }
 
         // ============================================================================
         // FONCTIONS POUR LES GRAPHIQUES
@@ -5100,3 +5037,4 @@ function simulateDraws(userNumbers, userChance, numSims) {
     </script>
 </body>
 </html>
+
