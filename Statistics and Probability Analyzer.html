@@ -4434,10 +4434,10 @@
         </div>
         <div class="info-box">
             <h4>🎯 Probabilités</h4>
-            <p><strong>Jackpot (5+1):</strong> 1 sur ${Math.round(numSims/Math.max(results.rank1, 1)).toLocaleString()}</p>
-            <p><strong>5 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank2, 1)).toLocaleString()}</p>
-            <p><strong>4+1 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank3, 1)).toLocaleString()}</p>
-            <p><strong>4 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank4, 1)).toLocaleString()}</p>
+            <p><strong>Jackpot (5+1):</strong> ${results.rank1 > 0 ? `1 sur ${Math.round(numSims/results.rank1).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
+            <p><strong>5 numéros:</strong> ${results.rank2 > 0 ? `1 sur ${Math.round(numSims/results.rank2).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
+            <p><strong>4+1 numéros:</strong> ${results.rank3 > 0 ? `1 sur ${Math.round(numSims/results.rank3).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
+            <p><strong>4 numéros:</strong> ${results.rank4 > 0 ? `1 sur ${Math.round(numSims/results.rank4).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
         </div>
     </div>
 `;
