@@ -4135,24 +4135,34 @@ function calculateRealisticProbabilities(userNumbers, userChance, numSims) {
     const totalCombinations = 1906884; // C(49,5)
     const totalWithChance = totalCombinations * 10; // avec numéro chance
     
-    // Calcul basé sur les probabilités mathématiques réelles
-    const prob5PlusChance = 1 / totalWithChance;
-    const prob5Only = 1 / totalCombinations;
-    const prob4PlusChance = (calculateCombinations(5,4) * calculateCombinations(44,1)) / totalWithChance;
-    const prob4Only = (calculateCombinations(5,4) * calculateCombinations(44,1)) / totalCombinations;
+    // CALCULS CORRIGÉS :
+    const prob5PlusChance = 1 / totalWithChance;  // 1 sur 19,068,840
     
-    // Générer des résultats réalistes basés sur les probabilités théoriques
+    const prob5Only = 1 / totalCombinations;      // 1 sur 1,906,884
+    
+    // Pour 4+1 : avoir 4 bons numéros + le bon numéro chance
+    const prob4PlusChance = (calculateCombinations(5,4) * calculateCombinations(44,1) * 1) / totalWithChance;
+    
+    // Pour 4 seulement : avoir 4 bons numéros + 1 mauvais + mauvais numéro chance
+    const prob4Only = (calculateCombinations(5,4) * calculateCombinations(44,1) * 9) / totalWithChance;
+    
+    // Générer des résultats réalistes
     const results = {
         rank1: Math.max(1, Math.round(numSims * prob5PlusChance)),
         rank2: Math.max(1, Math.round(numSims * prob5Only)),
         rank3: Math.max(1, Math.round(numSims * prob4PlusChance)),
         rank4: Math.max(1, Math.round(numSims * prob4Only)),
-        rank5: Math.max(1, Math.round(numSims * ((calculateCombinations(5,3) * calculateCombinations(44,2)) / totalWithChance))),
-        rank6: Math.max(1, Math.round(numSims * ((calculateCombinations(5,3) * calculateCombinations(44,2)) / totalCombinations))),
-        rank7: Math.max(1, Math.round(numSims * ((calculateCombinations(5,2) * calculateCombinations(44,3)) / totalWithChance))),
-        rank8: Math.max(1, Math.round(numSims * ((calculateCombinations(5,2) * calculateCombinations(44,3)) / totalCombinations))),
+        rank5: Math.max(1, Math.round(numSims * ((calculateCombinations(5,3) * calculateCombinations(44,2) * 1) / totalWithChance))),
+        rank6: Math.max(1, Math.round(numSims * ((calculateCombinations(5,3) * calculateCombinations(44,2) * 9) / totalWithChance))),
+        rank7: Math.max(1, Math.round(numSims * ((calculateCombinations(5,2) * calculateCombinations(44,3) * 1) / totalWithChance))),
+        rank8: Math.max(1, Math.round(numSims * ((calculateCombinations(5,2) * calculateCombinations(44,3) * 9) / totalWithChance))),
         totalWins: 0
     };
+    
+    results.totalWins = Object.values(results).slice(0, 8).reduce((a, b) => a + b, 0);
+    
+    return results;
+}
     
     // Calcul du total des gains (au moins 2 numéros)
     results.totalWins = results.rank1 + results.rank2 + results.rank3 + results.rank4 + 
