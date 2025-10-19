@@ -59,7 +59,7 @@
         }
 
         .tab {
-            padding: 2px 11px;
+            padding: 8px 15px;
             cursor: pointer;
             background: #e9ecef;
             border: none;
@@ -282,6 +282,8 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        
 
         .info-box {
             background: #f8f9fa;
@@ -522,6 +524,334 @@
             font-size: 0.8em;
             margin-left: 10px;
         }
+        
+        /* ============================================================
+   OPTIMISATION MOBILE & TABLETTE
+   ============================================================ */
+
+/* Tablettes (768px et moins) */
+@media (max-width: 768px) {
+    .container {
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .section {
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+    
+    .section h2 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .tab {
+        padding: 8px 6px;
+        font-size: 0.85em;
+        flex: 1 1 48%;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        max-width: none;
+    }
+    
+    .chance-grid-select {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        max-width: none;
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .control-group {
+        padding: 10px;
+        margin: 15px 0;
+    }
+    
+    input, select, button {
+        padding: 10px 12px;
+        font-size: 15px;
+        min-height: 40px;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    .stat-card {
+        padding: 12px;
+        margin: 8px 0;
+    }
+    
+    table th, table td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+/* Smartphones (480px et moins) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 8px;
+    }
+    
+    .header h1 {
+        font-size: 1.4em;
+        margin-bottom: 5px;
+    }
+    
+    .header p {
+        font-size: 0.9em;
+    }
+    
+    .content {
+        padding: 12px;
+    }
+    
+    .section {
+        padding: 15px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+    }
+    
+    .section h2 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+    
+    .section h3 {
+        font-size: 1.1em;
+        margin: 12px 0 8px 0;
+    }
+    
+    .tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .tab {
+        padding: 6px 4px;
+        font-size: 0.7em;
+        flex: 0 0 auto;
+        min-width: 55px;
+        text-align: center;
+        border-right: 1px solid #dee2e6;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        max-width: none;
+    }
+    
+    .number-ball-select {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8em;
+    }
+    
+    .chance-grid-select {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        max-width: none;
+    }
+    
+    .number-ball-chance-select {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8em;
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .control-group {
+        padding: 10px;
+        margin: 12px 0;
+        border-radius: 8px;
+    }
+    
+    .control-group label {
+        margin-bottom: 6px;
+        font-size: 0.95em;
+    }
+    
+    input, select, button {
+        padding: 12px 10px;
+        border: 2px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 16px;
+        margin: 4px 3px 4px 0;
+        min-height: 44px;
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    
+    button {
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    
+    .chart-container {
+        height: 250px;
+        padding: 10px;
+        margin: 15px 0;
+    }
+    
+    .stat-card {
+        padding: 10px;
+        margin: 6px 0;
+        border-radius: 8px;
+    }
+    
+    .stat-card h4 {
+        font-size: 0.85em;
+        margin-bottom: 3px;
+    }
+    
+    .stat-card .value {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    
+    .info-box, .success-box {
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 6px;
+        font-size: 0.95em;
+    }
+    
+    .info-box ul {
+        margin-left: 15px;
+        font-size: 0.9em;
+    }
+    
+    .info-box li {
+        margin: 5px 0;
+    }
+    
+    table {
+        font-size: 0.85em;
+    }
+    
+    table th, table td {
+        padding: 6px;
+    }
+    
+    .number-ball {
+        width: 35px;
+        height: 35px;
+        font-size: 0.85em;
+    }
+    
+    .selected-numbers-display {
+        gap: 8px;
+    }
+    
+    .period-selector {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .period-selector label {
+        margin-bottom: 0;
+        white-space: normal;
+    }
+    
+    .period-options {
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+    }
+    
+    .period-btn {
+        padding: 8px 10px;
+        font-size: 0.9em;
+        width: 100%;
+    }
+    
+    .date-inputs {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .date-inputs input {
+        width: 100%;
+    }
+    
+    .latest-draw {
+        padding: 12px;
+        margin: 12px 0;
+    }
+    
+    .latest-draw h4 {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+    
+    .prediction-card {
+        width: 100%;
+        display: block;
+        margin: 8px 0;
+        padding: 12px;
+    }
+}
+
+/* Ultra-petits écrans (320px et moins) */
+@media (max-width: 320px) {
+    .header h1 {
+        font-size: 1.2em;
+    }
+    
+    .tab {
+        padding: 4px 2px;
+        font-size: 0.65em;
+        min-width: 45px;
+    }
+    
+    .number-grid-select,
+    .chance-grid-select {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
+    
+    input, select, button {
+        font-size: 15px;
+        padding: 10px 8px;
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -4089,23 +4419,23 @@
                 updateSimulationDistributionChart(results, numSims);
                 
                 let detailedResults = `
-    <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
-    <div class="grid-2">
-        <div class="info-box">
-            <h4>📊 Statistiques Globales</h4>
-            <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
-            <p><strong>Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(2)}%</p>
-            <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
-        </div>
-        <div class="info-box">
-            <h4>🎯 Probabilités</h4>
-            <p><strong>Jackpot (5+1):</strong> ${results.rank1 > 0 ? `1 sur ${Math.round(numSims/results.rank1).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-            <p><strong>5 numéros:</strong> ${results.rank2 > 0 ? `1 sur ${Math.round(numSims/results.rank2).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-            <p><strong>4+1 numéros:</strong> ${results.rank3 > 0 ? `1 sur ${Math.round(numSims/results.rank3).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-            <p><strong>4 numéros:</strong> ${results.rank4 > 0 ? `1 sur ${Math.round(numSims/results.rank4).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-        </div>
-    </div>
-`;
+                    <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
+                    <div class="grid-2">
+                        <div class="info-box">
+                            <h4>📊 Statistiques Globales</h4>
+                            <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
+                            <p><strong>Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(2)}%</p>
+                            <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
+                        </div>
+                        <div class="info-box">
+                            <h4>🎯 Probabilités</h4>
+                            <p><strong>Jackpot (5+1):</strong> 1 sur ${Math.round(numSims/Math.max(results.rank1, 1)).toLocaleString()}</p>
+                            <p><strong>5 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank2, 1)).toLocaleString()}</p>
+                            <p><strong>4+1 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank3, 1)).toLocaleString()}</p>
+                            <p><strong>4 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank4, 1)).toLocaleString()}</p>
+                        </div>
+                    </div>
+                `;
                 
                 // Analyse des résultats
                 const winRate = results.totalWins / numSims;
