@@ -4424,23 +4424,23 @@
                 updateSimulationDistributionChart(results, numSims);
                 
                 let detailedResults = `
-                    <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
-                    <div class="grid-2">
-                        <div class="info-box">
-                            <h4>📊 Statistiques Globales</h4>
-                            <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
-                            <p><strong>Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(2)}%</p>
-                            <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
-                        </div>
-                        <div class="info-box">
-                            <h4>🎯 Probabilités</h4>
-                            <p><strong>Jackpot (5+1):</strong> 1 sur ${Math.round(numSims/Math.max(results.rank1, 1)).toLocaleString()}</p>
-                            <p><strong>5 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank2, 1)).toLocaleString()}</p>
-                            <p><strong>4+1 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank3, 1)).toLocaleString()}</p>
-                            <p><strong>4 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank4, 1)).toLocaleString()}</p>
-                        </div>
-                    </div>
-                `;
+    <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
+    <div class="grid-2">
+        <div class="info-box">
+            <h4>📊 Statistiques Globales</h4>
+            <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
+            <p><strong>Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(2)}%</p>
+            <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
+        </div>
+        <div class="info-box">
+            <h4>🎯 Probabilités</h4>
+            <p><strong>Jackpot (5+1):</strong> 1 sur ${Math.round(numSims/Math.max(results.rank1, 1)).toLocaleString()}</p>
+            <p><strong>5 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank2, 1)).toLocaleString()}</p>
+            <p><strong>4+1 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank3, 1)).toLocaleString()}</p>
+            <p><strong>4 numéros:</strong> 1 sur ${Math.round(numSims/Math.max(results.rank4, 1)).toLocaleString()}</p>
+        </div>
+    </div>
+`;
                 
                 // Analyse des résultats
                 const winRate = results.totalWins / numSims;
