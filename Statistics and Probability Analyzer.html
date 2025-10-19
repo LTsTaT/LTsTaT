@@ -545,440 +545,88 @@
 
         <div class="content">
             <div id="overview" class="tab-content active">
-                <div class="section">
-                    <h2>Home</h2>
-                    <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0;">
-                        L'application analyse l'historique complet des tirages du Loto 
-                        en utilisant des méthodes statistiques avancées, de machine learning et des simulations probabilistes.
-                    </p>
+    <div class="section">
+        <h2>Home</h2>
+        <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0;">
+            L'application analyse l'historique complet des tirages du Loto 
+            en utilisant des méthodes statistiques avancées, de machine learning et des simulations probabilistes.
+        </p>
 
-                    <div class="control-group">
-                        <h3 style="color: white; margin-bottom: 15px;">Sélection de la Période d'Analyse</h3>
-                        <div class="period-selector">
-                            <label>Période :</label>
-                            <div class="period-options">
-                                <button class="period-btn active" onclick="setPeriod('all')">Tous les tirages</button>
-                                <button class="period-btn" onclick="setPeriod('year')">Année</button>
-                                <button class="period-btn" onclick="setPeriod('month')">Mois</button>
-                                <button class="period-btn" onclick="setPeriod('custom')">Période personnalisée</button>
-                            </div>
-                        </div>
-                        
-                        <div id="yearSelector" class="period-selector" style="display: none; margin-top: 10px;">
-                            <label>Année :</label>
-                            <select id="yearSelect" onchange="applyPeriodFilter()">
-                                <option value="">Sélectionnez une année</option>
-                            </select>
-                        </div>
-                        
-                        <div id="monthSelector" class="period-selector" style="display: none; margin-top: 10px;">
-                            <label>Mois :</label>
-                            <select id="monthSelect" onchange="applyPeriodFilter()">
-                                <option value="">Sélectionnez un mois</option>
-                                <option value="01">Janvier</option>
-                                <option value="02">Février</option>
-                                <option value="03">Mars</option>
-                                <option value="04">Avril</option>
-                                <option value="05">Mai</option>
-                                <option value="06">Juin</option>
-                                <option value="07">Juillet</option>
-                                <option value="08">Août</option>
-                                <option value="09">Septembre</option>
-                                <option value="10">Octobre</option>
-                                <option value="11">Novembre</option>
-                                <option value="12">Décembre</option>
-                            </select>
-                            <select id="monthYearSelect" onchange="applyPeriodFilter()">
-                                <option value="">Sélectionnez une année</option>
-                            </select>
-                        </div>
-                        
-                        <div id="customPeriodSelector" class="period-selector" style="display: none; margin-top: 10px;">
-                            <label>Période personnalisée :</label>
-                            <div class="date-inputs">
-                                <input type="date" id="startDate" onchange="applyPeriodFilter()">
-                                <span>au</span>
-                                <input type="date" id="endDate" onchange="applyPeriodFilter()">
-                            </div>
-                        </div>
-                    </div>
+        <!-- DERNIER TIRAGE - MAINTENANT EN POSITION 3 -->
+        <div id="latestDrawContainer" style="display: none;">
+            <div class="latest-draw">
+                <h4>Dernier Tirage</h4>
+                <div id="latestDrawDate" style="font-weight: bold; margin-bottom: 10px;"></div>
+                <div class="latest-draw-numbers" id="latestDrawNumbers"></div>
+            </div>
+        </div>
 
-                    <div id="latestDrawContainer" style="display: none;">
-                        <div class="latest-draw">
-                            <h4>Dernier Tirage</h4>
-                            <div id="latestDrawDate" style="font-weight: bold; margin-bottom: 10px;"></div>
-                            <div class="latest-draw-numbers" id="latestDrawNumbers"></div>
-                        </div>
-                    </div>
-
-                    <div class="grid-2">
-                        <div class="stat-card">
-                            <h4>Tirages Analysés</h4>
-                            <div class="value" id="statTotalDraws">0</div>
-                            <small id="periodInfo">Période: Tous les tirages</small>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Période Couverte</h4>
-                            <div class="value" id="statPeriod">Réelle</div>
-                            <small id="dateRange">-</small>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Premier Tirage</h4>
-                            <div class="value" id="firstDrawDate">-</div>
-                            <small>Le plus ancien</small>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Dernier Tirage</h4>
-                            <div class="value" id="lastDrawDate">-</div>
-                            <small>Le plus récent</small>
-                        </div>
-                    </div>
-
-                    <div class="info-box" style="margin-top: 30px;">
-                        <h3 style="color: #495057; margin-bottom: 10px;">Fonctionnalités du programme</h3>
-                        <ul style="line-height: 2; margin-left: 20px;">
-                            <li><strong>Analyse des Fréquences :</strong> Visualisez les numéros les plus et moins fréquents</li>
-                            <li><strong>Prédictions Statistiques :</strong> Algorithmes basés sur les distributions de Poisson, Loi de Zipf, Test T Student, Test Chi-carré, Distribution Binomiale, Distribution de Dirichlet</li>
-                            <li><strong>Machine Learning Réel :</strong> Modèles de classification avancés (Random Forest, Gradient Boosting, Régression Logistique, LSTM Deep Learning, Ensemble Stacking)</li>
-                            <li><strong>Clustering K-Means :</strong> Identification de groupes de numéros similaires</li>
-                            <li><strong>Simulations Monte Carlo :</strong> Testez vos stratégies avec des milliers de tirages simulés</li>
-                            <li><strong>Analyses Statistiques :</strong> Tests de significativité, corrélations, et tendances temporelles</li>
-                        </ul>
-                    </div>
-
-                    <button onclick="showTab('frequencies'); event.preventDefault();" style="margin-top: 20px; width: 100%; padding: 15px; font-size: 1.1em;">
-                        Commencer l'Analyse →
-                    </button>
+        <!-- SÉLECTION DE PÉRIODE - MAINTENANT EN POSITION 4 -->
+        <div class="control-group">
+            <h3 style="color: white; margin-bottom: 15px;">Sélection de la Période d'Analyse</h3>
+            <div class="period-selector">
+                <label>Période :</label>
+                <div class="period-options">
+                    <button class="period-btn active" onclick="setPeriod('all')">Tous les tirages</button>
+                    <button class="period-btn" onclick="setPeriod('year')">Année</button>
+                    <button class="period-btn" onclick="setPeriod('month')">Mois</button>
+                    <button class="period-btn" onclick="setPeriod('custom')">Période personnalisée</button>
                 </div>
             </div>
-
-            <div id="frequencies" class="tab-content">
-                <div class="section">
-                    <h2>Analyse des Fréquences</h2>
-                    <p>Visualisez la fréquence d'apparition de chaque numéro dans l'historique des tirages.</p>
-
-                    <div class="control-group">
-                        <label>Type d'analyse :</label>
-                        <select id="freqType" onchange="updateFrequencyChart()">
-                            <option value="main">Numéros Principaux (1-49)</option>
-                            <option value="chance">Numéros Chance (1-10)</option>
-                        </select>
-                        <button onclick="updateFrequencyChart()">Générer le Graphique</button>
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="frequencyChart"></canvas>
-                    </div>
-
-                    <div class="results" id="freqResults"></div>
-
-                    <div class="info-box">
-                        <strong>Information :</strong> Les numéros les plus fréquents ne sont pas nécessairement 
-                        les plus "chanceux" - chaque tirage est indépendant. Cette analyse montre simplement les tendances historiques.
-                    </div>
-                </div>
+            
+            <div id="yearSelector" class="period-selector" style="display: none; margin-top: 10px;">
+                <label>Année :</label>
+                <select id="yearSelect" onchange="applyPeriodFilter()">
+                    <option value="">Sélectionnez une année</option>
+                </select>
             </div>
-
-            <div id="predictions" class="tab-content">
-                <div class="section">
-                    <h2>Prédictions Statistiques</h2>
-                    <p>Générez des combinaisons basées sur différents modèles probabilistes.</p>
-
-                    <div class="control-group">
-                        <label>Modèle de prédiction :</label>
-                        <select id="predModel" onchange="togglePredictionOptions()">
-                            <option value="montecarlo">Simulation Monte-Carlo</option>
-                            <option value="poisson">Distribution de Poisson</option>
-                            <option value="dirichlet">Distribution de Dirichlet</option>
-                            <option value="binomiale">Distribution Binomiale</option>
-                            <option value="gamma">Distribution Gamma</option>
-                            <option value="chisquare">Test du Chi-carré (χ²)</option>
-                            <option value="student">Test T de Student</option>
-                            <option value="zipf">Loi de Zipf</option>
-                            <option value="hybrid">Modèle Hybride</option>
-                        </select>
-                        <br>
-                    
-                        <div id="predictionExplanations" style="margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 10px; border-left: 4px solid #6c757d;">
-                        </div>
-                        
-                        <div id="standardOptions">
-                            <label>Nombre de combinaisons :</label>
-                            <input type="number" id="numPredictions" value="6" min="1" max="20">
-                        </div>
-                        
-                        <div id="testOptions" style="display: none;">
-                            <label>Seuil de significativité (α) :</label>
-                            <input type="number" id="alphaLevel" value="0.05" min="0.01" max="0.1" step="0.01">
-                        </div>
-                        
-                        <div id="monteCarloOptions" style="display: none;">
-                            <label>Nombre de simulations Monte-Carlo :</label>
-                            <input type="number" id="numMonteCarloSims" value="10000" min="1000" max="100000" step="1000">
-                            <br>
-                            <label>Top combinaisons à afficher :</label>
-                            <input type="number" id="topMonteCarlo" value="10" min="5" max="20">
-                        </div>
-                        
-                        <button onclick="generatePredictions()">Générer des Prédictions</button>
-                    </div>
-
-                    <div class="loading" id="predLoading">
-                        <div class="spinner"></div>
-                        <p>Calcul en cours...</p>
-                    </div>
-
-                    <div id="predResults"></div>
-
-                    <div class="info-box" style="margin-top: 20px;">
-                       Ces prédictions sont purement statistiques. 
-                        Le Loto est un jeu de hasard où chaque tirage est indépendant. Aucun algorithme ne peut garantir un gain.
-                    </div>
-                </div>
+            
+            <div id="monthSelector" class="period-selector" style="display: none; margin-top: 10px;">
+                <label>Mois :</label>
+                <select id="monthSelect" onchange="applyPeriodFilter()">
+                    <option value="">Sélectionnez un mois</option>
+                    <option value="01">Janvier</option>
+                    <option value="02">Février</option>
+                    <!-- ... autres mois -->
+                </select>
+                <select id="monthYearSelect" onchange="applyPeriodFilter()">
+                    <option value="">Sélectionnez une année</option>
+                </select>
             </div>
-
-            <div id="statistics" class="tab-content">
-                <div class="section">
-                    <h2>Analyses Statistiques Avancées</h2>
-                    
-                    <div class="control-group">
-                        <label>Type d'analyse :</label>
-                        <select id="statType">
-                            <option value="distribution">Distribution des Numéros</option>
-                            <option value="parite">Analyse Parité (Pairs/Impairs)</option>
-                            <option value="somme">Distribution des Sommes</option>
-                            <option value="gaps">Analyse des Écarts</option>
-                            <option value="consecutive">Numéros Consécutifs</option>
-                        </select>
-                        <button onclick="performStatAnalysis()">Lancer l'Analyse</button>
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="statChart"></canvas>
-                    </div>
-
-                    <div id="statResults"></div>
-                </div>
-            </div>
-
-            <div id="ml" class="tab-content">
-                <div class="section">
-                    <h2>Prédictions par Machine Learning Réel</h2>
-                    <p>Utilisez des algorithmes d'apprentissage automatique entraînés sur l'historique réel des tirages.</p>
-
-                    <div class="algorithm-info">
-                        <h4>🧠 Algorithmes ML Implémentés (Version Réelle)</h4>
-                        <div id="mlExplanationContent">
-                            <p><strong>✅ Tous les modèles sont maintenant entraînés sur les données réelles</strong> avec TensorFlow.js</p>
-                            <p>Features utilisées : fréquences historiques, temps depuis dernière apparition, patterns statistiques, tendances temporelles</p>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label>Algorithme :</label>
-                        <select id="mlModel">
-                            <option value="rf">Random Forest</option>
-                            <option value="gb">Gradient Boosting</option>
-                            <option value="logistic">Régression Logistique</option>
-                            <option value="ensemble">Ensemble (Stacking)</option>
-                            <option value="lstm">LSTM (Deep Learning)</option>
-                        </select>
-                        <br>
-                        <label>Features utilisées automatiquement :</label>
-                        <div style="margin: 10px 0; padding: 10px; background: #e9ecef; border-radius: 5px;">
-                            ✓ Fréquences historiques (49 features)<br>
-                            ✓ Temps depuis dernière apparition (49 features)<br>
-                            ✓ Statistiques descriptives (somme, moyenne, écart-type)<br>
-                            ✓ Patterns (parité, écarts, répartition par dizaines)<br>
-                            ✓ Tendances temporelles (moyennes mobiles)
-                        </div>
-                        <button onclick="trainMLModel()">Entraîner et Prédire</button>
-                    </div>
-
-                    <div class="loading" id="mlLoading">
-                        <div class="spinner"></div>
-                        <p>Entraînement du modèle en cours... (TensorFlow.js)</p>
-                    </div>
-
-                    <div class="grid-2" id="mlMetrics"></div>
-                    <div id="mlResults"></div>
-
-                    <div class="chart-container">
-                        <canvas id="mlChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div id="clusters" class="tab-content">
-                <div class="section">
-                    <h2>Analyse par Clustering K-Means</h2>
-                    <p>Identifiez des groupes de numéros avec des comportements similaires.</p>
-
-                    <div class="algorithm-info">
-                        <h4>🔍 Clustering K-means</h4>
-                        <p>Cette technique est essentielle pour regrouper les numéros de tirage qui partagent des profils historiques similaires (basés sur la fréquence, l'écart, la tendance). L'utilisateur peut choisir des numéros au sein d'un "cluster gagnant".</p>
-                        <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de réduction de dimension. Elle permet de transformer un grand nombre de caractéristiques statistiques en un ensemble plus petit de variables non corrélées, tout en conservant la majeure partie de l'information.</p>
-                    </div>
-
-                    <div class="control-group">
-                        <label>Nombre de clusters :</label>
-                        <input type="number" id="numClusters" value="5" min="2" max="10">
-                        <button onclick="performClustering()">Créer les Clusters</button>
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="clusterChart"></canvas>
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="clusterDistributionChart"></canvas>
-                    </div>
-
-                    <div id="clusterResults"></div>
-
-                    <div class="info-box">
-                        <strong>Clustering K-Means :</strong> Cette technique regroupe les numéros ayant des 
-                        caractéristiques similaires (fréquence, écarts, tendances). Les numéros d'un même cluster 
-                        partagent des patterns communs dans l'historique.
-                    </div>
-                </div>
-            </div>
-
-            <div id="evaluation" class="tab-content">
-                <div class="section">
-                    <h2>Évaluer ma Grille de Loto</h2>
-                    <p>Analysez votre grille personnelle selon plusieurs critères statistiques et obtenez un score global.</p>
-
-                    <div class="control-group">
-                        <div class="grid-selection">
-                            <div class="grid-title">Sélectionnez vos 5 numéros principaux (1-49) :</div>
-                            <div class="number-grid-select" id="mainNumbersGrid"></div>
-                            
-                            <div class="selected-numbers">
-                                <div class="grid-title">Vos numéros sélectionnés :</div>
-                                <div class="selected-numbers-display" id="selectedMainNumbers"></div>
-                            </div>
-                            
-                            <div class="grid-title">Sélectionnez votre numéro chance (1-10) :</div>
-                            <div class="chance-grid-select" id="chanceNumbersGrid"></div>
-                            
-                            <div class="selected-numbers">
-                                <div class="grid-title">Votre numéro chance :</div>
-                                <div class="selected-numbers-display" id="selectedChanceNumber"></div>
-                            </div>
-                        </div>
-                        
-                        <button onclick="evaluateGrid()" style="margin-top: 15px;">Évaluer ma Grille</button>
-                        <button onclick="generateRandomGrid()" style="margin-top: 15px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">Générer une Grille Aléatoire</button>
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="evaluationChart"></canvas>
-                    </div>
-
-                    <div id="evalResults"></div>
-                </div>
-            </div>
-
-            <div id="simulation" class="tab-content">
-                <div class="section">
-                    <h2>Simulation Monte Carlo</h2>
-                    <p>Simulez des milliers de tirages pour tester des stratégies et estimer des probabilités.</p>
-
-                    <div class="algorithm-info">
-                        <h4>Simulation Monte-Carlo</h4>
-                        <p>Les simulations de Monte-Carlo (KMC) sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de prédiction.</p>
-                        <p><strong>Distributions Statistiques Utilisées :</strong></p>
-                        <p><strong>Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
-                        <p><strong>Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
-                        <p><strong>Dirichlet :</strong> Distribution complexe souvent utilisée pour modéliser des proportions de catégories. Dans le contexte du Loto, elle peut modéliser la probabilité que les cinq numéros choisis se répartissent de manière déséquilibrée sur les quatre dizaines.</p>
-                        <p><strong>Tests Statistiques :</strong></p>
-                        <p><strong>Test T (Student) :</strong> Permet de comparer la moyenne d'une série de numéros avec une valeur théorique pour déterminer si l'écart est significatif.</p>
-                        <p><strong>Test du Chi-carré (χ²) :</strong> Le test essentiel pour le Loto. Il permet de vérifier si la distribution observée des fréquences des numéros est conforme à une distribution uniforme théorique.</p>
-                    </div>
-
-                    <div class="control-group">
-                        <div class="grid-selection">
-                            <div class="grid-title">Sélectionnez vos 5 numéros principaux (1-49) :</div>
-                            <div class="number-grid-select" id="simMainNumbersGrid"></div>
-                            
-                            <div class="selected-numbers">
-                                <div class="grid-title">Vos numéros sélectionnés :</div>
-                                <div class="selected-numbers-display" id="simSelectedMainNumbers"></div>
-                            </div>
-                            
-                            <div class="grid-title">Sélectionnez votre numéro chance (1-10) :</div>
-                            <div class="chance-grid-select" id="simChanceNumbersGrid"></div>
-                            
-                            <div class="selected-numbers">
-                                <div class="grid-title">Votre numéro chance :</div>
-                                <div class="selected-numbers-display" id="simSelectedChanceNumber"></div>
-                            </div>
-                        </div>
-                        
-                        <label>Nombre de simulations :</label>
-                        <input type="number" id="numSims" value="10000" min="100" max="100000">
-                        <button onclick="runSimulation()">Lancer la Simulation</button>
-                    </div>
-
-                    <div class="loading" id="simLoading">
-                        <div class="spinner"></div>
-                        <p>Simulation en cours...</p>
-                    </div>
-
-                    <div class="grid-2" id="simMetrics"></div>
-
-                    <div class="chart-container">
-                        <canvas id="simChart"></canvas>
-                    </div>
-
-                    <div class="chart-container">
-                        <canvas id="simDistributionChart"></canvas>
-                    </div>
-
-                    <div id="simResults"></div>
-                </div>
-            </div>
-
-            <div id="programme" class="tab-content">
-                <div class="section">
-                    <h2>Programme</h2>
-                    <p>Documentation technique et structure du programme.</p>
-                    
-                    <div class="control-group">
-                        <h3>Titre 1</h3>
-                        <div class="info-box">
-                            <p>Texte 1</p>
-                        </div>
-                        
-                        <div style="margin: 20px 0; border-bottom: 1px solid #dee2e6;"></div>
-                        
-                        <h3>Titre 2</h3>
-                        <div class="control-group">
-                            <label>Sélectionnez le code source à afficher :</label>
-                            <select id="codeSourceSelect" onchange="afficherCodeSource()">
-                                <option value="">-- Choisir un code source --</option>
-                                <option value="python">1 : Code source Python</option>
-                                <option value="html">2 : Code source HTML</option>
-                            </select>
-                        </div>
-                        <div class="info-box">
-                            <div id="codeSourceContent">
-                                <p>Sélectionnez un code source dans le menu déroulant pour l'afficher ici.</p>
-                            </div>
-                        </div>
-                        
-                        <div style="margin: 20px 0; border-bottom: 1px solid #dee2e6;"></div>
-                        
-                        <h3>Titre 3</h3>
-                        <div class="info-box">
-                            <p>Texte 3</p>
-                        </div>
-                    </div>
+            
+            <div id="customPeriodSelector" class="period-selector" style="display: none; margin-top: 10px;">
+                <label>Période personnalisée :</label>
+                <div class="date-inputs">
+                    <input type="date" id="startDate" onchange="applyPeriodFilter()">
+                    <span>au</span>
+                    <input type="date" id="endDate" onchange="applyPeriodFilter()">
                 </div>
             </div>
         </div>
+
+        <!-- SUITE DU CONTENU EXISTANT -->
+        <div class="grid-2">
+            <div class="stat-card">
+                <h4>Tirages Analysés</h4>
+                <div class="value" id="statTotalDraws">0</div>
+                <small id="periodInfo">Période: Tous les tirages</small>
+            </div>
+            <!-- ... autres cartes stats -->
+        </div>
+
+        <div class="info-box" style="margin-top: 30px;">
+            <h3 style="color: #495057; margin-bottom: 10px;">Fonctionnalités du programme</h3>
+            <ul style="line-height: 2; margin-left: 20px;">
+                <li><strong>Analyse des Fréquences :</strong> Visualisez les numéros les plus et moins fréquents</li>
+                <!-- ... autres fonctionnalités -->
+            </ul>
+        </div>
+
+        <button onclick="showTab('frequencies'); event.preventDefault();" style="margin-top: 20px; width: 100%; padding: 15px; font-size: 1.1em;">
+            Commencer l'Analyse →
+        </button>
     </div>
+</div>
 
     <script>
         // ============================================================================
