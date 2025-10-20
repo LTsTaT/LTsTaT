@@ -633,31 +633,31 @@
         
         <div class="nav-menu">
             <div class="nav-item active" onclick="showTab('overview')">
-                <i>🏠</i> Accueil
+                <i></i> Accueil
             </div>
             <div class="nav-item" onclick="showTab('frequencies')">
-                <i>📊</i> Fréquences
+                <i></i> Fréquences
             </div>
             <div class="nav-item" onclick="showTab('predictions')">
-                <i>🔮</i> Prédictions
+                <i></i> Prédictions
             </div>
             <div class="nav-item" onclick="showTab('ml')">
-                <i>🤖</i> Machine Learning
+                <i></i> Machine Learning
             </div>
             <div class="nav-item" onclick="showTab('clusters')">
-                <i>🔍</i> Clustering
+                <i></i> Clustering
             </div>
             <div class="nav-item" onclick="showTab('statistics')">
-                <i>📈</i> Statistiques
+                <i></i> Statistiques
             </div>
             <div class="nav-item" onclick="showTab('evaluation')">
-                <i>✅</i> Évaluation
+                <i></i> Évaluation
             </div>
             <div class="nav-item" onclick="showTab('simulation')">
-                <i>🎲</i> Simulation
+                <i></i> Simulation
             </div>
             <div class="nav-item" onclick="showTab('programme')">
-                <i>📋</i> Programme
+                <i></i> Programme
             </div>
         </div>
     </div>
@@ -4218,13 +4218,13 @@
             `;
             
             if (overallScore >= 80) {
-                results += `<div class="success-box"><strong>🎉 Grille exceptionnelle !</strong> Excellentes caractéristiques sur tous les critères.</div>`;
+                results += `<div class="success-box"><strong> Grille exceptionnelle !</strong> Excellentes caractéristiques sur tous les critères.</div>`;
             } else if (overallScore >= 70) {
-                results += `<div class="success-box"><strong>👍 Excellente grille !</strong> Bonnes caractéristiques statistiques.</div>`;
+                results += `<div class="success-box"><strong> Excellente grille !</strong> Bonnes caractéristiques statistiques.</div>`;
             } else if (overallScore >= 60) {
-                results += `<div class="info-box"><strong>✅ Grille correcte.</strong> Caractéristiques moyennes.</div>`;
+                results += `<div class="info-box"><strong> ✔️ Grille correcte.</strong> Caractéristiques moyennes.</div>`;
             } else if (overallScore >= 50) {
-                results += `<div class="info-box"><strong>⚠️ Grille acceptable.</strong> Quelques améliorations possibles.</div>`;
+                results += `<div class="info-box"><strong> ✔️ Grille acceptable.</strong> Quelques améliorations possibles.</div>`;
             } else {
                 results += `<div class="info-box" style="background-color: rgba(233, 69, 96, 0.2); border-color: var(--highlight-color);">
                     <strong>🔧 Grille peu optimale.</strong> Envisagez de modifier certains numéros pour améliorer vos chances.
@@ -4360,13 +4360,13 @@
     <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
     <div class="grid-2">
         <div class="info-box">
-            <h4>📊 Statistiques Globales</h4>
+            <h4> Statistiques Globales</h4>
             <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
             <p><strong>Pourcentage de gains:</strong> ${(results.totalWins/numSims*100).toFixed(2)}%</p>
             <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
         </div>
         <div class="info-box">
-            <h4>🎯 Probabilités</h4>
+            <h4> Probabilités</h4>
             <p><strong>Jackpot (5+1):</strong> ${results.rank1 > 0 ? `1 sur ${Math.round(numSims/results.rank1).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
             <p><strong>5 numéros:</strong> ${results.rank2 > 0 ? `1 sur ${Math.round(numSims/results.rank2).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
             <p><strong>4+1 numéros:</strong> ${results.rank3 > 0 ? `1 sur ${Math.round(numSims/results.rank3).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
@@ -4379,15 +4379,15 @@
                 const winRate = results.totalWins / numSims;
                 if (winRate > 0.1) {
                     detailedResults += `<div class="success-box">
-                        <strong>🎲 Bonnes chances !</strong> Votre grille a un taux de gain supérieur à la moyenne.
+                        <strong> Bonnes chances !</strong> Votre grille a un taux de gain supérieur à la moyenne.
                     </div>`;
                 } else if (winRate > 0.05) {
                     detailedResults += `<div class="info-box">
-                        <strong>📈 Chances raisonnables</strong> Votre grille a des caractéristiques intéressantes.
+                        <strong> Chances raisonnables</strong> Votre grille a des caractéristiques intéressantes.
                     </div>`;
                 } else {
                     detailedResults += `<div class="info-box">
-                        <strong>📉 Difficulté élevée</strong> Les combinaisons comme la vôtre sont rares. Pensez à varier vos numéros.
+                        <strong> Difficulté élevée</strong> Les combinaisons comme la vôtre sont rares. Pensez à varier vos numéros.
                     </div>`;
                 }
                 
