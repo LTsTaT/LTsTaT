@@ -468,162 +468,505 @@
             margin: 10px 0;
             flex-wrap: wrap;
         }
+//* ============================================================================
+   RESPONSIVE DESIGN - MENU HAMBURGER MOBILE
+============================================================================ */
 
-        /* ============================================================================
-           RESPONSIVE DESIGN
-        ============================================================================ */
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 220px;
-            }
-            
-            .main-content {
-                margin-left: 220px;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(8, 1fr);
-            }
-        }
+/* Bouton hamburger (caché sur desktop) */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
 
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .nav-menu {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-item {
-                flex: 1;
-                min-width: 120px;
-                justify-content: center;
-                border-left: none;
-                border-bottom: 3px solid transparent;
-            }
-            
-            .nav-item.active {
-                border-left: none;
-                border-bottom-color: var(--highlight-color);
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(6, 1fr);
-            }
-            
-            .prediction-card {
-                width: 48%;
-            }
-        }
+.mobile-menu-toggle:hover {
+    background-color: var(--highlight-color);
+}
 
-        @media (max-width: 480px) {
-            .header {
-                padding: 0 15px;
-            }
-            
-            .content {
-                padding: 15px;
-            }
-            
-            .section {
-                padding: 15px;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(5, 1fr);
-            }
-            
-            .prediction-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
+/* Overlay pour fermer le menu */
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 98;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* Tablettes (768px - 1024px) */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
     
-        @media (max-width: 480px) {
-            .header {
-                padding: 0 15px;
-            }
-            
-            .content {
-                padding: 15px;
-            }
-            
-            .section {
-                padding: 15px;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(5, 1fr);
-            }
-            
-            .prediction-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
+    .main-content {
+        margin-left: 200px;
+    }
     
+    .number-grid-select {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        max-width: 100%;
+    }
+    
+    .header h2 {
+        font-size: 1.2rem;
+    }
+}
 
-        @media (max-width: 480px) {
-            .header {
-                padding: 0 15px;
-            }
-            
-            .content {
-                padding: 15px;
-            }
-            
-            .section {
-                padding: 15px;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(5, 1fr);
-            }
-            
-            .prediction-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
+/* Tablettes et smartphones (< 768px) */
+@media (max-width: 768px) {
+    :root {
+        --header-height: 60px;
+    }
     
-        @media (max-width: 480px) {
-            .header {
-                padding: 0 15px;
-            }
-            
-            .content {
-                padding: 15px;
-            }
-            
-            .section {
-                padding: 15px;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(5, 1fr);
-            }
-            
-            .prediction-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
+    /* Afficher le bouton hamburger */
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    /* Sidebar devient un menu coulissant */
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 99;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+    
+    .sidebar.active {
+        left: 0;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .logo {
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    
+    .nav-menu {
+        display: block;
+        padding: 10px 0;
+    }
+    
+    .nav-item {
+        display: flex;
+        padding: 15px 20px;
+        border-left: 3px solid transparent;
+        border-bottom: none;
+        font-size: 0.9rem;
+    }
+    
+    .nav-item.active {
+        border-left-color: var(--highlight-color);
+        border-bottom: none;
+    }
+    
+    .header {
+        height: 60px;
+        padding: 0 15px 0 60px;
+    }
+    
+    .header h2 {
+        font-size: 0.95rem;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .section {
+        padding: 15px;
+    }
+    
+    .section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        max-width: 100%;
+    }
+    
+    .number-ball-select,
+    .number-ball-chance-select {
+        width: 35px;
+        height: 35px;
+        font-size: 0.85em;
+    }
+    
+    .prediction-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    button, input, select {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+/* Smartphones moyens (414px - 600px) */
+@media (max-width: 600px) {
+    .mobile-menu-toggle {
+        top: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 1.1rem;
+    }
+    
+    .sidebar {
+        width: 260px;
+    }
+    
+    .header {
+        padding: 0 10px 0 55px;
+    }
+    
+    .header h2 {
+        font-size: 0.85rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .nav-item {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+    }
+    
+    .chance-grid-select {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+    
+    .number-ball-select,
+    .number-ball-chance-select {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8em;
+    }
+    
+    .number-ball {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9em;
+    }
+    
+    .control-group {
+        padding: 15px;
+    }
+    
+    .control-group label {
+        font-size: 0.9rem;
+    }
+    
+    .period-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .period-btn {
+        flex: 1 1 calc(50% - 5px);
+        font-size: 0.8rem;
+        padding: 8px 5px;
+    }
+    
+    .stat-card h4 {
+        font-size: 0.85rem;
+    }
+    
+    .stat-card .value {
+        font-size: 1.1rem;
+    }
+}
+
+/* Petits smartphones (360px - 414px) */
+@media (max-width: 414px) {
+    .mobile-menu-toggle {
+        top: 8px;
+        left: 8px;
+        padding: 7px 10px;
+        font-size: 1rem;
+    }
+    
+    .sidebar {
+        width: 240px;
+    }
+    
+    .header {
+        height: 55px;
+        padding: 0 8px 0 50px;
+    }
+    
+    .header h2 {
+        font-size: 0.75rem;
+    }
+    
+    .section h2 {
+        font-size: 1.1rem;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+    }
+    
+    .number-ball-select,
+    .number-ball-chance-select {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75em;
+    }
+    
+    .number-ball {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85em;
+    }
+    
+    .chart-container {
+        height: 250px;
+        padding: 10px;
+    }
+    
+    button, input, select {
+        font-size: 0.85rem;
+        padding: 8px;
+    }
+    
+    .info-box, .success-box {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .grid-title {
+        font-size: 0.9rem;
+    }
+}
+
+/* Très petits smartphones (320px - 360px) - 5.5 pouces */
+@media (max-width: 360px) {
+    .mobile-menu-toggle {
+        top: 5px;
+        left: 5px;
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .sidebar {
+        width: 220px;
+    }
+    
+    .logo {
+        padding: 15px 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1rem;
+    }
+    
+    .logo p {
+        font-size: 0.7rem;
+    }
+    
+    .nav-item {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .header {
+        height: 50px;
+        padding: 0 5px 0 45px;
+    }
+    
+    .header h2 {
+        font-size: 0.7rem;
+    }
+    
+    .content {
+        padding: 10px;
+    }
+    
+    .section {
+        padding: 10px;
+    }
+    
+    .section h2 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .section h3 {
+        font-size: 1rem;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+    }
+    
+    .chance-grid-select {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+    
+    .number-ball-select,
+    .number-ball-chance-select {
+        width: 26px;
+        height: 26px;
+        font-size: 0.7em;
+    }
+    
+    .number-ball {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8em;
+    }
+    
+    .control-group {
+        padding: 10px;
+    }
+    
+    .control-group label {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+    }
+    
+    button, input, select {
+        font-size: 0.8rem;
+        padding: 7px;
+        margin: 3px 3px 3px 0;
+    }
+    
+    .period-btn {
+        font-size: 0.7rem;
+        padding: 6px 4px;
+    }
+    
+    .chart-container {
+        height: 200px;
+        padding: 8px;
+    }
+    
+    .stat-card {
+        padding: 10px;
+    }
+    
+    .stat-card h4 {
+        font-size: 0.8rem;
+    }
+    
+    .stat-card .value {
+        font-size: 1rem;
+    }
+    
+    .info-box, .success-box {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+    
+    .info-box ul, .success-box ul {
+        margin-left: 15px;
+        font-size: 0.8rem;
+    }
+    
+    .grid-title {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+    
+    .selected-numbers-display {
+        gap: 6px;
+    }
+    
+    .prediction-card {
+        padding: 10px;
+        margin: 8px 0;
+    }
+    
+    table {
+        font-size: 0.8rem;
+    }
+    
+    th, td {
+        padding: 8px 4px;
+    }
+}
+
+/* Orientation paysage sur mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        height: 45px;
+    }
+    
+    .header h2 {
+        font-size: 0.8rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+    
+    .section {
+        padding: 10px;
+    }
+    
+    .number-grid-select {
+        grid-template-columns: repeat(10, 1fr);
+    }
+}
     </style>
 </head>
 <body>
+    <!-- Bouton menu hamburger (visible uniquement sur mobile) -->
+<button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+
+<!-- Overlay pour fermer le menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
     <!-- Barre latérale -->
     <div class="sidebar">
         <div class="logo">
@@ -872,9 +1215,9 @@
                     <p>Utilisez des algorithmes d'apprentissage automatique entraînés sur l'historique des tirages.</p>
 
                     <div class="info-box">
-                        <h4>🧠 Algorithmes ML Implémentés </h4>
+                        <h4> Algorithmes ML Implémentés </h4>
                         <div id="mlExplanationContent">
-                            <p><strong>✅ Tous les modèles entraînés sur les données réelles</strong> </p>
+                            <p><strong> Tous les modèles entraînés sur les données réelles</strong> </p>
                             <p>Features utilisées : fréquences historiques, temps depuis dernière apparition, patterns statistiques, tendances temporelles</p>
                         </div>
                     </div>
@@ -921,7 +1264,7 @@
                     <p>Identifiez des groupes de numéros avec des comportements similaires.</p>
 
                     <div class="info-box">
-                        <h4>🔍 Clustering K-means</h4>
+                        <h4> Clustering K-means</h4>
                         <p>Cette technique est essentielle pour regrouper les numéros de tirage qui partagent des profils historiques similaires (basés sur la fréquence, l'écart, la tendance). L'utilisateur peut choisir des numéros au sein d'un "cluster gagnant".</p>
                         <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de réduction de dimension. Elle permet de transformer un grand nombre de caractéristiques statistiques en un ensemble plus petit de variables non corrélées, tout en conservant la majeure partie de l'information.</p>
                     </div>
@@ -5316,6 +5659,44 @@ function displayLatestDraw() {
                 contentDiv.innerHTML = '<p>Sélectionnez un code source dans le menu déroulant pour l\'afficher ici.</p>';
             }
         }
+        // ============================================================================
+// GESTION DU MENU MOBILE
+// ============================================================================
+
+function initMobileMenu() {
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('menuOverlay');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    // Ouvrir/fermer le menu
+    menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+    
+    // Fermer le menu en cliquant sur l'overlay
+    overlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    // Fermer le menu après avoir cliqué sur un item
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    });
+}
+
+// Initialiser le menu mobile au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    initMobileMenu();
+    // ... reste de votre code existant
+});
     </script>
 </body>
 </html>
