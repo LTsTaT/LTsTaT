@@ -4844,74 +4844,135 @@
                 }
             }
         }
-
-        function getChartOptions(chartId) {
-            const baseOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'top' },
-                    title: { display: true, text: getChartTitle(chartId) }
+function getChartOptions(chartId) {
+    const baseOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { 
+                position: 'top',
+                labels: {
+                    color: '#ffffff',  // ✅ Légende en blanc
+                    font: {
+                        size: 12,
+                        family: "'Inter', sans-serif"
+                    }
                 }
-            };
-
-            switch(chartId) {
-                case 'clusterDistributionChart':
-                    return {
-                        ...baseOptions,
-                        plugins: {
-                            ...baseOptions.plugins,
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const label = context.label || '';
-                                        const value = context.raw || 0;
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const percentage = Math.round((value / total) * 100);
-                                        return `${label}: ${value} numéros (${percentage}%)`;
-                                    }
-                                }
-                            }
-                        }
-                    };
-                
-                case 'evaluationChart':
-                    return {
-                        ...baseOptions,
-                        scales: {
-                            r: {
-                                beginAtZero: true,
-                                max: 100,
-                                ticks: {
-                                    stepSize: 20
-                                }
-                            }
-                        }
-                    };
-                
-                case 'simDistributionChart':
-                    return {
-                        ...baseOptions,
-                        plugins: {
-                            ...baseOptions.plugins,
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const label = context.label || '';
-                                        const value = context.raw || 0;
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const percentage = Math.round((value / total) * 100);
-                                        return `${label}: ${value} fois (${percentage}%)`;
-                                    }
-                                }
-                            }
-                        }
-                    };
-                
-                default:
-                    return baseOptions;
+            },
+            title: { 
+                display: true, 
+                text: getChartTitle(chartId),
+                color: '#ffffff',  // ✅ Titre en blanc
+                font: {
+                    size: 16,
+                    family: "'Inter', sans-serif",
+                    weight: 'bold'
+                }
+            },
+            tooltip: {
+                titleColor: '#ffffff',
+                bodyColor: '#ffffff',
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                borderColor: 'rgba(255, 255, 255, 0.2)'
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: '#f0f0f0',  // ✅ Ticks X en blanc
+                    font: {
+                        size: 11,
+                        family: "'Inter', sans-serif"
+                    }
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'  // ✅ Grille X subtile
+                }
+            },
+            y: {
+                ticks: {
+                    color: '#f0f0f0',  // ✅ Ticks Y en blanc
+                    font: {
+                        size: 11,
+                        family: "'Inter', sans-serif"
+                    }
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'  // ✅ Grille Y subtile
+                }
             }
         }
+    };
+
+    switch(chartId) {
+        case 'clusterDistributionChart':
+            return {
+                ...baseOptions,
+                plugins: {
+                    ...baseOptions.plugins,
+                    tooltip: {
+                        ...baseOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} numéros (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            };
+        
+        case 'evaluationChart':
+            return {
+                ...baseOptions,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            color: '#f0f0f0'  // ✅ Ticks radar en blanc
+                        },
+                        angleLines: {
+                            color: 'rgba(255, 255, 255, 0.1)'  // ✅ Lignes radar
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'  // ✅ Grille radar
+                        },
+                        pointLabels: {
+                            color: '#ffffff'  // ✅ Labels radar en blanc
+                        }
+                    }
+                }
+            };
+        
+        case 'simDistributionChart':
+            return {
+                ...baseOptions,
+                plugins: {
+                    ...baseOptions.plugins,
+                    tooltip: {
+                        ...baseOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.raw || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = Math.round((value / total) * 100);
+                                return `${label}: ${value} fois (${percentage}%)`;
+                            }
+                        }
+                    }
+                }
+            };
+        
+        default:
+            return baseOptions;
+    }
+}
 
         function getChartTitle(chartId) {
             const titles = {
