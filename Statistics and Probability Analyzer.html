@@ -993,6 +993,19 @@
     .selected-numbers-display .number-ball-chance:hover {
         transform: none !important;
     }
+        /* Effet au survol pour la sélection */
+.number-ball-select:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Effet quand sélectionnées */
+.number-ball-select.selected {
+    transform: scale(1.15);
+    border: 2px solid #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+}
     </style>
 </head>
 <body>
