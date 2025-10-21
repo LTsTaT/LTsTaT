@@ -5688,37 +5688,85 @@ function displayLatestDraw() {
             }
             
             charts.mlChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Précision', 'Perte'],
-                    datasets: [{
-                        label: `Performance - ${modelName}`,
-                        data: [metrics.accuracy, metrics.loss * 100],
-                        backgroundColor: ['rgba(102, 126, 234, 0.7)', 'rgba(231, 76, 60, 0.7)'],
-                        borderColor: ['rgba(102, 126, 234, 1)', 'rgba(231, 76, 60, 1)'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: `Performance du Modèle ${modelName}`
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Pourcentage / Score'
-                            }
-                        }
+    type: 'bar',
+    data: {
+        labels: ['Précision', 'Perte'],
+        datasets: [{
+            label: `Performance - ${modelName}`,
+            data: [metrics.accuracy, metrics.loss * 100],
+            backgroundColor: ['rgba(102, 126, 234, 0.7)', 'rgba(231, 76, 60, 0.7)'],
+            borderColor: ['rgba(102, 126, 234, 1)', 'rgba(231, 76, 60, 1)'],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#ffffff',  
+                    font: {
+                        size: 12,
+                        family: "'Inter', sans-serif"
                     }
                 }
-            });
+            },
+            title: {
+                display: true,
+                text: `Performance du Modèle ${modelName}`,
+                color: '#ffffff',  
+                font: {
+                    size: 16,
+                    family: "'Inter', sans-serif",
+                    weight: 'bold'
+                }
+            },
+            tooltip: {
+                titleColor: '#ffffff',
+                bodyColor: '#ffffff',
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                borderColor: 'rgba(255, 255, 255, 0.2)'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: '#f0f0f0',  
+                    font: {
+                        size: 11,
+                        family: "'Inter', sans-serif"
+                    }
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)' 
+                },
+                title: {
+                    display: true,
+                    text: 'Pourcentage / Score',
+                    color: '#ffffff',  // 
+                    font: {
+                        size: 12,
+                        family: "'Inter', sans-serif"
+                    }
+                }
+            },
+            x: {
+                ticks: {
+                    color: '#f0f0f0',  
+                    font: {
+                        size: 11,
+                        family: "'Inter', sans-serif"
+                    }
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)'  
+                }
+            }
+        }
+    }
+});
         }
 
         function afficherCodeSource() {
