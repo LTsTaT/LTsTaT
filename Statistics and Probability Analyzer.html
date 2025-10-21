@@ -4179,13 +4179,26 @@
         // ============================================================================
 
         function getBallColor(number) {
-            const hue = (number * 7.34) % 360;
-            return `hsl(${hue}, 70%, 45%)`;
-        }
+    // Couleurs officielles du Loto français
+    if (number >= 1 && number <= 9) {
+        return '#f44336';    // Rouge pour 1-9
+    } else if (number >= 10 && number <= 19) {
+        return '#3f51b5';    // Bleu/vert pour 10-19
+    } else if (number >= 20 && number <= 29) {
+        return '#2196f3';    // Bleu pour 20-29
+    } else if (number >= 30 && number <= 39) {
+        return '#4caf50';    // Vert pour 30-39
+    } else if (number >= 40 && number <= 49) {
+        return '#e91e63';    // Jaune pour 40-49
+    } else {
+        return '#DDA0DD';    // Rose pour les autres (au cas où)
+    }
+}
 
-        function getChanceBallColor(number) {
-            return `hsl(${(number * 36) % 360}, 80%, 50%)`;
-        }
+function getChanceBallColor(number) {
+    // Numéro chance - couleur spécifique
+    return 'rgba(15, 52, 96, 0.3)';  // Bleu foncé semi-transparent
+}
 
         // ============================================================================
         // FONCTIONS D'INITIALISATION PRINCIPALES
