@@ -453,12 +453,13 @@ body {
         }
 
         .stat-card {
-            background-color: var(--secondary-color);
-            color: var(--text-primary);
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid var(--border-color);
-        }
+    background-color: var(--secondary-color);
+    color: var(--text-primary);
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
 
         .stat-card h4 {
             font-size: 0.9rem;
@@ -851,6 +852,7 @@ body {
 }
 
 /* Smartphones moyens (414px - 600px) */
+        
 @media (max-width: 600px) {
     .mobile-menu-toggle {
         top: 10px;
@@ -933,6 +935,7 @@ body {
 }
 
 /* Petits smartphones (360px - 414px) */
+        
 @media (max-width: 414px) {
     .mobile-menu-toggle {
         top: 8px;
@@ -997,6 +1000,7 @@ body {
 }
 
 /* Très petits smartphones (320px - 360px) - 5.5 pouces */
+        
 @media (max-width: 360px) {
     .mobile-menu-toggle {
         top: 5px;
@@ -1146,6 +1150,7 @@ body {
 }
 
 /* Orientation paysage sur mobile */
+        
 @media (max-height: 500px) and (orientation: landscape) {
     .header {
         height: 45px;
@@ -1177,6 +1182,7 @@ body {
         transform: none !important;
     }
         /* Effet au survol pour la sélection */
+        
 .number-ball-select:hover {
     transform: scale(1.1);
     transition: transform 0.2s ease;
@@ -1584,7 +1590,9 @@ body {
     </style>
 </head>
 <body>
+    
     <!-- Bouton menu hamburger (visible uniquement sur mobile) -->
+    
 <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
 
 <!-- Overlay pour fermer le menu -->
@@ -1816,8 +1824,7 @@ body {
                         </select>
                         <br>
                     
-                        <div id="predictionExplanations" style="margin: 20px 0; padding: 15px; background-color: var(--secondary-color); border-left: 4px solid var(--accent-color);">
-                        </div>
+                        
                         
                         <div id="standardOptions">
                             <label>Nombre de combinaisons :</label>
@@ -1839,6 +1846,9 @@ body {
                         
                         <button onclick="generatePredictions()">Générer des Prédictions</button>
                     </div>
+                
+                <div id="predictionExplanations" style="margin: 20px 0; padding: 15px; background-color: var(--secondary-color); border-left: 4px solid var(--accent-color); border-radius: 8px;">
+                </div>
 
                     <div class="loading" id="predLoading">
                         <div class="spinner"></div>
@@ -6699,6 +6709,43 @@ function initMobileMenu() {
             }
         });
     });
+}
+
+// Initialiser le menu mobile au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    initMobileMenu();
+    // ... reste de votre code existant
+});
+        
+        // ============================================================================
+// FONCTION POUR AFFICHER LES ONGLETS
+// ============================================================================
+function showTab(tabName) {
+    // Masquer tous les onglets
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    
+    // Désactiver tous les éléments de menu
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+    
+    // Activer l'onglet sélectionné
+    document.getElementById(tabName).classList.add('active');
+    
+    // Activer l'élément de menu correspondant
+    event.currentTarget.classList.add('active');
+    
+    // Mettre à jour le header
+    updateHeader(tabName);
+    
+    // === NOUVELLE FONCTIONNALITÉ ===
+    // Lancer automatiquement l'entraînement ML si on arrive sur l'onglet
+    if (tabName === 'ml') {
+        // Petit délai pour laisser le temps à l'interface de s'afficher
+        setTimeout(() => {
+            trainMLModel();
+        }, 500);
+    }
 }
 
 // Initialiser le menu mobile au chargement
