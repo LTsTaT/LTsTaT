@@ -37,7 +37,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--primary-color);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.4;
             min-height: 100vh;
             display: flex;
         }
@@ -91,7 +91,7 @@
         }
 
         .logo h1 {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
             font-weight: 700;
             color: var(--text-primary);
         }
@@ -6365,10 +6365,7 @@ function weightedRandomSelection(weights, count) {
                         </div>
                     </div>
                     
-                    <div class="success-box">
-                        <strong>✅ Modèle entraîné sur ${filteredDraws.length} tirages</strong><br>
-                        Cette prédiction est basée sur l'analyse des patterns historiques.
-                    </div>
+                    
                 `;
                 
                 updateMLChart(modelName, { accuracy: accuracy, loss: parseFloat(loss) });
