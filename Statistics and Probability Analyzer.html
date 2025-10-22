@@ -1761,6 +1761,19 @@ body {
                     <h2>Analyse des Fréquences</h2>
                     <p>Visualisez la fréquence d'apparition de chaque numéro dans l'historique des tirages.</p>
                     
+                    <!-- ... le reste du contenu ... -->
+        
+        <div class="control-group">
+            <label>Type d'analyse :</label>
+            <select id="freqType" onchange="updateFrequencyChart()">
+                <option value="main">Numéros Principaux (1-49)</option>
+                <option value="chance">Numéros Chance (1-10)</option>
+            </select>
+            <button onclick="updateFrequencyChart()">Générer le Graphique</button>
+        </div>
+        
+        <!-- ... le reste ... -->
+                    
                     <div class="info-box">
                         <h4> Analyse des Fréquences</h4>
                         <p>Cette technique est essentielle pour.</p>
@@ -7135,9 +7148,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... reste de votre code existant
 });
         
-        // ============================================================================
+          // ============================================================================
 // FONCTION POUR AFFICHER LES ONGLETS
 // ============================================================================
+        
 function showTab(tabName) {
     // Masquer tous les onglets
     const tabs = document.querySelectorAll('.tab-content');
@@ -7164,13 +7178,57 @@ function showTab(tabName) {
             trainMLModel();
         }, 500);
     }
+    
+    // Lancer automatiquement le clustering si on arrive sur l'onglet
+    if (tabName === 'clusters') {
+        // Petit délai pour laisser le temps à l'interface de s'afficher
+        setTimeout(() => {
+            performClustering();
+        }, 500);
+    }
+    
+    // ⬇️⬇️⬇️ AJOUT DES AUTRES ONGLETS ⬇️⬇️⬇️
+    // Lancer automatiquement l'analyse des fréquences
+    if (tabName === 'frequencies') {
+        setTimeout(() => {
+            updateFrequencyChart();
+        }, 500);
+    }
+    
+    // Lancer automatiquement les prédictions
+    if (tabName === 'predictions') {
+        setTimeout(() => {
+            generatePredictions();
+        }, 500);
+    }
+    
+    // Lancer automatiquement l'analyse statistique
+    if (tabName === 'statistics') {
+        setTimeout(() => {
+            performStatAnalysis();
+        }, 500);
+    }
+    
+    // Lancer automatiquement l'évaluation (grille aléatoire)
+    if (tabName === 'evaluation') {
+        setTimeout(() => {
+            if (selectedMainNumbers.length === 0) {
+                generateRandomGrid();
+            } else {
+                evaluateGrid();
+            }
+        }, 500);
+    }
+    
+    // Lancer automatiquement la préparation simulation
+    if (tabName === 'simulation') {
+        setTimeout(() => {
+            if (simSelectedMainNumbers.length === 0) {
+                generateRandomSimulationGrid();
+            }
+        }, 500);
+    }
 }
-
-// Initialiser le menu mobile au chargement
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    // ... reste de votre code existant
-});
     </script>
 </body>
 </html>
