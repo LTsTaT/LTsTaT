@@ -1006,6 +1006,398 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     transition: all 0.2s ease;
 }
+
+   /* ============================================================================
+       RÉGLAGE DES ESPACES - PAGE D'ACCUEIL
+    ============================================================================ */
+    
+    /* Introduction */
+    #overview .section p {
+        margin-bottom: 30px;
+    }
+    
+    /* Dernier tirage */
+    .latest-draw {
+        margin: 0 0 20px 0;
+        padding: 0px;
+    }
+    
+    .latest-draw-numbers {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    /* Sélection période */
+    .control-group {
+        margin: 0 0 0px 0;
+        padding: 20px;
+    }
+    
+    .period-options {
+        display: flex;
+        gap: 10px;
+    }
+    
+    /* Cartes stats */
+    .grid-2 {
+        gap: 20px;
+        margin: 0 0 25px 0;
+    }
+    
+    /* Liste fonctionnalités */
+    .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    /* Bouton final */
+    #overview .section button {
+        margin: 3px 0 0 0;
+        width: 100%;
+    }
+
+             /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET MACHINE LEARNING
+    ============================================================================ */
+    
+    /* Titre principal */
+    #ml .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    /* Paragraphe d'introduction */
+    #ml .section p {
+        margin-bottom: 25px;
+    }
+    
+    /* Boîte d'information ML */
+    #ml .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    /* Contenu d'explication ML */
+    #mlExplanationContent {
+        margin-bottom: 20px;
+    }
+    
+    /* Groupe de contrôle ML */
+    #ml .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    /* Sélecteur d'algorithme */
+    #mlModel {
+        margin: 0 10px 15px 0; /* Espace à droite et en bas */
+    }
+    
+    /* Section des features */
+    #ml .control-group div {
+        margin: 15px 0;
+        padding: 15px;
+    }
+    
+    /* Bouton d'entraînement */
+    #ml .control-group button {
+        margin: px 0 0 0;
+    }
+    
+    /* Indicateur de chargement */
+    #mlLoading {
+        margin: 0px 0;
+    }
+    
+    /* Métriques ML */
+    #mlMetrics {
+        gap: 20px;
+        margin: 0 0 0px 0;
+    }
+    
+    /* Résultats ML */
+    #mlResults {
+        margin: 20px 0;
+    }
+    
+    /* Graphique ML */
+    #ml .chart-container {
+        margin: 0 0 0px 0;
+    }
+    
+            /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET FRÉQUENCES
+    ============================================================================ */
+    #frequencies .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    #frequencies .section p {
+        margin-bottom: 25px;
+    }
+    
+    #frequencies .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #frequencies .section select,
+    #frequencies .section button {
+        margin: 0 10px 10px 0;
+    }
+    
+    #frequencies .chart-container {
+        margin: 0 0 25px 0;
+    }
+    
+    #freqResults {
+        margin: 20px 0;
+    }
+    
+    #frequencies .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+
+    /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET PRÉDICTIONS
+    ============================================================================ */
+   #predictions .section h2 {
+        margin-bottom: 0px;
+    }
+    
+    #predictions .section p {
+        margin-bottom: 10px;
+    }
+    
+    #predictions .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #predictions .section select,
+    #predictions .section input,
+    #predictions .section button {
+        margin: 0 10px 10px 0;
+    }
+    
+    #predictionExplanations {
+        margin: 20px 0;
+    }
+    
+    #predLoading {
+        margin: 20px 0;
+    }
+    
+    #predResults {
+        margin: 20px 0;
+    }
+    
+    #predictions .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+
+    /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET CLUSTERING
+    ============================================================================ */
+    #clusters .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    #clusters .section p {
+        margin-bottom: 25px;
+    }
+    
+    #clusters .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #clusters .section input,
+    #clusters .section button {
+        margin: 0 10px 10px 0;
+    }
+    
+    #clusters .chart-container {
+        margin: 0 0 25px 0;
+    }
+    
+    #clusterResults {
+        margin: 20px 0;
+    }
+    
+    #clusters .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+
+    /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET STATISTIQUES
+    ============================================================================ */
+    #statistics .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    #statistics .section p {
+        margin-bottom: 25px;
+    }
+    
+    #statistics .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #statistics .section select,
+    #statistics .section button {
+        margin: 0 10px 10px 0;
+    }
+    
+    #statistics .chart-container {
+        margin: 0 0 25px 0;
+    }
+    
+    #statResults {
+        margin: 20px 0;
+    }
+
+    /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET ÉVALUATION
+    ============================================================================ */
+    #evaluation .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    #evaluation .section p {
+        margin-bottom: 25px;
+    }
+    
+    #evaluation .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #evaluation .grid-selection {
+        margin: 20px 0;
+    }
+    
+    #evaluation .number-grid-select,
+    #evaluation .chance-grid-select {
+        margin: 0 0 20px 0;
+    }
+    
+    #evaluation .selected-numbers {
+        margin: 20px 0;
+    }
+    
+    #evaluation .section button {
+        margin: 0 10px 10px 0;
+    }
+    
+    #evaluation .chart-container {
+        margin: 0 0 25px 0;
+    }
+    
+    #evalResults {
+        margin: 20px 0;
+    }
+
+    /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET SIMULATION
+    ============================================================================ */
+    #simulation .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    #simulation .section p {
+        margin-bottom: 25px;
+    }
+    
+    #simulation .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #simulation .grid-selection {
+        margin: 20px 0;
+    }
+    
+    #simulation .number-grid-select,
+    #simulation .chance-grid-select {
+        margin: 0 0 20px 0;
+    }
+    
+    #simulation .selected-numbers {
+        margin: 20px 0;
+    }
+    
+    #simulation .section input,
+    #simulation .section button {
+        margin: 0 10px 10px 0;
+    }
+    
+    #simLoading {
+        margin: 20px 0;
+    }
+    
+    #simulation .chart-container {
+        margin: 0 0 25px 0;
+    }
+    
+    #simMetrics {
+        gap: 20px;
+        margin: 0 0 25px 0;
+    }
+    
+    #simResults {
+        margin: 20px 0;
+    }
+    
+    #simulation .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+
+    /* ============================================================================
+       RÉGLAGE DES ESPACES - ONGLET PROGRAMME
+    ============================================================================ */
+    #programme .section h2 {
+        margin-bottom: 20px;
+    }
+    
+    #programme .section p {
+        margin-bottom: 25px;
+    }
+    
+    #programme .section h3 {
+        margin: 25px 0 15px 0;
+    }
+    
+    #programme .control-group {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+    
+    #programme .section select {
+        margin: 0 10px 15px 0;
+    }
+    
+    #programme .code-actions {
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+    #programme .code-container {
+        margin: 20px 0;
+    }
+    
+    #programme .info-box {
+        margin: 0 0 25px 0;
+        padding: 20px;
+    }
+        
+</style>
+        
     </style>
 </head>
 <body>
@@ -1053,6 +1445,7 @@
     </div>
     
     <!-- Contenu principal -->
+    
     <div class="main-content">
         <div class="header">
             <h2 id="appStatus">Analyse Statistique et Prédictive du Loto</h2>
@@ -1064,9 +1457,17 @@
                 <div class="section">
                     <h2>Accueil</h2>
                     <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0;">
-                        L'application analyse l'historique complet des tirages du Loto 
+                        🔠 L'application analyse l'historique complet des tirages du Loto 
                         en utilisant des méthodes statistiques avancées, de machine learning et des simulations probabilistes.
                     </p>
+                    
+                    <div id="latestDrawContainer" style="display: none;">
+                        <div class="latest-draw">
+                            <h4>Dernier Tirage</h4>
+                            <div id="latestDrawDate" style="font-weight: bold; margin-bottom: 10px;"></div>
+                            <div class="latest-draw-numbers" id="latestDrawNumbers"></div>
+                        </div>
+                    </div>
 
                     <div class="control-group">
                         <h3 style="color: var(--text-primary); margin-bottom: 15px;">Sélection de la Période d'Analyse</h3>
@@ -1119,13 +1520,7 @@
                         </div>
                     </div>
 
-                    <div id="latestDrawContainer" style="display: none;">
-                        <div class="latest-draw">
-                            <h4>Dernier Tirage</h4>
-                            <div id="latestDrawDate" style="font-weight: bold; margin-bottom: 10px;"></div>
-                            <div class="latest-draw-numbers" id="latestDrawNumbers"></div>
-                        </div>
-                    </div>
+        
 
                     <div class="grid-2">
                         <div class="stat-card">
@@ -1169,10 +1564,17 @@
             </div>
 
             <!-- Onglet Fréquences -->
+            
             <div id="frequencies" class="tab-content">
                 <div class="section">
                     <h2>Analyse des Fréquences</h2>
                     <p>Visualisez la fréquence d'apparition de chaque numéro dans l'historique des tirages.</p>
+                    
+                    <div class="info-box">
+                        <h4> Analyse des Fréquences</h4>
+                        <p>Cette technique est essentielle pour.</p>
+                        <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de </p>
+                    </div>
 
                     <div class="control-group">
                         <label>Type d'analyse :</label>
@@ -1197,10 +1599,24 @@
             </div>
 
             <!-- Onglet Prédictions -->
+            
             <div id="predictions" class="tab-content">
                 <div class="section">
                     <h2>Prédictions Statistiques</h2>
                     <p>Générez des combinaisons basées sur différents modèles probabilistes.</p>
+                    
+                    <div class="info-box">
+                        <h4> Modèle de prédiction</h4>
+                        <p>Les simulations sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de prédiction.</p>
+                        <strong>Distributions Statistiques Utilisées :</strong></p>
+                        <p><strong>Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
+                        <p><strong>Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
+                        <p><strong>Dirichlet :</strong> Distribution complexe souvent utilisée pour modéliser des proportions de catégories. Dans le contexte du Loto, elle peut modéliser la probabilité que les cinq numéros choisis se répartissent de manière déséquilibrée sur les quatre dizaines.</p>
+                        <p><strong>Tests Statistiques :</strong></p>
+                        <p><strong>Test T (Student) :</strong> Permet de comparer la moyenne d'une série de numéros avec une valeur théorique pour déterminer si l'écart est significatif.</p>
+                        <p><strong>Test du Chi-carré (χ²) :</strong> Le test essentiel pour le Loto. Il permet de vérifier si la distribution observée des fréquences des numéros est conforme à une distribution uniforme théorique.</p>
+                        <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de </p>
+                    </div>
 
                     <div class="control-group">
                         <label>Modèle de prédiction :</label>
@@ -1256,6 +1672,7 @@
             </div>
 
             <!-- Onglet Machine Learning -->
+            
             <div id="ml" class="tab-content">
                 <div class="section">
                     <h2>Prédictions par Machine Learning </h2>
@@ -1305,6 +1722,7 @@
             </div>
 
             <!-- Onglet Clustering -->
+            
             <div id="clusters" class="tab-content">
                 <div class="section">
                     <h2>Analyse par Clustering K-Means</h2>
@@ -1341,9 +1759,15 @@
             </div>
 
             <!-- Onglet Statistiques -->
+            
             <div id="statistics" class="tab-content">
                 <div class="section">
                     <h2>Analyses Statistiques Avancées</h2>
+                    
+                    <div class="info-box">
+                        <h4> Analyse des Fréquences</h4>
+                        <p>Cette technique est essentielle pour...</p>
+                    </div>
                     
                     <div class="control-group">
                         <label>Type d'analyse :</label>
@@ -1366,10 +1790,16 @@
             </div>
 
             <!-- Onglet Évaluation -->
+            
             <div id="evaluation" class="tab-content">
                 <div class="section">
                     <h2>Évaluer ma Grille de Loto</h2>
                     <p>Analysez votre grille personnelle selon plusieurs critères statistiques et obtenez un score global.</p>
+                    
+                    <div class="info-box">
+                        <h4>Évaluation</h4>
+                        <p>Cette technique est essentielle pour...</p>
+                    </div>
 
                     <div class="control-group">
                         <div class="grid-selection">
@@ -1403,10 +1833,16 @@
             </div>
 
             <!-- Onglet Simulation -->
+            
             <div id="simulation" class="tab-content">
                 <div class="section">
                     <h2>Simulation Monte Carlo</h2>
                     <p>Simulez des milliers de tirages pour tester des stratégies et estimer des probabilités.</p>
+                    
+                    <div class="info-box">
+                        <h4>Évaluation</h4>
+                        <p>Cette technique est essentielle pour...</p>
+                    </div>
 
                     <div class="info-box">
                         <h4>Simulation Monte-Carlo</h4>
