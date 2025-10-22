@@ -4663,22 +4663,26 @@ function getChanceBallColor(number) {
         }
 
         function calculatePatternScore(numbers) {
-            const evenCount = numbers.filter(n => n % 2 === 0).length;
-            const oddCount = numbers.filter(n => n % 2 !== 0).length;
-            const parityScore = Math.min(evenCount, oddCount) * 20;
-            
-            const gaps = calculateGaps(numbers);
-            const avgGap = gaps.reduce((a, b) => a + b, 0) / gaps.length;
-            const gapScore = Math.max(0, 50 - Math.abs(avgGap - 8) * 5);
-            
-            return Math.round((parityScore + gapScore) / 2);
-        }
+    const evenCount = numbers.filter(n => n % 2 === 0).length;
+    const oddCount = numbers.filter(n => n % 2 !== 0).length;
+    const parityScore = Math.min(evenCount, oddCount) * 20;
+    
+    const gaps = calculateGaps(numbers);
+    const avgGap = gaps.reduce((a, b) => a + b, 0) / gaps.length;
+    // ✅ Correction: écart moyen théorique = 10 (pas 8)
+    // Pour 5 nombres de 1 à 49: 49 / 5 ≈ 10
+    const gapScore = Math.max(0, 50 - Math.abs(avgGap - 10) * 5);
+    
+    return Math.round((parityScore + gapScore) / 2);
+}
 
         function calculateStatisticalScore(numbers) {
-            const sum = numbers.reduce((a, b) => a + b, 0);
-            const sumScore = Math.max(0, 100 - Math.abs(sum - 150) / 2);
-            return Math.round(sumScore);
-        }
+    const sum = numbers.reduce((a, b) => a + b, 0);
+    // ✅ Correction: somme moyenne théorique = 125 (pas 150)
+    // Moyenne de 1 à 49 = 25, donc 25 × 5 = 125
+    const sumScore = Math.max(0, 100 - Math.abs(sum - 125) / 2);
+    return Math.round(sumScore);
+}
 
         function calculateClusterScore(numbers) {
             const uniqueClusters = new Set();
