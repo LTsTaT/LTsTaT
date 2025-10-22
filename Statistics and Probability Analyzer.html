@@ -6030,6 +6030,7 @@ function poissonPrediction(frequencies, numPredictions = 5) {
 }
         
         // Prédiction basée sur la loi de Zipf
+        
 function zipfPrediction(frequencies, numPredictions = 5) {
     const predictions = [];
     
@@ -6061,8 +6062,167 @@ function zipfPrediction(frequencies, numPredictions = 5) {
     
     return predictions;
 }
+        
+        // Test T de Student - Analyse des écarts à la moyenne
+function studentTestPrediction(frequencies, numPredictions = 5) {
+    const predictions = [];
+    const values = Object.values(frequencies);
+    const n = values.length;
+    
+    // Calcul de la moyenne et écart-type
+    const mean = values.reduce((a, b) => a + b, 0) / n;
+    const variance = values.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / (n - 1);
+    const stdDev = Math.sqrt(variance);
+    
+    // Calcul du t-score pour chaque numéro
+    const tScores = [];
+    for (let i = 1; i <= 49; i++) {
+        const observed = frequencies[i] || 0;
+        const tScore = Math.abs((observed - mean) / (stdDev / Math.sqrt(n)));
+        tScores.push({
+            number: i,
+            tScore: tScore,
+            deviation: observed - mean
+        });
+    }
+    
+    // Tri par t-score (numéros avec écarts significatifs)
+    tScores.sort((a, b) => b.tScore - a.tScore);
+    
+    // Sélection : mix de numéros avec écarts significatifs positifs et négatifs
+    for (let pred = 0; pred < numPredictions; pred++) {
+        const selected = [];
+        
+        // 3 numéros sur-représentés (écart positif significatif)
+        const overRepresented = tScores.filter(t => t.deviation > 0).slice(0, 10);
+        for (let i = 0; i < 3; i++) {
+            const idx = Math.floor(Math.random() * Math.min(overRepresented.length, 10));
+            if (overRepresented[idx] && !selected.includes(overRepresented[idx].number)) {
+                selected.push(overRepresented[idx].number);
+            }
+        }
+        
+        // 2 numéros sous-représentés (écart négatif significatif)
+        const underRepresented = tScores.filter(t => t.deviation < 0).slice(0, 10);
+        while (selected.length < 5) {
+            const idx = Math.floor(Math.random() * Math.min(underRepresented.length, 10));
+            if (underRepresented[idx] && !selected.includes(underRepresented[idx].number)) {
+                selected.push(underRepresented[idx].number);
+            }
+        }
+        
+        predictions.push(selected.sort((a, b) => a - b));
+    }
+    
+    return {
+        predictions: predictions,
+        stats: {
+            mean: mean.toFixed(2),
+            stdDev: stdDev.toFixed(2),
+            mostSignificant: tScores.slice(0, 5).map(t => `#${t.number} (t=${t.tScore.toFixed(2)})`)
+        }
+    };
+}
+        
+        // Distribution de Dirichlet - Répartition par dizaines
+function dirichletPrediction(frequencies, numPredictions = 5) {
+    const predictions = [];
+    
+    // Répartition des numéros par dizaines (1-10, 11-20, 21-30, 31-40, 41-49)
+    const decades = {
+        '1-10': [],
+        '11-20': [],
+        '21-30': [],
+        '31-40': [],
+        '41-49': []
+    };
+    
+    // Classification par dizaines avec leurs fréquences
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        if (i <= 10) decades['1-10'].push({ num: i, freq: freq });
+        else if (i <= 20) decades['11-20'].push({ num: i, freq: freq });
+        else if (i <= 30) decades['21-30'].push({ num: i, freq: freq });
+        else if (i <= 40) decades['31-40'].push({ num: i, freq: freq });
+        else decades['41-49'].push({ num: i, freq: freq });
+    }
+    
+    // Calcul des concentrations alpha pour chaque dizaine (paramètres Dirichlet)
+    const alphas = {};
+    for (const [decade, nums] of Object.entries(decades)) {
+        const totalFreq = nums.reduce((sum, n) => sum + n.freq, 0);
+        alphas[decade] = totalFreq + 1; // +1 pour éviter alpha=0
+    }
+    
+    // Normalisation des alphas
+    const totalAlpha = Object.values(alphas).reduce((a, b) => a + b, 0);
+    for (const decade in alphas) {
+        alphas[decade] = alphas[decade] / totalAlpha;
+    }
+    
+    // Génération des prédictions selon la distribution
+    for (let pred = 0; pred < numPredictions; pred++) {
+        const selected = [];
+        
+        // Tirage selon les proportions Dirichlet
+        const decadeNames = Object.keys(decades);
+        const numPerDecade = [0, 0, 0, 0, 0];
+        
+        // Distribution de 5 numéros selon les poids Dirichlet
+        for (let i = 0; i < 5; i++) {
+            let random = Math.random();
+            let cumulative = 0;
+            
+            for (let d = 0; d < decadeNames.length; d++) {
+                cumulative += alphas[decadeNames[d]];
+                if (random <= cumulative) {
+                    numPerDecade[d]++;
+                    break;
+                }
+            }
+        }
+        
+        // Sélection des numéros dans chaque dizaine
+        for (let d = 0; d < decadeNames.length; d++) {
+            const decadeName = decadeNames[d];
+            const numsInDecade = decades[decadeName];
+            const count = numPerDecade[d];
+            
+            // Sélection pondérée par fréquence
+            for (let c = 0; c < count && selected.length < 5; c++) {
+                const weights = numsInDecade
+                    .filter(n => !selected.includes(n.num))
+                    .map(n => ({ number: n.num, weight: n.freq + 1 }));
+                
+                if (weights.length > 0) {
+                    const selectedNums = weightedRandomSelection(weights, 1);
+                    selected.push(...selectedNums);
+                }
+            }
+        }
+        
+        // Compléter si nécessaire
+        while (selected.length < 5) {
+            const random = Math.floor(Math.random() * 49) + 1;
+            if (!selected.includes(random)) {
+                selected.push(random);
+            }
+        }
+        
+        predictions.push(selected.sort((a, b) => a - b));
+    }
+    
+    return {
+        predictions: predictions,
+        alphas: alphas,
+        interpretation: Object.entries(alphas)
+            .sort((a, b) => b[1] - a[1])
+            .map(([decade, weight]) => `${decade}: ${(weight * 100).toFixed(1)}%`)
+    };
+}
 
 // Sélection aléatoire pondérée
+        
 function weightedRandomSelection(weights, count) {
     const selected = [];
     const available = [...weights];
@@ -6390,12 +6550,11 @@ function weightedRandomSelection(weights, count) {
                 });
             });
             
-        } else if (model === 'zipf') {
-            // ✅ NOUVEAU: Loi de Zipf
+       } else if (model === 'zipf') {
+            // Loi de Zipf (code déjà en place)
             const numPreds = parseInt(document.getElementById('numPredictions').value);
             const zipfPreds = zipfPrediction(historicalData.frequencies, numPreds);
             
-            // Récupération du top 5 pour affichage
             const top5 = Object.entries(historicalData.frequencies)
                 .sort((a, b) => b[1] - a[1])
                 .slice(0, 5)
@@ -6418,8 +6577,267 @@ function weightedRandomSelection(weights, count) {
                 });
             });
             
+        } else if (model === 'student') {
+            // ✅ NOUVEAU: Test T de Student
+            const numPreds = parseInt(document.getElementById('numPredictions').value);
+            const studentResult = studentTestPrediction(historicalData.frequencies, numPreds);
+            
+            results = `
+                <div class="info-box">
+                    <h3>📊 Test T de Student</h3>
+                    <p><strong>Principe :</strong> Identifie les numéros avec des écarts significatifs à la moyenne</p>
+                    <p><strong>Moyenne des fréquences :</strong> ${studentResult.stats.mean} apparitions</p>
+                    <p><strong>Écart-type :</strong> ${studentResult.stats.stdDev}</p>
+                    <p><strong>Numéros avec t-score élevé :</strong> ${studentResult.stats.mostSignificant.join(', ')}</p>
+                    <p><strong>Stratégie :</strong> Mix de numéros sur-représentés et sous-représentés</p>
+                </div>
+            `;
+            
+            studentResult.predictions.forEach(mainNums => {
+                predictions.push({
+                    main: mainNums,
+                    chance: Math.floor(Math.random() * 10) + 1
+                });
+            });
+            
+        } else if (model === 'dirichlet') {
+            // ✅ NOUVEAU: Distribution de Dirichlet
+            const numPreds = parseInt(document.getElementById('numPredictions').value);
+            const dirichletResult = dirichletPrediction(historicalData.frequencies, numPreds);
+            
+            results = `
+                <div class="info-box">
+                    <h3>🎯 Distribution de Dirichlet</h3>
+                    <p><strong>Principe :</strong> Modélise la répartition des numéros par dizaines</p>
+                    <p><strong>Répartition optimale :</strong></p>
+                    <ul style="margin-left: 20px;">
+                        ${dirichletResult.interpretation.map(line => `<li>${line}</li>`).join('')}
+                    </ul>
+                    <p><strong>Particularité :</strong> Équilibre intelligent entre les différentes tranches de numéros</p>
+                </div>
+            `;
+            
+            dirichletResult.predictions.forEach(mainNums => {
+                predictions.push({
+                    main: mainNums,
+                    chance: Math.floor(Math.random() * 10) + 1
+                });
+            });
+            
         } else {
+               
+            
+            // Distribution Binomiale - Analyse pairs/impairs et patterns
+function binomialPrediction(frequencies, numPredictions = 5) {
+    const predictions = [];
+    
+    // Distribution Gamma - Temps d'attente entre apparitions
+function gammaPrediction(frequencies, numPredictions = 5) {
+    const predictions = [];
+    
+    // Calcul du temps moyen d'attente pour chaque numéro
+    const waitTimes = {};
+    const totalDraws = Object.values(frequencies).reduce((a, b) => a + b, 0) / 5; // Nombre total de tirages
+    
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        // Temps moyen entre apparitions (plus c'est fréquent, plus c'est court)
+        waitTimes[i] = freq > 0 ? totalDraws / freq : totalDraws * 2;
+    }
+    
+    
+    // Paramètres Gamma : shape (k) et scale (θ)
+    const gammaScores = [];
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        const avgWait = waitTimes[i];
+        
+        // Shape parameter k (nombre d'occurrences)
+        const k = Math.max(1, freq);
+        // Scale parameter θ (temps moyen d'attente)
+        const theta = avgWait / k;
+        
+        // Score Gamma : favorise les numéros avec temps d'attente optimal
+        // Fonction de densité Gamma simplifiée
+        const gammaScore = Math.pow(avgWait, k - 1) * Math.exp(-avgWait / theta) / Math.pow(theta, k);
+        
+        gammaScores.push({
+            number: i,
+            score: gammaScore,
+            avgWait: avgWait.toFixed(1),
+            frequency: freq
+        });
+    }
+    
+    // Tri par score Gamma
+    gammaScores.sort((a, b) => b.score - a.score);
+    
+    // Normalisation des scores pour pondération
+    const maxScore = gammaScores[0].score;
+    const weights = gammaScores.map(item => ({
+        number: item.number,
+        weight: (item.score / maxScore) * 100 // Normalisation 0-100
+    }));
+    
+    // Génération des prédictions
+    for (let pred = 0; pred < numPredictions; pred++) {
+        const selected = weightedRandomSelection(weights, 5);
+        predictions.push(selected);
+    }
+    
+    return {
+        predictions: predictions,
+        stats: {
+            avgWaitTime: (Object.values(waitTimes).reduce((a, b) => a + b, 0) / 49).toFixed(1),
+            totalDraws: totalDraws.toFixed(0),
+            topNumbers: gammaScores.slice(0, 5).map(s => 
+                `#${s.number} (attente: ${s.avgWait} tirages, freq: ${s.frequency})`
+            )
+        }
+    };
+}
+    
+    
+    // Analyse historique des tirages pairs/impairs
+    let totalEven = 0, totalOdd = 0;
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        if (i % 2 === 0) totalEven += freq;
+        else totalOdd += freq;
+    }
+    
+    const total = totalEven + totalOdd;
+    const pEven = totalEven / total; // Probabilité empirique d'un pair
+    const pOdd = totalOdd / total;   // Probabilité empirique d'un impair
+    
+    // Séparation des numéros pairs et impairs avec leurs fréquences
+    const evenNumbers = [];
+    const oddNumbers = [];
+    
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        if (i % 2 === 0) {
+            evenNumbers.push({ number: i, weight: freq + 1 });
+        } else {
+            oddNumbers.push({ number: i, weight: freq + 1 });
+        }
+    }
+    
+    // Génération des prédictions selon la loi binomiale
+    for (let pred = 0; pred < numPredictions; pred++) {
+        const selected = [];
+        
+        // Tirage binomial : combien de pairs parmi 5 numéros ?
+        // Utilisation de la distribution binomiale B(n=5, p=pEven)
+        let numEven = 0;
+        for (let i = 0; i < 5; i++) {
+            if (Math.random() < pEven) numEven++;
+        }
+        const numOdd = 5 - numEven;
+        
+        // Sélection pondérée des pairs
+        if (numEven > 0 && evenNumbers.length > 0) {
+            const selectedEven = weightedRandomSelection(evenNumbers, Math.min(numEven, evenNumbers.length));
+            selected.push(...selectedEven);
+        }
+        
+        // Sélection pondérée des impairs
+        if (numOdd > 0 && oddNumbers.length > 0) {
+            const availableOdd = oddNumbers.filter(n => !selected.includes(n.number));
+            const selectedOdd = weightedRandomSelection(availableOdd, Math.min(numOdd, availableOdd.length));
+            selected.push(...selectedOdd);
+        }
+        
+        // Compléter si nécessaire
+        while (selected.length < 5) {
+            const random = Math.floor(Math.random() * 49) + 1;
+            if (!selected.includes(random)) {
+                selected.push(random);
+            }
+        }
+        
+        predictions.push(selected.sort((a, b) => a - b));
+    }
+    
+    return {
+        predictions: predictions,
+        stats: {
+            pEven: (pEven * 100).toFixed(1),
+            pOdd: (pOdd * 100).toFixed(1),
+            totalEven: totalEven,
+            totalOdd: totalOdd,
+            expectedEven: (5 * pEven).toFixed(1),
+            expectedOdd: (5 * pOdd).toFixed(1)
+        }
+    };
+}
+            
+            // Distribution Gamma - Temps d'attente entre apparitions
+function gammaPrediction(frequencies, numPredictions = 5) {
+    const predictions = [];
+    
+    // Calcul du temps moyen d'attente pour chaque numéro
+    const waitTimes = {};
+    const totalDraws = Object.values(frequencies).reduce((a, b) => a + b, 0) / 5; // Nombre total de tirages
+    
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        // Temps moyen entre apparitions (plus c'est fréquent, plus c'est court)
+        waitTimes[i] = freq > 0 ? totalDraws / freq : totalDraws * 2;
+    }
+    
+    // Paramètres Gamma : shape (k) et scale (θ)
+    const gammaScores = [];
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        const avgWait = waitTimes[i];
+        
+        // Shape parameter k (nombre d'occurrences)
+        const k = Math.max(1, freq);
+        // Scale parameter θ (temps moyen d'attente)
+        const theta = avgWait / k;
+        
+        // Score Gamma : favorise les numéros avec temps d'attente optimal
+        // Fonction de densité Gamma simplifiée
+        const gammaScore = Math.pow(avgWait, k - 1) * Math.exp(-avgWait / theta) / Math.pow(theta, k);
+        
+        gammaScores.push({
+            number: i,
+            score: gammaScore,
+            avgWait: avgWait.toFixed(1),
+            frequency: freq
+        });
+    }
+    
+    // Tri par score Gamma
+    gammaScores.sort((a, b) => b.score - a.score);
+    
+    // Normalisation des scores pour pondération
+    const maxScore = gammaScores[0].score;
+    const weights = gammaScores.map(item => ({
+        number: item.number,
+        weight: (item.score / maxScore) * 100 // Normalisation 0-100
+    }));
+    
+    // Génération des prédictions
+    for (let pred = 0; pred < numPredictions; pred++) {
+        const selected = weightedRandomSelection(weights, 5);
+        predictions.push(selected);
+    }
+    
+    return {
+        predictions: predictions,
+        stats: {
+            avgWaitTime: (Object.values(waitTimes).reduce((a, b) => a + b, 0) / 49).toFixed(1),
+            totalDraws: totalDraws.toFixed(0),
+            topNumbers: gammaScores.slice(0, 5).map(s => 
+                `#${s.number} (attente: ${s.avgWait} tirages, freq: ${s.frequency})`
+            )
+        }
+    };
+}
             // Autres modèles (aléatoire pour l'instant)
+            
             const numPreds = parseInt(document.getElementById('numPredictions').value);
             for (let i = 0; i < numPreds; i++) {
                 predictions.push({
