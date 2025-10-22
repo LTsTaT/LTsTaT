@@ -5324,6 +5324,73 @@ function displayLatestDraw() {
         }
 
         // ============================================================================
+// FONCTIONS MATHÉMATIQUES AVANCÉES
+// ============================================================================
+
+// Fonction de répartition normale standard (approximation)
+function normalCDF(x) {
+    const t = 1 / (1 + 0.2316419 * Math.abs(x));
+    const d = 0.3989423 * Math.exp(-x * x / 2);
+    const probability = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+    return x > 0 ? 1 - probability : probability;
+}
+
+// Calcul approximatif de la p-value pour Chi-carré
+function calculatePValue(chiSquare, df) {
+    const z = Math.sqrt(2 * chiSquare) - Math.sqrt(2 * df - 1);
+    const pValue = 1 - normalCDF(z);
+    return pValue;
+}
+
+// Test du Chi-carré pour vérifier l'uniformité
+function chiSquareTest(frequencies) {
+    const values = Object.values(frequencies);
+    const totalDraws = values.reduce((a, b) => a + b, 0);
+    const expectedFreq = totalDraws / 49; // Fréquence attendue uniforme
+    
+    let chiSquare = 0;
+    for (let i = 1; i <= 49; i++) {
+        const observed = frequencies[i] || 0;
+        chiSquare += Math.pow(observed - expectedFreq, 2) / expectedFreq;
+    }
+    
+    const degreesOfFreedom = 48; // 49 - 1
+    const criticalValue = 65.17; // Valeur critique pour α = 0.05 et df = 48
+    const pValue = calculatePValue(chiSquare, degreesOfFreedom);
+    
+    return {
+        chiSquare: chiSquare.toFixed(2),
+        isUniform: chiSquare < criticalValue,
+        pValue: pValue.toFixed(4),
+        interpretation: chiSquare < criticalValue 
+            ? "Distribution uniforme (pas de biais détecté)" 
+            : "Distribution non-uniforme (biais possible)"
+    };
+}
+
+// Sélection aléatoire pondérée
+function weightedRandomSelection(weights, count) {
+    const selected = [];
+    const available = [...weights];
+    
+    for (let i = 0; i < count; i++) {
+        const totalWeight = available.reduce((sum, item) => sum + item.weight, 0);
+        let random = Math.random() * totalWeight;
+        
+        for (let j = 0; j < available.length; j++) {
+            random -= available[j].weight;
+            if (random <= 0) {
+                selected.push(available[j].number);
+                available.splice(j, 1);
+                break;
+            }
+        }
+    }
+    
+    return selected.sort((a, b) => a - b);
+}
+        
+        // ============================================================================
         // FONCTIONS POUR LES AUTRES ONGLETS
         // ============================================================================
 
@@ -5569,34 +5636,69 @@ function displayLatestDraw() {
         }
 
         function generatePredictions() {
-            const model = document.getElementById('predModel').value;
-            const loading = document.getElementById('predLoading');
-            const resultsDiv = document.getElementById('predResults');
+    const model = document.getElementById('predModel').value;
+    const loading = document.getElementById('predLoading');
+    const resultsDiv = document.getElementById('predResults');
+    
+    loading.classList.add('active');
+    resultsDiv.innerHTML = '';
+    
+    setTimeout(() => {
+        let results = '';
+        let predictions = [];
+        
+        // Génération selon le modèle choisi
+        if (model === 'chisquare') {
+            // Test Chi-carré
+            const testResult = chiSquareTest(historicalData.frequencies);
             
-            loading.classList.add('active');
-            resultsDiv.innerHTML = '';
+            results = `
+                <div class="info-box">
+                    <h3>📊 Résultats du Test Chi-carré (χ²)</h3>
+                    <p><strong>Valeur χ² :</strong> ${testResult.chiSquare}</p>
+                    <p><strong>Degrés de liberté :</strong> 48</p>
+                    <p><strong>P-value :</strong> ${testResult.pValue}</p>
+                    <p><strong>Interprétation :</strong> ${testResult.interpretation}</p>
+                    ${testResult.isUniform ? 
+                        '<p style="color: #4caf50;">✅ Les numéros suivent une distribution uniforme.</p>' : 
+                        '<p style="color: #ff9800;">⚠️ Certains numéros apparaissent plus que d\'autres.</p>'}
+                </div>
+            `;
             
-            setTimeout(() => {
-                let results = '';
-                const numPreds = parseInt(document.getElementById('numPredictions').value);
-                
-                for (let i = 0; i < numPreds; i++) {
-                    const mainNumbers = generateUniqueRandomNumbers(5, 1, 49);
-                    const chanceNumber = Math.floor(Math.random() * 10) + 1;
-                    
-                    results += `<div class="prediction-card">
-                        <h4>Combinaison ${i + 1} (${model})</h4>
-                        <div style="display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap;">
-                            ${mainNumbers.map(num => `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`).join('')}
-                            <div class="number-ball number-ball-chance" style="background: ${getChanceBallColor(chanceNumber)}">${chanceNumber}</div>
-                        </div>
-                    </div>`;
-                }
-                
-                resultsDiv.innerHTML = results;
-                loading.classList.remove('active');
-            }, 1000);
+            // Génère quand même des prédictions basiques
+            const numPreds = parseInt(document.getElementById('numPredictions').value);
+            for (let i = 0; i < numPreds; i++) {
+                predictions.push({
+                    main: generateUniqueRandomNumbers(5, 1, 49),
+                    chance: Math.floor(Math.random() * 10) + 1
+                });
+            }
+        } else {
+            // Autres modèles (pour l'instant aléatoire, on améliorera après)
+            const numPreds = parseInt(document.getElementById('numPredictions').value);
+            for (let i = 0; i < numPreds; i++) {
+                predictions.push({
+                    main: generateUniqueRandomNumbers(5, 1, 49),
+                    chance: Math.floor(Math.random() * 10) + 1
+                });
+            }
         }
+        
+        // Affichage des prédictions
+        predictions.forEach((pred, i) => {
+            results += `<div class="prediction-card">
+                <h4>Combinaison ${i + 1} (${model})</h4>
+                <div style="display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap;">
+                    ${pred.main.map(num => `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`).join('')}
+                    <div class="number-ball number-ball-chance" style="background: ${getChanceBallColor(pred.chance)}">${pred.chance}</div>
+                </div>
+            </div>`;
+        });
+        
+        resultsDiv.innerHTML = results;
+        loading.classList.remove('active');
+    }, 1000);
+}
 
         function performStatAnalysis() {
             const type = document.getElementById('statType').value;
