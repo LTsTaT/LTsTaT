@@ -162,7 +162,7 @@ button:hover, .copy-btn:hover {
     font-size: 1rem;
 }
 
-/* Onglet Prédictions */
+/* Onglet Probalilités */
 #predictions .section h2 {
     font-size: 1.8rem;
 }
@@ -1436,7 +1436,7 @@ body {
     }
 
     /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET PRÉDICTIONS
+       RÉGLAGE DES ESPACES - ONGLET Probalilités
     ============================================================================ */
    #predictions .section h2 {
         margin-bottom: 0px;
@@ -1743,7 +1743,7 @@ body {
                 <i></i> Fréquences
             </div>
             <div class="nav-item" onclick="showTab('predictions')">
-                <i></i> Prédictions
+                <i></i> Probalilités
             </div>
             <div class="nav-item" onclick="showTab('ml')">
                 <i></i> Machine Learning
@@ -1872,7 +1872,7 @@ body {
                         <h3 style="color: var(--text-primary); margin-bottom: 10px;">Fonctionnalités du programme</h3>
                         <ul style="line-height: 2; margin-left: 20px;">
                             <li><strong>Analyse des Fréquences :</strong> Visualisez les numéros les plus et moins fréquents</li>
-                            <li><strong>Prédictions Statistiques :</strong> Algorithmes basés sur les distributions de Poisson, Loi de Zipf, Test T Student, Test Chi-carré, Distribution Binomiale, Distribution de Dirichlet</li>
+                            <li><strong>Prévisons Statistiques :</strong> Algorithmes basés sur les distributions de Poisson, Loi de Zipf, Test T Student, Test Chi-carré, Distribution Binomiale, Distribution de Dirichlet</li>
                             <li><strong>Machine Learning Réel :</strong> Modèles de classification avancés (Random Forest, Gradient Boosting, Régression Logistique, LSTM Deep Learning, Ensemble Stacking)</li>
                             <li><strong>Clustering K-Means :</strong> Identification de groupes de numéros similaires</li>
                             <li><strong>Simulations Monte Carlo :</strong> Testez vos stratégies avec des milliers de tirages simulés</li>
@@ -1934,16 +1934,16 @@ body {
                 </div>
             </div>
 
-            <!-- Onglet Prédictions -->
+            <!-- Onglet Probalilités -->
             
             <div id="predictions" class="tab-content">
                 <div class="section">
-                    <h2>Prédictions Statistiques</h2>
+                    <h2>Probalilités Statistiques</h2>
                     <p>Générez des combinaisons basées sur différents modèles probabilistes.</p>
                     
                     <div class="info-box">
-                        <h4> Modèle de prédiction</h4>
-                        <p>Les simulations sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de prédiction.</p>
+                        <h4> Modèle de Probalilités</h4>
+                        <p>Les simulations sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de probalilités.</p>
                         <strong>Distributions Statistiques Utilisées :</strong></p>
                         <p><strong>Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
                         <p><strong>Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
@@ -1955,7 +1955,7 @@ body {
                     </div>
 
                     <div class="control-group">
-                        <label>Modèle de prédiction :</label>
+                        <label>Modèle de Probalilités :</label>
                         <select id="predModel" onchange="togglePredictionOptions()">
                             <option value="montecarlo">Simulation Monte-Carlo</option>
                             <option value="poisson">Distribution de Poisson</option>
@@ -1989,7 +1989,7 @@ body {
                             <input type="number" id="topMonteCarlo" value="10" min="5" max="20">
                         </div>
                         
-                        <button onclick="generatePredictions()">Générer des Prédictions</button>
+                        <button onclick="generatePredictions()">Générer des Probalilités</button>
                     </div>
                 
                 <div id="predictionExplanations" style="margin: 20px 0; padding: 15px; background-color: var(--secondary-color); border-left: 4px solid var(--accent-color); border-radius: 8px;">
@@ -2003,8 +2003,8 @@ body {
                     <div id="predResults"></div>
 
                     <div class="info-box" style="margin-top: 20px;">
-                       Ces prédictions sont purement statistiques. 
-                        Le Loto est un jeu de hasard où chaque tirage est indépendant. Aucun algorithme ne peut garantir un gain.
+                       Ces probalilités sont purement statistiques. 
+                        La loterie est un jeu de hasard où chaque tirage est indépendant. Aucun algorithme ne peut garantir un gain.
                     </div>
                 </div>
             </div>
@@ -2013,7 +2013,7 @@ body {
             
             <div id="ml" class="tab-content">
                 <div class="section">
-                    <h2>Prédictions par Machine Learning </h2>
+                    <h2>Probalilités par Machine Learning </h2>
                     <p>Utilisez des algorithmes d'apprentissage automatique entraînés sur l'historique des tirages.</p>
 
                     <div class="info-box">
@@ -2184,7 +2184,7 @@ body {
 
                     <div class="info-box">
                         <h4>Simulation Monte-Carlo</h4>
-                        <p>Les simulations de Monte-Carlo (KMC) sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de prédiction.</p>
+                        <p>Les simulations de Monte-Carlo (KMC) sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de probalilités.</p>
                         <p><strong>Distributions Statistiques Utilisées :</strong></p>
                         <p><strong>Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
                         <p><strong>Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
@@ -5120,7 +5120,7 @@ function getChanceBallColor(number) {
                 populateYearSelectors();
                 displayLatestDraw();
                 
-                document.getElementById('appStatus').innerHTML = `Analyse Statistique et Prédictive de lotterie`;
+                document.getElementById('appStatus').innerHTML = `Analyse Statistique et Prédictive de loterie`;
                 
                 if (charts.frequencyChart) {
                     updateFrequencyChart();
@@ -6143,7 +6143,7 @@ function chiSquareTest(frequencies) {
     };
 }
         
-        // Prédiction basée sur la distribution de Poisson
+        // Probalilité basée sur la distribution de Poisson
 function poissonPrediction(frequencies, numPredictions = 5) {
     const predictions = [];
     const lambda = {}; // Paramètre λ pour chaque numéro
@@ -6154,7 +6154,7 @@ function poissonPrediction(frequencies, numPredictions = 5) {
         lambda[i] = (frequencies[i] || 0) / totalDraws;
     }
     
-    // Génération de prédictions basées sur Poisson
+    // Génération de Probalilités basées sur la loi de Poisson
     
     for (let pred = 0; pred < numPredictions; pred++) {
         const weights = [];
@@ -6175,7 +6175,7 @@ function poissonPrediction(frequencies, numPredictions = 5) {
     return predictions;
 }
         
-        // Prédiction basée sur la loi de Zipf
+        // Probalilité  basée sur la loi de Zipf
         
 function zipfPrediction(frequencies, numPredictions = 5) {
     const predictions = [];
@@ -6200,7 +6200,7 @@ function zipfPrediction(frequencies, numPredictions = 5) {
     const totalWeight = weights.reduce((sum, item) => sum + item.weight, 0);
     weights.forEach(item => item.weight = item.weight / totalWeight);
     
-    // Génération des prédictions
+    // Génération des Probalilités
     for (let pred = 0; pred < numPredictions; pred++) {
         const selected = weightedRandomSelection(weights, 5);
         predictions.push(selected);
@@ -6306,7 +6306,7 @@ function dirichletPrediction(frequencies, numPredictions = 5) {
         alphas[decade] = alphas[decade] / totalAlpha;
     }
     
-    // Génération des prédictions selon la distribution
+    // Génération des selon la distribution
     for (let pred = 0; pred < numPredictions; pred++) {
         const selected = [];
         
@@ -6610,7 +6610,7 @@ function weightedRandomSelection(weights, count) {
                 'binomiale': `<h4> Distribution Binomiale</h4><p>Analyse la distribution pairs/impairs et les patterns de fréquence.</p>`,
                 'zipf': `<h4> Loi de Zipf</h4><p>Utilise la distribution de puissance pour identifier les numéros structurellement fréquents.</p>`,
                 'dirichlet': `<h4> Distribution de Dirichlet</h4><p>Modélise la répartition des numéros par dizaines.</p>`,
-                'hybrid': `<h4> Modèle Hybride</h4><p>Combine plusieurs approches probabilistes pour une prédiction plus robuste.</p>`,
+                'hybrid': `<h4> Modèle Hybride</h4><p>Combine plusieurs approches probabilistes pour une Probalilité plus robuste.</p>`,
                 'student': `<h4> Test T de Student</h4><p>Teste la significativité des écarts par rapport aux valeurs théoriques.</p>`,
                 'chisquare': `<h4> Test du Chi-carré (χ²)</h4><p>Vérifie l'uniformité de la distribution des numéros.</p>`,
                 'gamma': `<h4> Distribution Gamma</h4><p>Modélise les temps d'attente entre apparitions des numéros.</p>`,
@@ -6625,7 +6625,7 @@ function weightedRandomSelection(weights, count) {
             const model = document.getElementById('mlModel').value;
             const explanations = {
                 'rf': `<h4> Random Forest Réel</h4><p>Forêt d'arbres de décision entraînée sur l'historique complet avec TensorFlow.js</p>`,
-                'gb': `<h4> Gradient Boosting Réel</h4><p>Algorithme de boosting séquentiel optimisé pour la prédiction de séries</p>`,
+                'gb': `<h4> Gradient Boosting Réel</h4><p>Algorithme de boosting séquentiel optimisé pour la probalilité de séries</p>`,
                 'logistic': `<h4> Régression Logistique Réelle</h4><p>Classification multi-label avec régularisation L2</p>`,
                 'ensemble': `<h4> Ensemble Stacking Réel</h4><p>Combinaison de multiples modèles avec méta-apprentissage</p>`,
                 'lstm': `<h4> LSTM Réel</h4><p>Réseau neuronal récurrent pour l'analyse des séquences temporelles</p>`
@@ -6825,7 +6825,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
         weight: (item.score / maxScore) * 100 // Normalisation 0-100
     }));
     
-    // Génération des prédictions
+    // Génération des Probalilités
     for (let pred = 0; pred < numPredictions; pred++) {
         const selected = weightedRandomSelection(weights, 5);
         predictions.push(selected);
@@ -6869,7 +6869,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
         }
     }
     
-    // Génération des prédictions selon la loi binomiale
+    // Génération des Probalilités selon la loi binomiale
     for (let pred = 0; pred < numPredictions; pred++) {
         const selected = [];
         
@@ -6965,7 +6965,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
         weight: (item.score / maxScore) * 100 // Normalisation 0-100
     }));
     
-    // Génération des prédictions
+    // Génération des Probalilités
     for (let pred = 0; pred < numPredictions; pred++) {
         const selected = weightedRandomSelection(weights, 5);
         predictions.push(selected);
@@ -6993,7 +6993,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
             }
         }
         
-        // Affichage des prédictions
+        // Affichage les Probalilités
         predictions.forEach((pred, i) => {
             results += `<div class="prediction-card">
                 <h4>Combinaison ${i + 1} (${model})</h4>
@@ -7101,7 +7101,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
                 `;
                 
                 resultsDiv.innerHTML = `
-                    <h3>Prédiction ML - ${modelName}</h3>
+                    <h3>Probalilité ML - ${modelName}</h3>
                     <div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
                         ${mainNumbers.map(num => 
                             `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`
@@ -7328,7 +7328,7 @@ function showTab(tabName) {
         }, 500);
     }
     
-    // Lancer automatiquement les prédictions
+    // Lancer automatiquement les Probalilités
     if (tabName === 'predictions') {
         setTimeout(() => {
             generatePredictions();
