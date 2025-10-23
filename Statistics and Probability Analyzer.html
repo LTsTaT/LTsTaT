@@ -25,7 +25,93 @@
             --card-bg: ; #6c757d;
             --sidebar-width: 240px;
             --header-height: 86px;
-        }
+            
+        --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --glass-blur: blur(10px);
+}
+        
+        .glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-nav {
+    background: rgba(108, 117, 125, 0.7) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+        
+        /* Sidebar avec effet glass */
+.sidebar {
+    background: linear-gradient(135deg, 
+        rgba(108, 117, 125, 0.8) 0%, 
+        rgba(73, 80, 87, 0.6) 100%) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Header glass */
+.header {
+    background: rgba(73, 80, 87, 0.7) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cartes de contenu */
+.section, .control-group, .stat-card, .info-box {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.03) 100%) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Boutons glass */
+button, .copy-btn {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.05) 100%) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+button:hover, .copy-btn:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.15) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+         
 
         * {
             margin: 0;
@@ -645,6 +731,7 @@ body {
             padding: 15px;
             background-color: var(--secondary-color);
             border: 1px solid var(--border-color);
+            
         }
 
         .selected-numbers-display {
@@ -1585,6 +1672,122 @@ body {
         padding: 20px;
     }
         
+        /* ============================================================================
+   SURCHARGES POUR L'EFFET GLASS - À AJOUTER À LA FIN DU CSS
+============================================================================ */
+
+/* Forcer l'effet glass sur la sidebar */
+.sidebar.glass-nav {
+    background: linear-gradient(135deg, 
+        rgba(108, 117, 125, 0.85) 0%, 
+        rgba(73, 80, 87, 0.75) 100%) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Forcer l'effet glass sur le header */
+.header.glass-effect {
+    background: rgba(73, 80, 87, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Forcer l'effet glass sur toutes les cartes */
+.section.glass-card,
+.control-group.glass-card, 
+.stat-card.glass-card,
+.info-box.glass-card,
+.results.glass-card,
+.selected-numbers.glass-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.06) 100%) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Chart containers avec effet glass */
+.chart-container {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.04) 100%) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Boutons avec effet glass renforcé */
+button.glass-card, 
+.copy-btn.glass-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(255, 255, 255, 0.1) 100%) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Effet de survol amélioré */
+button.glass-card:hover, 
+.copy-btn.glass-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(255, 255, 255, 0.2) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+        
+        /* ============================================================================
+   EFFET GLASS POUR LE DERNIER TIRAGE
+============================================================================ */
+
+.latest-draw.glass-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.06) 100%) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin: 20px 0 !important;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.latest-draw.glass-card h4 {
+    color: var(--text-primary) !important;
+    margin-bottom: 15px !important;
+    font-size: 1.2rem !important;
+}
+
+/* Style glass pour le conteneur des boules */
+.latest-draw-numbers {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+}
+        .latest-draw-numbers {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important; /* ← CHANGÉ */
+}
+        
 </style>
         
     </style>
@@ -1648,12 +1851,13 @@ body {
                 <div class="section">
                     <h2>Accueil</h2>
                     <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0;">
-                        🔠 L'application analyse l'historique complet des tirages du Loto 
+                        L'application analyse l'historique complet des tirages du Loto 
                         en utilisant des méthodes statistiques avancées, de machine learning et des simulations probabilistes.
                     </p>
                     
+                    
                     <div id="latestDrawContainer" style="display: none;">
-                        <div class="latest-draw">
+                   <div class="latest-draw glass-card">
                             <h4>Dernier Tirage</h4>
                             <div id="latestDrawDate" style="font-weight: bold; margin-bottom: 10px;"></div>
                             <div class="latest-draw-numbers" id="latestDrawNumbers"></div>
@@ -2012,7 +2216,7 @@ body {
                             <div class="grid-title">Sélectionnez vos 5 numéros principaux (1-49) :</div>
                             <div class="number-grid-select" id="mainNumbersGrid"></div>
                             
-                            <div class="selected-numbers">
+                            <div class="selected-numbers glass-card">
                                 <div class="grid-title">Vos numéros sélectionnés :</div>
                                 <div class="selected-numbers-display" id="selectedMainNumbers"></div>
                             </div>
@@ -2020,7 +2224,7 @@ body {
                             <div class="grid-title">Sélectionnez votre numéro chance (1-10) :</div>
                             <div class="chance-grid-select" id="chanceNumbersGrid"></div>
                             
-                            <div class="selected-numbers">
+                            <div class="selected-numbers glass-card">
                                 <div class="grid-title">Votre numéro chance :</div>
                                 <div class="selected-numbers-display" id="selectedChanceNumber"></div>
                             </div>
@@ -2067,7 +2271,8 @@ body {
                             <div class="grid-title">Sélectionnez vos 5 numéros principaux (1-49) :</div>
                             <div class="number-grid-select" id="simMainNumbersGrid"></div>
                             
-                            <div class="selected-numbers">
+                            <div class="selected-numbers glass-card">
+
                                 <div class="grid-title">Vos numéros sélectionnés :</div>
                                 <div class="selected-numbers-display" id="simSelectedMainNumbers"></div>
                             </div>
@@ -2075,7 +2280,7 @@ body {
                             <div class="grid-title">Sélectionnez votre numéro chance (1-10) :</div>
                             <div class="chance-grid-select" id="simChanceNumbersGrid"></div>
                             
-                            <div class="selected-numbers">
+                            <div class="selected-numbers glass-card">
                                 <div class="grid-title">Votre numéro chance :</div>
                                 <div class="selected-numbers-display" id="simSelectedChanceNumber"></div>
                             </div>
