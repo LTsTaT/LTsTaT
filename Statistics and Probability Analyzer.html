@@ -1802,7 +1802,9 @@ button, input, select {
         </div>
         
         <div class="content">
+            
             <!-- Onglet Accueil -->
+            
             <div id="overview" class="tab-content active">
                 <div class="section">
                     <h2>Accueil</h2>
@@ -1871,8 +1873,6 @@ button, input, select {
                         </div>
                     </div>
 
-        
-
                     <div class="grid-2">
                         <div class="stat-card">
                             <h4>Tirages Analysés</h4>
@@ -1887,12 +1887,10 @@ button, input, select {
                         <div class="stat-card">
                             <h4>Premier Tirage</h4>
                             <div class="value" id="firstDrawDate">-</div>
-                            <small>Le plus ancien</small>
                         </div>
                         <div class="stat-card">
                             <h4>Dernier Tirage</h4>
-                            <div class="value" id="lastDrawDate">-</div>
-                            <small>Le plus récent</small>
+                            <div class="value" id="lastDrawDate">-</div>      
                         </div>
                     </div>
 
@@ -1938,15 +1936,6 @@ button, input, select {
                         <h4> Analyse des Fréquences</h4>
                         <p>Cette technique est essentielle pour.</p>
                         <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de </p>
-                    </div>
-
-                    <div class="control-group">
-                        <label>Type d'analyse :</label>
-                        <select id="freqType" onchange="updateFrequencyChart()">
-                            <option value="main">Numéros Principaux (1-49)</option>
-                            <option value="chance">Numéros Chance (1-10)</option>
-                        </select>
-                        <button onclick="updateFrequencyChart()">Générer le Graphique</button>
                     </div>
 
                     <div class="chart-container">
