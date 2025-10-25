@@ -6395,37 +6395,40 @@ function weightedRandomSelection(weights, count) {
         // ============================================================================
 
         function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.nav-item').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            document.getElementById(tabId).classList.add('active');
-            
-            document.querySelectorAll('.nav-item').forEach(tab => {
-                if (tab.textContent.trim().toLowerCase().includes(tabId.toLowerCase())) {
-                    tab.classList.add('active');
-                }
-            });
-            
-            if (tabId === 'frequencies') {
-                updateFrequencyChart();
-            }
-            else if (tabId === 'clusters') {
-                performClustering();
-            }
-            else if (tabId === 'statistics') {
-                performStatAnalysis();
-            }
-            else if (tabId === 'predictions') {
-                const modelSelect = document.getElementById('predModel');
-                showPredictionExplanation(modelSelect.value);
-            }
-        }
+    // Cacher tous les onglets
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
 
+    // Désactiver tous les éléments de navigation
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+    // Activer l'onglet sélectionné
+    document.getElementById(tabId).classList.add('active');
+    document.querySelector(`.nav-item[onclick="showTab('${tabId}')"]`).classList.add('active');
+
+    // Déterminer quelle fonction d’analyse appeler selon l’onglet
+    switch(tabId) {
+        case 'frequencies':
+            updateFrequencyChart();
+            break;
+        case 'predictions':
+            generatePredictions();
+            break;
+        case 'ml':
+            trainMLModel();
+            break;
+        case 'clusters':
+            performClustering();
+            break;
+        case 'statistics':
+            performStatAnalysis();
+            break;
+        
+        
+        default:
+            console.log("Onglet " + tabId + " affiché.");
+    }
+}    
+        
         function updateFrequencyChart() {
             const type = document.getElementById('freqType').value;
             
