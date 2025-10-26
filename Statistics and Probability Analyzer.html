@@ -84,7 +84,7 @@
 
 /* Cartes de contenu */
 .section, .control-group, .stat-card, .info-box {
-    background: linear-gradient(135deg, 
+    background: linear-gradient(1deg, 
         rgba(255, 255, 255, 0.08) 0%, 
         rgba(255, 255, 255, 0.03) 100%) !important;
     backdrop-filter: blur(12px);
@@ -2003,15 +2003,6 @@ button, input, select {
                         <h4> Analyse des Fréquences</h4>
                         <p>Cette technique est essentielle pour.</p>
                         <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de </p>
-                    </div>
-
-                    <div class="control-group">
-                        <label>Type d'analyse :</label>
-                        <select id="freqType" onchange="updateFrequencyChart()">
-                            <option value="main">Numéros Principaux (1-49)</option>
-                            <option value="chance">Numéros Chance (1-10)</option>
-                        </select>
-                        <button onclick="updateFrequencyChart()">Générer le Graphique</button>
                     </div>
 
                     <div class="chart-container">
