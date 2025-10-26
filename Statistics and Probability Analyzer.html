@@ -473,6 +473,97 @@ button, input, select {
         }
 
         /* ============================================================================
+           BARREGRAPHE HORIZONTAL
+        ============================================================================ */
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 1px 1px;
+            color: var(--text-secondary);
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: linear-gradient(90deg, 
+                #1976d2 0%, 
+                #66bb6a 50%, 
+             #388e3c 100%);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Effet de brillance animé */
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 100%);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .progress-text {
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .progress-percentage {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        /* Animation de pulsation pour le texte */
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .progress-text {
+            animation: pulseText 2s infinite;
+        }
+
+        /* ============================================================================
            COMPOSANTS DE FORMULAIRE
         ============================================================================ */
         .control-group {
@@ -604,33 +695,7 @@ button, input, select {
             gap: 20px;
         }
 
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            color: var(--text-secondary);
-        }
-
-        .loading.active {
-            display: block;
-        }
-
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-top: 4px solid var(--highlight-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-         .info-box {
+        .info-box {
         background: var(--secondary-color);
         border: 1px solid var(--border-color);
         border-radius: 8px; /* ← MODIFIEZ ICI */
@@ -1739,7 +1804,7 @@ button, input, select {
         
         /* Correction des artefacts visuels du glass sur fond dégradé */
 .glass-card {
-    background: rgba(255, 255, 255, 0.06); /* couleur unie au lieu d’un gradient */
+    background: rgba(255, 255, 255, 0.06); /* couleur unie au lieu d'un gradient */
     backdrop-filter: blur(10px) saturate(120%);
     -webkit-backdrop-filter: blur(10px) saturate(120%);
 }
@@ -1802,9 +1867,7 @@ button, input, select {
         </div>
         
         <div class="content">
-            
             <!-- Onglet Accueil -->
-            
             <div id="overview" class="tab-content active">
                 <div class="section">
                     <h2>Accueil</h2>
@@ -1873,6 +1936,8 @@ button, input, select {
                         </div>
                     </div>
 
+        
+
                     <div class="grid-2">
                         <div class="stat-card">
                             <h4>Tirages Analysés</h4>
@@ -1887,10 +1952,12 @@ button, input, select {
                         <div class="stat-card">
                             <h4>Premier Tirage</h4>
                             <div class="value" id="firstDrawDate">-</div>
+                            <small>Le plus ancien</small>
                         </div>
                         <div class="stat-card">
                             <h4>Dernier Tirage</h4>
-                            <div class="value" id="lastDrawDate">-</div>      
+                            <div class="value" id="lastDrawDate">-</div>
+                            <small>Le plus récent</small>
                         </div>
                     </div>
 
@@ -1936,6 +2003,15 @@ button, input, select {
                         <h4> Analyse des Fréquences</h4>
                         <p>Cette technique est essentielle pour.</p>
                         <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de </p>
+                    </div>
+
+                    <div class="control-group">
+                        <label>Type d'analyse :</label>
+                        <select id="freqType" onchange="updateFrequencyChart()">
+                            <option value="main">Numéros Principaux (1-49)</option>
+                            <option value="chance">Numéros Chance (1-10)</option>
+                        </select>
+                        <button onclick="updateFrequencyChart()">Générer le Graphique</button>
                     </div>
 
                     <div class="chart-container">
@@ -2013,8 +2089,15 @@ button, input, select {
                 </div>
 
                     <div class="loading" id="predLoading">
-                        <div class="spinner"></div>
-                        <p>Calcul en cours...</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="predProgressBar"></div>
+                        </div>
+                        <div class="progress-text" id="predProgressText">Initialisation de l'analyse probabiliste...</div>
+                        <div class="progress-stats">
+                            <span id="predProgressStep">Étape 1/4</span>
+                            <span class="progress-percentage" id="predProgressPercent">0%</span>
+                            <span id="predProgressTime">Temps estimé: --</span>
+                        </div>
                     </div>
 
                     <div id="predResults"></div>
@@ -2059,8 +2142,15 @@ button, input, select {
                     </div>
 
                     <div class="loading" id="mlLoading">
-                        <div class="spinner"></div>
-                        <p>Entraînement du modèle en cours... </p>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="mlProgressBar"></div>
+                        </div>
+                        <div class="progress-text" id="mlProgressText">Préparation du modèle de Machine Learning...</div>
+                        <div class="progress-stats">
+                            <span id="mlProgressStep">Étape 1/5</span>
+                            <span class="progress-percentage" id="mlProgressPercent">0%</span>
+                            <span id="mlProgressTime">Temps estimé: --</span>
+                        </div>
                     </div>
 
                     <div class="grid-2" id="mlMetrics"></div>
@@ -2261,40 +2351,91 @@ button, input, select {
             </div>
 
             <!-- Onglet Programme -->
-            <div id="programme" class="tab-content">
-                <div class="section">
-                    <h2>Programme</h2>
-                    <p>Documentation technique et structure du programme.</p>
-                    
-                    <div class="control-group">
-                        <h3>Documentation Technique</h3>
-                        <div class="info-box">
-                            <p>Cette application utilise des méthodes statistiques avancées et du machine learning pour analyser les tirages du Loto.</p>
+<div id="programme" class="tab-content">
+    <div class="section">
+        <h2>Programme</h2>
+        <p>Documentation technique, structure du programme et code source complet.</p>
+        
+        <div class="control-group">
+            <h3>Documentation Technique</h3>
+            <div class="info-box">
+                <p>Cette application utilise des méthodes statistiques avancées et du machine learning pour analyser les tirages du Loto.</p>
+                <p><strong>Version :</strong> Github-3.3</p>
+                <p><strong>Dernière mise à jour :</strong> <span id="currentDate"></span></p>
+            </div>
+            
+            <div style="margin: 20px 0; border-bottom: 1px solid var(--border-color);"></div>
+            
+            <h3>Code Source</h3>
+            <div class="control-group">
+                <label>Sélectionnez le code source à afficher :</label>
+                <select id="codeSourceSelect" onchange="afficherCodeSource()">
+                    <option value="">-- Choisir un code source --</option>
+                    <option value="html">Code HTML/JavaScript</option>
+                    <option value="python">Code Python</option>
+                    <option value="css">Code CSS</option>
+                    <option value="javascript">Code JavaScript</option>
+                </select>
+                
+                <!-- Boutons d'action -->
+                <div class="code-actions" style="display: none; margin-top: 15px;" id="codeActions">
+                    <button onclick="copierCode()" class="copy-btn">
+                        📋 Copier le code
+                    </button>
+                    <button onclick="telechargerCode()" class="copy-btn">
+                        ⬇️ Télécharger
+                    </button>
+                    <button onclick="afficherCanevas()" class="copy-btn">
+                        🎨 Afficher le canevas
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Conteneur pour le code source -->
+            <div class="info-box">
+                <div id="codeSourceContent">
+                    <p>Sélectionnez un code source dans le menu déroulant pour l'afficher ici.</p>
+                </div>
+            </div>
+            
+            <!-- Canevas synchronisé (caché par défaut) -->
+            <div id="canevasContainer" style="display: none; margin-top: 20px;">
+                <h4>Canevas Synchronisé</h4>
+                <div class="info-box">
+                    <div style="display: flex; gap: 20px; min-height: 400px;">
+                        <!-- Éditeur de code -->
+                        <div style="flex: 1; border-right: 1px solid var(--border-color); padding-right: 20px;">
+                            <h5>Code Source</h5>
+                            <pre id="canevasCode" style="background-color: var(--secondary-color); padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.9em; max-height: 350px; overflow-y: auto;"></pre>
                         </div>
                         
-                        <div style="margin: 20px 0; border-bottom: 1px solid var(--border-color);"></div>
-                        
-                        <h3>Code Source</h3>
-                        <div class="control-group">
-                            <label>Sélectionnez le code source à afficher :</label>
-                            <select id="codeSourceSelect" onchange="afficherCodeSource()">
-                                <option value="">-- Choisir un code source --</option>
-                                <option value="python">Code source Python</option>
-                                <option value="html">Code source HTML</option>
-                            </select>
-                        </div>
-                        <div class="info-box">
-                            <div id="codeSourceContent">
-                                <p>Sélectionnez un code source dans le menu déroulant pour l'afficher ici.</p>
+                        <!-- Aperçu visuel -->
+                        <div style="flex: 1;">
+                            <h5>Aperçu Visuel</h5>
+                            <div id="canevasPreview" style="background: white; padding: 15px; border-radius: 8px; min-height: 350px; border: 1px solid var(--border-color);">
+                                <p style="color: black; text-align: center; margin-top: 150px;">Aperçu du code sélectionné</p>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button onclick="masquerCanevas()" class="copy-btn">
+                            ✕ Masquer le canevas
+                        </button>
+                        <button onclick="actualiserApercu()" class="copy-btn">
+                            🔄 Actualiser l'aperçu
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <script>
+        
+        
+        
         // ============================================================================
         // VARIABLES GLOBALES ET CONFIGURATION
         // ============================================================================
@@ -6660,13 +6801,110 @@ function weightedRandomSelection(weights, count) {
                 '<p>Sélectionnez un algorithme pour voir son fonctionnement détaillé...</p>';
         }
 
+        // ============================================================================
+        // FONCTIONS POUR LE BARREGRAPHE HORIZONTAL
+        // ============================================================================
+
+        function startPredictionProgress() {
+            const progressBar = document.getElementById('predProgressBar');
+            const progressText = document.getElementById('predProgressText');
+            const progressStep = document.getElementById('predProgressStep');
+            const progressPercent = document.getElementById('predProgressPercent');
+            const progressTime = document.getElementById('predProgressTime');
+            
+            const steps = [
+                { percent: 25, text: "Analyse des distributions statistiques...", step: "Étape 1/4" },
+                { percent: 50, text: "Calcul des probabilités conditionnelles...", step: "Étape 2/4" },
+                { percent: 75, text: "Génération des combinaisons optimales...", step: "Étape 3/4" },
+                { percent: 100, text: "Finalisation des résultats...", step: "Étape 4/4" }
+            ];
+            
+            animateProgress(progressBar, progressText, progressStep, progressPercent, progressTime, steps, 2000);
+        }
+
+        function startMLProgress() {
+            const progressBar = document.getElementById('mlProgressBar');
+            const progressText = document.getElementById('mlProgressText');
+            const progressStep = document.getElementById('mlProgressStep');
+            const progressPercent = document.getElementById('mlProgressPercent');
+            const progressTime = document.getElementById('mlProgressTime');
+            
+            const steps = [
+                { percent: 20, text: "Chargement et préparation des données...", step: "Étape 1/5" },
+                { percent: 40, text: "Entraînement du modèle sélectionné...", step: "Étape 2/5" },
+                { percent: 60, text: "Validation croisée des performances...", step: "Étape 3/5" },
+                { percent: 80, text: "Optimisation des hyperparamètres...", step: "Étape 4/5" },
+                { percent: 100, text: "Génération des prédictions finales...", step: "Étape 5/5" }
+            ];
+            
+            animateProgress(progressBar, progressText, progressStep, progressPercent, progressTime, steps, 2500);
+        }
+
+        function animateProgress(progressBar, progressText, progressStep, progressPercent, progressTime, steps, totalTime) {
+            let currentStep = 0;
+            const startTime = Date.now();
+            
+            // Réinitialiser la barre
+            progressBar.style.width = '0%';
+            progressPercent.textContent = '0%';
+            
+            function updateProgress() {
+                if (currentStep < steps.length) {
+                    const step = steps[currentStep];
+                    const progress = step.percent;
+                    
+                    // Mettre à jour la barre de progression
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = step.text;
+                    progressStep.textContent = step.step;
+                    progressPercent.textContent = progress + '%';
+                    
+                    // Calculer et afficher le temps estimé
+                    const elapsed = Date.now() - startTime;
+                    const estimatedTotal = (elapsed / progress) * 100;
+                    const remaining = Math.max(0, (estimatedTotal - elapsed) / 1000);
+                    progressTime.textContent = `Temps estimé: ${remaining.toFixed(1)}s`;
+                    
+                    currentStep++;
+                    
+                    // Déterminer le délai pour la prochaine étape
+                    const nextDelay = currentStep < steps.length ? 
+                        (steps[currentStep].percent - step.percent) * totalTime / 100 : 0;
+                    
+                    setTimeout(updateProgress, nextDelay);
+                }
+            }
+            
+            updateProgress();
+        }
+
+        function resetProgress(loadingId) {
+            const loading = document.getElementById(loadingId);
+            const progressBar = loading.querySelector('.progress-bar');
+            const progressText = loading.querySelector('.progress-text');
+            const progressStep = loading.querySelector('#predProgressStep, #mlProgressStep');
+            const progressPercent = loading.querySelector('.progress-percentage');
+            const progressTime = loading.querySelector('#predProgressTime, #mlProgressTime');
+            
+            if (progressBar) progressBar.style.width = '0%';
+            if (progressPercent) progressPercent.textContent = '0%';
+            if (progressText) progressText.textContent = 'Initialisation...';
+            if (progressStep) progressStep.textContent = 'Étape 1/-';
+            if (progressTime) progressTime.textContent = 'Temps estimé: --';
+        }
+
        function generatePredictions() {
     const model = document.getElementById('predModel').value;
     const loading = document.getElementById('predLoading');
     const resultsDiv = document.getElementById('predResults');
     
+    // Réinitialiser et démarrer la progression
+    resetProgress('predLoading');
     loading.classList.add('active');
     resultsDiv.innerHTML = '';
+    
+    // Démarrer l'animation de progression
+    startPredictionProgress();
     
     setTimeout(() => {
         let results = '';
@@ -7032,7 +7270,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
         
         resultsDiv.innerHTML = results;
         loading.classList.remove('active');
-    }, 1000);
+    }, 2000);
 }
 
         
@@ -7284,12 +7522,15 @@ function gammaPrediction(frequencies, numPredictions = 5) {
             const metricsDiv = document.getElementById('mlMetrics');
             const explanationDiv = document.getElementById('mlDetailedExplanation');
             
-            // Afficher le conteneur d'explications
-            explanationDiv.style.display = 'block';
-            
+            // Réinitialiser et démarrer la progression
+            resetProgress('mlLoading');
             loading.classList.add('active');
             metricsDiv.innerHTML = '';
-            resultsDiv.innerHTML = '<p>Préparation des données et entraînement en cours...</p>';
+            resultsDiv.innerHTML = '';
+            explanationDiv.style.display = 'block';
+            
+            // Démarrer l'animation de progression
+            startMLProgress();
             
             setTimeout(() => {
                 const modelType = document.getElementById('mlModel').value;
@@ -7347,7 +7588,7 @@ function gammaPrediction(frequencies, numPredictions = 5) {
                 
                 updateMLChart(modelName, { accuracy: accuracy, loss: parseFloat(loss) });
                 loading.classList.remove('active');
-            }, 2000);
+            }, 2500);
         }
 
         function getModelName(modelType) {
