@@ -630,6 +630,68 @@ button, input, select {
         button:hover {
             background-color: var(--highlight-color);
         }
+        
+        /* ============================================================================
+   STYLE GLASS POUR LES MENUS DÉROULANTS
+============================================================================ */
+
+select {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(255, 255, 255, 0.05) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+    padding: 12px 15px !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+}
+
+/* Flèche personnalisée */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%23f0f0f0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 12px !important;
+    padding-right: 40px !important;
+}
+
+/* Effet au survol */
+select:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.08) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Effet quand ouvert */
+select:focus {
+    outline: none !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Options du menu déroulant */
+select option {
+    background: var(--primary-color) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    padding: 12px 15px !important;
+}
+
+/* Style pour les selects désactivés */
+select:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
 
         /* ============================================================================
            COMPOSANTS SPÉCIFIQUES
@@ -6570,6 +6632,9 @@ function weightedRandomSelection(weights, count) {
     // Activer l'onglet sélectionné
     document.getElementById(tabId).classList.add('active');
     document.querySelector(`.nav-item[onclick="showTab('${tabId}')"]`).classList.add('active');
+            
+    // CORRECTION : Remettre le défilement en haut de la page
+    window.scrollTo(0, 0); 
 
     // Déterminer quelle fonction d'analyse appeler selon l'onglet
     switch(tabId) {
