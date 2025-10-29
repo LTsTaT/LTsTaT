@@ -12,18 +12,17 @@
         
   
        /* === RÉINITIALISATION ET VARIABLES === */
-
-        :root {
-            --primary-color: #343a40;                   /* Couleur principale */
-            --secondary-color: #343a40;                 /* Couleur secondaire */
-            --accent-color: #6c757d;                    /* Couleur d'accent */
-            --highlight-color: rgba(15, 52, 96, 0.3);   /* Couleur de surbrillance */
-            --text-primary: #f0f0f0;                    /* Texte principal */
-            --text-secondary: #f0f0f0;                  /* Texte secondaire */
-            --border-color: rgba(255, 255, 255, 0.1);   /* Couleur de bordure */
-            --card-bg: #6c757d;                         /* Fond des cartes */
-            --sidebar-width: 240px;                     /* Largeur de la barre latérale */
-            --header-height: 86px;                      /* Hauteur de l'en-tête */         
+        
+         :root {
+            --primary-color: #343a40;
+            --accent-color: #6c757d;
+            --highlight-color: rgba(15, 52, 96, 0.3);
+            --text-primary: #f0f0f0;
+            --text-secondary: #f0f0f0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: ; #6c757d;
+            --sidebar-width: 240px;
+            --header-height: 86px;                       
             
          /* Effets de verre */
             --glass-bg: rgba(255, 255, 255, 0.1);                 /* Fond verre */
@@ -87,16 +86,11 @@
 
 /* Header glass */
 .header {
-            height: var(--header-height);                 /* Hauteur en-tête */
-            background-color: var(--secondary-color);     /* Fond en-tête */
-            border-bottom: 1px solid var(--border-color); /* Bordure bas */
-            display: flex;                                /* Affichage flexible */
-            align-items: center;                          /* Alignement vertical centre */
-            padding: 0 23px;                              /* Marge interne horizontale */
-            position: sticky;                             /* Position collante */
-            top: 0;                                       /* Position haut */
-            z-index: 90;                                  /* Ordre d'empilement */
-        }
+   
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
 /* Cartes de contenu */
 .section, .control-group, .stat-card, .info-box {
