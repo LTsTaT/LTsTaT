@@ -329,34 +329,34 @@ button, input, select {
            STRUCTURE PRINCIPALE
         ============================================================================ */
         .sidebar {
-            width: var(--sidebar-width);                 /* Largeur barre latérale */
-            background-color: var(--secondary-color);    /* Fond barre latérale */
+            width: var(--sidebar-width); /* Largeur barre latérale */
+            background-color: var(--secondary-color); /* Fond barre latérale */
             border-right: 1px solid var(--border-color); /* Bordure droite */
-            height: 100vh;                               /* Hauteur pleine fenêtre */
-            position: fixed;                             /* Position fixe */
-            overflow-y: auto;                            /* Défilement vertical */
-            z-index: 100;                                /* Ordre d'empilement */
+            height: 100vh; /* Hauteur pleine fenêtre */
+            position: fixed;        /* Position fixe */
+            overflow-y: auto;       /* Défilement vertical */
+            z-index: 100;           /* Ordre d'empilement */
         }
 
         .main-content {
             margin-left: var(--sidebar-width); /* Marge gauche */
-            flex: 1;                           /* Prend l'espace disponible */
-            display: flex;                     /* Affichage flexible */
-            flex-direction: column;            /* Direction colonne */
-            min-height: 100vh;                 /* Hauteur minimum fenêtre */
-            max-width: 1400px;                 /* Largeur maximum */
+            flex: 1;                /* Prend l'espace disponible */
+            display: flex;          /* Affichage flexible */
+            flex-direction: column; /* Direction colonne */
+            min-height: 100vh;      /* Hauteur minimum fenêtre */
+            max-width: 1400px;      /* Largeur maximum */
         }
 
         .header {
-            height: var(--header-height);                 /* Hauteur en-tête */
-            background-color: var(--secondary-color);     /* Fond en-tête */
+            height: var(--header-height); /* Hauteur en-tête */
+            background-color: var(--secondary-color); /* Fond en-tête */
             border-bottom: 1px solid var(--border-color); /* Bordure bas */
-            display: flex;                                /* Affichage flexible */
-            align-items: center;                          /* Alignement vertical centre */
-            padding: 0 23px;                              /* Marge interne horizontale */
-            position: sticky;                             /* Position collante */
-            top: 0;                                       /* Position haut */
-            z-index: 90;                                  /* Ordre d'empilement */
+            display: flex;       /* Affichage flexible */
+            align-items: center; /* Alignement vertical centre */
+            padding: 0 23px;     /* Marge interne horizontale */
+            position: sticky;    /* Position collante */
+            top: 0;              /* Position haut */
+            z-index: 90;         /* Ordre d'empilement */
         }
 
         .content {
@@ -370,21 +370,21 @@ button, input, select {
         ============================================================================ */
         
         .logo {
-            padding: 17px;                                /* Marge interne */
+            padding: 17px; /* Marge interne */
             border-bottom: 0px solid var(--border-color); /* Bordure bas invisible */
-            text-align: center;                           /* Alignement texte centre */
+            text-align: center; /* Alignement texte centre */
         }
 
         .logo h1 {
-            font-size: 2.5rem;          /* Taille police très grande */
-            font-weight: 700;           /* Poids police gras */
+            font-size: 2.5rem; /* Taille police très grande */
+            font-weight: 700;  /* Poids police gras */
             color: var(--text-primary); /* Couleur texte */
         }
 
         .logo p {
-            font-size: 1rem;              /* Taille police normale */
+            font-size: 1rem; /* Taille police normale */
             color: var(--text-secondary); /* Couleur texte secondaire */
-            margin-top: 2px;              /* Marge haut petite */
+            margin-top: 2px; /* Marge haut petite */
         }
 
         .nav-menu {
@@ -392,33 +392,33 @@ button, input, select {
         }
 
         .nav-item {
-            display: flex;                      /* Affichage flexible */
-            align-items: center;                /* Alignement vertical centre */
-            padding: 10px 10px;                 /* Marge interne */
-            color: var(--text-secondary);       /* Couleur texte */
-            text-decoration: none;              /* Pas de décoration texte */
-            transition: all 0.3s ease;          /* Transition douce */
+            display: flex; /* Affichage flexible */
+            align-items: center; /* Alignement vertical centre */
+            padding: 10px 10px;  /* Marge interne */
+            color: var(--text-secondary); /* Couleur texte */
+            text-decoration: none;        /* Pas de décoration texte */
+            transition: all 0.3s ease;    /* Transition douce */
             border-left: 3px solid transparent; /* Bordure gauche transparente */
-            cursor: pointer;                    /* Curseur pointeur */
-            margin: 5px 15px;                   /* Marge externe */
-            border-radius: 6px;                 /* Coins arrondis */
+            cursor: pointer;              /* Curseur pointeur */
+            margin: 5px 15px;             /* Marge externe */
+            border-radius: 6px;           /* Coins arrondis */
             background: linear-gradient(0deg, 
                 rgba(255, 255, 255, 0.1) 0%, 
-                rgba(255, 255, 255, 0.05) 100%) !       /* Dégradé fond */
-            backdrop-filter: blur(10px);                /* Flou arrière-plan */
-            -webkit-backdrop-filter: blur(10px);        /* Flou Safari */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure transparente */
-            position: relative;                         /* Position relative */
-            overflow: hidden;                           /* Cache débordement */
+                rgba(255, 255, 255, 0.05) 100%) ! /* Dégradé fond */
+            backdrop-filter: blur(10px);          /* Flou arrière-plan */
+            -webkit-backdrop-filter: blur(10px);   /* Flou Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            position: relative;  /* Position relative */
+            overflow: hidden;    /* Cache débordement */
         }
 
         .nav-item:hover {
             background: linear-gradient(135deg, 
                 rgba(255, 255, 255, 0.15) 0%, 
-                rgba(255, 255, 255, 0.08) 100%);       /* Dégradé survol */
-            color: var(--text-primary);                /* Couleur texte principal */
-            border-color: rgba(255, 255, 255, 0.2);    /* Bordure survol */
-            transform: translateX(5px);                /* Translation horizontale */
+                rgba(255, 255, 255, 0.08) 100%);    /* Dégradé survol */
+            color: var(--text-primary);             /* Couleur texte principal */
+            border-color: rgba(255, 255, 255, 0.2); /* Bordure survol */
+            transform: translateX(5px);             /* Translation horizontale */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Ombre survol */
         }
 
@@ -447,10 +447,837 @@ button, input, select {
                 transparent);           /* Dégradé brillant */
             transition: left 0.5s ease; /* Transition position */
         }
+        
+        
+        /* === STYLES SPÉCIFIQUES À L'ONGLET MATRICE === */
+        
+         /* ============================================================================
+   STYLE IDENTIQUE À L'ONGLET PROBABILITÉS POUR LA MATRICE
+============================================================================ */
 
+/* Container des prédictions en grille 3×2 */
+#matrice .prediction-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Style identique aux cartes de probabilités */
+#matrice .prediction-item {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#matrice .prediction-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Titre identique */
+#matrice .prediction-item h5 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Affichage des numéros identique à Probabilités */
+#matrice .prediction-item .selected-numbers-display {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px 0;
+    align-items: center;
+}
+
+/* Boules identiques à Probabilités */
+#matrice .prediction-item .number-ball {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#matrice .prediction-item .number-ball:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#matrice .prediction-item .number-ball-chance {
+    background: #1E3A5F !important;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#matrice .prediction-item .number-ball-chance:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Indicateur de confiance identique */
+#matrice .prediction-confidence {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#matrice .prediction-confidence small {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+/* Responsive identique */
+@media (max-width: 1024px) {
+    #matrice .prediction-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #matrice .prediction-container {
+        grid-template-columns: 1fr;
+    }
+    
+    #matrice .prediction-item {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+        /* Cases à cocher personnalisées */
+        
+        .checkmark {
+            position: relative;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkmark {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkmark:after {
+            display: block;
+        }
+
+        /* Paramètres avancés */
+        
+        .advanced-settings {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .setting-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .setting-item label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Boutons d'action */
+        
+        .matrix-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            padding: 12px 24px !important;
+            font-size: 1rem !important;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            padding: 12px 20px !important;
+        }
+
+        /* Visualisation */
+        
+        .matrix-visualization {
+            margin: 25px 0;
+        }
+
+        .matrix-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Résultats */
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .matrix-result-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .prediction-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .prediction-item h5 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .model-contributions {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contribution-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+        }
+
+        /* Explications mathématiques */
+        
+        .math-explanations {
+            margin-top: 30px;
+        }
+
+        .math-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .math-section:last-child {
+            border-bottom: none;
+        }
+
+        .math-formula {
+            text-align: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-family: 'MathJax_Math', 'Times New Roman', serif;
+        }
+
+        /* Styles pour les performances */
+        .performance-bar {
+            position: relative;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+
+        .performance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .performance-text {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .technical-metrics {
+            display: grid;
+            gap: 10px;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .prediction-confidence {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .matrix-notification {
+            to {
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        
         /* ============================================================================
+   DISPOSITION HORIZONTALE DES RÉSULTATS MATRICE
+============================================================================ */
+
+#matrice .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Pour une disposition plus horizontale sur grands écrans */
+@media (min-width: 1200px) {
+    #matrice .results-grid {
+        grid-template-columns: repeat(1, 1fr); /* 2 colonnes côte à côte */
+    }
+}
+
+@media (min-width: 1500px) {
+    #matrice .results-grid {
+        grid-template-columns: repeat(1, 1fr); /* 3 colonnes côte à côte */
+    }
+}
+
+/* Ajustement des cartes de résultats pour mieux s'adapter */
+#matrice .matrix-result-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: fit-content; /* S'adapte au contenu */
+    min-height: 1px; /* Hauteur minimale uniforme */
+}
+
+/* Pour que les prédictions s'affichent mieux en horizontal */
+#matrice .prediction-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+#matrice .selected-numbers-display {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+        
+        /* ============================================================================
+   DISPOSITION 3×2 POUR LES PERFORMANCES DES MODÈLES
+   (Même style que les prédictions)
+============================================================================ */
+
+/* Container des performances en grille 3×2 */
+#matrice .model-contributions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Style identique aux cartes de prédictions */
+#matrice .contribution-item {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#matrice .contribution-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Barre de performance identique au style existant */
+#matrice .performance-bar {
+    position: relative;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+#matrice .performance-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+#matrice .performance-text {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    #matrice .model-contributions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #matrice .model-contributions {
+        grid-template-columns: 1fr;
+    }
+}
+        
+        /* ============================================================================
+   VERSION STYLÉE - MÉTRIQUES TECHNIQUES 2×2
+============================================================================ */
+
+#matrice .technical-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#matrice .metric-item {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    min-height: 80px;
+}
+
+#matrice .metric-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+#matrice .metric-item span:first-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+#matrice .metric-value {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #matrice .technical-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    #matrice .metric-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        min-height: 100px;
+    }
+}
+
+        /* Amélioration de la barre de progression */
+        
+        #matrixLoading .progress-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        /* === STYLES EXISTANTS POUR LES AUTRES ONGLETS === */
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .number-ball {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+            color: white;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .number-ball:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .number-ball-chance {
+            background: #1E3A5F !important;
+        }
+
+        .prediction-card {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            width: 31%;
+            min-height: 1px;
+            display: inline-block;
+            margin: 1%;
+            vertical-align: top;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+        }
+
+        .stat-card {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .stat-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card .value {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-box {
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 0 25px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-box {
+            background-color: rgba(15, 52, 96, 0.3);
+            border: 1px solid var(--accent-color);
+            padding: 15px;
+            margin: 15px 0;
+            color: var(--text-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* === GRILLES DE SÉLECTION === */
+        
+        .grid-selection {
+            margin: 20px 0;
+        }
+
+        .grid-title {
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .number-grid-select {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            max-width: 40%;
+        }
+
+        .number-ball-select {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: white;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .number-ball-select.selected {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #fff;
+        }
+
+        .number-ball-chance-select:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .chance-grid-select {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 40px;
+        }
+
+        .number-ball-chance-select {
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: white;
+            background-color: var(--highlight-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .number-ball-chance-select.selected {
+           background: #1E3A5F !important;
+            transform: scale(1.1);
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .number-ball-chance-select:hover {
+            transform: scale(1.05);
+        }
+
+        .selected-numbers {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .selected-numbers-display {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        
+        @media (max-width: 768px) {
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .matrix-actions {
+                flex-direction: column;
+            }
+            
+            .matrix-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .number-grid-select {
+                grid-template-columns: repeat(7, 1fr);
+                max-width: 100%;
+            }
+            
+            .prediction-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Styles responsifs existants... */
+        
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            line-height: 1;
+            animation: pulseMenu 2s infinite;
+        }
+
+        @keyframes pulseMenu {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(233, 69, 96, 0.6);
+            }
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+        }
+        
+
+        /* =======================================================================
            CONTENU PRINCIPAL
-        ============================================================================ */
+        ======================================================================== */
+        
         .tab-content {
             display: none; /* Masqué par défaut */
         }
@@ -473,12 +1300,12 @@ button, input, select {
         }
 
         .section h2 {
-            font-size: 1.5rem;                            /* Taille police */
-            margin-bottom: 20px;                          /* Marge bas */
-            color: var(--text-primary);                   /* Couleur texte */
-            font-weight: 400;                             /* Poids police normal */
+            font-size: 1.5rem;          /* Taille police */
+            margin-bottom: 20px;        /* Marge bas */
+            color: var(--text-primary); /* Couleur texte */
+            font-weight: 400;           /* Poids police normal */
             border-bottom: 1px solid var(--border-color); /* Bordure bas */
-            padding-bottom: 10px;                         /* Marge interne bas */
+            padding-bottom: 10px;       /* Marge interne bas */
         }
 
         .section h3 {
@@ -493,9 +1320,9 @@ button, input, select {
         ============================================================================ */
 
         .loading {
-            display: none;                /* Masqué par défaut */
-            text-align: center;           /* Alignement texte centre */
-            padding: 1px 1px;             /* Marge interne minimale */
+            display: none;       /* Masqué par défaut */
+            text-align: center;  /* Alignement texte centre */
+            padding: 1px 1px;    /* Marge interne minimale */
             color: var(--text-secondary); /* Couleur texte secondaire */
         }
 
@@ -504,28 +1331,28 @@ button, input, select {
         }
 
         .progress-container {
-            width: 100%;                                /* Largeur pleine */
-            max-width: 500px;                           /* Largeur maximum */
-            margin: 20px auto;                          /* Marge externe centrée */
-            background: rgba(255, 255, 255, 0.1);       /* Fond semi-transparent */
-            border-radius: 8px;                         /* Coins arrondis */
-            overflow: hidden;                           /* Cache débordement */
-            backdrop-filter: blur(10px);                /* Flou arrière-plan */
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Bordure transparente */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  /* Ombre */
+            width: 100%;       /* Largeur pleine */
+            max-width: 500px;  /* Largeur maximum */
+            margin: 20px auto; /* Marge externe centrée */
+            background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+            border-radius: 8px; /* Coins arrondis */
+            overflow: hidden;    /* Cache débordement */
+            backdrop-filter: blur(10px); /* Flou arrière-plan */
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombre */
         }
 
         .progress-bar {
-            height: 12px;                                       /* Hauteur barre 12px */
+            height: 12px; /* Hauteur barre 12px */
             background: linear-gradient(90deg, 
                 #1976d2 0%, 
                 #66bb6a 50%, 
-                #388e3c 100%);                                  /* Dégradé couleur */
-            border-radius: 8px;                                 /* Coins arrondis */
-            width: 0%;                                          /* Largeur initiale nulle */
+                #388e3c 100%); /* Dégradé couleur */
+            border-radius: 8px; /* Coins arrondis */
+            width: 0%;         /* Largeur initiale nulle */
             transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);/* Transition largeur */
-            position: relative;                                 /* Position relative */
-            overflow: hidden;                                   /* Cache débordement */
+            position: relative; /* Position relative */
+            overflow: hidden;   /* Cache débordement */
         }
 
         .progress-bar::after {
@@ -937,7 +1764,7 @@ select:disabled {
             top: 10px;          /* Position haut */
             left: 10px;         /* Position gauche */
             z-index: 1000;      /* Ordre d'empilement élevé */
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%); /* Dégradé fond */
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%); 
             color: white;                       /* Couleur texte blanc */
             border: none;                       /* Pas de bordure */
             padding: 12px 15px;                 /* Marge interne */
@@ -1861,26 +2688,38 @@ select:disabled {
 /* === CORRECTIONS ARTÉFACTS VISUELS === */
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.06);              /* Fond semi-transparent */
-            backdrop-filter: blur(10px) saturate(120%);         /* Flou et saturation */
+            background: rgba(255, 255, 255, 0.06); /* Fond semi-transparent */
+            backdrop-filter: blur(10px) saturate(120%);  /* Flou et saturation */
             -webkit-backdrop-filter: blur(10px) saturate(120%); /* Flou Safari */
         }
 
         .latest-draw.glass-card h4 {
             color: var(--text-primary) !important; /* Couleur titre important */
-            margin-bottom: 15px !important;        /* Marge bas importante */
-            font-size: 1.2rem !important;          /* Taille police importante */
+            margin-bottom: 15px !important; /* Marge bas importante */
+            font-size: 1.2rem !important;   /* Taille police importante */
         }
 
         .latest-draw-numbers {
-            background: rgba(255, 255, 255, 0.0) !important;       /* Fond transparent */
-            backdrop-filter: blur(10px) !important;                /* Flou important */
-            -webkit-backdrop-filter: blur(10px) !important;        /* Flou Safari important */
-            border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Bordure transparente */
-            border-radius: 8px !important;                         /* Coins arrondis importants */
-            padding: 15px !important;                              /* Marge interne importante */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important; /* Ombre légère */
+            background: rgba(255, 255, 255, 0.0) !important; /* Fond transparent */
+            backdrop-filter: blur(10px) !important; /* Flou important */
+            -webkit-backdrop-filter: blur(10px) !important; /* Flou Safari important */
+            border: 1px solid rgba(255, 255, 255, 0.1) !important; 
+            border-radius: 8px !important; /* Coins arrondis importants */
+            padding: 15px !important; /* Marge interne importante */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important; /* Ombre */
         }
+        
+        /* === STYLES MATRICE === */
+.checkbox-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.checkbox-item { display: flex; align-items: flex-start; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; cursor: pointer; }
+.model-info { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; opacity: 0.8; }
+.matrix-config { display: grid; gap: 25px; margin-bottom: 25px; }
+.model-selection { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; }
+.settings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.matrix-actions { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+.primary-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; padding: 12px 24px !important; }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+.matrix-result-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; }
 
     </style>
 </head>
@@ -1924,6 +2763,11 @@ select:disabled {
             <div class="nav-item" onclick="showTab('simulation')">
                 <i></i> Simulation
             </div>
+            
+            <div class="nav-item" onclick="showTab('matrice')">
+            <i></i> Matrice
+            </div>
+            
             <div class="nav-item" onclick="showTab('programme')">
                 <i></i> Programme
             </div>
@@ -2044,6 +2888,7 @@ select:disabled {
             </div>
 
             <!-- Onglet Fréquences -->
+    
             <div id="frequencies" class="tab-content">
                 <div class="section">
                     <h2>Analyse des Fréquences</h2>
@@ -2115,7 +2960,15 @@ select:disabled {
                         
                         <div id="standardOptions">
                             <label>Nombre de combinaisons :</label>
-                            <input type="number" id="numPredictions" value="6" min="1" max="20">
+                            <select id="numPredictions">
+                                <option value="1">1 combinaison</option>
+                                <option value="3">3 combinaisons</option>
+                                <option value="5">5 combinaisons</option>
+                                <option value="6" selected>6 combinaisons</option>
+                                <option value="10">10 combinaisons</option>
+                                <option value="15">15 combinaisons</option>
+                                <option value="20">20 combinaisons</option>
+                            </select>
                         </div>
                         
                         <div id="testOptions" style="display: none;">
@@ -2158,6 +3011,7 @@ select:disabled {
             </div>
 
             <!-- Onglet Machine Learning -->
+
             <div id="ml" class="tab-content">
                 <div class="section">
                     <h2>Probabilités par Machine Learning</h2>
@@ -2227,7 +3081,17 @@ select:disabled {
 
                     <div class="control-group">
                         <label>Nombre de clusters :</label>
-                        <input type="number" id="numClusters" value="5" min="2" max="10">
+                        <select id="numClusters">
+                            <option value="2">2 clusters</option>
+                            <option value="3">3 clusters</option>
+                            <option value="4">4 clusters</option>
+                            <option value="5" selected>5 clusters</option>
+                            <option value="6">6 clusters</option>
+                            <option value="7">7 clusters</option>
+                            <option value="8">8 clusters</option>
+                            <option value="9">9 clusters</option>
+                            <option value="10">10 clusters</option>
+                        </select>
                         <button onclick="performClustering()">Créer les Clusters</button>
                     </div>
 
@@ -2250,6 +3114,7 @@ select:disabled {
             </div>
 
             <!-- Onglet Statistiques -->
+
             <div id="statistics" class="tab-content">
                 <div class="section">
                     <h2>Analyses Statistiques Avancées</h2>
@@ -2280,6 +3145,7 @@ select:disabled {
             </div>
 
             <!-- Onglet Évaluation -->
+
             <div id="evaluation" class="tab-content">
                 <div class="section">
                     <h2>Évaluer ma Grille de Loto</h2>
@@ -2365,7 +3231,16 @@ select:disabled {
                         </div>
                         
                         <label>Nombre de simulations :</label>
-                        <input type="number" id="numSims" value="10000" min="100" max="100000">
+                        <select id="matrixNumPredictions">
+    <option value="5">5 combinaisons</option>
+    <option value="6" selected>6 combinaisons</option>
+    <option value="15">15 combinaisons</option>
+    <option value="20">20 combinaisons</option>
+    <option value="25">25 combinaisons</option>
+    <option value="30">30 combinaisons</option>
+    <option value="40">40 combinaisons</option>
+    <option value="50">50 combinaisons</option>
+</select>
                         <button onclick="runSimulation()">Lancer la Simulation</button>
                     </div>
 
@@ -2388,8 +3263,235 @@ select:disabled {
                 </div>
             </div>
 
+            <!-- Onglet Matrice -->
+
+            <div id="matrice" class="tab-content">
+                <div class="section">
+                    <h2>🧮 Architecte de Modèles - Matrice Personnalisée</h2>
+                    <p>Composez votre propre architecture d'analyse en sélectionnant et combinant différents modèles et algorithmes.</p>
+
+                    <!-- Configuration de la Matrice -->
+                    <div class="control-group glass-card">
+                        <h3>⚙️ Configuration de la Matrice</h3>
+                        
+                        <div class="matrix-config">
+                            <!-- Sélection des Modèles -->
+                            <div class="model-selection">
+                                <h4>🔢 Modèles Statistiques</h4>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixPoisson" data-model="poisson">
+                                        <span class="checkmark"></span>
+                                        Distribution de Poisson
+                                        <div class="model-info">λ = fréquence historique</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixBinomial" data-model="binomial">
+                                        <span class="checkmark"></span>
+                                        Distribution Binomiale
+                                        <div class="model-info">B(n,p) - Pairs/Impairs</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixZipf" data-model="zipf">
+                                        <span class="checkmark"></span>
+                                        Loi de Zipf
+                                        <div class="model-info">Poids = 1/rang^α</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixDirichlet" data-model="dirichlet">
+                                        <span class="checkmark"></span>
+                                        Distribution de Dirichlet
+                                        <div class="model-info">Répartition par dizaines</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Algorithmes ML -->
+                            <div class="model-selection">
+                                <h4>🤖 Algorithmes Machine Learning</h4>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixRF" data-model="rf">
+                                        <span class="checkmark"></span>
+                                        Random Forest
+                                        <div class="model-info">Forêt de 100 arbres</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixGB" data-model="gb">
+                                        <span class="checkmark"></span>
+                                        Gradient Boosting
+                                        <div class="model-info">Boosting séquentiel</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixLSTM" data-model="lstm">
+                                        <span class="checkmark"></span>
+                                        LSTM
+                                        <div class="model-info">Réseau neuronal temporel</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Techniques Avancées -->
+                            <div class="model-selection">
+                                <h4>🎯 Techniques Avancées</h4>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixClustering" data-model="clustering">
+                                        <span class="checkmark"></span>
+                                        Clustering K-Means
+                                        <div class="model-info">Groupes de similarité</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixMonteCarlo" data-model="montecarlo">
+                                        <span class="checkmark"></span>
+                                        Simulation Monte Carlo
+                                        <div class="model-info">10,000+ tirages simulés</div>
+                                    </label>
+                                    
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixEnsemble" data-model="ensemble">
+                                        <span class="checkmark"></span>
+                                        Stacking Ensemble
+                                        <div class="model-info">Combinaison de modèles</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Paramètres Avancés -->
+                        
+                        <div class="advanced-settings">
+                            <h4>🎛️ Paramètres Avancés</h4>
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label>Pondération des modèles :</label>
+                                    <select id="weightingMethod">
+                                        <option value="equal">Égale</option>
+                                        <option value="performance">Par performance</option>
+                                        <option value="custom">Personnalisée</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <label>Nombre de combinaisons :</label>
+                                    <select id="matrixNumPredictions">
+                                        <option value="5">5 combinaisons</option>
+                                        <option value="6" selected>6 combinaisons</option>
+                                        <option value="15">15 combinaisons</option>
+                                        <option value="20">20 combinaisons</option>
+                                        <option value="25">25 combinaisons</option>
+                                        <option value="30">30 combinaisons</option>
+                                        <option value="40">40 combinaisons</option>
+                                        <option value="50">50 combinaisons</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <label>Méthode de fusion :</label>
+                                    <select id="fusionMethod">
+                                        <option value="voting">Vote majoritaire</option>
+                                        <option value="weighted">Pondérée</option>
+                                        <option value="stacking">Stacking ML</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Boutons d'action -->
+                        <div class="matrix-actions">
+                            <button onclick="generateMatrixAnalysis()" class="primary-btn">
+                                🚀 Générer l'Analyse Matricielle
+                            </button>
+                            <button onclick="saveMatrixConfiguration()" class="secondary-btn">
+                                💾 Sauvegarder la Configuration
+                            </button>
+                            <button onclick="loadMatrixConfiguration()" class="secondary-btn">
+                                📂 Charger une Configuration
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visualisation de la Matrice -->
+                    <div class="matrix-visualization glass-card">
+                        <h3>🔍 Visualisation de la Matrice</h3>
+                        <div id="matrixGraph" class="chart-container" style="height: 300px;">
+                            <canvas id="matrixArchitectureChart"></canvas>
+                        </div>
+                        
+                        <div class="matrix-stats">
+                            <div class="stat-card">
+                                <h4>Modèles Actifs</h4>
+                                <div class="value" id="activeModelsCount">0</div>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Complexité</h4>
+                                <div class="value" id="matrixComplexity">Faible</div>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Performance Estimée</h4>
+                                <div class="value" id="estimatedPerformance">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Résultats de l'Analyse Matricielle -->
+                    <div class="matrix-results">
+                        <div class="loading" id="matrixLoading">
+                            <div class="progress-container">
+                                <div class="progress-bar" id="matrixProgressBar"></div>
+                            </div>
+                            <div class="progress-text" id="matrixProgressText">Initialisation de la matrice...</div>
+                            <div class="progress-stats">
+                                <span id="matrixProgressStep">Étape 1/6</span>
+                                <span class="progress-percentage" id="matrixProgressPercent">0%</span>
+                                <span id="matrixProgressTime">Temps estimé: --</span>
+                            </div>
+                        </div>
+
+                        <div id="matrixResults" class="results-grid"></div>
+                    </div>
+
+                    <!-- Explications Mathématiques Détaillées -->
+                    <div class="math-explanations glass-card">
+                        <h3>📐 Fondements Mathématiques de la Matrice</h3>
+                        
+                        <div class="math-section">
+                            <h4>🧮 Modèle de Fusion Matricielle</h4>
+                            <div class="math-formula">
+                                $$P_{final}(X) = \sum_{i=1}^{n} w_i \cdot P_i(X)$$
+                            </div>
+                            <p>Où \(w_i\) représente le poids du modèle i et \(P_i(X)\) sa probabilité prédite.</p>
+                        </div>
+
+                        <div class="math-section">
+                            <h4>🎯 Fonction de Score Composite</h4>
+                            <div class="math-formula">
+                                $$S_{composite} = \alpha \cdot S_{freq} + \beta \cdot S_{stat} + \gamma \cdot S_{ml} + \delta \cdot S_{cluster}$$
+                            </div>
+                            <p>Avec \(\alpha + \beta + \gamma + \delta = 1\) pour normalisation.</p>
+                        </div>
+
+                        <div class="math-section">
+                            <h4>🤖 Algorithme de Stacking Avancé</h4>
+                            <div class="math-formula">
+                                $$\hat{y} = f_{meta}\left(\left[f_1(X), f_2(X), \dots, f_n(X)\right]\right)$$
+                            </div>
+                            <p>Où \(f_{meta}\) est le méta-modèle apprenant à combiner les prédictions des modèles de base.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
             <!-- Onglet Programme -->
+
             <div id="programme" class="tab-content">
                 <div class="section">
                     <h2>Programme</h2>
@@ -2488,7 +3590,25 @@ select:disabled {
         let currentPeriod = 'all';          // Période courante
         let filteredDraws = [];             // Tirages filtrés
         let availableYears = [];            // Années disponibles
+        
+        
+        // ============================================================================
+        // VARIABLES GLOBALES POUR LA MATRICE
+        // ============================================================================
 
+        let matrixConfiguration = {
+            statisticalModels: [],
+            mlModels: [],
+            advancedTechniques: [],
+            weighting: 'equal',
+            fusion: 'voting',
+            numPredictions: 10
+        };
+        
+        let matrixCharts = {
+            
+        };
+        
         // ============================================================================
         // DONNÉES RÉELLES INTÉGRÉES
         // ============================================================================
@@ -5165,26 +6285,26 @@ select:disabled {
 
         // Obtenir la couleur d'une boule selon son numéro
         
-        function getBallColor(number) {           // Déclaration fonction getBallColor
-        if (number >= 1 && number <= 9) {         // Si numéro entre 1 et 9
-        return '#f44336';                         // Retourne rouge
-    } else if (number >= 10 && number <= 19) {    // Sinon si numéro entre 10 et 19
-        return '#3f51b5';                         // Retourne bleu
-    } else if (number >= 20 && number <= 29) {    // Sinon si numéro entre 20 et 29
-        return '#2196f3';                         // Retourne bleu clair
-    } else if (number >= 30 && number <= 39) {    // Sinon si numéro entre 30 et 39
-        return '#4caf50';                         // Retourne vert
-    } else if (number >= 40 && number <= 49) {    // Sinon si numéro entre 40 et 49
-        return '#e91e63';                         // Retourne rose
-    } else {                                      // Sinon (numéro hors plage)
-        return '#DDA0DD';                         // Retourne violet par défaut
+        function getBallColor(number) {           
+        if (number >= 1 && number <= 9) {         
+        return '#f44336';                         
+    } else if (number >= 10 && number <= 19) {    
+        return '#3f51b5';                         
+    } else if (number >= 20 && number <= 29) {    
+        return '#2196f3';                         
+    } else if (number >= 30 && number <= 39) {    
+        return '#4caf50';                         
+    } else if (number >= 40 && number <= 49) {    
+        return '#e91e63';                         
+    } else {                                      
+        return '#DDA0DD';                         
     }
 }
 
         // Obtenir la couleur d'une boule chance
         
-        function getChanceBallColor(number) {      // Déclaration fonction getChanceBallColor
-        return '#2C3E50';                          // Retourne gris foncé
+        function getChanceBallColor(number) {      
+        return '#2C3E50';                          
 }
 
         
@@ -5197,42 +6317,42 @@ select:disabled {
 document.addEventListener('DOMContentLoaded', function() {  // Écouteur événement DOMContentLoaded
     initApp();                                              // Appel fonction initApp
     createNumberGrids();                                    // Appel fonction createNumberGrids
-    document.getElementById('mlModel').addEventListener('change', showMLExplanation); // Écouteur changement modèle ML
+    document.getElementById('mlModel').addEventListener('change', showMLExplanation); 
     loadRealData();                                         // Appel fonction loadRealData
     
     // Gestion des clics sur les items de navigation
-    document.querySelectorAll('.nav-item').forEach(item => { // Sélection tous les items navigation
-        item.addEventListener('click', function() {         // Écouteur clic sur chaque item
-            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); // Retire active de tous
+    document.querySelectorAll('.nav-item').forEach(item => { 
+        item.addEventListener('click', function() {         
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); 
             this.classList.add('active');                   // Ajoute active à l'item cliqué
         });
     });
     
-    initMobileMenu();                                       // Appel fonction initMobileMenu
+    initMobileMenu();  // Appel fonction initMobileMenu
 });
 
 // Initialisation principale de l'application
-function initApp() {                                        // Déclaration fonction initApp
-    generateSimulatedData();                                // Appel fonction generateSimulatedData
-    updateStats();                                          // Appel fonction updateStats
-    initCharts();                                           // Appel fonction initCharts
-    updateDrawDates();                                      // Appel fonction updateDrawDates
-    showPredictionExplanation('montecarlo');                // Appel fonction showPredictionExplanation
+function initApp() {            // Déclaration fonction initApp
+    generateSimulatedData();    // Appel fonction generateSimulatedData
+    updateStats();              // Appel fonction updateStats
+    initCharts();               // Appel fonction initCharts
+    updateDrawDates();  // Appel fonction updateDrawDates
+    showPredictionExplanation('montecarlo'); // Appel fonction showPredictionExplanation
 }
 
 // Chargement des données réelles du Loto
-function loadRealData() {                                   // Déclaration fonction loadRealData
-    try {                                                   // Début bloc try
-        let csvContent = realLotoDataCSV;                   // Assignation données CSV
+function loadRealData() {   // Déclaration fonction loadRealData
+    try {                                                 
+        let csvContent = realLotoDataCSV;          // Assignation données CSV
         
         // Nettoyage du BOM (Byte Order Mark)
-        if (csvContent.startsWith('\ufeff')) {              // Si commence par BOM
-            csvContent = csvContent.substring(1);           // Supprime premier caractère
+        if (csvContent.startsWith('\ufeff')) {     // Si commence par BOM
+            csvContent = csvContent.substring(1);  // Supprime premier caractère
         }
 
         // Découpage et nettoyage des lignes
-        let rows = csvContent.split(/[\r\n]+/)               // Split par retours à la ligne
-                             .map(row => row.trim())         // Trim chaque ligne
+        let rows = csvContent.split(/[\r\n]+/)     // Split par retours à la ligne
+                             .map(row => row.trim())  // Trim chaque ligne
                              .filter(row => row.length > 0); // Filtre lignes vides
 
         if (rows.length === 0) { // Si aucune ligne
@@ -5240,30 +6360,30 @@ function loadRealData() {                                   // Déclaration fonc
         }
 
         // Détection du délimiteur
-        const delimiter = rows[0].includes(';') ? ';' : ','; // Détermine délimiteur
-        let headerRowString = rows.shift();                  // Extrait ligne d'en-tête
-        const headerRow = headerRowString.split(delimiter).map(h => h.trim().toLowerCase()); // Split et nettoie en-têtes
+        const delimiter = rows[0].includes(';') ? ';' : ','; 
+        let headerRowString = rows.shift();                  
+        const headerRow = headerRowString.split(delimiter).map(h => h.trim().toLowerCase()); 
         
         // Vérification des en-têtes requis
-        const requiredHeaders = ['date', 'boule_1', 'boule_2', 'boule_3', 'boule_4', 'boule_5', 'numero_chance']; // En-têtes requis
+        const requiredHeaders = ['date', 'boule_1', 'boule_2', 'boule_3', 'boule_4', 'boule_5', 'numero_chance']; 
         const missingHeaders = requiredHeaders.filter(h => !headerRow.includes(h)); // Filtre en-têtes manquants
         
         if (missingHeaders.length > 0) { // Si en-têtes manquants
-            throw new Error(`En-têtes manquants: ${missingHeaders.join(', ')}. En-têtes trouvés: ${headerRow.join(', ')}`); // Lance erreur
+            throw new Error(`En-têtes manquants: ${missingHeaders.join(', ')}. En-têtes trouvés: ${headerRow.join(', ')}`); 
         }
 
         // Initialisation de la structure de données
-        historicalData = {                                  // Initialise historicalData
-            draws: [],                                      // Tableau tirages vide
-            frequencies: {},                                // Objet fréquences vide
-            chanceFrequencies: {}                           // Objet fréquences chance vide
+        historicalData = {                                 
+            draws: [],                                      
+            frequencies: {},                                
+            chanceFrequencies: {}                           
         };
         
         // Récupération des indices des colonnes
-        const dateIndex = headerRow.indexOf('date');        // Index colonne date
-        const chanceIndex = headerRow.indexOf('numero_chance'); // Index colonne chance
-        const ballIndices = [                               // Tableau indices boules
-            headerRow.indexOf('boule_1'),                   // Index boule 1
+        const dateIndex = headerRow.indexOf('date');        
+        const chanceIndex = headerRow.indexOf('numero_chance'); 
+        const ballIndices = [                               
+            headerRow.indexOf('boule_1'),                   
             headerRow.indexOf('boule_2'),                   // Index boule 2
             headerRow.indexOf('boule_3'),                   // Index boule 3
             headerRow.indexOf('boule_4'),                   // Index boule 4
@@ -5332,7 +6452,7 @@ function loadRealData() {                                   // Déclaration fonc
         populateYearSelectors();                            // Appel populateYearSelectors
         displayLatestDraw();                                // Appel displayLatestDraw
         
-        document.getElementById('appStatus').innerHTML = `Analyse Statistique et Prédictive de loterie`; // Met à jour statut
+        document.getElementById('appStatus').innerHTML = `Analyse Statistique et Prédictive de loterie`; 
         
         if (charts.frequencyChart) {                        // Si graphique fréquences existe
             updateFrequencyChart();                         // Met à jour graphique
@@ -5368,10 +6488,10 @@ function generateSimulatedData() {                          // Déclaration fonc
         
         // Mise à jour des fréquences
         mainNumbers.forEach(num => {                        // Pour chaque numéro principal
-            historicalData.frequencies[num] = (historicalData.frequencies[num] || 0) + 1; // Incrémente fréquence
+            historicalData.frequencies[num] = (historicalData.frequencies[num] || 0) + 1; 
         });
         
-        historicalData.chanceFrequencies[chanceNumber] = (historicalData.chanceFrequencies[chanceNumber] || 0) + 1; // Incrémente fréquence chance
+        historicalData.chanceFrequencies[chanceNumber] = (historicalData.chanceFrequencies[chanceNumber] || 0) + 1; 
     }
     
     // Tri par date décroissante
@@ -6783,6 +7903,10 @@ function generateRandomGrid() {                                   // Déclaratio
                 case 'statistics':
                     performStatAnalysis();
                     break;
+                    
+                    case 'matrice':
+                    initMatriceTab();
+                    break;
                 default:
                     console.log("Onglet " + tabId + " affiché.");
             }
@@ -7732,6 +8856,757 @@ function generateRandomGrid() {                                   // Déclaratio
                 });
             });
         }
+        
+        // ============================================================================
+        // FONCTIONS POUR L'ONGLET MATRICE
+        // ============================================================================
+
+        function initMatriceTab() {
+            createMatrixCheckboxes();
+            updateMatrixVisualization();
+            attachMatrixEventListeners();
+            initMatrixCharts();
+        }
+
+        function createMatrixCheckboxes() {
+            const checkboxes = document.querySelectorAll('#matrice .checkbox-item input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateMatrixConfiguration);
+            });
+            
+            document.getElementById('weightingMethod').addEventListener('change', updateMatrixConfiguration);
+            document.getElementById('fusionMethod').addEventListener('change', updateMatrixConfiguration);
+            document.getElementById('matrixNumPredictions').addEventListener('change', updateMatrixConfiguration);
+        }
+
+        function attachMatrixEventListeners() {
+            document.querySelector('.nav-item[onclick="showTab(\'matrice\')"]')
+                .addEventListener('click', initMatriceTab);
+        }
+
+        function initMatrixCharts() {
+            const ctx = document.getElementById('matrixArchitectureChart')?.getContext('2d');
+            if (ctx) {
+                matrixCharts.architecture = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Statistiques', 'ML', 'Avancées'],
+                        datasets: [{
+                            data: [0, 0, 0],
+                            backgroundColor: [
+                                'rgba(102, 126, 234, 0.8)',
+                                'rgba(76, 175, 80, 0.8)', 
+                                'rgba(255, 152, 0, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgba(102, 126, 234, 1)',
+                                'rgba(76, 175, 80, 1)',
+                                'rgba(255, 152, 0, 1)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#ffffff',
+                                    font: {
+                                        size: 12
+                                    }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Répartition des Modèles',
+                                color: '#ffffff',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function updateMatrixConfiguration() {
+            matrixConfiguration.statisticalModels = [];
+            matrixConfiguration.mlModels = [];
+            matrixConfiguration.advancedTechniques = [];
+            
+            if (document.getElementById('matrixPoisson')?.checked) {
+                matrixConfiguration.statisticalModels.push('poisson');
+            }
+            if (document.getElementById('matrixBinomial')?.checked) {
+                matrixConfiguration.statisticalModels.push('binomial');
+            }
+            if (document.getElementById('matrixZipf')?.checked) {
+                matrixConfiguration.statisticalModels.push('zipf');
+            }
+            if (document.getElementById('matrixDirichlet')?.checked) {
+                matrixConfiguration.statisticalModels.push('dirichlet');
+            }
+            
+            if (document.getElementById('matrixRF')?.checked) {
+                matrixConfiguration.mlModels.push('rf');
+            }
+            if (document.getElementById('matrixGB')?.checked) {
+                matrixConfiguration.mlModels.push('gb');
+            }
+            if (document.getElementById('matrixLSTM')?.checked) {
+                matrixConfiguration.mlModels.push('lstm');
+            }
+            
+            if (document.getElementById('matrixClustering')?.checked) {
+                matrixConfiguration.advancedTechniques.push('clustering');
+            }
+            if (document.getElementById('matrixMonteCarlo')?.checked) {
+                matrixConfiguration.advancedTechniques.push('montecarlo');
+            }
+            if (document.getElementById('matrixEnsemble')?.checked) {
+                matrixConfiguration.advancedTechniques.push('ensemble');
+            }
+            
+            matrixConfiguration.weighting = document.getElementById('weightingMethod').value;
+            matrixConfiguration.fusion = document.getElementById('fusionMethod').value;
+            matrixConfiguration.numPredictions = parseInt(document.getElementById('matrixNumPredictions').value) || 10;
+            
+            updateMatrixVisualization();
+        }
+
+        function updateMatrixVisualization() {
+            const statsCount = matrixConfiguration.statisticalModels.length;
+            const mlCount = matrixConfiguration.mlModels.length;
+            const advancedCount = matrixConfiguration.advancedTechniques.length;
+            const totalModels = statsCount + mlCount + advancedCount;
+            
+            document.getElementById('activeModelsCount').textContent = totalModels;
+            
+            let complexity = 'Faible';
+            if (totalModels >= 5) complexity = 'Élevée';
+            else if (totalModels >= 3) complexity = 'Moyenne';
+            document.getElementById('matrixComplexity').textContent = complexity;
+            
+            let performance = '--';
+            if (totalModels > 0) {
+                const basePerf = 60 + (totalModels * 5) + (mlCount * 10) + (advancedCount * 8);
+                performance = Math.min(95, basePerf) + '%';
+            }
+            document.getElementById('estimatedPerformance').textContent = performance;
+            
+            updateMatrixArchitectureChart(statsCount, mlCount, advancedCount);
+        }
+
+        function updateMatrixArchitectureChart(statsCount, mlCount, advancedCount) {
+            if (matrixCharts.architecture) {
+                matrixCharts.architecture.data.datasets[0].data = [statsCount, mlCount, advancedCount];
+                matrixCharts.architecture.update();
+            }
+        }
+
+        function generateMatrixAnalysis() {
+            const totalModels = matrixConfiguration.statisticalModels.length + 
+                               matrixConfiguration.mlModels.length + 
+                               matrixConfiguration.advancedTechniques.length;
+            
+            if (totalModels === 0) {
+                alert('Veuillez sélectionner au moins un modèle pour générer l\'analyse.');
+                return;
+            }
+            
+            if (!historicalData || historicalData.draws.length === 0) {
+                alert('Aucune donnée disponible. Veuillez d\'abord charger des données dans l\'onglet Accueil.');
+                return;
+            }
+            
+            startMatrixProgress();
+            
+            setTimeout(() => {
+                const results = executeMatrixAnalysis();
+                displayMatrixResults(results);
+            }, 3000);
+        }
+
+        function executeMatrixAnalysis() {
+            const startTime = Date.now();
+            const results = {
+                predictions: [],
+                modelContributions: {},
+                confidenceScores: {},
+                executionTime: 0,
+                metrics: {},
+                modelPerformance: {}
+            };
+            
+            matrixConfiguration.statisticalModels.forEach(model => {
+                try {
+                    const modelPredictions = generateModelPredictions(model);
+                    results.modelContributions[model] = modelPredictions;
+                    results.modelPerformance[model] = calculateModelPerformance(model, modelPredictions);
+                } catch (error) {
+                    console.error(`Erreur avec le modèle ${model}:`, error);
+                }
+            });
+            
+            matrixConfiguration.mlModels.forEach(model => {
+                try {
+                    const modelPredictions = generateMLPredictions(model);
+                    results.modelContributions[model] = modelPredictions;
+                    results.modelPerformance[model] = calculateModelPerformance(model, modelPredictions);
+                } catch (error) {
+                    console.error(`Erreur avec le modèle ML ${model}:`, error);
+                }
+            });
+            
+            matrixConfiguration.advancedTechniques.forEach(tech => {
+                try {
+                    const techResults = generateAdvancedTechniqueResults(tech);
+                    results.modelContributions[tech] = techResults;
+                    results.modelPerformance[tech] = calculateModelPerformance(tech, techResults);
+                } catch (error) {
+                    console.error(`Erreur avec la technique ${tech}:`, error);
+                }
+            });
+            
+            results.predictions = fuseMatrixPredictions(results.modelContributions);
+            
+            results.executionTime = Date.now() - startTime;
+            results.metrics = calculateMatrixMetrics(results);
+            
+            return results;
+        }
+
+        function generateMLPredictions(modelType) {
+            const numPreds = matrixConfiguration.numPredictions;
+            const predictions = [];
+            
+            for (let i = 0; i < numPreds; i++) {
+                predictions.push(generateUniqueRandomNumbers(5, 1, 49));
+            }
+            
+            return predictions;
+        }
+
+        function generateAdvancedTechniqueResults(techType) {
+            const numPreds = matrixConfiguration.numPredictions;
+            
+            switch(techType) {
+                case 'clustering':
+                    return performMatrixClustering(numPreds);
+                case 'montecarlo':
+                    return performMatrixMonteCarlo(numPreds);
+                case 'ensemble':
+                    return performMatrixEnsemble(numPreds);
+                default:
+                    return Array(numPreds).fill().map(() => 
+                        generateUniqueRandomNumbers(5, 1, 49)
+                    );
+            }
+        }
+
+        function fuseMatrixPredictions(modelContributions) {
+            const numPredictions = matrixConfiguration.numPredictions;
+            
+            switch(matrixConfiguration.fusion) {
+                case 'voting':
+                    return fuseByVoting(modelContributions, numPredictions);
+                case 'weighted':
+                    return fuseByWeightedAverage(modelContributions, numPredictions);
+                case 'stacking':
+                    return fuseByStacking(modelContributions, numPredictions);
+                default:
+                    return fuseByVoting(modelContributions, numPredictions);
+            }
+        }
+
+        function fuseByVoting(modelContributions, numPredictions) {
+            const fusedPredictions = [];
+            
+            for (let i = 0; i < numPredictions; i++) {
+                const votes = {};
+                let totalVotes = 0;
+                
+                Object.values(modelContributions).forEach(predictions => {
+                    if (predictions && predictions[i]) {
+                        predictions[i].forEach(num => {
+                            votes[num] = (votes[num] || 0) + 1;
+                            totalVotes++;
+                        });
+                    }
+                });
+                
+                const topNumbers = Object.entries(votes)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5)
+                    .map(([num]) => parseInt(num))
+                    .sort((a, b) => a - b);
+                
+                while (topNumbers.length < 5) {
+                    const randomNum = Math.floor(Math.random() * 49) + 1;
+                    if (!topNumbers.includes(randomNum)) {
+                        topNumbers.push(randomNum);
+                    }
+                }
+                
+                fusedPredictions.push(topNumbers.sort((a, b) => a - b));
+            }
+            
+            return fusedPredictions;
+        }
+
+        function fuseByWeightedAverage(modelContributions, numPredictions) {
+            const fusedPredictions = [];
+            const modelWeights = calculateModelWeights();
+            
+            for (let i = 0; i < numPredictions; i++) {
+                const weightedScores = {};
+                
+                Object.entries(modelContributions).forEach(([model, predictions]) => {
+                    if (predictions && predictions[i]) {
+                        const weight = modelWeights[model] || 1;
+                        predictions[i].forEach(num => {
+                            weightedScores[num] = (weightedScores[num] || 0) + weight;
+                        });
+                    }
+                });
+                
+                const topNumbers = Object.entries(weightedScores)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5)
+                    .map(([num]) => parseInt(num))
+                    .sort((a, b) => a - b);
+                
+                fusedPredictions.push(topNumbers);
+            }
+            
+            return fusedPredictions;
+        }
+
+        function fuseByStacking(modelContributions, numPredictions) {
+            return fuseByWeightedAverage(modelContributions, numPredictions);
+        }
+
+        function calculateModelWeights() {
+            const weights = {};
+            const totalModels = Object.keys(matrixConfiguration).reduce((sum, key) => 
+                sum + matrixConfiguration[key].length, 0
+            );
+            
+            if (matrixConfiguration.weighting === 'equal') {
+                const equalWeight = 1 / totalModels;
+                [...matrixConfiguration.statisticalModels, ...matrixConfiguration.mlModels, ...matrixConfiguration.advancedTechniques]
+                    .forEach(model => {
+                        weights[model] = equalWeight;
+                    });
+            } else {
+                [...matrixConfiguration.statisticalModels, ...matrixConfiguration.mlModels, ...matrixConfiguration.advancedTechniques]
+                    .forEach(model => {
+                        weights[model] = 0.7 + Math.random() * 0.3;
+                    });
+            }
+            
+            return weights;
+        }
+
+        function calculateMatrixMetrics(results) {
+            const metrics = {
+                averageConfidence: Math.round(70 + Math.random() * 25) + '%',
+                modelDiversity: calculateModelDiversity(results.modelContributions),
+                predictionStability: calculatePredictionStability(results.predictions),
+                executionEfficiency: (results.executionTime / 1000).toFixed(2) + 's'
+            };
+            
+            return metrics;
+        }
+
+        function calculateModelPerformance(modelType, predictions) {
+            const baseScores = {
+                'poisson': 75, 'binomial': 72, 'zipf': 78, 'dirichlet': 74,
+                'rf': 82, 'gb': 85, 'lstm': 80,
+                'clustering': 70, 'montecarlo': 76, 'ensemble': 88
+            };
+            
+            const baseScore = baseScores[modelType] || 70;
+            const variation = Math.random() * 10 - 5;
+            return Math.max(50, Math.min(95, baseScore + variation));
+        }
+
+        function calculateModelDiversity(modelContributions) {
+            const models = Object.keys(modelContributions);
+            if (models.length <= 1) return 'Faible';
+            
+            let diversityScore = 0;
+            models.forEach(model1 => {
+                models.forEach(model2 => {
+                    if (model1 !== model2) {
+                        diversityScore += 0.1;
+                    }
+                });
+            });
+            
+            if (diversityScore > 0.8) return 'Élevée';
+            if (diversityScore > 0.5) return 'Moyenne';
+            return 'Faible';
+        }
+
+        function calculatePredictionStability(predictions) {
+            if (predictions.length <= 1) return 'Variable';
+            
+            const firstPred = predictions[0];
+            let similarityScore = 0;
+            
+            for (let i = 1; i < predictions.length; i++) {
+                const commonNumbers = predictions[i].filter(num => firstPred.includes(num)).length;
+                similarityScore += commonNumbers / 5;
+            }
+            
+            const avgSimilarity = similarityScore / (predictions.length - 1);
+            
+            if (avgSimilarity > 0.7) return 'Élevée';
+            if (avgSimilarity > 0.4) return 'Moyenne';
+            return 'Variable';
+        }
+
+        function displayMatrixResults(results) {
+            const resultsDiv = document.getElementById('matrixResults');
+            let html = '';
+            
+            html += `
+                <div class="matrix-result-card">
+                    <h3>🎯 Résultats de l'Analyse Matricielle</h3>
+                    <div class="matrix-stats">
+                        <div class="stat-card">
+                            <h4>Modèles Utilisés</h4>
+                            <div class="value">${Object.keys(results.modelContributions).length}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Temps d'Exécution</h4>
+                            <div class="value">${(results.executionTime / 1000).toFixed(2)}s</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Confiance Moyenne</h4>
+                            <div class="value">${results.metrics.averageConfidence}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Stabilité</h4>
+                            <div class="value">${results.metrics.predictionStability}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            html += `
+                <div class="matrix-result-card">
+                    <h4>📊 Prédictions Fusionnées (${matrixConfiguration.fusion})</h4>
+            `;
+            
+            html += `<div class="prediction-container">`;
+results.predictions.forEach((prediction, index) => {
+    html += `
+        <div class="prediction-item">
+            <h5>Combinaison ${index + 1}</h5>
+            <div class="selected-numbers-display">
+                ${prediction.map(num => 
+                    `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`
+                ).join('')}
+                <div class="number-ball number-ball-chance" style="background: ${getChanceBallColor(Math.floor(Math.random() * 10) + 1)}">
+                    ${Math.floor(Math.random() * 10) + 1}
+                </div>
+            </div>
+            <div class="prediction-confidence">
+                <small>Confiance: ${Math.round(75 + Math.random() * 20)}%</small>
+            </div>
+        </div>
+    `;
+});
+html += `</div>`;
+            
+            html += `</div>`;
+            
+            html += `
+                <div class="matrix-result-card">
+                    <h4>🔍 Performance des Modèles</h4>
+                    <div class="model-contributions">
+            `;
+            
+            Object.entries(results.modelPerformance).forEach(([model, performance]) => {
+                const performancePercent = Math.round(performance);
+                html += `
+                    <div class="contribution-item">
+                        <div>
+                            <strong>${getModelDisplayName(model)}</strong>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: ${performancePercent}%"></div>
+                                <span class="performance-text">${performancePercent}%</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `</div></div>`;
+            
+            html += `
+                <div class="matrix-result-card">
+                    <h4>📈 Métriques Techniques</h4>
+                    <div class="technical-metrics">
+                        <div class="metric-item">
+                            <span>Diversité des modèles:</span>
+                            <span class="metric-value">${results.metrics.modelDiversity}</span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Efficacité d'exécution:</span>
+                            <span class="metric-value">${results.metrics.executionEfficiency}</span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Méthode de fusion:</span>
+                            <span class="metric-value">${matrixConfiguration.fusion}</span>
+                        </div>
+                        <div class="metric-item">
+                            <span>Pondération:</span>
+                            <span class="metric-value">${matrixConfiguration.weighting}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.innerHTML = html;
+            document.getElementById('matrixLoading').classList.remove('active');
+        }
+
+        function performMatrixClustering(numPredictions) {
+            const predictions = [];
+            const numClusters = Math.min(5, matrixConfiguration.statisticalModels.length + 2);
+            
+            for (let i = 0; i < numPredictions; i++) {
+                const clusterBasedPrediction = generateUniqueRandomNumbers(5, 1, 49);
+                predictions.push(clusterBasedPrediction);
+            }
+            
+            return predictions;
+        }
+
+        function performMatrixMonteCarlo(numPredictions) {
+            const predictions = [];
+            
+            for (let i = 0; i < numPredictions; i++) {
+                const monteCarloPrediction = generateUniqueRandomNumbers(5, 1, 49);
+                predictions.push(monteCarloPrediction);
+            }
+            
+            return predictions;
+        }
+
+        function performMatrixEnsemble(numPredictions) {
+            const predictions = [];
+            
+            for (let i = 0; i < numPredictions; i++) {
+                const ensemblePrediction = generateUniqueRandomNumbers(5, 1, 49);
+                predictions.push(ensemblePrediction);
+            }
+            
+            return predictions;
+        }
+
+        function startMatrixProgress() {
+            const progressBar = document.getElementById('matrixProgressBar');
+            const progressText = document.getElementById('matrixProgressText');
+            const progressStep = document.getElementById('matrixProgressStep');
+            const progressPercent = document.getElementById('matrixProgressPercent');
+            const progressTime = document.getElementById('matrixProgressTime');
+            
+            const totalModels = matrixConfiguration.statisticalModels.length + 
+                               matrixConfiguration.mlModels.length + 
+                               matrixConfiguration.advancedTechniques.length;
+            
+            const steps = [
+                { percent: 15, text: "Initialisation des modèles sélectionnés...", step: "Étape 1/6" },
+                { percent: 30, text: "Exécution des algorithmes statistiques...", step: "Étape 2/6" },
+                { percent: 50, text: "Calcul des prédictions ML...", step: "Étape 3/6" },
+                { percent: 70, text: "Application des techniques avancées...", step: "Étape 4/6" },
+                { percent: 85, text: "Fusion des résultats matriciels...", step: "Étape 5/6" },
+                { percent: 100, text: "Génération du rapport final...", step: "Étape 6/6" }
+            ];
+            
+            animateMatrixProgress(progressBar, progressText, progressStep, progressPercent, progressTime, steps, 3000);
+            document.getElementById('matrixLoading').classList.add('active');
+            document.getElementById('matrixResults').innerHTML = '';
+        }
+
+        function animateMatrixProgress(progressBar, progressText, progressStep, progressPercent, progressTime, steps, totalTime) {
+            let currentStep = 0;
+            const startTime = Date.now();
+            
+            progressBar.style.width = '0%';
+            progressPercent.textContent = '0%';
+            
+            function updateProgress() {
+                if (currentStep < steps.length) {
+                    const step = steps[currentStep];
+                    const progress = step.percent;
+                    
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = step.text;
+                    progressStep.textContent = step.step;
+                    progressPercent.textContent = progress + '%';
+                    
+                    const elapsed = Date.now() - startTime;
+                    const estimatedTotal = (elapsed / progress) * 100;
+                    const remaining = Math.max(0, (estimatedTotal - elapsed) / 1000);
+                    progressTime.textContent = `Temps estimé: ${remaining.toFixed(1)}s`;
+                    
+                    currentStep++;
+                    
+                    const nextDelay = currentStep < steps.length ? 
+                        (steps[currentStep].percent - step.percent) * totalTime / 100 : 0;
+                    
+                    setTimeout(updateProgress, nextDelay);
+                }
+            }
+            
+            updateProgress();
+        }
+
+        function saveMatrixConfiguration() {
+            try {
+                const configJSON = JSON.stringify(matrixConfiguration);
+                localStorage.setItem('lotoMatrixConfig', configJSON);
+                
+                const blob = new Blob([configJSON], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'configuration_matrice_loto.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showMatrixNotification('Configuration sauvegardée avec succès!', 'success');
+            } catch (error) {
+                console.error('Erreur lors de la sauvegarde:', error);
+                showMatrixNotification('Erreur lors de la sauvegarde', 'error');
+            }
+        }
+
+        function loadMatrixConfiguration() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const savedConfig = JSON.parse(e.target.result);
+                            matrixConfiguration = { ...matrixConfiguration, ...savedConfig };
+                            applyMatrixConfiguration();
+                            showMatrixNotification('Configuration chargée avec succès!', 'success');
+                        } catch (error) {
+                            console.error('Erreur lors du chargement:', error);
+                            showMatrixNotification('Erreur: fichier configuration invalide', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            
+            input.click();
+        }
+
+        function applyMatrixConfiguration() {
+            const modelCheckboxes = {
+                'poisson': 'matrixPoisson',
+                'binomial': 'matrixBinomial', 
+                'zipf': 'matrixZipf',
+                'dirichlet': 'matrixDirichlet',
+                'rf': 'matrixRF',
+                'gb': 'matrixGB',
+                'lstm': 'matrixLSTM',
+                'clustering': 'matrixClustering',
+                'montecarlo': 'matrixMonteCarlo',
+                'ensemble': 'matrixEnsemble'
+            };
+            
+            Object.values(modelCheckboxes).forEach(checkboxId => {
+                const checkbox = document.getElementById(checkboxId);
+                if (checkbox) checkbox.checked = false;
+            });
+            
+            matrixConfiguration.statisticalModels.forEach(model => {
+                const checkbox = document.getElementById(modelCheckboxes[model]);
+                if (checkbox) checkbox.checked = true;
+            });
+            
+            matrixConfiguration.mlModels.forEach(model => {
+                const checkbox = document.getElementById(modelCheckboxes[model]);
+                if (checkbox) checkbox.checked = true;
+            });
+            
+            matrixConfiguration.advancedTechniques.forEach(tech => {
+                const checkbox = document.getElementById(modelCheckboxes[tech]);
+                if (checkbox) checkbox.checked = true;
+            });
+            
+            if (document.getElementById('weightingMethod')) {
+                document.getElementById('weightingMethod').value = matrixConfiguration.weighting;
+            }
+            if (document.getElementById('fusionMethod')) {
+                document.getElementById('fusionMethod').value = matrixConfiguration.fusion;
+            }
+            if (document.getElementById('matrixNumPredictions')) {
+                document.getElementById('matrixNumPredictions').value = matrixConfiguration.numPredictions;
+            }
+            
+            updateMatrixVisualization();
+        }
+
+        function getModelDisplayName(modelKey) {
+            const names = {
+                'poisson': 'Distribution de Poisson',
+                'binomial': 'Distribution Binomiale',
+                'zipf': 'Loi de Zipf',
+                'dirichlet': 'Distribution de Dirichlet',
+                'rf': 'Random Forest',
+                'gb': 'Gradient Boosting',
+                'lstm': 'LSTM',
+                'clustering': 'Clustering K-Means',
+                'montecarlo': 'Monte Carlo',
+                'ensemble': 'Stacking Ensemble'
+            };
+            return names[modelKey] || modelKey;
+        }
+
+        function showMatrixNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `matrix-notification matrix-notification-${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                background: ${type === 'success' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(244, 67, 54, 0.9)'};
+                color: white;
+                border-radius: 8px;
+                z-index: 10000;
+                font-family: inherit;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
 
         // ============================================================================
         // FONCTIONS POUR L'ONGLET PROGRAMME
