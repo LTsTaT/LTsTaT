@@ -33,7 +33,6 @@
 
         
         /* === EFFETS DE VERRE === */
-        
         .glass-effect {
             background: var(--glass-bg);                /* Fond verre */
             backdrop-filter: var(--glass-blur);         /* Filtre d'arrière-plan */
@@ -65,8 +64,7 @@
         }
   
         /* Sidebar avec effet glass */
-        
-        .sidebar {
+.sidebar {
             width: var(--sidebar-width);                 /* Largeur barre latérale */
             background-color: var(--secondary-color);    /* Fond barre latérale */
             border-right: 1px solid var(--border-color); /* Bordure droite */
@@ -76,7 +74,7 @@
             z-index: 100;                                /* Ordre d'empilement */
         }
 
-        .main-content {
+.main-content {
             margin-left: var(--sidebar-width); /* Marge gauche */
             flex: 1;                           /* Prend l'espace disponible */
             display: flex;                     /* Affichage flexible */
@@ -86,8 +84,8 @@
         }
 
 
-        /* Header glass */
-    .header {
+/* Header glass */
+.header {
    
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(10px);
@@ -144,190 +142,6 @@ button:hover, .copy-btn:hover {
         }
         
         /* ============================================================================
-   AJUSTEMENTS DES TAILLES DE POLICE PAR ONGLET
-============================================================================ */
-
-#overview .section h2 {
-            font-size: 1.7rem; /* Taille titre accueil */
-        }
-
-        #overview .section p {
-            font-size: 1.05rem; /* Taille paragraphe accueil */
-        }
-
-        #overview .stat-card .value {
-            font-size: 1.1rem; /* Taille valeur statistique */
-        }
-
-        #overview .info-box li {
-            font-size: 0.92rem; /* Taille liste information */
-        }
-
-        #frequencies .section h2 {
-            font-size: 1.7rem; /* Taille titre fréquences */
-        }
-
-        #frequencies .section p {
-            font-size: 1.15rem; /* Taille paragraphe fréquences */
-        }
-
-        #frequencies .info-box p {
-            font-size: 1rem; /* Taille information fréquences */
-        }
-
-        #predictions .section h2 {
-            font-size: 1.7rem; /* Taille titre prédictions */
-        }
-
-        #predictions .section p {
-            font-size: 1.05rem; /* Taille paragraphe prédictions */
-        }
-
-        #predictions .info-box p {
-            font-size: 1rem; /* Taille information prédictions */
-        }
-
-        #predictionExplanations {
-            font-size: 0.95rem; /* Taille explications prédictions */
-        }
-
-        #ml .section h2 {
-            font-size: 1.7rem; /* Taille titre machine learning */
-        }
-
-        #ml .section p {
-            font-size: 1.05rem; /* Taille paragraphe machine learning */
-        }
-
-        #ml .info-box p {
-            font-size: 0.95rem; /* Taille information machine learning */
-        }
-
-        #mlExplanationContent p {
-            font-size: 0.95rem; /* Taille contenu explication ML */
-        }
-
-        #clusters .section h2 {
-            font-size: 1.7rem; /* Taille titre clustering */
-        }
-
-        #clusters .section p {
-            font-size: 1.05rem; /* Taille paragraphe clustering */
-        }
-
-        #clusters .info-box p {
-            font-size: 0.95rem; /* Taille information clustering */
-        }
-
-        #statistics .section h2 {
-            font-size: 1.7rem; /* Taille titre statistiques */
-        }
-
-        #statistics .section p {
-            font-size: 1.05rem; /* Taille paragraphe statistiques */
-        }
-
-        #statistics .info-box p {
-            font-size: 0.95rem; /* Taille information statistiques */
-        }
-
-        #evaluation .section h2 {
-            font-size: 1.7rem; /* Taille titre évaluation */
-        }
-
-        #evaluation .section p {
-            font-size: 1.05rem; /* Taille paragraphe évaluation */
-        }
-
-        #evaluation .info-box p {
-            font-size: 0.95rem; /* Taille information évaluation */
-        }
-
-        #evaluation .grid-title {
-            font-size: 1.1rem; /* Taille titre grille évaluation */
-        }
-
-        #simulation .section h2 {
-            font-size: 1.7rem; /* Taille titre simulation */
-        }
-
-        #simulation .section p {
-            font-size: 1.05rem; /* Taille paragraphe simulation */
-        }
-
-        #simulation .info-box p {
-            font-size: 0.95rem; /* Taille information simulation */
-        }
-
-        #simulation .grid-title {
-            font-size: 1.1rem; /* Taille titre grille simulation */
-        }
-
-        #programme .section h2 {
-            font-size: 1.7rem; /* Taille titre programme */
-        }
-
-        #programme .section p {
-            font-size: 1.05rem; /* Taille paragraphe programme */
-        }
-
-        #programme .info-box p {
-            font-size: 0.95rem; /* Taille information programme */
-        }
-
-        #programme h3 {
-            font-size: 1.4rem; /* Taille sous-titre programme */
-        }
-        
-/* Styles pour les explications ML détaillées */
-        
-.ml-explanation-steps {
-            line-height: 1.2; /* Hauteur ligne réduite */
-        }
-
-        .ml-explanation-steps ol {
-            margin-left: 20px; /* Marge gauche liste */
-            margin-bottom: 1px; /* Marge bas minimale */
-        }
-
-        .ml-explanation-steps li {
-            margin-bottom: 5px; /* Marge bas élément liste */
-        }
-
-        .ml-explanation-steps ul {
-            margin-left: 15px; /* Marge gauche sous-liste */
-            margin-top: 5px; /* Marge haut sous-liste */
-            margin-bottom: 10px; /* Marge bas sous-liste */
-        }
-
-        .ml-explanation-steps strong {
-            color: var(--text-primary); /* Couleur texte fort */
-        }
-
-        .ml-explanation-steps h5 {
-            color: var(--accent-color); /* Couleur titre */
-            margin-bottom: 15px; /* Marge bas */
-            border-bottom: 1px solid var(--border-color); /* Bordure bas */
-            padding-bottom: 10px; /* Marge interne bas */
-        }
-
-
-/* Ajustements généraux supplémentaires */
-
-button, input, select {
-            font-size: 0.95rem; /* Taille police formulaires */
-        }
-
-        .stat-card h4 {
-            font-size: 0.95rem; /* Taille titre statistique */
-        }
-
-        .number-ball, .number-ball-select, .number-ball-chance-select {
-            font-size: 0.95rem; /* Taille police boules */
-        }
-
-
-        /* ============================================================================
            STRUCTURE PRINCIPALE
         ============================================================================ */
         .sidebar {
@@ -366,8 +180,50 @@ button, input, select {
             padding: 15px;    /* Marge interne */
             overflow-y: auto; /* Défilement vertical */
         }
+        
+        
+        /* =======================================================================
+           CONTENU PRINCIPAL
+        ======================================================================== */
+        
+        .tab-content {
+            display: none; /* Masqué par défaut */
+        }
 
-        /* ============================================================================
+        .tab-content.active {
+            display: block;              /* Affiché quand actif */
+            animation: fadeIn 0.3s ease; /* Animation apparition */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; } /* Début transparent */
+            to { opacity: 1; }   /* Fin opaque */
+        }
+
+        .section {
+            background-color: var(--card-bg);      /* Fond section */
+            border: 1px solid var(--border-color); /* Bordure invisible */
+            margin-bottom: 20px;                   /* Marge bas */
+            padding: 20px;                         /* Marge interne */
+        }
+
+        .section h2 {
+            font-size: 1.5rem;          /* Taille police */
+            margin-bottom: 20px;        /* Marge bas */
+            color: var(--text-primary); /* Couleur texte */
+            font-weight: 400;           /* Poids police normal */
+            border-bottom: 1px solid var(--border-color); /* Bordure bas */
+            padding-bottom: 10px;       /* Marge interne bas */
+        }
+
+        .section h3 {
+            font-size: 1.2rem;          /* Taille police */
+            margin: 0px 0 0 0;         /* Marge externe */
+            color: var(--text-primary); /* Couleur texte */
+            font-weight: 400;           /* Poids police normal */
+        }
+        
+         /* ============================================================================
            SIDEBAR STYLES
         ============================================================================ */
         
@@ -452,962 +308,8 @@ button, input, select {
         
         
         /* === STYLES SPÉCIFIQUES À L'ONGLET MATRICE === */
+               
         
-         /* ============================================================================
-   STYLE IDENTIQUE À L'ONGLET PROBABILITÉS POUR LA MATRICE
-============================================================================ */
-
-/* Container des prédictions en grille 3×2 */
-#matrice .prediction-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 15px;
-}
-
-/* Style identique aux cartes de probabilités */
-#matrice .prediction-item {
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-#matrice .prediction-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Titre identique */
-#matrice .prediction-item h5 {
-    margin: 0 0 15px 0;
-    font-size: 1rem;
-    color: var(--text-primary);
-    text-align: center;
-    font-weight: 500;
-}
-
-/* Affichage des numéros identique à Probabilités */
-#matrice .prediction-item .selected-numbers-display {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 5px 0;
-    align-items: center;
-}
-
-/* Boules identiques à Probabilités */
-#matrice .prediction-item .number-ball {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1em;
-    color: white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#matrice .prediction-item .number-ball:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-#matrice .prediction-item .number-ball-chance {
-    background: #1E3A5F !important;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1em;
-    color: white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-        
-#matrice .prediction-item .number-ball-chance:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Indicateur de confiance identique */
-#matrice .prediction-confidence {
-    margin-top: 10px;
-    text-align: center;
-}
-
-#matrice .prediction-confidence small {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    background: rgba(255, 255, 255, 0.1);
-    padding: 4px 10px;
-    border-radius: 10px;
-    font-weight: 500;
-}
-
-/* Responsive identique */
-@media (max-width: 1024px) {
-    #matrice .prediction-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    #matrice .prediction-container {
-        grid-template-columns: 1fr;
-    }
-    
-    #matrice .prediction-item {
-        width: 100%;
-        margin: 10px 0;
-    }
-}
-        /* Cases à cocher personnalisées */
-        
-        .checkmark {
-            position: relative;
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-            margin-right: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox-item input[type="checkbox"]:checked + .checkmark {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-            left: 5px;
-            top: 2px;
-            width: 4px;
-            height: 8px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-
-        .checkbox-item input[type="checkbox"]:checked + .checkmark:after {
-            display: block;
-        }
-
-        /* Paramètres avancés */
-        
-        .advanced-settings {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .settings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .setting-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .setting-item label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Boutons d'action */
-        
-        .matrix-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .primary-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-            padding: 12px 24px !important;
-            font-size: 1rem !important;
-        }
-
-        .secondary-btn {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            padding: 12px 20px !important;
-        }
-
-        /* Visualisation */
-        
-        .matrix-visualization {
-            margin: 25px 0;
-        }
-
-        .matrix-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        /* Résultats */
-        
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .matrix-result-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .prediction-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-        }
-
-        .prediction-item h5 {
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
-
-        .model-contributions {
-            display: grid;
-            gap: 10px;
-        }
-
-        .contribution-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 6px;
-        }
-
-        /* Explications mathématiques */
-        
-        .math-explanations {
-            margin-top: 30px;
-        }
-
-        .math-section {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .math-section:last-child {
-            border-bottom: none;
-        }
-
-        .math-formula {
-            text-align: center;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            font-family: 'MathJax_Math', 'Times New Roman', serif;
-        }
-
-        /* Styles pour les performances */
-        
-        .performance-bar {
-            position: relative;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin: 5px 0;
-            overflow: hidden;
-        }
-
-        .performance-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4caf50, #8bc34a);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-
-        .performance-text {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .technical-metrics {
-            display: grid;
-            gap: 10px;
-        }
-
-        .metric-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 6px;
-        }
-
-        .metric-value {
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        .prediction-confidence {
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        .matrix-notification {
-            to {
-            animation: slideInRight 0.3s ease;
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        
-        /* ============================================================================
-   DISPOSITION HORIZONTALE DES RÉSULTATS MATRICE
-============================================================================ */
-
-#matrice .results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-/* Pour une disposition plus horizontale sur grands écrans */
-@media (min-width: 1200px) {
-    #matrice .results-grid {
-        grid-template-columns: repeat(1, 1fr); /* 2 colonnes côte à côte */
-    }
-}
-
-@media (min-width: 1500px) {
-    #matrice .results-grid {
-        grid-template-columns: repeat(1, 1fr); /* 3 colonnes côte à côte */
-    }
-}
-
-/* Ajustement des cartes de résultats pour mieux s'adapter */
-#matrice .matrix-result-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    height: fit-content; /* S'adapte au contenu */
-    min-height: 1px; /* Hauteur minimale uniforme */
-}
-
-/* Pour que les prédictions s'affichent mieux en horizontal */
-        
-#matrice .prediction-item {
-    margin-bottom: 15px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-}
-
-#matrice .selected-numbers-display {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 10px 0;
-}
-        
-        /* ============================================================================
-   DISPOSITION 3×2 POUR LES PERFORMANCES DES MODÈLES
-   (Même style que les prédictions)
-============================================================================ */
-
-/* Container des performances en grille 3×2 */
-#matrice .model-contributions {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 15px;
-}
-
-/* Style identique aux cartes de prédictions */
-#matrice .contribution-item {
-    padding: 15px;
-    border: 1px solid var(--border-color);
-    background-color: var(--card-bg);
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-#matrice .contribution-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Barre de performance identique au style existant */
-#matrice .performance-bar {
-    position: relative;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    margin: 8px 0;
-    overflow: hidden;
-}
-
-#matrice .performance-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #4caf50, #8bc34a);
-    border-radius: 10px;
-    transition: width 0.5s ease;
-}
-
-#matrice .performance-text {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    #matrice .model-contributions {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    #matrice .model-contributions {
-        grid-template-columns: 1fr;
-    }
-}
-        
-        /* ============================================================================
-   VERSION STYLÉE - MÉTRIQUES TECHNIQUES 2×2
-============================================================================ */
-
-#matrice .technical-metrics {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 20px;
-}
-
-#matrice .metric-item {
-    padding: 20px;
-    border: 1px solid var(--border-color);
-    background: var(--card-bg);
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-    min-height: 21px;
-}
-
-#matrice .metric-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-#matrice .metric-item span:first-child {
-    color: var(--text-primary);
-    font-weight: 500;
-}
-
-#matrice .metric-value {
-    font-weight: bold;
-    color: var(--accent-color);
-    font-size: 1.1rem;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 4px 12px;
-    border-radius: 6px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    #matrice .technical-metrics {
-        grid-template-columns: 1fr;
-    }
-    
-    #matrice .metric-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-        min-height: 100px;
-    }
-}
-
-        /* Amélioration de la barre de progression */
-        
-        #matrixLoading .progress-bar {
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        }
-
-        /* === STYLES EXISTANTS POUR LES AUTRES ONGLETS === */
-        
-        .chart-container {
-            position: relative;
-            height: 400px;
-            margin: 20px 0;
-            background-color: var(--secondary-color);
-            padding: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .results {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: var(--secondary-color);
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .number-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .number-ball {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1em;
-            color: white;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .number-ball:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .number-ball-chance {
-            background: #1E3A5F !important;
-        }
-
-        .prediction-card {
-            padding: 15px;
-            border: 1px solid var(--border-color);
-            width: 31%;
-            min-height: 1px;
-            display: inline-block;
-            margin: 1%;
-            vertical-align: top;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-        }
-
-        .stat-card {
-            background-color: var(--secondary-color);
-            color: var(--text-primary);
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-        }
-
-        .stat-card h4 {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-        }
-
-        .stat-card .value {
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .info-box {
-            background: var(--secondary-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 0 0 25px 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .success-box {
-            background-color: rgba(15, 52, 96, 0.3);
-            border: 1px solid var(--accent-color);
-            padding: 15px;
-            margin: 15px 0;
-            color: var(--text-primary);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background-color: var(--secondary-color);
-            color: var(--text-primary);
-            font-weight: 400;
-        }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* === GRILLES DE SÉLECTION === */
-        
-        .grid-selection {
-            margin: 20px 0;
-        }
-
-        .grid-title {
-            margin-bottom: 15px;
-            font-weight: 400;
-            color: var(--text-primary);
-        }
-
-        .number-grid-select {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-            max-width: 40%;
-        }
-
-        .number-ball-select {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9em;
-            color: white;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .number-ball-select.selected {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-            border: 1px solid #fff;
-        }
-
-        .number-ball-chance-select:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        .chance-grid-select {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-            max-width: 40px;
-        }
-
-        .number-ball-chance-select {
-            border-radius: 50% !important;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.9em;
-            color: white;
-            background-color: var(--highlight-color);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-        }
-
-        .number-ball-chance-select.selected {
-           background: #1E3A5F !important;
-            transform: scale(1.1);
-            border: 2px solid #fff;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .number-ball-chance-select:hover {
-            transform: scale(1.05);
-        }
-
-        .selected-numbers {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: var(--secondary-color);
-            border: 1px solid var(--border-color);
-        }
-
-        .selected-numbers-display {
-            display: flex;
-            gap: 10px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-        }
-
-        /* === RESPONSIVE DESIGN === */
-        
-        @media (max-width: 768px) {
-            .checkbox-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .settings-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .matrix-actions {
-                flex-direction: column;
-            }
-            
-            .matrix-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .number-grid-select {
-                grid-template-columns: repeat(7, 1fr);
-                max-width: 100%;
-            }
-            
-            .prediction-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-        }
-
-        /* Styles responsifs existants... */
-        
-        .mobile-menu-toggle {
-            display: none;
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 1000;
-            background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%);
-            color: white;
-            border: none;
-            padding: 12px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            font-weight: bold;
-            line-height: 1;
-            animation: pulseMenu 2s infinite;
-        }
-
-        @keyframes pulseMenu {
-            0%, 100% {
-                box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(233, 69, 96, 0.6);
-            }
-        }
-
-        .mobile-menu-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
-        }
-        
-
-        /* =======================================================================
-           CONTENU PRINCIPAL
-        ======================================================================== */
-        
-        .tab-content {
-            display: none; /* Masqué par défaut */
-        }
-
-        .tab-content.active {
-            display: block;              /* Affiché quand actif */
-            animation: fadeIn 0.3s ease; /* Animation apparition */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; } /* Début transparent */
-            to { opacity: 1; }   /* Fin opaque */
-        }
-
-        .section {
-            background-color: var(--card-bg);      /* Fond section */
-            border: 1px solid var(--border-color); /* Bordure invisible */
-            margin-bottom: 20px;                   /* Marge bas */
-            padding: 20px;                         /* Marge interne */
-        }
-
-        .section h2 {
-            font-size: 1.5rem;          /* Taille police */
-            margin-bottom: 20px;        /* Marge bas */
-            color: var(--text-primary); /* Couleur texte */
-            font-weight: 400;           /* Poids police normal */
-            border-bottom: 1px solid var(--border-color); /* Bordure bas */
-            padding-bottom: 10px;       /* Marge interne bas */
-        }
-
-        .section h3 {
-            font-size: 1.2rem;          /* Taille police */
-            margin: 0px 0 0 0;         /* Marge externe */
-            color: var(--text-primary); /* Couleur texte */
-            font-weight: 400;           /* Poids police normal */
-        }
-
-        /* ============================================================================
-           BARREGRAPHE HORIZONTAL
-        ============================================================================ */
-
-        .loading {
-            display: none;       /* Masqué par défaut */
-            text-align: center;  /* Alignement texte centre */
-            padding: 1px 1px;    /* Marge interne minimale */
-            color: var(--text-secondary); /* Couleur texte secondaire */
-        }
-
-        .loading.active {
-            display: block; /* Affiché quand actif */
-        }
-
-        .progress-container {
-            width: 100%;       /* Largeur pleine */
-            max-width: 500px;  /* Largeur maximum */
-            margin: 20px auto; /* Marge externe centrée */
-            background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
-            border-radius: 8px; /* Coins arrondis */
-            overflow: hidden;    /* Cache débordement */
-            backdrop-filter: blur(10px); /* Flou arrière-plan */
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombre */
-        }
-
-        .progress-bar {
-            height: 12px; /* Hauteur barre 12px */
-            background: linear-gradient(90deg, 
-                #1976d2 0%, 
-                #66bb6a 50%, 
-                #388e3c 100%); /* Dégradé couleur */
-            border-radius: 8px; /* Coins arrondis */
-            width: 0%;         /* Largeur initiale nulle */
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);/* Transition largeur */
-            position: relative; /* Position relative */
-            overflow: hidden;   /* Cache débordement */
-        }
-
-        .progress-bar::after {
-            content: '';        /* Contenu vide */
-            position: absolute; /* Position absolue */
-            top: 0;             /* Position haut */
-            left: -100%;        /* Position gauche cachée */
-            width: 50%;         /* Largeur moitié */
-            height: 100%;       /* Hauteur pleine */
-            background: linear-gradient(90deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.4) 50%,
-                transparent 100%);        /* Dégradé brillant */
-            animation: shine 2s infinite; /* Animation infinie */
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }  /* Début gauche caché */
-            100% { left: 200%; } /* Fin droite cachée */
-        }
-
-        .progress-text {
-            margin-top: 15px;           /* Marge haut */
-            font-size: 1.1em;           /* Taille police */
-            font-weight: 500;           /* Poids police moyen */
-            color: var(--text-primary); /* Couleur texte */
-        }
-
-        .progress-stats {
-            display: flex;                  /* Affichage flexible */
-            justify-content: space-between; /* Espacement entre éléments */
-            margin-top: 10px;               /* Marge haut */
-            font-size: 0.9em;               /* Taille police petite */
-            color: var(--text-secondary);   /* Couleur texte secondaire */
-        }
-
-        .progress-percentage {
-            font-weight: bold; /* Texte gras */
-            color: #667eea;    /* Couleur bleue */
-            font-size: 1.2em;  /* Taille police */
-        }
-
-        @keyframes pulseText {
-            0%, 100% { opacity: 1; } /* Pleine opacité */
-            50% { opacity: 0.7; }    /* Opacité réduite */
-        }
-
-        .progress-text {
-            animation: pulseText 2s infinite; /* Animation pulsation */
-        }
-
         /* ============================================================================
            COMPOSANTS DE FORMULAIRE
         ============================================================================ */
@@ -1455,70 +357,8 @@ button, input, select {
         button:hover {
             background-color: var(--highlight-color); /* Fond survol */
         }
-
-        /* ============================================================================
-   STYLE GLASS POUR LES MENUS DÉROULANTS
-============================================================================ */
-
-select {
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.1) 0%, 
-                rgba(255, 255, 255, 0.05) 100%) !important; /* Dégradé fond */
-            backdrop-filter: blur(10px) !important;         /* Flou arrière-plan */
-            -webkit-backdrop-filter: blur(10px) !important; /* Flou Safari */
-            border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Bordure transparente */
-            border-radius: 8px !important;                  /* Coins arrondis */
-            color: var(--text-primary) !important;          /* Couleur texte */
-            padding: 12px 15px !important;                  /* Marge interne */
-            font-size: 0.95rem !important;                  /* Taille police */
-            cursor: pointer !important;                     /* Curseur pointeur */
-            transition: all 0.3s ease !important;           /* Transition douce */
-            appearance: none !important;                    /* Pas d'apparence native */
-            -webkit-appearance: none !important;            /* Pas d'apparence Safari */
-            -moz-appearance: none !important;               /* Pas d'apparence Firefox */
-        }
-
-
-/* Flèche personnalisée */
-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%23f0f0f0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-    background-repeat: no-repeat !important;
-    background-position: right 15px center !important;
-    background-size: 12px !important;
-    padding-right: 40px !important;
-}
-
-/* Effet au survol */
-select:hover {
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.08) 100%) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Effet quand ouvert */
-select:focus {
-    outline: none !important;
-    border-color: rgba(255, 255, 255, 0.4) !important;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Options du menu déroulant */
-select option {
-    background: var(--primary-color) !important;
-    color: var(--text-primary) !important;
-    border: none !important;
-    padding: 12px 15px !important;
-}
-
-/* Style pour les selects désactivés */
-select:disabled {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
-}
-
+        
+        
         /* ============================================================================
            COMPOSANTS SPÉCIFIQUES
         ============================================================================ */
@@ -1656,9 +496,161 @@ select:disabled {
          tr:hover {
             background-color: rgba(255, 255, 255, 0.05); /* Fond survol ligne */
         }
-
-
+        
+        
         /* ============================================================================
+    BARREGRAPHE HORIZONTAL
+============================================================================ */
+
+        .loading {
+            display: none;       /* Masqué par défaut */
+            text-align: center;  /* Alignement texte centre */
+            padding: 1px 1px;    /* Marge interne minimale */
+            color: var(--text-secondary); /* Couleur texte secondaire */
+        }
+
+        .loading.active {
+            display: block; /* Affiché quand actif */
+        }
+
+        .progress-container {
+            width: 100%;       /* Largeur pleine */
+            max-width: 500px;  /* Largeur maximum */
+            margin: 20px auto; /* Marge externe centrée */
+            background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+            border-radius: 8px; /* Coins arrondis */
+            overflow: hidden;    /* Cache débordement */
+            backdrop-filter: blur(10px); /* Flou arrière-plan */
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombre */
+        }
+
+        .progress-bar {
+            height: 12px; /* Hauteur barre 12px */
+            background: linear-gradient(90deg, 
+                #1976d2 0%, 
+                #66bb6a 50%, 
+                #388e3c 100%); /* Dégradé couleur */
+            border-radius: 8px; /* Coins arrondis */
+            width: 0%;         /* Largeur initiale nulle */
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);/* Transition largeur */
+            position: relative; /* Position relative */
+            overflow: hidden;   /* Cache débordement */
+        }
+
+        .progress-bar::after {
+            content: '';        /* Contenu vide */
+            position: absolute; /* Position absolue */
+            top: 0;             /* Position haut */
+            left: -100%;        /* Position gauche cachée */
+            width: 50%;         /* Largeur moitié */
+            height: 100%;       /* Hauteur pleine */
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent 100%);        /* Dégradé brillant */
+            animation: shine 2s infinite; /* Animation infinie */
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }  /* Début gauche caché */
+            100% { left: 200%; } /* Fin droite cachée */
+        }
+
+        .progress-text {
+            margin-top: 15px;           /* Marge haut */
+            font-size: 1.1em;           /* Taille police */
+            font-weight: 500;           /* Poids police moyen */
+            color: var(--text-primary); /* Couleur texte */
+        }
+
+        .progress-stats {
+            display: flex;                  /* Affichage flexible */
+            justify-content: space-between; /* Espacement entre éléments */
+            margin-top: 10px;               /* Marge haut */
+            font-size: 0.9em;               /* Taille police petite */
+            color: var(--text-secondary);   /* Couleur texte secondaire */
+        }
+
+        .progress-percentage {
+            font-weight: bold; /* Texte gras */
+            color: #667eea;    /* Couleur bleue */
+            font-size: 1.2em;  /* Taille police */
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; } /* Pleine opacité */
+            50% { opacity: 0.7; }    /* Opacité réduite */
+        }
+
+        .progress-text {
+            animation: pulseText 2s infinite; /* Animation pulsation */
+        }
+        
+        /* ============================================================================
+   STYLE GLASS POUR LES MENUS DÉROULANTS
+============================================================================ */
+
+select {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 100%) !important; /* Dégradé fond */
+            backdrop-filter: blur(10px) !important;         /* Flou arrière-plan */
+            -webkit-backdrop-filter: blur(10px) !important; /* Flou Safari */
+            border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Bordure transparente */
+            border-radius: 8px !important;                  /* Coins arrondis */
+            color: var(--text-primary) !important;          /* Couleur texte */
+            padding: 12px 15px !important;                  /* Marge interne */
+            font-size: 0.95rem !important;                  /* Taille police */
+            cursor: pointer !important;                     /* Curseur pointeur */
+            transition: all 0.3s ease !important;           /* Transition douce */
+            appearance: none !important;                    /* Pas d'apparence native */
+            -webkit-appearance: none !important;            /* Pas d'apparence Safari */
+            -moz-appearance: none !important;               /* Pas d'apparence Firefox */
+        }
+
+
+/* Flèche personnalisée */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 5L6 8L9 5' stroke='%23f0f0f0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 12px !important;
+    padding-right: 40px !important;
+}
+
+/* Effet au survol */
+select:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.08) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Effet quand ouvert */
+select:focus {
+    outline: none !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Options du menu déroulant */
+select option {
+    background: var(--primary-color) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    padding: 12px 15px !important;
+}
+
+/* Style pour les selects désactivés */
+select:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
+/* ============================================================================
            GRILLES DE SÉLECTION
         ============================================================================ */
         .grid-selection {
@@ -1714,7 +706,7 @@ select:disabled {
         }
 
 /* ============================================================================
-   CORRECTION DES BOULES CHANCE CARRÉES
+   CORRECTION DES BOULES CHANCE 
 ============================================================================ */
 
 .number-ball-chance-select {
@@ -2303,11 +1295,197 @@ select:disabled {
     transition: all 0.2s ease;
 }
         
+        
+        
 /* ============================================================================
-       RÉGLAGE DES ESPACES - PAGE D'ACCUEIL
-    ============================================================================ */
-    
-     /* === RÉGLAGE DES ESPACES - PAGE D'ACCUEIL === */
+   AJUSTEMENTS DES TAILLES DE POLICE PAR ONGLET
+============================================================================ */
+
+#overview .section h2 {
+            font-size: 1.7rem; /* Taille titre accueil */
+        }
+
+        #overview .section p {
+            font-size: 1.05rem; /* Taille paragraphe accueil */
+        }
+
+        #overview .stat-card .value {
+            font-size: 1.1rem; /* Taille valeur statistique */
+        }
+
+        #overview .info-box li {
+            font-size: 0.92rem; /* Taille liste information */
+        }
+
+        #frequencies .section h2 {
+            font-size: 1.7rem; /* Taille titre fréquences */
+        }
+
+        #frequencies .section p {
+            font-size: 1.15rem; /* Taille paragraphe fréquences */
+        }
+
+        #frequencies .info-box p {
+            font-size: 1rem; /* Taille information fréquences */
+        }
+
+        #predictions .section h2 {
+            font-size: 1.7rem; /* Taille titre prédictions */
+        }
+
+        #predictions .section p {
+            font-size: 1.05rem; /* Taille paragraphe prédictions */
+        }
+
+        #predictions .info-box p {
+            font-size: 1rem; /* Taille information prédictions */
+        }
+
+        #predictionExplanations {
+            font-size: 0.95rem; /* Taille explications prédictions */
+        }
+
+        #ml .section h2 {
+            font-size: 1.7rem; /* Taille titre machine learning */
+        }
+
+        #ml .section p {
+            font-size: 1.05rem; /* Taille paragraphe machine learning */
+        }
+
+        #ml .info-box p {
+            font-size: 0.95rem; /* Taille information machine learning */
+        }
+
+        #mlExplanationContent p {
+            font-size: 0.95rem; /* Taille contenu explication ML */
+        }
+
+        #clusters .section h2 {
+            font-size: 1.7rem; /* Taille titre clustering */
+        }
+
+        #clusters .section p {
+            font-size: 1.05rem; /* Taille paragraphe clustering */
+        }
+
+        #clusters .info-box p {
+            font-size: 0.95rem; /* Taille information clustering */
+        }
+
+        #statistics .section h2 {
+            font-size: 1.7rem; /* Taille titre statistiques */
+        }
+
+        #statistics .section p {
+            font-size: 1.05rem; /* Taille paragraphe statistiques */
+        }
+
+        #statistics .info-box p {
+            font-size: 0.95rem; /* Taille information statistiques */
+        }
+
+        #evaluation .section h2 {
+            font-size: 1.7rem; /* Taille titre évaluation */
+        }
+
+        #evaluation .section p {
+            font-size: 1.05rem; /* Taille paragraphe évaluation */
+        }
+
+        #evaluation .info-box p {
+            font-size: 0.95rem; /* Taille information évaluation */
+        }
+
+        #evaluation .grid-title {
+            font-size: 1.1rem; /* Taille titre grille évaluation */
+        }
+
+        #simulation .section h2 {
+            font-size: 1.7rem; /* Taille titre simulation */
+        }
+
+        #simulation .section p {
+            font-size: 1.05rem; /* Taille paragraphe simulation */
+        }
+
+        #simulation .info-box p {
+            font-size: 0.95rem; /* Taille information simulation */
+        }
+
+        #simulation .grid-title {
+            font-size: 1.1rem; /* Taille titre grille simulation */
+        }
+
+        #programme .section h2 {
+            font-size: 1.7rem; /* Taille titre programme */
+        }
+
+        #programme .section p {
+            font-size: 1.05rem; /* Taille paragraphe programme */
+        }
+
+        #programme .info-box p {
+            font-size: 0.95rem; /* Taille information programme */
+        }
+
+        #programme h3 {
+            font-size: 1.4rem; /* Taille sous-titre programme */
+        }
+        
+/* Styles pour les explications ML détaillées */
+        
+.ml-explanation-steps {
+            line-height: 1.2; /* Hauteur ligne réduite */
+        }
+
+        .ml-explanation-steps ol {
+            margin-left: 20px; /* Marge gauche liste */
+            margin-bottom: 1px; /* Marge bas minimale */
+        }
+
+        .ml-explanation-steps li {
+            margin-bottom: 5px; /* Marge bas élément liste */
+        }
+
+        .ml-explanation-steps ul {
+            margin-left: 15px; /* Marge gauche sous-liste */
+            margin-top: 5px; /* Marge haut sous-liste */
+            margin-bottom: 10px; /* Marge bas sous-liste */
+        }
+
+        .ml-explanation-steps strong {
+            color: var(--text-primary); /* Couleur texte fort */
+        }
+
+        .ml-explanation-steps h5 {
+            color: var(--accent-color); /* Couleur titre */
+            margin-bottom: 15px; /* Marge bas */
+            border-bottom: 1px solid var(--border-color); /* Bordure bas */
+            padding-bottom: 10px; /* Marge interne bas */
+        }
+
+
+/* Ajustements généraux supplémentaires */
+
+button, input, select {
+            font-size: 0.95rem; /* Taille police formulaires */
+        }
+
+        .stat-card h4 {
+            font-size: 0.95rem; /* Taille titre statistique */
+        }
+
+        .number-ball, .number-ball-select, .number-ball-chance-select {
+            font-size: 0.95rem; /* Taille police boules */
+        }
+        
+        
+        * ============================================================================
+  AJUSTEMENT ESPACE PAR ONGLET
+============================================================================ */
+
+    /* === RÉGLAGE DES ESPACES - PAGE D'ACCUEIL === */
 
         #overview .section p {
             margin-bottom: 30px; /* Marge bas paragraphe accueil */
@@ -2348,12 +1526,10 @@ select:disabled {
             margin: 1px 0 0 0; /* Marge haut bouton */
             width: 100%;       /* Largeur pleine */
         }
-
-              /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET MACHINE LEARNING
-    ============================================================================ */
-    
-    /* Titre principal */
+        
+         /* === RÉGLAGE DES ESPACES - ML === */
+         
+          /* Titre principal */
     #ml .section h2 {
         margin-bottom: 20px;
     }
@@ -2417,9 +1593,9 @@ select:disabled {
         margin: 0 0 0px 0;
     }
     
-              /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET FRÉQUENCES
-    ============================================================================ */
+    
+    /* === RÉGLAGE DES ESPACES - ONGLET CLUSTERING === */
+    
     #frequencies .section h2 {
         margin-bottom: 20px;
     }
@@ -2452,49 +1628,10 @@ select:disabled {
     }
 
 
-    /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET Probabilités
-    ============================================================================ */
-   #predictions .section h2 {
-        margin-bottom: 15px;
-    }
+    /* === RÉGLAGE DES ESPACES - ONGLET CLUSTERING === */
     
-    #predictions .section p {
-        margin-bottom: 20px;
-    }
     
-    #predictions .control-group {
-        margin: 0 0 20px 0;
-        padding: 20px;
-    }
-    
-    #predictions .section select,
-    #predictions .section input,
-    #predictions .section button {
-        margin: 0 0px 10px 0;
-    }
-    
-    #predictionExplanations {
-        margin: 20px 0;
-    }
-    
-    #predLoading {
-        margin: 20px 0;
-    }
-    
-    #predResults {
-        margin: 20px 0;
-    }
-    
-    #predictions .info-box {
-        margin: 0 0 25px 0;
-        padding: 20px;
-    }
-
-    /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET CLUSTERING
-    ============================================================================ */
-    #clusters .section h2 {
+#clusters .section h2 {
         margin-bottom: 20px;
     }
     
@@ -2524,11 +1661,10 @@ select:disabled {
         margin: 0 0 25px 0;
         padding: 20px;
     }
-        
-    /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET STATISTIQUES
-    ============================================================================ */
-    #statistics .section h2 {
+    
+     /* === RÉGLAGE DES ESPACES - ONGLET STATISTIQUES === */
+     
+     #statistics .section h2 {
         margin-bottom: 20px;
     }
     
@@ -2553,10 +1689,9 @@ select:disabled {
     #statResults {
         margin: 20px 0;
     }
-
-    /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET ÉVALUATION
-    ============================================================================ */
+    
+    /* === RÉGLAGE DES ESPACES - ONGLET ÉVALUATION === */
+    
     #evaluation .section h2 {
         margin-bottom: 20px;
     }
@@ -2594,11 +1729,10 @@ select:disabled {
     #evalResults {
         margin: 20px 0;
     }
-
-    /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET SIMULATION
-    ============================================================================ */
-    #simulation .section h2 {
+    
+    /* === RÉGLAGE DES ESPACES - ONGLET SIMULATION === */
+    
+     #simulation .section h2 {
         margin-bottom: 20px;
     }
     
@@ -2650,11 +1784,10 @@ select:disabled {
         margin: 0 0 25px 0;
         padding: 20px;
     }
-
-    /* ============================================================================
-       RÉGLAGE DES ESPACES - ONGLET PROGRAMME
-    ============================================================================ */
-    #programme .section h2 {
+    
+     /* === RÉGLAGE DES ESPACES - ONGLET PROGRAMME === */
+     
+     #programme .section h2 {
         margin-bottom: px;
     }
     
@@ -2688,8 +1821,834 @@ select:disabled {
         margin: 0 0 25px 0;
         padding: 20px;
     }
+    
+     /* ============================================================================
+   ONGLET MATRICE
+============================================================================ */
 
-/* === CORRECTIONS ARTÉFACTS VISUELS === */
+/* Container des prédictions en grille 3×2 */
+#matrice .prediction-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Style identique aux cartes de probabilités */
+#matrice .prediction-item {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#matrice .prediction-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Titre identique */
+#matrice .prediction-item h5 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Affichage des numéros identique à Probabilités */
+#matrice .prediction-item .selected-numbers-display {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px 0;
+    align-items: center;
+}
+
+/* Boules identiques à Probabilités */
+#matrice .prediction-item .number-ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#matrice .prediction-item .number-ball:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#matrice .prediction-item .number-ball-chance {
+    background: #1E3A5F !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1em;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+        
+#matrice .prediction-item .number-ball-chance:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Indicateur de confiance identique */
+#matrice .prediction-confidence {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#matrice .prediction-confidence small {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+/* Responsive identique */
+@media (max-width: 1024px) {
+    #matrice .prediction-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #matrice .prediction-container {
+        grid-template-columns: 1fr;
+    }
+    
+    #matrice .prediction-item {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+        /* Cases à cocher personnalisées */
+        
+        .checkmark {
+            position: relative;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkmark {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkmark:after {
+            display: block;
+        }
+
+        /* Paramètres avancés */
+        
+        .advanced-settings {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .setting-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .setting-item label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Boutons d'action */
+        
+        .matrix-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            padding: 12px 24px !important;
+            font-size: 1rem !important;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            padding: 12px 20px !important;
+        }
+
+        /* Visualisation */
+        
+        .matrix-visualization {
+            margin: 25px 0;
+        }
+
+        .matrix-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Résultats */
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .matrix-result-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .prediction-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .prediction-item h5 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .model-contributions {
+            display: grid;
+            gap: 10px;
+        }
+
+        .contribution-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+        }
+
+        /* Explications mathématiques */
+        
+        .math-explanations {
+            margin-top: 30px;
+        }
+
+        .math-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .math-section:last-child {
+            border-bottom: none;
+        }
+
+        .math-formula {
+            text-align: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            font-family: 'MathJax_Math', 'Times New Roman', serif;
+        }
+
+        /* Styles pour les performances */
+        
+        .performance-bar {
+            position: relative;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+
+        .performance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .performance-text {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .technical-metrics {
+            display: grid;
+            gap: 10px;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .prediction-confidence {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .matrix-notification {
+            to {
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        
+        /* ============================================================================
+   DISPOSITION HORIZONTALE DES RÉSULTATS MATRICE
+============================================================================ */
+
+#matrice .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Pour une disposition plus horizontale sur grands écrans */
+@media (min-width: 1200px) {
+    #matrice .results-grid {
+        grid-template-columns: repeat(1, 1fr); /* 2 colonnes côte à côte */
+    }
+}
+
+@media (min-width: 1500px) {
+    #matrice .results-grid {
+        grid-template-columns: repeat(1, 1fr); /* 3 colonnes côte à côte */
+    }
+}
+
+/* Ajustement des cartes de résultats pour mieux s'adapter */
+#matrice .matrix-result-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: fit-content; /* S'adapte au contenu */
+    min-height: 1px; /* Hauteur minimale uniforme */
+}
+
+/* Pour que les prédictions s'affichent mieux en horizontal */
+        
+#matrice .prediction-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+#matrice .selected-numbers-display {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+        
+        /* ============================================================================
+    DISPOSITION PERFORMANCES DES MODÈLES 3X2 
+============================================================================ */
+
+/* Container des performances en grille 3×2 */
+#matrice .model-contributions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Style identique aux cartes de prédictions */
+#matrice .contribution-item {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#matrice .contribution-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Barre de performance identique au style existant */
+#matrice .performance-bar {
+    position: relative;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+#matrice .performance-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+#matrice .performance-text {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    #matrice .model-contributions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    #matrice .model-contributions {
+        grid-template-columns: 1fr;
+    }
+}
+        
+        /* ============================================================================
+  DISPOSITION MÉTRIQUES TECHNIQUES 2×2
+============================================================================ */
+
+#matrice .technical-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#matrice .metric-item {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    min-height: 21px;
+}
+
+#matrice .metric-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+#matrice .metric-item span:first-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+#matrice .metric-value {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #matrice .technical-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    #matrice .metric-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        min-height: 100px;
+    }
+}
+
+        /* Amélioration de la barre de progression */
+        
+        #matrixLoading .progress-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        /* === STYLES EXISTANTS POUR LES AUTRES ONGLETS === */
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .number-ball {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+            color: white;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .number-ball:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .number-ball-chance {
+            background: #1E3A5F !important;
+        }
+
+        .prediction-card {
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            width: 31%;
+            min-height: 1px;
+            display: inline-block;
+            margin: 1%;
+            vertical-align: top;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+        }
+
+        .stat-card {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .stat-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card .value {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-box {
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 0 25px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-box {
+            background-color: rgba(15, 52, 96, 0.3);
+            border: 1px solid var(--accent-color);
+            padding: 15px;
+            margin: 15px 0;
+            color: var(--text-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* === GRILLES DE SÉLECTION === */
+        
+        .grid-selection {
+            margin: 20px 0;
+        }
+
+        .grid-title {
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .number-grid-select {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            max-width: 40%;
+        }
+
+        .number-ball-select {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: white;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .number-ball-select.selected {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #fff;
+        }
+
+        .number-ball-chance-select:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .chance-grid-select {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            max-width: 40px;
+        }
+
+        .number-ball-chance-select {
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: white;
+            background-color: var(--highlight-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .number-ball-chance-select.selected {
+           background: #1E3A5F !important;
+            transform: scale(1.1);
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .number-ball-chance-select:hover {
+            transform: scale(1.05);
+        }
+
+        .selected-numbers {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .selected-numbers-display {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        
+        @media (max-width: 768px) {
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .matrix-actions {
+                flex-direction: column;
+            }
+            
+            .matrix-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .number-grid-select {
+                grid-template-columns: repeat(7, 1fr);
+                max-width: 100%;
+            }
+            
+            .prediction-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Styles responsifs existants... */
+        
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            line-height: 1;
+            animation: pulseMenu 2s infinite;
+        }
+
+        @keyframes pulseMenu {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(233, 69, 96, 0.6);
+            }
+        }
+
+        .mobile-menu-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+        }
+     
+* ============================================================================
+  CORRECTIONS ARTÉFACTS VISUELS
+============================================================================ */
+
 
         .glass-card {
             background: rgba(255, 255, 255, 0.06); /* Fond semi-transparent */
@@ -2730,6 +2689,7 @@ select:disabled {
 <body>
     
     <!-- Bouton menu hamburger -->
+    
     <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
 
     <!-- Overlay pour fermer le menu -->
@@ -9333,6 +9293,63 @@ function generateRandomGrid() {                                   // Déclaratio
                 displayMatrixResults(results);
             }, 3000);
         }
+                
+                // ============================================================================
+// FONCTION MANQUANTE POUR LA MATRICE
+// ============================================================================
+
+/**
+ * Génère des prédictions pour un modèle statistique donné
+ * @param {string} modelType - Type de modèle ('poisson', 'binomial', 'zipf', 'dirichlet')
+ * @returns {Array} - Tableau de prédictions (tableaux de 5 numéros)
+ */
+function generateModelPredictions(modelType) {
+    const numPreds = matrixConfiguration.numPredictions || 10;
+    
+    console.log(`🎲 Génération ${numPreds} prédictions pour ${modelType}`);
+    
+    try {
+        switch(modelType) {
+            case 'poisson':
+                return poissonPrediction(historicalData.frequencies, numPreds);
+                
+            case 'binomial':
+                const binomialResult = binomialPrediction(historicalData.frequencies, numPreds);
+                return binomialResult.predictions;
+                
+            case 'zipf':
+                return zipfPrediction(historicalData.frequencies, numPreds);
+                
+            case 'dirichlet':
+                const dirichletResult = dirichletPrediction(historicalData.frequencies, numPreds);
+                return dirichletResult.predictions;
+                
+            case 'gamma':
+                const gammaResult = gammaPrediction(historicalData.frequencies, numPreds);
+                return gammaResult.predictions;
+                
+            case 'student':
+                const studentResult = studentTestPrediction(historicalData.frequencies, numPreds);
+                return studentResult.predictions;
+                
+            case 'montecarlo':
+                const mcResult = monteCarloAdvanced(historicalData.frequencies, 5000, numPreds);
+                return mcResult.predictions.map(pred => pred.main);
+                
+            default:
+                console.warn(`⚠️ Modèle ${modelType} non reconnu, génération aléatoire`);
+                return Array(numPreds).fill().map(() => 
+                    generateUniqueRandomNumbers(5, 1, 49)
+                );
+        }
+    } catch (error) {
+        console.error(`❌ Erreur génération ${modelType}:`, error);
+        // Fallback : génération aléatoire
+        return Array(numPreds).fill().map(() => 
+            generateUniqueRandomNumbers(5, 1, 49)
+        );
+    }
+}
 
         function executeMatrixAnalysis() {
             const startTime = Date.now();
@@ -9908,7 +9925,9 @@ html += `</div>`;
                 notification.remove();
             }, 3000);
         }
-
+        
+        
     </script>
 </body>
 </html>
+
