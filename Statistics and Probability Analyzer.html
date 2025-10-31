@@ -33,6 +33,7 @@
 
         
         /* === EFFETS DE VERRE === */
+        
         .glass-effect {
             background: var(--glass-bg);                /* Fond verre */
             backdrop-filter: var(--glass-blur);         /* Filtre d'arrière-plan */
@@ -64,7 +65,8 @@
         }
   
         /* Sidebar avec effet glass */
-.sidebar {
+        
+        .sidebar {
             width: var(--sidebar-width);                 /* Largeur barre latérale */
             background-color: var(--secondary-color);    /* Fond barre latérale */
             border-right: 1px solid var(--border-color); /* Bordure droite */
@@ -74,7 +76,7 @@
             z-index: 100;                                /* Ordre d'empilement */
         }
 
-.main-content {
+        .main-content {
             margin-left: var(--sidebar-width); /* Marge gauche */
             flex: 1;                           /* Prend l'espace disponible */
             display: flex;                     /* Affichage flexible */
@@ -84,8 +86,8 @@
         }
 
 
-/* Header glass */
-.header {
+        /* Header glass */
+    .header {
    
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(10px);
@@ -496,20 +498,20 @@ button, input, select {
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 10px 0;
+    margin: 5px 0;
     align-items: center;
 }
 
 /* Boules identiques à Probabilités */
 #matrice .prediction-item .number-ball {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 1em;
     color: white;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -522,19 +524,19 @@ button, input, select {
 
 #matrice .prediction-item .number-ball-chance {
     background: #1E3A5F !important;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 1em;
     color: white;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+        
 #matrice .prediction-item .number-ball-chance:hover {
     transform: scale(1.1);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -551,7 +553,7 @@ button, input, select {
     color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.1);
     padding: 4px 10px;
-    border-radius: 12px;
+    border-radius: 10px;
     font-weight: 500;
 }
 
@@ -735,6 +737,7 @@ button, input, select {
         }
 
         /* Styles pour les performances */
+        
         .performance-bar {
             position: relative;
             height: 20px;
@@ -837,6 +840,7 @@ button, input, select {
 }
 
 /* Pour que les prédictions s'affichent mieux en horizontal */
+        
 #matrice .prediction-item {
     margin-bottom: 15px;
     padding: 12px;
@@ -940,7 +944,7 @@ button, input, select {
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease;
-    min-height: 80px;
+    min-height: 21px;
 }
 
 #matrice .metric-item:hover {
@@ -1294,7 +1298,7 @@ button, input, select {
 
         .section {
             background-color: var(--card-bg);      /* Fond section */
-            border: 0px solid var(--border-color); /* Bordure invisible */
+            border: 1px solid var(--border-color); /* Bordure invisible */
             margin-bottom: 20px;                   /* Marge bas */
             padding: 20px;                         /* Marge interne */
         }
@@ -1310,7 +1314,7 @@ button, input, select {
 
         .section h3 {
             font-size: 1.2rem;          /* Taille police */
-            margin: 15px 0 0 0;         /* Marge externe */
+            margin: 0px 0 0 0;         /* Marge externe */
             color: var(--text-primary); /* Couleur texte */
             font-weight: 400;           /* Poids police normal */
         }
@@ -2775,6 +2779,7 @@ select:disabled {
     </div>
     
     <!-- Contenu principal -->
+    
     <div class="main-content">
         <div class="header">
             <h2 id="appStatus">Analyse Statistique et Prédictive du Loto</h2>
@@ -2956,8 +2961,6 @@ select:disabled {
                         </select>
                         <br>
                     
-                        
-                        
                         <div id="standardOptions">
                             <label>Nombre de combinaisons :</label>
                             <select id="numPredictions">
@@ -3194,11 +3197,6 @@ select:disabled {
                     <p>Simulez des milliers de tirages pour tester des stratégies et estimer des probabilités.</p>
                     
                     <div class="info-box">
-                        <h4>Évaluation</h4>
-                        <p>Cette technique est essentielle pour...</p>
-                    </div>
-
-                    <div class="info-box">
                         <h4>Simulation Monte-Carlo</h4>
                         <p>Les simulations de Monte-Carlo (KMC) sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de Probabilités.</p>
                         <p><strong>Distributions Statistiques Utilisées :</strong></p>
@@ -3216,7 +3214,6 @@ select:disabled {
                             <div class="number-grid-select" id="simMainNumbersGrid"></div>
                             
                             <div class="selected-numbers glass-card">
-
                                 <div class="grid-title">Vos numéros sélectionnés :</div>
                                 <div class="selected-numbers-display" id="simSelectedMainNumbers"></div>
                             </div>
@@ -3231,16 +3228,7 @@ select:disabled {
                         </div>
                         
                         <label>Nombre de simulations :</label>
-                        <select id="matrixNumPredictions">
-    <option value="5">5 combinaisons</option>
-    <option value="6" selected>6 combinaisons</option>
-    <option value="15">15 combinaisons</option>
-    <option value="20">20 combinaisons</option>
-    <option value="25">25 combinaisons</option>
-    <option value="30">30 combinaisons</option>
-    <option value="40">40 combinaisons</option>
-    <option value="50">50 combinaisons</option>
-</select>
+                        <input type="number" id="numSims" value="10000" min="100" max="100000">
                         <button onclick="runSimulation()">Lancer la Simulation</button>
                     </div>
 
@@ -3585,6 +3573,283 @@ select:disabled {
         let selectedChanceNumber = null;    // Numéro chance sélectionné
         let simSelectedMainNumbers = [];    // Numéros pour simulation
         let simSelectedChanceNumber = null; // Chance pour simulation
+        
+        // ============================================================================
+// FONCTIONS UTILITAIRES MANQUANTES (CRITIQUES)
+// ============================================================================
+
+/**
+ * Sélection aléatoire pondérée de nombres uniques
+ * Utilisée par : Poisson, Zipf, Binomiale, Gamma, Dirichlet
+ * @param {Array} weights - Tableau d'objets {number, weight}
+ * @param {number} count - Nombre d'éléments à sélectionner
+ * @returns {Array} - Tableau de nombres triés
+ */
+function weightedRandomSelection(weights, count) {
+    // Validation des entrées
+    if (!Array.isArray(weights) || weights.length === 0) {
+        console.error('weightedRandomSelection: weights invalide');
+        return [];
+    }
+    
+    if (count <= 0 || count > weights.length) {
+        console.warn(`weightedRandomSelection: count=${count} ajusté à ${Math.min(count, weights.length)}`);
+        count = Math.min(Math.max(1, count), weights.length);
+    }
+    
+    const selected = [];
+    const available = [...weights]; // Copie pour ne pas modifier l'original
+    
+    for (let i = 0; i < count; i++) {
+        if (available.length === 0) {
+            console.warn('weightedRandomSelection: plus de choix disponibles');
+            break;
+        }
+        
+        // Calcul du poids total
+        const totalWeight = available.reduce((sum, item) => {
+            const weight = item.weight || 0;
+            return sum + Math.max(0, weight); // Poids négatifs = 0
+        }, 0);
+        
+        // Si tous les poids sont nuls, sélection uniforme
+        if (totalWeight === 0) {
+            const randomIndex = Math.floor(Math.random() * available.length);
+            selected.push(available[randomIndex].number);
+            available.splice(randomIndex, 1);
+            continue;
+        }
+        
+        // Sélection pondérée par roulette
+        let random = Math.random() * totalWeight;
+        
+        for (let j = 0; j < available.length; j++) {
+            random -= Math.max(0, available[j].weight || 0);
+            
+            if (random <= 0) {
+                selected.push(available[j].number);
+                available.splice(j, 1);
+                break;
+            }
+        }
+    }
+    
+    // Tri croissant pour cohérence avec le Loto
+    return selected.sort((a, b) => a - b);
+}
+
+/**
+ * Simulation Monte-Carlo pour prédictions
+ * Génère des combinaisons basées sur des simulations massives
+ * @param {Object} frequencies - Fréquences historiques {numero: count}
+ * @param {number} numSimulations - Nombre de simulations (défaut: 10000)
+ * @param {number} topCombinations - Nombre de meilleures combinaisons à retourner
+ * @returns {Object} - {predictions, stats}
+ */
+function monteCarloSimulation(frequencies, numSimulations = 10000, topCombinations = 10) {
+    console.log(`🎲 Démarrage simulation Monte-Carlo: ${numSimulations} itérations`);
+    
+    // 1. Calcul des probabilités empiriques
+    const totalDraws = Object.values(frequencies).reduce((a, b) => a + b, 0);
+    const probabilities = {};
+    
+    for (let i = 1; i <= 49; i++) {
+        const freq = frequencies[i] || 0;
+        probabilities[i] = freq / totalDraws;
+    }
+    
+    // 2. Stockage des combinaisons simulées
+    const combinationsCount = new Map();
+    
+    // 3. Simulations
+    for (let sim = 0; sim < numSimulations; sim++) {
+        const combination = [];
+        
+        // Tirage pondéré de 5 numéros
+        const weights = [];
+        for (let i = 1; i <= 49; i++) {
+            weights.push({
+                number: i,
+                weight: (frequencies[i] || 0) + 1 // +1 pour éviter poids nul
+            });
+        }
+        
+        const drawnNumbers = weightedRandomSelection(weights, 5);
+        
+        // Clé unique pour la combinaison (triée)
+        const key = drawnNumbers.sort((a, b) => a - b).join('-');
+        combinationsCount.set(key, (combinationsCount.get(key) || 0) + 1);
+    }
+    
+    // 4. Tri des combinaisons par fréquence d'apparition
+    const sortedCombinations = Array.from(combinationsCount.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, topCombinations);
+    
+    // 5. Formatage des résultats
+    const predictions = sortedCombinations.map(([key, count]) => {
+        const numbers = key.split('-').map(n => parseInt(n));
+        const probability = (count / numSimulations * 100).toFixed(4);
+        
+        return {
+            main: numbers,
+            chance: Math.floor(Math.random() * 10) + 1, // Chance aléatoire
+            frequency: count,
+            probability: probability + '%',
+            score: count
+        };
+    });
+    
+    // 6. Statistiques globales
+    const uniqueCombinations = combinationsCount.size;
+    const avgOccurrence = numSimulations / uniqueCombinations;
+    const topScore = sortedCombinations[0][1];
+    
+    const stats = {
+        totalSimulations: numSimulations,
+        uniqueCombinations: uniqueCombinations,
+        avgOccurrence: avgOccurrence.toFixed(2),
+        topScore: topScore,
+        topProbability: ((topScore / numSimulations) * 100).toFixed(4) + '%',
+        coverageRate: ((uniqueCombinations / numSimulations) * 100).toFixed(2) + '%'
+    };
+    
+    console.log('✅ Simulation Monte-Carlo terminée:', stats);
+    
+    return {
+        predictions: predictions,
+        stats: stats,
+        allCombinations: sortedCombinations
+    };
+}
+
+/**
+ * Simulation Monte-Carlo optimisée avec méthode d'importance sampling
+ * Version avancée avec réduction de variance
+ */
+function monteCarloAdvanced(frequencies, numSimulations = 10000, topCombinations = 10) {
+    console.log(`🎯 Monte-Carlo Avancé: ${numSimulations} simulations avec importance sampling`);
+    
+    // 1. Calcul des statistiques historiques
+    const stats = {
+        frequencies: {},
+        gaps: {}, // Écarts depuis dernière apparition
+        trends: {} // Tendances récentes
+    };
+    
+    // Analyse des 50 derniers tirages pour tendances
+    const recentDraws = filteredDraws.slice(0, 50);
+    for (let i = 1; i <= 49; i++) {
+        stats.frequencies[i] = frequencies[i] || 0;
+        
+        // Calcul de l'écart (gap)
+        let gap = 0;
+        for (const draw of filteredDraws) {
+            gap++;
+            if (draw.numbers.includes(i)) break;
+        }
+        stats.gaps[i] = gap;
+        
+        // Tendance récente (poids sur 50 derniers tirages)
+        stats.trends[i] = recentDraws.filter(draw => 
+            draw.numbers.includes(i)
+        ).length;
+    }
+    
+    // 2. Calcul des poids d'importance
+    const importanceWeights = {};
+    for (let i = 1; i <= 49; i++) {
+        const freqWeight = stats.frequencies[i] / filteredDraws.length;
+        const gapWeight = Math.exp(-stats.gaps[i] / 10); // Décroissance exponentielle
+        const trendWeight = stats.trends[i] / 50;
+        
+        // Combinaison pondérée (40% freq, 30% gap, 30% trend)
+        importanceWeights[i] = (
+            0.4 * freqWeight +
+            0.3 * gapWeight +
+            0.3 * trendWeight
+        );
+    }
+    
+    // Normalisation
+    const totalWeight = Object.values(importanceWeights).reduce((a, b) => a + b, 0);
+    for (let i = 1; i <= 49; i++) {
+        importanceWeights[i] = (importanceWeights[i] / totalWeight) * 100;
+    }
+    
+    // 3. Simulations avec importance sampling
+    const combinationsScore = new Map();
+    
+    for (let sim = 0; sim < numSimulations; sim++) {
+        const weights = [];
+        for (let i = 1; i <= 49; i++) {
+            weights.push({
+                number: i,
+                weight: importanceWeights[i] * 1000 // Échelle pour précision
+            });
+        }
+        
+        const combination = weightedRandomSelection(weights, 5);
+        const key = combination.sort((a, b) => a - b).join('-');
+        
+        // Score basé sur les poids combinés
+        const comboScore = combination.reduce((sum, num) => 
+            sum + importanceWeights[num], 0
+        );
+        
+        if (!combinationsScore.has(key)) {
+            combinationsScore.set(key, {
+                count: 0,
+                totalScore: 0,
+                numbers: combination
+            });
+        }
+        
+        const entry = combinationsScore.get(key);
+        entry.count++;
+        entry.totalScore += comboScore;
+    }
+    
+    // 4. Classement par score moyen (qualité × fréquence)
+    const rankedCombinations = Array.from(combinationsScore.entries())
+        .map(([key, data]) => ({
+            key: key,
+            numbers: data.numbers,
+            frequency: data.count,
+            avgScore: data.totalScore / data.count,
+            finalScore: data.count * (data.totalScore / data.count) // Produit
+        }))
+        .sort((a, b) => b.finalScore - a.finalScore)
+        .slice(0, topCombinations);
+    
+    // 5. Formatage des résultats
+    const predictions = rankedCombinations.map((combo, index) => ({
+        main: combo.numbers,
+        chance: Math.floor(Math.random() * 10) + 1,
+        frequency: combo.frequency,
+        avgScore: combo.avgScore.toFixed(2),
+        rank: index + 1,
+        probability: ((combo.frequency / numSimulations) * 100).toFixed(4) + '%'
+    }));
+    
+    return {
+        predictions: predictions,
+        stats: {
+            totalSimulations: numSimulations,
+            uniqueCombinations: combinationsScore.size,
+            method: 'Importance Sampling',
+            weights: importanceWeights
+        }
+    };
+}
+
+// Test rapide au chargement
+console.log('✅ Fonctions utilitaires chargées:', {
+    weightedRandomSelection: typeof weightedRandomSelection,
+    monteCarloSimulation: typeof monteCarloSimulation,
+    monteCarloAdvanced: typeof monteCarloAdvanced
+});
+        
 
         // Gestion des périodes
         let currentPeriod = 'all';          // Période courante
@@ -8248,6 +8513,43 @@ function generateRandomGrid() {                                   // Déclaratio
                         });
                     }
                     
+                    
+                } else if (model === 'montecarlo') {
+    const numSims = parseInt(document.getElementById('numMonteCarloSims').value);
+    const topCombo = parseInt(document.getElementById('topMonteCarlo').value);
+    
+    // Utilisation de la fonction Monte-Carlo avancée
+    const mcResult = monteCarloAdvanced(historicalData.frequencies, numSims, topCombo);
+    
+    results = `
+        <div class="info-box">
+            <h3>🎲 Simulation Monte-Carlo Avancée</h3>
+            <p><strong>Méthode :</strong> ${mcResult.stats.method}</p>
+            <p><strong>Simulations effectuées :</strong> ${mcResult.stats.totalSimulations.toLocaleString()}</p>
+            <p><strong>Combinaisons uniques générées :</strong> ${mcResult.stats.uniqueCombinations.toLocaleString()}</p>
+            <p><strong>Principe :</strong> Importance sampling basé sur fréquences (40%), écarts (30%), et tendances récentes (30%)</p>
+        </div>
+    `;
+    
+    mcResult.predictions.forEach((pred, i) => {
+        predictions.push({
+            main: pred.main,
+            chance: pred.chance
+        });
+        
+        results += `
+            <div class="prediction-card">
+                <h4>Top ${pred.rank} - Score: ${pred.avgScore}</h4>
+                <p style="font-size: 0.9em; color: var(--text-secondary);">
+                    Fréquence: ${pred.frequency}× | Probabilité: ${pred.probability}
+                </p>
+                <div style="display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap;">
+                    ${pred.main.map(num => `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`).join('')}
+                    <div class="number-ball number-ball-chance" style="background: ${getChanceBallColor(pred.chance)}">${pred.chance}</div>
+                </div>
+            </div>
+        `;
+    });                  
                 } else if (model === 'poisson') {
                     const numPreds = parseInt(document.getElementById('numPredictions').value);
                     const poissonPreds = poissonPrediction(historicalData.frequencies, numPreds);
@@ -9605,56 +9907,6 @@ html += `</div>`;
             setTimeout(() => {
                 notification.remove();
             }, 3000);
-        }
-        
-
-        // ============================================================================
-        // FONCTIONS POUR L'ONGLET PROGRAMME
-        // ============================================================================
-
-        function afficherCodeSource() {
-            const select = document.getElementById('codeSourceSelect');
-            const contentDiv = document.getElementById('codeSourceContent');
-            const selectedValue = select.value;
-            
-            if (selectedValue === 'python') {
-                contentDiv.innerHTML = `
-                    <h4>Code Source Python - Analyseur Loto</h4>
-                    <pre style="background-color: var(--secondary-color); padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.9em;">
-# Code Python complet serait affiché ici...
-                    </pre>
-                `;
-            } else if (selectedValue === 'html') {
-                contentDiv.innerHTML = `
-                    <h4>Code Source HTML/JavaScript - Analyseur Loto</h4>
-                    <pre style="background-color: var(--secondary-color); padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.9em;">
-// Code HTML/JavaScript complet serait affiché ici...
-                    </pre>
-                `;
-            } else {
-                contentDiv.innerHTML = '<p>Sélectionnez un code source dans le menu déroulant pour l\'afficher ici.</p>';
-            }
-        }
-
-        // Fonctions utilitaires pour l'onglet programme
-        function copierCode() {
-            // Implémentation de la copie
-        }
-
-        function telechargerCode() {
-            // Implémentation du téléchargement
-        }
-
-        function afficherCanevas() {
-            // Implémentation de l'affichage du canevas
-        }
-
-        function masquerCanevas() {
-            // Implémentation du masquage du canevas
-        }
-
-        function actualiserApercu() {
-            // Implémentation de l'actualisation de l'aperçu
         }
 
     </script>
