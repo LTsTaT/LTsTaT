@@ -3227,7 +3227,11 @@ select:disabled {
                         </div>
                         
                         <label>Nombre de simulations :</label>
-                        <input type="number" id="numSims" value="10000" min="100" max="100000">
+                        <select id="numSims">
+                        <option value="1000">1 000 simulations</option>
+                        <option value="10000" selected>10 000 simulations</option>
+                        <option value="100000">100 000 simulations</option>
+                        </select>
                         <button onclick="runSimulation()">Lancer la Simulation</button>
                     </div>
 
@@ -7964,28 +7968,33 @@ function generateRandomGrid() {                                   // Déclaratio
         // FONCTIONS CORRIGÉES AJOUTÉES
         // ============================================================================
 
-        // FONCTION DE SÉLECTION PONDÉRÉE (UTILITAIRE)
         function weightedRandomSelection(weights, count) {
-            const selected = [];
-            const available = [...weights];
-            
-            for (let i = 0; i < count; i++) {
-                const totalWeight = available.reduce((sum, item) => sum + item.weight, 0);
-                let random = Math.random() * totalWeight;
-                
-                for (let j = 0; j < available.length; j++) {
-                    random -= available[j].weight;
-                    if (random <= 0) {
-                        selected.push(available[j].number);
-                        available.splice(j, 1);
-                        break;
-                    }
-                }
-            }
-            
-            return selected.sort((a, b) => a - b);
+    const selected = [];
+    const available = [...weights];
+    
+    for (let i = 0; i < count; i++) {
+        const totalWeight = available.reduce((sum, item) => 
+            sum + Math.max(0, item.weight || 0), 0);
+        
+        if (totalWeight === 0) {
+            const randomIndex = Math.floor(Math.random() * available.length);
+            selected.push(available[randomIndex].number);
+            available.splice(randomIndex, 1);
+            continue;
         }
-
+        
+        let random = Math.random() * totalWeight;
+        for (let j = 0; j < available.length; j++) {
+            random -= Math.max(0, available[j].weight || 0);
+            if (random <= 0) {
+                selected.push(available[j].number);
+                available.splice(j, 1);
+                break;
+            }
+        }
+    }
+    return selected.sort((a, b) => a - b);
+}
         // DISTRIBUTION BINOMIALE CORRIGÉE - Modélisation pairs/impairs
         function binomialPrediction(frequencies, numPredictions = 5) {
             const predictions = [];
@@ -8956,12 +8965,138 @@ function generateRandomGrid() {                                   // Déclaratio
             
             return explanations[modelType] || '<p>Explications détaillées non disponibles pour ce modèle.</p>';
         }
+        
+        // ----------------------
+// Encode un tirage en vecteur binaire 49 dimensions
+// Colle ce bloc juste AU-DESSUS de : function trainMLModel() {
+// ----------------------
+function encodeDraw(draw) {
+    const vector = Array(49).fill(0);
+    // On suppose que le tirage a les propriétés boule_1 ... boule_5
+    for (let i = 1; i <= 5; i++) {
+        const key = `boule_${i}`;
+        const val = draw && draw[key];
+        if (typeof val === 'number' && val >= 1 && val <= 49) {
+            vector[val - 1] = 1;
+        }
+    }
+    return vector;
+}
 
-        function trainMLModel() {
+        async function trainMLModel() {
             const loading = document.getElementById('mlLoading');
             const resultsDiv = document.getElementById('mlResults');
             const metricsDiv = document.getElementById('mlMetrics');
             const explanationDiv = document.getElementById('mlDetailedExplanation');
+            
+                // -------------------------------
+    // Préparation des données d'entraînement
+    // -------------------------------
+    const draws = historicalData.draws;
+    if (!draws || draws.length < 2) {
+        alert("Pas assez de tirages pour l'entraînement !");
+        return;
+    }
+
+    // On prépare deux tableaux : features (entrées) et labels (sorties)
+    const features = [];
+    const labels = [];
+
+    // Chaque ligne d'entraînement correspond à :
+    //   - les 5 boules du tirage précédent -> en entrée
+    //   - les 5 boules du tirage suivant -> en sortie
+    for (let i = 1; i < draws.length; i++) {
+        const prev = draws[i - 1];
+        const curr = draws[i];
+        features.push(encodeDraw(prev));
+        labels.push(encodeDraw(curr));
+    }
+
+    console.log("Données prêtes :", features.length, "échantillons d'entraînement");
+            
+                // -------------------------------
+    // Création du modèle de réseau de neurones (TensorFlow.js)
+    // -------------------------------
+
+    // Conversion des tableaux JavaScript en tenseurs TensorFlow
+    const xs = tf.tensor2d(features);
+    const ys = tf.tensor2d(labels);
+
+    // Définition du modèle séquentiel (simple réseau dense)
+    const model = tf.sequential();
+
+    // Première couche cachée : 64 neurones avec activation ReLU
+    model.add(tf.layers.dense({
+        units: 64,
+        activation: 'relu',
+        inputShape: [49]
+    }));
+
+    // Deuxième couche cachée : 32 neurones ReLU
+    model.add(tf.layers.dense({
+        units: 32,
+        activation: 'relu'
+    }));
+
+    // Couche de sortie : 49 neurones avec activation sigmoïde
+    // (chaque neurone correspond à une boule)
+    model.add(tf.layers.dense({
+        units: 49,
+        activation: 'sigmoid'
+    }));
+
+    // Compilation du modèle (choix de l’optimiseur et de la fonction de perte)
+    model.compile({
+        optimizer: 'adam',
+        loss: 'binaryCrossentropy',
+        metrics: ['accuracy']
+    });
+
+    console.log("Modèle créé et compilé ✅");
+            
+            
+                // -------------------------------
+    // Entraînement du modèle
+    // -------------------------------
+    console.log("Entraînement en cours... ⏳");
+
+    // Entraînement sur les données réelles
+    // epochs = nombre de passes sur tout l'historique
+    // batchSize = nombre d'échantillons traités à la fois
+    await model.fit(xs, ys, {
+        epochs: 30,
+        batchSize: 8,
+        shuffle: true,
+        verbose: 1, // 0 = silencieux, 1 = progression dans la console
+        callbacks: {
+            onEpochEnd: (epoch, logs) => {
+                console.log(`Époque ${epoch + 1}/30 — perte: ${logs.loss.toFixed(4)} — précision: ${(logs.acc * 100).toFixed(2)}%`);
+            }
+        }
+    });
+
+    console.log("✅ Entraînement terminé !");
+
+    // -------------------------------
+    // Évaluation du modèle
+    // -------------------------------
+    const evaluation = await model.evaluate(xs, ys);
+    const loss = (await evaluation[0].data())[0];
+    const accuracy = (await evaluation[1].data())[0];
+
+    console.log(`Évaluation finale → perte: ${loss.toFixed(4)} | précision: ${(accuracy * 100).toFixed(2)}%`);
+
+    // Affiche les résultats dans la page
+    document.getElementById("mlResults").innerHTML = `
+        <div class="matrix-result-card">
+            <h3>Résultats de l'entraînement</h3>
+            <p><strong>Précision :</strong> ${(accuracy * 100).toFixed(2)}%</p>
+            <p><strong>Perte :</strong> ${loss.toFixed(4)}</p>
+            <p><small>Entraînement effectué sur ${features.length} tirages réels.</small></p>
+        </div>
+    `;
+
+
             
             resetProgress('mlLoading');
             loading.classList.add('active');
@@ -9964,7 +10099,6 @@ html += `</div>`;
                 notification.remove();
             }, 3000);
         }
-        
         
     </script>
 </body>
