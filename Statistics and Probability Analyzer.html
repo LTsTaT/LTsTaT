@@ -3648,7 +3648,7 @@ function weightedRandomSelection(weights, count) {
  * @returns {Object} - {predictions, stats}
  */
 function monteCarloSimulation(frequencies, numSimulations = 10000, topCombinations = 10) {
-    console.log(`🎲 Démarrage simulation Monte-Carlo: ${numSimulations} itérations`);
+    console.log(` Démarrage simulation Monte-Carlo: ${numSimulations} itérations`);
     
     // 1. Calcul des probabilités empiriques
     const totalDraws = Object.values(frequencies).reduce((a, b) => a + b, 0);
@@ -8524,7 +8524,7 @@ function generateRandomGrid() {                                   // Déclaratio
     
     results = `
         <div class="info-box">
-            <h3>🎲 Simulation Monte-Carlo Avancée</h3>
+            <h3> Simulation Monte-Carlo Avancée</h3>
             <p><strong>Méthode :</strong> ${mcResult.stats.method}</p>
             <p><strong>Simulations effectuées :</strong> ${mcResult.stats.totalSimulations.toLocaleString()}</p>
             <p><strong>Combinaisons uniques générées :</strong> ${mcResult.stats.uniqueCombinations.toLocaleString()}</p>
@@ -9662,7 +9662,7 @@ function generateModelPredictions(modelType) {
             
             html += `
                 <div class="matrix-result-card">
-                    <h4>📊 Prédictions Fusionnées (${matrixConfiguration.fusion})</h4>
+                    <h4> Prédictions Fusionnées (${matrixConfiguration.fusion})</h4>
             `;
             
             html += `<div class="prediction-container">`;
@@ -9690,7 +9690,7 @@ html += `</div>`;
             
             html += `
                 <div class="matrix-result-card">
-                    <h4>🔍 Performance des Modèles</h4>
+                    <h4> Performance des Modèles</h4>
                     <div class="model-contributions">
             `;
             
@@ -9713,7 +9713,7 @@ html += `</div>`;
             
             html += `
                 <div class="matrix-result-card">
-                    <h4>📈 Métriques Techniques</h4>
+                    <h4> Métriques Techniques</h4>
                     <div class="technical-metrics">
                         <div class="metric-item">
                             <span>Diversité des modèles:</span>
