@@ -8501,8 +8501,8 @@ function generateRandomGrid() {                                   // Déclaratio
                             <p><strong>P-value :</strong> ${testResult.pValue}</p>
                             <p><strong>Interprétation :</strong> ${testResult.interpretation}</p>
                             ${testResult.isUniform ? 
-                                '<p style="color: #4caf50;">✅ Les numéros suivent une distribution uniforme.</p>' : 
-                                '<p style="color: #ff9800;">⚠️ Certains numéros apparaissent plus que d\'autres.</p>'}
+                                '<p style="color: #4caf50;">✔️ Les numéros suivent une distribution uniforme.</p>' : 
+                                '<p style="color: #ff9800;">✖️ Certains numéros apparaissent plus que d\'autres.</p>'}
                         </div>
                     `;
                     
@@ -9347,7 +9347,7 @@ function generateRandomGrid() {                                   // Déclaratio
 function generateModelPredictions(modelType) {
     const numPreds = matrixConfiguration.numPredictions || 10;
     
-    console.log(`🎲 Génération ${numPreds} prédictions pour ${modelType}`);
+    console.log(` Génération ${numPreds} prédictions pour ${modelType}`);
     
     try {
         switch(modelType) {
@@ -9638,7 +9638,7 @@ function generateModelPredictions(modelType) {
             
             html += `
                 <div class="matrix-result-card">
-                    <h3>🎯 Résultats de l'Analyse Matricielle</h3>
+                    <h3> Résultats de l'Analyse Matricielle</h3>
                     <div class="matrix-stats">
                         <div class="stat-card">
                             <h4>Modèles Utilisés</h4>
