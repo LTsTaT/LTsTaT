@@ -40,6 +40,11 @@
    2. RESET ET BASE
 ============================================================================ */
         
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -1242,12 +1247,13 @@ body {
 /* Period options */
 .period-options {
     display: flex;
-    gap: 10px;
+    gap: 35px;
 }
 
 .period-btn {
     flex: 1 1 calc(50% - 5px);
-    padding: 8px 5px;
+    font-size: 0.8rem;
+    padding: 8px;
 }
 
 /* Menu mobile */
@@ -1819,7 +1825,7 @@ body {
                 <i></i> Probabilités
             </div>
             <div class="nav-item" onclick="showTab('ml')">
-                <i></i> Apprentissage 
+                <i></i> Apprentissage
             </div>
             <div class="nav-item" onclick="showTab('clusters')">
                 <i></i> Clustering
@@ -2003,12 +2009,13 @@ body {
                         <h4> Modèle de Probabilités</h4></p>
                         <p>Les simulations sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de Probabilités.</p>
                         <strong>Distributions Statistiques Utilisées :</strong></p>
-                        <p><strong>Loi de Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
-                        <p><strong>Distribution Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
-                        <p><strong>Distribution de Dirichlet :</strong> Distribution complexe souvent utilisée pour modéliser des proportions de catégories. Dans le contexte du Loto, elle peut modéliser la probabilité que les cinq numéros choisis se répartissent de manière déséquilibrée sur les quatre dizaines.</p>
+                        <p><strong>Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
+                        <p><strong>Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
+                        <p><strong>Dirichlet :</strong> Distribution complexe souvent utilisée pour modéliser des proportions de catégories. Dans le contexte du Loto, elle peut modéliser la probabilité que les cinq numéros choisis se répartissent de manière déséquilibrée sur les quatre dizaines.</p>
                         <p><strong>Tests Statistiques :</strong></p>
-                        <p><strong>Test T de Student :</strong> Permet de comparer la moyenne d'une série de numéros avec une valeur théorique pour déterminer si l'écart est significatif.</p>
+                        <p><strong>Test T (Student) :</strong> Permet de comparer la moyenne d'une série de numéros avec une valeur théorique pour déterminer si l'écart est significatif.</p>
                         <p><strong>Test du Chi-carré (χ²) :</strong> Le test essentiel pour le Loto. Il permet de vérifier si la distribution observée des fréquences des numéros est conforme à une distribution uniforme théorique.</p>
+                        <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de </p>
                     </div>
 
                     <div class="control-group">
@@ -2265,11 +2272,11 @@ body {
                         <h4>Simulation Monte-Carlo</h4>
                         <p>Les simulations de Monte-Carlo (KMC) sont des algorithmes utilisés dans le but d'estimer la probabilité d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles de Probabilités.</p>
                         <p><strong>Distributions Statistiques Utilisées :</strong></p>
-                        <p><strong>Loi de Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
-                        <p><strong>Distribution Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
-                        <p><strong>Distribution de Dirichlet :</strong> Distribution complexe souvent utilisée pour modéliser des proportions de catégories. Dans le contexte du Loto, elle peut modéliser la probabilité que les cinq numéros choisis se répartissent de manière déséquilibrée sur les quatre dizaines.</p>
+                        <p><strong>Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les faibles fréquences (numéros "en retard").</p>
+                        <p><strong>Binomiale :</strong> Modélise le nombre de succès (apparitions d'un numéro) dans une séquence de n tirages indépendants, chacun ayant une probabilité p de succès.</p>
+                        <p><strong>Dirichlet :</strong> Distribution complexe souvent utilisée pour modéliser des proportions de catégories. Dans le contexte du Loto, elle peut modéliser la probabilité que les cinq numéros choisis se répartissent de manière déséquilibrée sur les quatre dizaines.</p>
                         <p><strong>Tests Statistiques :</strong></p>
-                        <p><strong>Test T de Student :</strong> Permet de comparer la moyenne d'une série de numéros avec une valeur théorique pour déterminer si l'écart est significatif.</p>
+                        <p><strong>Test T (Student) :</strong> Permet de comparer la moyenne d'une série de numéros avec une valeur théorique pour déterminer si l'écart est significatif.</p>
                         <p><strong>Test du Chi-carré (χ²) :</strong> Le test essentiel pour le Loto. Il permet de vérifier si la distribution observée des fréquences des numéros est conforme à une distribution uniforme théorique.</p>
                     </div>
 
@@ -2364,7 +2371,7 @@ body {
 
                             <!-- Algorithmes ML -->
                             <div class="model-selection">
-                                <h4> Algorithmes Machine Learning</h4>
+                                <h4>🤖 Algorithmes Machine Learning</h4>
                                 <div class="checkbox-grid">
                                     <label class="checkbox-item">
                                         <input type="checkbox" id="matrixRF" data-model="rf">
@@ -2472,7 +2479,7 @@ body {
 
                     <!-- Visualisation de la Matrice -->
                     <div class="matrix-visualization glass-card">
-                        <h3> Visualisation de la Matrice</h3>
+                        <h3>🔍 Visualisation de la Matrice</h3>
                         <div id="matrixGraph" class="chart-container" style="height: 300px;">
                             <canvas id="matrixArchitectureChart"></canvas>
                         </div>
@@ -2509,8 +2516,9 @@ body {
 
                         <div id="matrixResults" class="results-grid"></div>
                     </div>
+                </div>
+            </div>
 
-                    
 
 
             <!-- Onglet Programme -->
