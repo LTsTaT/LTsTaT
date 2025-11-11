@@ -2343,7 +2343,7 @@ select:disabled {
         
         #overview .section button {
             margin: 1px 0 0 0; /* Marge haut bouton */
-            width: 100%;       /* Largeur pleine */
+            width: auto;       /* Largeur auto */
         }
 
               /* ============================================================================
@@ -7700,7 +7700,7 @@ function generateRandomGrid() {                                   // Déclaratio
             chanceBall.style.background = getChanceBallColor(latestDraw.chance);
             chanceBall.style.cursor = 'default';
             chanceBall.style.borderRadius = '50%';
-            chanceBall.style.marginLeft = '10px';
+            chanceBall.style.marginLeft = '5px';
             numbersContainer.appendChild(chanceBall);
             
             document.getElementById('latestDrawContainer').style.display = 'block';
