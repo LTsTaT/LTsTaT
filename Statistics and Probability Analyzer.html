@@ -6966,10 +6966,34 @@ function applyMLPeriodFilter() {
                 });
             }
             break;
+            
+        case 'all':
+        default:
+            
+            // 🆕 NOUVELLE LOGIQUE : 1 an par défaut au lieu de tous les tirages
+            
+            if (historicalData.draws.length > 0) {
+                // Récupérer la date du dernier tirage (le plus récent)
+                const lastDrawDate = new Date(historicalData.draws[0].date);
+                
+                // Calculer la date d'il y a 1 an
+                const oneYearAgo = new Date(lastDrawDate);
+                oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+                
+                // Filtrer les tirages des 12 derniers mois
+                filtered = filtered.filter(draw => {
+                    const drawDate = new Date(draw.date);
+                    return drawDate >= oneYearAgo && drawDate <= lastDrawDate;
+                });
+                
+                console.log(`🎯 Période ML par défaut : 1 an (${oneYearAgo.toLocaleDateString('fr-FR')} → ${lastDrawDate.toLocaleDateString('fr-FR')})`);
+                console.log(`📊 Tirages sélectionnés : ${filtered.length}`);
+            }
+            break;
     }
     
     mlFilteredDraws = filtered;
-    console.log(`Période ML appliquée : ${mlFilteredDraws.length} tirages sélectionnés`);
+    console.log(`✅ Période ML appliquée : ${mlFilteredDraws.length} tirages sélectionnés`);
 }
 
 function populateMLYearSelectors() {
@@ -7502,11 +7526,17 @@ function populateMLYearSelectors() {
                     updateFrequencyChart();
                     break;
                 case 'predictions':
-                    generatePredictions();
-                    break;
+        // Génération de probabilités : ne pas lancer automatiquement à l'affichage.
+        // L'utilisateur doit cliquer sur le bouton "Générer les probabilités" pour démarrer.
+        // -> conserve l'UI, supprime l'appel automatique.
+        break;
+
                 case 'ml':
-                    trainMLModel();
-                    break;
+        // Entraînement ML : ne pas lancer automatiquement à l'affichage.
+        // L'utilisateur doit cliquer sur le bouton "Entraîner et Prédire" pour démarrer.
+        // -> conserve l'UI, supprime l'appel automatique.
+    break;
+
                 case 'clusters':
                     performClustering();
                     break;
@@ -8532,7 +8562,8 @@ function encodeDraw(draw) {
                 <h4> Métriques d'entraînement</h4>
                 <p><strong>Précision :</strong> ${(accuracy * 100).toFixed(2)}%</p>
                 <p><strong>Perte :</strong> ${loss.toFixed(4)}</p>
-                <p><strong>Période d'entraînement :</strong> ${mlCurrentPeriod === 'all' ? 'Tous les tirages' : 'Période personnalisée'}</p>
+                <p><strong>Période d'entraînement :</strong> ${mlCurrentPeriod === 'all' ? '1 an (par défaut)' : 'Période personnalisée'}</p>
+<p><small>Les 12 derniers mois à partir du dernier tirage</small></p>
                 <p><strong>Tirages analysés :</strong> ${draws.length}</p>
                 <p><small>Entraînement effectué sur ${features.length} échantillons en ${((Date.now() - startTime) / 1000).toFixed(2)}s.</small></p>
             </div>
