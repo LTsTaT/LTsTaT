@@ -20,9 +20,9 @@
             /* Couleur principale sombre */
             --highlight-color: rgba(15, 52, 96, 0.3);
             /* Couleur de surbrillance bleue transparente */
-            --text-primary: #f0f0f0;
+            --text-primary: #fff;
             /* Couleur du texte principal (blanc cassé) */
-            --text-secondary: #f0f0f0;
+            --text-secondary: #fff;
             /* Couleur du texte secondaire (identique au principal) */
             --border-color: rgba(255, 255, 255, 0.1);
             /* Couleur des bordures (blanc très transparent) */
@@ -72,7 +72,9 @@
             /* Hauteur minimum = 100% de la hauteur de vue */
             display: flex;
             /* Utilise Flexbox pour la disposition */
+
         }
+
 
         /* ============================================================================
    3. LAYOUT PRINCIPAL
@@ -124,14 +126,63 @@
             /* Utilise Flexbox */
             align-items: center;
             /* Centre verticalement les éléments */
+            justify-content: center;
+            /* ← Ajoute cette ligne pour centrer horizontalement */
             padding: 0 23px;
             /* Padding horizontal seulement */
-            position: sticky;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 90 !important;
             /* Position collante lors du défilement */
             top: 0;
             /* Collé en haut de la page */
             z-index: 90;
             /* Priorité d'affichage élevée */
+            position: relative;
+            /* ← Ajoute ça pour le positionnement de l'icône */
+        }
+
+        .header-title {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+        }
+
+        /* Ligne 1 - ARÔME */
+        .site-name {
+            font-size: 2.1rem;
+            /* Grande taille */
+            font-weight: 700;
+            /* Très gras */
+            color: #fff;
+            /* Blanc pur */
+            margin: 0;
+            line-height: 1.1;
+            text-transform: uppercase;
+            /* Optionnel : majuscules */
+            letter-spacing: 1px;
+            /* Espacement entre lettres */
+            font-family: 'Inter', sans-serif;
+            /* Même police mais plus épaisse */
+        }
+
+        /* Ligne 2 - Sous-titre */
+        .site-subtitle {
+            font-size: 1rem;
+            /* Taille normale */
+            font-weight: 400;
+            /* Léger */
+            color: rgba(255, 255, 255, 0.8);
+            /* Blanc légèrement transparent */
+            margin: 1px 0 0 0;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
         }
 
         /* Zone de contenu */
@@ -201,20 +252,13 @@
             border-left: 3px solid transparent;
             /* Bordure gauche transparente */
             cursor: pointer;
-            /* Curseur en forme de main */
             margin: 5px 15px;
-            /* Marge externe */
             border-radius: 6px;
-            /* Coins arrondis */
             /* Dégradé de fond avec effet glass */
-            background: linear-gradient(0deg,
-                    rgba(255, 255, 255, 0.1) 0%
-                    rgba(255, 255, 255, 0.05) 100%) backdrop-filter: blur(10px);
-            /* Effet de flou d'arrière-plan */
+
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            /* Effet de flou pour Safari */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            /* Bordure fine transparente */
             position: relative;
             /* Position relative pour les pseudo-éléments */
             overflow: hidden;
@@ -438,16 +482,16 @@
 
         /* Boîte de succès */
         .success-box {
-            background-color: rgba(15, 52, 96, 0.3);
-            /* Fond bleu transparent */
-            border: 1px solid var(--accent-color);
-            /* Bordure avec couleur d'accent (non définie) */
-            padding: 15px;
-            /* Padding interne */
+            /* Même style que .section, .stat-card, .control-group, etc. */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
             margin: 15px 0;
-            /* Marge verticale */
             color: var(--text-primary);
-            /* Couleur de texte principale */
         }
 
         /* Formulaires */
@@ -706,121 +750,146 @@
 
         /* ============================================================================
    6. EFFETS GLASS
-   ============================================================================ */
-
-        /* Classe générique pour effet glass */
+============================================================================ */
         .glass-effect {
             background: var(--glass-bg);
-            /* Fond transparent */
+            /* Fond verre */
             backdrop-filter: var(--glass-blur);
-            /* Effet de flou d'arrière-plan */
+            /* Filtre d'arrière-plan */
             -webkit-backdrop-filter: var(--glass-blur);
-            /* Effet de flou pour Safari */
+            /* Filtre pour Safari */
             border: 1px solid var(--glass-border);
-            /* Bordure transparente */
+            /* Bordure verre */
             box-shadow: var(--glass-shadow);
-            /* Ombre portée */
+            /* Ombre verre */
         }
 
-        /* Carte avec effet glass */
         .glass-card {
-            /* Dégradé de fond avec effet glass */
             background: linear-gradient(135deg,
                     rgba(255, 255, 255, 0.1) 0%,
                     rgba(255, 255, 255, 0.05) 100%);
+            /* Dégradé verre */
             backdrop-filter: blur(12px);
-            /* Effet de flou d'arrière-plan */
+            /* Flou arrière-plan */
             -webkit-backdrop-filter: blur(10px);
-            /* Effet de flou pour Safari */
+            /* Flou pour Safari */
             border: 1px solid rgba(255, 255, 255, 0.15);
-            /* Bordure fine transparente */
+            /* Bordure transparente */
             border-radius: 8px;
             /* Coins arrondis */
         }
 
-        /* Dernier tirage avec effet glass */
+
         .latest-draw.glass-card {
             padding: 20px !important;
-            /* Padding interne important (priorité) */
+            /* Marge interne importante */
         }
 
-        /* Navigation avec effet glass */
         .glass-nav {
             background: rgba(108, 117, 125, 0.7) !important;
-            /* Fond gris transparent (priorité) */
+            /* Fond navigation verre */
             backdrop-filter: blur(12px);
-            /* Effet de flou d'arrière-plan */
+            /* Flou navigation */
             -webkit-backdrop-filter: blur(10px);
-            /* Effet de flou pour Safari */
+            /* Flou Safari navigation */
             border-right: 1px solid rgba(255, 255, 255, 0.1);
-            /* Bordure droite fine */
+            /* Bordure droite */
         }
 
-        /* Barre latérale avec effet glass */
+        /* Sidebar avec effet glass */
         .sidebar {
             width: var(--sidebar-width);
-            /* Largeur définie par variable */
+            /* Largeur barre latérale */
             background-color: var(--secondary-color);
-            /* Fond avec couleur secondaire (non définie) */
+            /* Fond barre latérale */
             border-right: 1px solid var(--border-color);
-            /* Bordure droite fine */
+            /* Bordure droite */
             height: 100vh;
-            /* Hauteur = 100% de la hauteur de vue */
+            /* Hauteur pleine fenêtre */
             position: fixed;
             /* Position fixe */
             overflow-y: auto;
-            /* Permet le défilement vertical */
+            /* Défilement vertical */
             z-index: 100;
-            /* Priorité d'affichage élevée */
+            /* Ordre d'empilement */
         }
 
-        /* Contenu principal */
         .main-content {
             margin-left: var(--sidebar-width);
-            /* Marge gauche = largeur de la sidebar */
+            /* Marge gauche */
             flex: 1;
-            /* Prend tout l'espace disponible restant */
+            /* Prend l'espace disponible */
             display: flex;
-            /* Utilise Flexbox */
+            /* Affichage flexible */
             flex-direction: column;
-            /* Disposition en colonne */
+            /* Direction colonne */
             min-height: 100vh;
-            /* Hauteur minimum = 100% de la hauteur de vue */
+            /* Hauteur minimum fenêtre */
             max-width: 1400px;
-            /* Largeur maximum fixe */
+            /* Largeur maximum */
         }
 
-        /* En-tête avec effet glass */
+
+        /* Header glass */
         .header {
+
             backdrop-filter: blur(12px);
-            /* Effet de flou d'arrière-plan */
             -webkit-backdrop-filter: blur(10px);
-            /* Effet de flou pour Safari */
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            /* Bordure bas fine transparente */
         }
 
-        /* Cartes de contenu avec effet glass */
+        /* Cartes de contenu */
         .section,
         .control-group,
         .stat-card,
         .info-box {
-            /* Dégradé de fond avec effet glass (priorité) */
             background: linear-gradient(1deg,
                     rgba(255, 255, 255, 0.08) 0%,
                     rgba(255, 255, 255, 0.03) 100%) !important;
             backdrop-filter: blur(12px);
-            /* Effet de flou d'arrière-plan */
             -webkit-backdrop-filter: blur(10px);
-            /* Effet de flou pour Safari */
             border: 1px solid rgba(255, 255, 255, 0.1);
-            /* Bordure fine transparente */
             border-radius: 10px;
-            /* Coins arrondis */
-            /* Ombres multiples */
             box-shadow:
-                0 4px 20px rgba(0, 0, 0, 0.1);
-            /* Ombre portée principale */
+                0 4px 20px rgba(0, 0, 0, 0.1),
+
+        }
+
+        /* Boutons glass */
+        button,
+        .copy-btn {
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.15) 0%,
+                    rgba(255, 255, 255, 0.05) 100%) !important;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover,
+        .copy-btn:hover {
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.25) 0%,
+                    rgba(255, 255, 255, 0.15) 100%) !important;
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            line-height: 1.1;
+            min-height: 100vh;
+            display: flex;
         }
 
         /* ============================================================================
@@ -1133,7 +1202,7 @@
 
         /* Statistiques de progression */
         .progress-stats {
-            display: flex;
+            display: 3;
             /* Utilise Flexbox */
             justify-content: center;
             /* Centre horizontalement */
@@ -1265,115 +1334,136 @@
         }
 
         /* === Icône utilisateur === */
-#loginIcon {
-  position: fixed;
-  top: 20px;
-  right: 25px;
-  font-size: 1.6rem;
-  cursor: pointer;
-  color: #ddd;
-  transition: color 0.3s ease, transform 0.2s ease;
-  z-index: 1000;
-}
-#loginIcon:hover {
-  color: #4da3ff;
-  transform: scale(1.15);
-}
+        #loginIcon {
+            position: absolute;
+            /* ← Position absolue par rapport au header */
+            top: 50%;
+            right: 25px;
+            transform: translateY(-50%);
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.3s ease, transform 0.2s ease;
+            z-index: 1000;
+        }
 
-/* === Overlay modale === */
-.modal-overlay {
-  display: none; /* cachée par défaut */
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(6px);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
+        #loginIcon:hover {
+            color: #4da3ff;
+            transform: translateY(-50%) scale(1.15);
+        }
 
-/* === Fenêtre modale === */
-.modal-content {
-  position: relative;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.3);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  border-radius: 14px;
-  padding: 25px 30px;
-  width: 320px;
-  color: #fff;
-  text-align: left;
-  animation: fadeIn 0.3s ease forwards;
-}
+        /* === Overlay modale === */
+        .modal-overlay {
+            display: none;
+            /* cachée par défaut */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
 
-.modal-content h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #4da3ff;
-}
+        /* === Fenêtre modale === */
+        .modal-content {
+            position: relative;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 14px;
+            padding: 25px 30px;
+            width: 320px;
+            color: #fff;
+            text-align: left;
+            animation: fadeIn 0.3s ease forwards;
+        }
 
-/* === Bouton fermeture === */
-.close-btn {
-  position: absolute;
-  top: 8px; right: 10px;
-  background: none;
-  border: none;
-  color: #bbb;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-.close-btn:hover { color: #fff; }
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4da3ff;
+        }
 
-/* === Formulaire === */
-#loginForm label {
-  display: block;
-  font-size: 0.9rem;
-  margin-top: 12px;
-  margin-bottom: 4px;
-}
+        /* === Bouton fermeture === */
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #bbb;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
 
-#loginForm input {
-  width: 100%;
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-  font-size: 0.9rem;
-  color: #222;
-}
+        .close-btn:hover {
+            color: #fff;
+        }
 
-.login-btn {
-  width: 100%;
-  margin-top: 18px;
-  padding: 10px;
-  background: linear-gradient(90deg, #3f8cff, #00bcd4);
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.login-btn:hover {
-  background: linear-gradient(90deg, #00bcd4, #3f8cff);
-}
+        /* === Formulaire === */
+        #loginForm label {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
 
-.forgot-link {
-  display: block;
-  text-align: center;
-  margin-top: 10px;
-  font-size: 0.85rem;
-  color: #aaa;
-  text-decoration: none;
-}
-.forgot-link:hover { color: #4da3ff; }
+        #loginForm input {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            font-size: 0.9rem;
+            color: #222;
+        }
 
-/* === Animation === */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-15px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+        .login-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 10px;
+            background: linear-gradient(90deg, #3f8cff, #00bcd4);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(90deg, #00bcd4, #3f8cff);
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            color: #4da3ff;
+        }
+
+        /* === Animation === */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
 
         /* ============================================================================
@@ -2513,8 +2603,8 @@
         .latest-draw {
             margin: 0 0 20px 0;
             /* Marge bas seulement */
-            padding: 0;
-            /* Pas de padding */
+            padding: 20;
+            /* padding idem effet glass */
         }
 
         /* Options de période */
@@ -3287,7 +3377,7 @@
         }
 
         /* ============================================================================
-   FIN DU CSS REFACTORISÉ
+   FIN CSS
    ============================================================================ */
     </style>
 </head>
@@ -3306,7 +3396,7 @@
     <div class="sidebar">
         <div class="logo">
             <h1>LTsTaT</h1>
-            <p>Analyseur Probabiliste</p>
+            <p>Analyse et Probabilité</p>
         </div>
         <div class="nav-menu">
 
@@ -3355,13 +3445,20 @@
 
     <!-- Contenu principal de l'application -->
     <div class="main-content">
+
         <!-- En-tête avec le statut de l'application -->
         <div class="header">
-            <h2 id="appStatus">Analyse Statistique et Prédictive du Loto</h2>
+            <div class="header-title">
+                <h1 class="site-name">ORACLE</h1>
+                <h3 class="site-subtitle">Analyse statistique de jeux de loterie</h3>
+            </div>
+            <div id="loginIcon">👤</div>
         </div>
 
         <!-- Zone de contenu où s'affichent les différents onglets -->
         <div class="content">
+
+            <!-- Onglet Accueil -->
 
             <div id="overview" class="tab-content active">
                 <div class="section">
@@ -3638,6 +3735,8 @@
                 </div>
             </div>
 
+            <!-- Onglet Apprentissage -->
+
             <div id="ml" class="tab-content">
                 <div class="section">
                     <h2>Probabilités par Machine Learning</h2>
@@ -3752,6 +3851,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Onglet Clustering -->
 
             <div id="clusters" class="tab-content">
                 <div class="section">
@@ -4184,6 +4285,8 @@
                 </div>
             </div>
 
+            <!-- Onglet Programme -->
+
             <div id="programme" class="tab-content">
                 <div class="section">
                     <h2>Programme</h2>
@@ -4424,9 +4527,9 @@
 
                 // Modèles de Machine Learning
                 let mlModels = {                    // Objet contenant les modèles ML
-                    rf: null,                           // Random Forest
+                    rf: null,                       // Random Forest
                     gb: null,                       // Gradient Boosting  
-                    logistic: null,                     // Régression Logistique
+                    logistic: null,                 // Régression Logistique
                     ensemble: null,                 // Ensemble Stacking
                     lstm: null                      // LSTM Deep Learning
                 };
@@ -7481,7 +7584,6 @@
                 }
 
 
-
                 // ============================================================================
                 // FONCTIONS D'INITIALISATION PRINCIPALES
                 // ============================================================================
@@ -7622,7 +7724,7 @@
                         if (historicalData.draws.length > 0) {
                             const firstDate = parseDrawDate(historicalData.draws[0].date);
                             const lastDate = parseDrawDate(historicalData.draws[historicalData.draws.length - 1].date);
-                            console.log(`📅 Période complète chargée : ${lastDate.toLocaleDateString('fr-FR')} → ${firstDate.toLocaleDateString('fr-FR')}`);
+                            console.log(`   Période complète chargée : ${lastDate.toLocaleDateString('fr-FR')} → ${firstDate.toLocaleDateString('fr-FR')}`);
                             console.log(`   Premier tirage (index 0) : ${historicalData.draws[0].date}`);
                             console.log(`   Dernier tirage (index ${historicalData.draws.length - 1}) : ${historicalData.draws[historicalData.draws.length - 1].date}`);
                         }
@@ -7710,6 +7812,7 @@
                     }
                     return date.toLocaleDateString('fr-FR');                // Retourne date format français
                 }
+
                 // ============================================================================
                 // FONCTIONS POUR LES GRILLES DE SÉLECTION
                 // ============================================================================
@@ -10359,14 +10462,17 @@
                 <h4>Précision</h4>
                 <div class="value">${(accuracy * 100).toFixed(2)}%</div>
             </div>
+
             <div class="stat-card">
                 <h4>Perte</h4>
                 <div class="value">${loss.toFixed(4)}</div>
             </div>
+
             <div class="stat-card">
                 <h4>Modèle</h4>
                 <div class="value">${modelName}</div>
             </div>
+            
             <div class="stat-card">
                 <h4>Échantillons</h4>
                 <div class="value">${draws.length}</div>
@@ -10446,7 +10552,6 @@
 
                         tf.dispose([xPredict, prediction]);
 
-
                         resultsDiv.innerHTML = `
             <h3>Résultats de l'entraînement - ${modelName}</h3>
             <div class="matrix-result-card">
@@ -10481,7 +10586,7 @@
                         ).join('')}
                 </div>
 
-                <div style="margin-top: 10px; padding: 10px; background: #42464B; border-radius: 8px;">
+                <div class="success-box" style="margin-top: 10px;">
                     <p style="font-size: 0.9em; margin: 5px 0;"><strong>Numéro chance:</strong></p>
                     <p style="font-size: 0.85em; margin: 3px 0;">
                         Numéro <strong>${chanceNumber}</strong> - Fréquence historique : ${chanceFreq} apparitions (${((chanceFreq / draws.length) * 100).toFixed(1)}%)
@@ -10721,6 +10826,7 @@
                 /**
                  * Met à jour la visualisation de la matrice (statistiques et graphiques)
                  */
+
                 function updateMatrixVisualization() {
                     // Compter le nombre de modèles sélectionnés par catégorie
                     const statsCount = matrixConfiguration.statisticalModels.length;
@@ -11598,6 +11704,7 @@
 
                     return predictions;
                 }
+
                 // ============================================================================
                 // FONCTION MANQUANTE POUR LA MATRICE
                 // ============================================================================
@@ -12214,15 +12321,15 @@
                     notification.className = `matrix-notification matrix-notification-${type}`;
                     notification.textContent = message;
                     notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                padding: 12px 20px;
-                background: ${type === 'success' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(244, 67, 54, 0.9)'};
-                color: white;
-                border-radius: 8px;
-                z-index: 10000;
-                font-family: inherit;
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        padding: 12px 20px;
+                        background: ${type === 'success' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(244, 67, 54, 0.9)'};
+                        color: white;
+                        border-radius: 8px;
+                        z-index: 10000;
+                        font-family: inherit;
             `;
 
                     document.body.appendChild(notification);
@@ -12233,17 +12340,17 @@
                 }
 
                 /* ===========================
-           MODULE ML : IMPLÉMENTATIONS COMPLÈTES
-           - prepareMLData(range) : Prépare les données pour l'entraînement
-           - calculateFeatures(draws) : Calcule les caractéristiques statistiques
-           - trainRandomForest(range, options) : Forêt aléatoire
-           - trainGradientBoosting(range, options) : Gradient boosting
-           - trainLogistic(range, options) : Régression logistique
-           - trainLSTM(range, options) : Réseau LSTM
-           - trainEnsemble(range, options) : Ensemble de modèles
-           - predictMLModel(modelObj, lastDraw) : Prédiction avec un modèle
-           NOTE: Implémentations "pratiques" basées sur TF.js pour être 100% client-side.
-           =========================== */
+                    MODULE ML : IMPLÉMENTATIONS COMPLÈTES
+                    - prepareMLData(range) : Prépare les données pour l'entraînement
+                    - calculateFeatures(draws) : Calcule les caractéristiques statistiques
+                    - trainRandomForest(range, options) : Forêt aléatoire
+                    - trainGradientBoosting(range, options) : Gradient boosting
+                    - trainLogistic(range, options) : Régression logistique
+                    - trainLSTM(range, options) : Réseau LSTM
+                    - trainEnsemble(range, options) : Ensemble de modèles
+                    - predictMLModel(modelObj, lastDraw) : Prédiction avec un modèle
+                    NOTE: Implémentations "pratiques" basées sur TF.js pour être 100% client-side.
+                    =========================== */
 
                 // -- 0. FONCTIONS UTILITAIRES
 
@@ -12946,62 +13053,58 @@
 
             </script>
 
-            <!-- ===== Icône de connexion (haut droite) ===== -->
-<div id="loginIcon" title="Se connecter">
-    👤
-  </div>
-  
-  <!-- ===== Fenêtre modale de connexion ===== -->
-  <div id="loginModal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="close-btn" id="closeLoginModal">✖</button>
-      <h2>Connexion</h2>
-      
-      <form id="loginForm">
-        <label for="loginEmail">Adresse e-mail ou identifiant</label>
-        <input type="text" id="loginEmail" name="loginEmail" placeholder="ex: utilisateur@mail.com" required>
-  
-        <label for="loginPassword">Mot de passe</label>
-        <input type="password" id="loginPassword" name="loginPassword"
-       placeholder="••••••••" minlength="6" required>
+            <!-- ===== Fenêtre modale de connexion ===== -->
+            <div id="loginModal" class="modal-overlay">
+                <div class="modal-content">
+                    <button class="close-btn" id="closeLoginModal">✖</button>
+                    <h2>Connexion</h2>
 
-  
-        <button type="submit" class="login-btn">Se connecter</button>
-        <a href="#" class="forgot-link">Mot de passe oublié ?</a>
-      </form>
-    </div>
-  </div>
+                    <form id="loginForm">
+                        <label for="loginEmail">Adresse e-mail ou identifiant</label>
+                        <input type="text" id="loginEmail" name="loginEmail" placeholder="ex: utilisateur@mail.com"
+                            required>
 
-  <script>
-    const loginIcon = document.getElementById('loginIcon');
-    const loginModal = document.getElementById('loginModal');
-    const closeLoginModal = document.getElementById('closeLoginModal');
-    
-    loginIcon.addEventListener('click', () => {
-      loginModal.style.display = 'flex';
-    });
-    
-    closeLoginModal.addEventListener('click', () => {
-      loginModal.style.display = 'none';
-    });
-    
-    window.addEventListener('click', (e) => {
-      if (e.target === loginModal) {
-        loginModal.style.display = 'none';
-      }
-    });
-    
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('loginEmail').value.trim();
-      const pass = document.getElementById('loginPassword').value.trim();
-      console.log(`Tentative de connexion: ${email} / ${pass ? '••••••••' : ''}`);
-      alert('Connexion en cours...');
-      loginModal.style.display = 'none';
-    });
-    </script>
-    
-  
+                        <label for="loginPassword">Mot de passe</label>
+                        <input type="password" id="loginPassword" name="loginPassword" placeholder="••••••••"
+                            minlength="6" required>
+
+
+                        <button type="submit" class="login-btn">Se connecter</button>
+                        <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                const loginIcon = document.getElementById('loginIcon');
+                const loginModal = document.getElementById('loginModal');
+                const closeLoginModal = document.getElementById('closeLoginModal');
+
+                loginIcon.addEventListener('click', () => {
+                    loginModal.style.display = 'flex';
+                });
+
+                closeLoginModal.addEventListener('click', () => {
+                    loginModal.style.display = 'none';
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (e.target === loginModal) {
+                        loginModal.style.display = 'none';
+                    }
+                });
+
+                document.getElementById('loginForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const pass = document.getElementById('loginPassword').value.trim();
+                    console.log(`Tentative de connexion: ${email} / ${pass ? '••••••••' : ''}`);
+                    alert('Connexion en cours...');
+                    loginModal.style.display = 'none';
+                });
+            </script>
+
+
 </body>
 
 </html>
