@@ -130,9 +130,7 @@
             /* ← Ajoute cette ligne pour centrer horizontalement */
             padding: 0 23px;
             /* Padding horizontal seulement */
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 90 !important;
+            position: sticky;
             /* Position collante lors du défilement */
             top: 0;
             /* Collé en haut de la page */
@@ -140,19 +138,7 @@
             /* Priorité d'affichage élevée */
             position: relative;
             /* ← Ajoute ça pour le positionnement de l'icône */
-        }
-
-        .header-title {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: auto;
-        }
+        } 
 
         /* Ligne 1 - ARÔME */
         .site-name {
@@ -748,10 +734,10 @@
             /* Fond légèrement plus clair */
         }
 
-        /* ============================================================================
+         /* ============================================================================
    6. EFFETS GLASS
 ============================================================================ */
-        .glass-effect {
+.glass-effect {
             background: var(--glass-bg);
             /* Fond verre */
             backdrop-filter: var(--glass-blur);
@@ -1335,11 +1321,10 @@
 
         /* === Icône utilisateur === */
         #loginIcon {
-            position: absolute;
-            /* ← Position absolue par rapport au header */
-            top: 50%;
+            position: fixed;
+            top: 25px;
             right: 25px;
-            transform: translateY(-50%);
+            /* Réduit cette valeur */
             font-size: 1.6rem;
             cursor: pointer;
             color: #ddd;
@@ -3446,14 +3431,11 @@
     <!-- Contenu principal de l'application -->
     <div class="main-content">
 
-        <!-- En-tête avec le statut de l'application -->
-        <div class="header">
-            <div class="header-title">
-                <h1 class="site-name">ORACLE</h1>
-                <h3 class="site-subtitle">Analyse statistique de jeux de loterie</h3>
-            </div>
-            <div id="loginIcon">👤</div>
-        </div>
+       <!-- En-tête avec le statut de l'application -->
+       <div class="header">
+        <h2 id="appStatus">Analyse Statistique et Prédictive du Loto</h2>
+        <div id="loginIcon">👤</div>
+    </div>
 
         <!-- Zone de contenu où s'affichent les différents onglets -->
         <div class="content">
