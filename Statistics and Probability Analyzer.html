@@ -140,7 +140,7 @@
             /* Priorité d'affichage élevée */
             position: relative;
             /* ← Ajoute ça pour le positionnement de l'icône */
-        } 
+        }
 
         /* Ligne 1 - ARÔME */
         .site-name {
@@ -736,10 +736,10 @@
             /* Fond légèrement plus clair */
         }
 
-         /* ============================================================================
+        /* ============================================================================
    6. EFFETS GLASS
 ============================================================================ */
-.glass-effect {
+        .glass-effect {
             background: var(--glass-bg);
             /* Fond verre */
             backdrop-filter: var(--glass-blur);
@@ -980,9 +980,9 @@
         .number-ball-chance-select {
             border-radius: 50%;
             /* Forme circulaire */
-            width: 40px;
+            width: 43px;
             /* Largeur fixe */
-            height: 40px;
+            height: 43px;
             /* Hauteur fixe (carré) */
             display: flex;
             /* Utilise Flexbox */
@@ -3364,6 +3364,545 @@
         }
 
         /* ============================================================================
+   BARRE DE RECHERCHE AVANCÉE
+   ============================================================================ */
+
+        /* Conteneur de l'icône recherche */
+        .search-container {
+            position: fixed;
+            top: 25px;
+            right: 70px;
+            z-index: 1000;
+        }
+
+        /* Icône de recherche avec emoji */
+        /* Icône de recherche avec emoji */
+        .search-icon {
+            all: unset !important;
+            width: 10px !important;
+            height: 25px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            font-size: 1.4rem !important;
+            background: transparent !important;
+            position: static !important;
+        }
+
+        .search-icon:hover {
+            border-color: rgba(255, 255, 255, 0.6) !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+
+        .search-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .search-icon:hover::before {
+            left: 100%;
+        }
+
+        .search-icon:active {
+            transform: scale(0.95) translateY(0);
+            transition: all 0.1s ease;
+        }
+
+        .search-icon {
+            animation: searchPulse 3s ease-in-out infinite;
+        }
+
+        .search-icon:hover::after {
+            opacity: 1;
+        }
+
+        /* Overlay de recherche */
+        .search-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 40px;
+        }
+
+        .search-overlay.active {
+            display: flex;
+        }
+
+        /* Modale de recherche */
+        .search-modal {
+            position: relative;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.12) 0%,
+                    rgba(255, 255, 255, 0.06) 100%);
+            backdrop-filter: blur(100px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow: hidden;
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Bouton fermeture */
+        .search-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #ddd;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ff6b6b;
+            transform: rotate(90deg);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* En-tête recherche */
+        .search-header {
+            padding: 35px 40px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            background: linear-gradient(180deg,
+                    rgba(77, 163, 255, 0.1) 0%,
+                    transparent 100%);
+        }
+
+        .search-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4da3ff 0%, #67daff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .search-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Champ de recherche */
+        .search-input-container {
+            position: relative;
+            padding: 25px 40px 15px;
+        }
+
+        .search-input-container input {
+            width: 100%;
+            padding: 18px 60px 18px 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 1.05rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-input-container input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(77, 163, 255, 0.6);
+            box-shadow:
+                0 0 0 3px rgba(77, 163, 255, 0.2),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .search-input-container input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input-container i {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+        }
+
+        /* Statistiques de recherche */
+        .search-stats {
+            padding: 0 40px 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .search-stats span {
+            color: #4da3ff;
+            font-weight: 600;
+        }
+
+        /* Résultats de recherche */
+        .search-results {
+            padding: 0 40px 35px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .search-category {
+            margin-bottom: 30px;
+        }
+
+        .search-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .search-category h4 {
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            color: #4da3ff;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-category h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #4da3ff 0%, #67daff 100%);
+            border-radius: 2px;
+        }
+
+        .search-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 15px;
+        }
+
+        .search-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .search-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.05),
+                    transparent);
+            transition: left 0.6s ease;
+        }
+
+        .search-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-item:hover::before {
+            left: 100%;
+        }
+
+        .search-item-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 15px;
+        }
+
+        .search-item h5 {
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .search-item-type {
+            background: rgba(77, 163, 255, 0.2);
+            color: #4da3ff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .search-item p {
+            font-size: 0.87rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .search-item-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .search-feature {
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .search-item .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .search-tag {
+            background: rgba(77, 163, 255, 0.15);
+            color: #4da3ff;
+            padding: 3px 9px;
+            border-radius: 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            border: 1px solid rgba(77, 163, 255, 0.3);
+        }
+
+        .search-tag.statistical {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4caf50;
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .search-tag.ml {
+            background: rgba(156, 39, 176, 0.15);
+            color: #9c27b0;
+            border-color: rgba(156, 39, 176, 0.3);
+        }
+
+        .search-tag.deep-learning {
+            background: rgba(255, 152, 0, 0.15);
+            color: #ff9800;
+            border-color: rgba(255, 152, 0, 0.3);
+        }
+
+        .search-tag.clustering {
+            background: rgba(244, 67, 54, 0.15);
+            color: #f44336;
+            border-color: rgba(244, 67, 54, 0.3);
+        }
+
+        .search-tag.simulation {
+            background: rgba(33, 150, 243, 0.15);
+            color: #2196f3;
+            border-color: rgba(33, 150, 243, 0.3);
+        }
+
+        .search-tag.test {
+            background: rgba(121, 85, 72, 0.15);
+            color: #795548;
+            border-color: rgba(121, 85, 72, 0.3);
+        }
+
+        /* État vide */
+        .search-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-empty i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0.4;
+        }
+
+        .search-empty p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .search-empty .search-suggestions {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 15px;
+        }
+
+        /* Indicateur de chargement */
+        .search-loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-loading i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scrollbar personnalisée */
+        .search-results::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .search-results::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .search-results::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .search-container {
+                top: 18px;
+                right: 60px;
+            }
+
+            .search-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .search-modal {
+                width: 95%;
+                margin: 20px;
+                border-radius: 16px;
+            }
+
+            .search-header {
+                padding: 25px 25px 15px;
+            }
+
+            .search-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .search-input-container,
+            .search-results {
+                padding: 20px 25px;
+            }
+
+            .search-items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-input-container input {
+                padding: 15px 50px 15px 20px;
+                font-size: 1rem;
+            }
+
+            .search-input-container i {
+                right: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-container {
+                top: 15px;
+                right: 55px;
+            }
+
+            .search-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+
+            .search-header,
+            .search-input-container,
+            .search-results {
+                padding: 15px 20px;
+            }
+
+            .search-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .search-input-container input {
+                padding: 12px 45px 12px 15px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ============================================================================
    FIN CSS
    ============================================================================ */
     </style>
@@ -3433,11 +3972,98 @@
     <!-- Contenu principal de l'application -->
     <div class="main-content">
 
-       <!-- En-tête avec le statut de l'application -->
-       <div class="header">
-        <h2 id="appStatus">Analyse Statistique et Prédictive du Loto</h2>
-        <div id="loginIcon">👤</div>
-    </div>
+        <!-- En-tête avec le statut de l'application -->
+        <div class="header">
+            <h2 id="appStatus">Analyse Statistique et Prédictive du Loto</h2>
+
+            <!-- Barre de recherche -->
+            <div class="search-container">
+                <div class="search-icon" id="searchToggle">
+                    🔎
+                </div>
+            </div>
+
+            <!-- Overlay de recherche -->
+            <div class="search-overlay" id="searchOverlay">
+                <div class="search-modal">
+                    <button class="search-close-btn" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="search-header">
+                        <h3>🔍 Index des Algorithmes Mathématiques</h3>
+                        <p>Explorez l'ensemble des modèles statistiques et algorithmes de machine learning</p>
+                    </div>
+
+                    <div class="search-input-container">
+                        <input type="text" id="searchInput"
+                            placeholder="Rechercher un modèle, une distribution, un test statistique...">
+                        <i class="fas fa-search"></i>
+                    </div>
+
+                    <div class="search-stats">
+                        <span id="searchCount">0</span> algorithmes disponibles
+                    </div>
+
+                    <div class="search-results" id="searchResults">
+                        <!-- Les résultats seront injectés ici -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="loginIcon">👤</div>
+        </div>
+
+        <!-- ===== Fenêtre modale de connexion ===== -->
+        <div id="loginModal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="close-btn" id="closeLoginModal">✖</button>
+                <h2>Connexion</h2>
+
+                <form id="loginForm">
+                    <label for="loginEmail">Adresse e-mail ou identifiant</label>
+                    <input type="text" id="loginEmail" name="loginEmail" placeholder="ex: utilisateur@mail.com"
+                        required>
+
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" name="loginPassword" placeholder="••••••••" minlength="6"
+                        required>
+
+
+                    <button type="submit" class="login-btn">Se connecter</button>
+                    <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            const loginIcon = document.getElementById('loginIcon');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+
+            loginIcon.addEventListener('click', () => {
+                loginModal.style.display = 'flex';
+            });
+
+            closeLoginModal.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+            });
+
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value.trim();
+                const pass = document.getElementById('loginPassword').value.trim();
+                console.log(`Tentative de connexion: ${email} / ${pass ? '••••••••' : ''}`);
+                alert('Connexion en cours...');
+                loginModal.style.display = 'none';
+            });
+        </script>
 
         <!-- Zone de contenu où s'affichent les différents onglets -->
         <div class="content">
@@ -11280,55 +11906,55 @@
 
                     // EN-TÊTE AVEC STATISTIQUES GLOBALES
                     html += `
-        <div class="matrix-result-card">
-            <h3>Résultats de l'Analyse Matricielle</h3>
-            <div class="matrix-stats">
-                <div class="stat-card">
-                    <h4>Modèles Utilisés</h4>
-                    <div class="value">${Object.keys(results.modelContributions).length}</div>
+                <div class="matrix-result-card">
+                    <h3>Résultats de l'Analyse Matricielle</h3>
+                    <div class="matrix-stats">
+                        <div class="stat-card">
+                            <h4>Modèles Utilisés</h4>
+                            <div class="value">${Object.keys(results.modelContributions).length}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Temps d'Exécution</h4>
+                            <div class="value">${(results.executionTime / 1000).toFixed(2)}s</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Confiance Moyenne</h4>
+                            <div class="value">${results.metrics.averageConfidence}</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Stabilité</h4>
+                            <div class="value">${results.metrics.predictionStability}</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4>Temps d'Exécution</h4>
-                    <div class="value">${(results.executionTime / 1000).toFixed(2)}s</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Confiance Moyenne</h4>
-                    <div class="value">${results.metrics.averageConfidence}</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Stabilité</h4>
-                    <div class="value">${results.metrics.predictionStability}</div>
-                </div>
-            </div>
-        </div>
-    `;
+            `;
 
                     // PRÉDICTIONS FUSIONNÉES
 
                     html += `
-        <div class="matrix-result-card">
-            <h4>Prédictions Fusionnées (${matrixConfiguration.fusion})</h4>
-            <div class="prediction-container">
-    `;
+                <div class="matrix-result-card">
+                    <h4>Prédictions Fusionnées (${matrixConfiguration.fusion})</h4>
+                    <div class="prediction-container">
+            `;
 
                     results.predictions.forEach((prediction, index) => {
                         html += `
-            <div class="prediction-item">
-                <h5>Combinaison ${index + 1}</h5>
-                <div class="selected-numbers-display">
-                    ${prediction.map(num =>
+                    <div class="prediction-item">
+                        <h5>Combinaison ${index + 1}</h5>
+                        <div class="selected-numbers-display">
+                            ${prediction.map(num =>
                             `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`
-                        ).join('')}
-                    <div class="number-ball number-ball-chance"
-                         style="background: ${getChanceBallColor(Math.floor(Math.random() * 10) + 1)}">
-                        ${Math.floor(Math.random() * 10) + 1}
+                            ).join('')}
+                            <div class="number-ball number-ball-chance"
+                            style="background: ${getChanceBallColor(Math.floor(Math.random() * 10) + 1)}">
+                            ${Math.floor(Math.random() * 10) + 1}
+                            </div>
+                        </div>
+                        <div class="prediction-confidence">
+                        <small>Confiance: ${Math.round(75 + Math.random() * 20)}%</small>
                     </div>
                 </div>
-                <div class="prediction-confidence">
-                    <small>Confiance: ${Math.round(75 + Math.random() * 20)}%</small>
-                </div>
-            </div>
-        `;
+            `;
                     });
 
                     html += `</div></div>`;
@@ -11336,24 +11962,24 @@
                     // PERFORMANCE DES MODÈLES
 
                     html += `
-        <div class="matrix-result-card">
-            <h4>Performance des Modèles</h4>
-            <div class="model-contributions">
-    `;
+                <div class="matrix-result-card">
+                    <h4>Performance des Modèles</h4>
+                    <div class="model-contributions">
+            `;
 
                     Object.entries(results.modelPerformance).forEach(([model, performance]) => {
                         const performancePercent = Math.round(performance);
                         html += `
-            <div class="contribution-item">
-                <div>
-                    <strong>${getModelDisplayName(model)}</strong>
-                    <div class="performance-bar">
-                        <div class="performance-fill" style="width: ${performancePercent}%"></div>
-                        <span class="performance-text">${performancePercent}%</span>
+                    <div class="contribution-item">
+                        <div>
+                            <strong>${getModelDisplayName(model)}</strong>
+                            <div class="performance-bar">
+                             <div class="performance-fill" style="width: ${performancePercent}%"></div>
+                             <span class="performance-text">${performancePercent}%</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        `;
+             `;
                     });
 
                     html += `</div></div>`;
@@ -11361,28 +11987,28 @@
                     // MÉTRIQUES TECHNIQUES
 
                     html += `
-        <div class="matrix-result-card">
-            <h4>Métriques Techniques</h4>
-            <div class="technical-metrics">
-                <div class="metric-item">
+                    <div class="matrix-result-card">
+                    <h4>Métriques Techniques</h4>
+                    <div class="technical-metrics">
+                 <div class="metric-item">
                     <span>Diversité des modèles:</span>
                     <span class="metric-value">${results.metrics.modelDiversity}</span>
                 </div>
-                <div class="metric-item">
+                    <div class="metric-item">
                     <span>Efficacité d'exécution:</span>
                     <span class="metric-value">${results.metrics.executionEfficiency}</span>
                 </div>
-                <div class="metric-item">
+                    <div class="metric-item">
                     <span>Méthode de fusion:</span>
                     <span class="metric-value">${matrixConfiguration.fusion}</span>
                 </div>
-                <div class="metric-item">
+                    <div class="metric-item">
                     <span>Pondération:</span>
                     <span class="metric-value">${matrixConfiguration.weighting}</span>
+                    </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    `;
+            `;
 
                     // Injecter le HTML dans la page
                     resultsDiv.innerHTML = html;
@@ -11632,16 +12258,16 @@
                     notification.className = `matrix-notification matrix-notification-${type}`;
                     notification.textContent = message;
                     notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        background: ${type === 'success' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(244, 67, 54, 0.9)'};
-        color: white;
-        border-radius: 8px;
-        z-index: 10000;
-        font-family: inherit;
-    `;
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 12px 20px;
+                    background: ${type === 'success' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(244, 67, 54, 0.9)'};
+                    color: white;
+                    border-radius: 8px;
+                    z-index: 10000;
+                    font-family: inherit;
+             `;
 
                     document.body.appendChild(notification);
 
@@ -12024,21 +12650,21 @@
                     html += `<div class="prediction-container">`;
                     results.predictions.forEach((prediction, index) => {
                         html += `
-        <div class="prediction-item">
-            <h5>Combinaison ${index + 1}</h5>
-            <div class="selected-numbers-display">
-                ${prediction.map(num =>
+                    <div class="prediction-item">
+                    <h5>Combinaison ${index + 1}</h5>
+                    <div class="selected-numbers-display">
+                    ${prediction.map(num =>
                             `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`
                         ).join('')}
-                <div class="number-ball number-ball-chance" style="background: ${getChanceBallColor(Math.floor(Math.random() * 10) + 1)}">
+                    <div class="number-ball number-ball-chance" style="background: ${getChanceBallColor(Math.floor(Math.random() * 10) + 1)}">
                     ${Math.floor(Math.random() * 10) + 1}
-                </div>
-            </div>
-            <div class="prediction-confidence">
+                    </div>
+                    </div>
+                <div class="prediction-confidence">
                 <small>Confiance: ${Math.round(75 + Math.random() * 20)}%</small>
-            </div>
-        </div>
-    `;
+                 </div>
+                 </div>
+             `;
                     });
                     html += `</div>`;
 
@@ -13035,60 +13661,377 @@
 
                 /* === FIN MODULE ML === */
 
-            </script>
 
-            <!-- ===== Fenêtre modale de connexion ===== -->
-            <div id="loginModal" class="modal-overlay">
-                <div class="modal-content">
-                    <button class="close-btn" id="closeLoginModal">✖</button>
-                    <h2>Connexion</h2>
+                // ============================================================================
+                // SYSTÈME DE RECHERCHE AVANCÉ
+                // ============================================================================
 
-                    <form id="loginForm">
-                        <label for="loginEmail">Adresse e-mail ou identifiant</label>
-                        <input type="text" id="loginEmail" name="loginEmail" placeholder="ex: utilisateur@mail.com"
-                            required>
+                const searchIndex = [
+                    {
+                        title: "Programme",
+                        description: "Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées",
+                        category: "programme",
+                        tags: ["plateforme", "analyse", "prévisions", "optimisées"],
+                        fullContent: "Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées"
+                    },
+                    {
+                        title: "Simulation Monte-Carlo",
+                        description: "Méthode d'échantillonnage aléatoire massif avec Importance Sampling - 10,000+ simulations pondérées",
+                        category: "probabilistes",
+                        tags: ["montecarlo", "simulation", "échantillonnage", "variance"],
+                        fullContent: `MODÈLES PROBABILISTES STATISTIQUES
 
-                        <label for="loginPassword">Mot de passe</label>
-                        <input type="password" id="loginPassword" name="loginPassword" placeholder="••••••••"
-                            minlength="6" required>
+                        Simulation Monte-Carlo
 
+                        Principe Mathématique : Méthode d'échantillonnage aléatoire massif pour résoudre des problèmes déterministes par des moyens probabilistes.
 
-                        <button type="submit" class="login-btn">Se connecter</button>
-                        <a href="#" class="forgot-link">Mot de passe oublié ?</a>
-                    </form>
-                </div>
-            </div>
+                        Formule Clé :
 
-            <script>
-                const loginIcon = document.getElementById('loginIcon');
-                const loginModal = document.getElementById('loginModal');
-                const closeLoginModal = document.getElementById('closeLoginModal');
+                        E[f(X)] ≈ (1/N) * Σ f(X_i) où X_i ~ Distribution cible
 
-                loginIcon.addEventListener('click', () => {
-                    loginModal.style.display = 'flex';
-                });
+                        Processus :
 
-                closeLoginModal.addEventListener('click', () => {
-                    loginModal.style.display = 'none';
-                });
+                        10,000+ simulations de tirages pondérées
 
-                window.addEventListener('click', (e) => {
-                    if (e.target === loginModal) {
-                        loginModal.style.display = 'none';
+                        Importance Sampling : Combinaison fréquences (40%), écarts (30%), tendances (30%)
+
+                        Distribution stationnaire : Convergence vers les probabilités réelles
+
+                        Réduction de variance : Optimisation par pondération intelligente
+
+                        Rôle : Identification des combinaisons les plus probables via l'analyse de millions de scénarios simulés.`
+                    },
+                    {
+                        title: "Loi de Poisson",
+                        description: "Modélisation des événements rares - λ = fréquence historique - Pondération λ × e^(-λ) pour éviter la sur-représentation",
+                        category: "probabilistes",
+                        tags: ["poisson", "distribution", "fréquence", "événements rares"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Modélisation des probabilités d'apparition basée sur la distribution de Poisson pour événements rares dans un intervalle fixe.\n\nFORMULE : P(X=k) = (λ^k * e^(-λ)) / k! où λ = fréquence moyenne du numéro\n\nAPPLICATION :\n• λ = fréquence historique relative de chaque numéro\n• Pondération : λ × e^(-λ) pour éviter la sur-représentation\n• Sélection : Tirage aléatoire selon les probabilités de Poisson\n\nRÔLE : Privilégier les numéros avec des fréquences historiques optimales.`
+                    },
+                    {
+                        title: "Distribution de Dirichlet",
+                        description: "Distribution multivariée bayésienne - Répartition par dizaines 1-10, 11-20, 21-30, 31-40, 41-49 - Paramètres α = fréquences historiques",
+                        category: "probabilistes",
+                        tags: ["dirichlet", "multivariée", "bayésien", "répartition"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Distribution multivariée pour modéliser les probabilités des différents numéros dans un cadre bayésien.\n\nFORMULE : f(x₁,...,xₖ; α₁,...,αₖ) = (1/B(α)) * Π x_i^(α_i-1) où B(α) = fonction Bêta multivariée\n\nAPPLICATION :\n• Dizaines : 1-10, 11-20, 21-30, 31-40, 41-49\n• Paramètres α : Fréquences historiques par tranche + 1 (régularisation)\n• Répartition : Génération de proportions optimales\n\nRÔLE : Assurer une répartition équilibrée des numéros sur l'ensemble des dizaines.`
+                    },
+                    {
+                        title: "Distribution Binomiale",
+                        description: "Modélisation pairs/impairs - n=5 numéros par tirage - p = probabilité empirique d'un numéro pair - Contrôle équilibre",
+                        category: "probabilistes",
+                        tags: ["binomiale", "succès", "pairs-impairs", "équilibre"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Modélisation des probabilités de succès sur une série d'essais indépendants pour chaque numéro.\n\nFORMULE : P(X=k) = C(n,k) * p^k * (1-p)^(n-k)\n\nAPPLICATION :\n• n = 5 (numéros par tirage)\n• p = probabilité empirique d'un numéro pair\n• k = nombre de pairs dans la combinaison (0 à 5)\n\nRÔLE : Contrôler l'équilibre pairs/impairs selon les distributions historiques.`
+                    },
+                    {
+                        title: "Distribution Gamma",
+                        description: "Modélisation temps d'attente - k = nombre d'apparitions - θ = temps moyen d'attente/k - Identification numéros en retard",
+                        category: "probabilistes",
+                        tags: ["gamma", "temps attente", "réapparition", "paramètre forme"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Modélisation des temps d'attente entre événements.\n\nFORMULE : f(x; k, θ) = x^(k-1) * e^(-x/θ) / (θ^k * Γ(k))\n\nAPPLICATION :\n• k = nombre d'apparitions (paramètre de forme)\n• θ = temps moyen d'attente / k (paramètre d'échelle)\n• Score = PDF Gamma pour chaque numéro\n\nRÔLE : Identifier les numéros "en retard" ayant une probabilité élevée de réapparaître.`
+                    },
+                    {
+                        title: "Test T de Student",
+                        description: "Test paramétrique comparaison moyennes - X̄ = fréquence observée - μ = fréquence moyenne globale - Détection sur/sous-représentation",
+                        category: "probabilistes",
+                        tags: ["student", "test paramétrique", "moyennes", "significativité"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Test paramétrique pour comparer les moyennes de différents groupes de numéros et valider les différences significatives.\n\nFORMULE : t = (X̄ - μ) / (s/√n)\n\nAPPLICATION :\n• X̄ = fréquence observée du numéro\n• μ = fréquence moyenne globale\n• s = écart-type des fréquences\n• n = 49 (nombre de numéros)\n\nRÔLE : Détecter les numéros significativement sur/sous-représentés.`
+                    },
+                    {
+                        title: "Test du Chi-carré",
+                        description: "Test non paramétrique adéquation - O_i = fréquence observée - E_i = fréquence attendue - Vérification uniformité distribution",
+                        category: "probabilistes",
+                        tags: ["chi-carré", "adéquation", "uniformité", "degrés liberté"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Test non paramétrique pour vérifier l'adéquation entre la distribution observée et une distribution théorique attendue.\n\nFORMULE : χ² = Σ [(O_i - E_i)² / E_i]\n\nAPPLICATION :\n• O_i = fréquence observée du numéro i\n• E_i = fréquence attendue (moyenne uniforme)\n• ddl = 48 (degrés de liberté)\n\nRÔLE : Vérifier l'hypothèse d'uniformité de la distribution des numéros.`
+                    },
+                    {
+                        title: "Loi de Zipf",
+                        description: "Distribution rang-fréquence - r = rang du numéro - s ≈ 1.0 paramètre pente - Pondération inverse du rang",
+                        category: "probabilistes",
+                        tags: ["zipf", "rang-fréquence", "hiérarchie", "patterns"],
+                        fullContent: `PRINCIPE MATHÉMATIQUE : Application de la loi de Zipf pour modéliser la distribution rang-fréquence et identifier les patterns hiérarchiques.\n\nFORMULE : f(r) = 1 / r^s\n\nAPPLICATION :\n• r = rang du numéro (1 = plus fréquent)\n• s ≈ 1.0 (paramètre de pente)\n• Pondération : Inverse du rang\n\nRÔLE : Privilégier structurellement les numéros historiquement fréquents.`
+                    },
+                    {
+                        title: "Random Forest",
+                        description: "Forêt 100 arbres décision - Bagging bootstrap - Feature aléatoire sélection - Vote majoritaire agrégation",
+                        category: "machinelearning",
+                        tags: ["randomforest", "arbres décision", "bagging", "vote majoritaire"],
+                        fullContent: `ARCHITECTURE : Forêt de 100 arbres de décision\n\nPRINCIPE :\n• Bagging : Bootstrap aggregating\n• Feature aléatoire : Sélection aléatoire à chaque split\n• Vote majoritaire : Agrégation des prédictions\n\nMATHÉMATIQUE : Prédiction = mode({T₁(x), T₂(x), ..., T₁₀₀(x)})\n\nAVANTAGE : Robustesse au bruit et éviter le sur-apprentissage.`
+                    },
+                    {
+                        title: "Gradient Boosting",
+                        description: "Algorithme boosting séquentiel - Construction modèles faibles - Minimisation fonction perte - Learning rate 0.1",
+                        category: "machinelearning",
+                        tags: ["gradientboosting", "boosting", "sequential", "loss function"],
+                        fullContent: `ARCHITECTURE : Algorithme de boosting construisant séquentiellement des modèles faibles pour minimiser la fonction de perte.\n\nPRINCIPE :\n• Apprentissage séquentiel : Chaque arbre corrige les erreurs du précédent\n• Fonction de perte : Mean Squared Error\n• Learning rate : 0.1\n\nALGORITHME : F_m(x) = F_{m-1}(x) + γ_m * h_m(x) où h_m(x) minimise la perte résiduelle`
+                    },
+                    {
+                        title: "Régression Logistique Multiclasse",
+                        description: "Modèle linéaire généralisé classification - Fonction logistique - Régularisation L2 - Encodage one-hot 49 classes",
+                        category: "machinelearning",
+                        tags: ["regressionlogistique", "multiclasse", "L2", "one-hot"],
+                        fullContent: `FORMULATION : Modèle linéaire généralisé pour la classification avec fonction logistique et régularisation L2.\n\nFONCTION : P(y=k|x) = e^(w_k·x) / Σ e^(w_j·x)\n\nOPTIMISATION :\n• Régularisation L2 : Pénalisation des grands coefficients\n• Algorithme L-BFGS : Optimisation quasi-Newton\n• Encodage one-hot : 49 classes de sortie`
+                    },
+                    {
+                        title: "Ensemble Stacking",
+                        description: "Meta-algorithme combinaison modèles - Niveau 1: RF, GB, LR - Niveau 2: Régression linéaire - Amélioration performances",
+                        category: "machinelearning",
+                        tags: ["stacking", "meta-algorithme", "combinaison", "performance"],
+                        fullContent: `ARCHITECTURE : Meta-algorithme combinant les prédictions de multiples modèles via un meta-modèle pour améliorer les performances.\n\nNIVEAU 1 (Base) :\n• Random Forest, Gradient Boosting, Régression Logistique\n\nNIVEAU 2 (Méta) :\n• Régression linéaire combinant les prédictions\n\nFORMULE : Prédiction_finale = w₁·RF(x) + w₂·GB(x) + w₃·LR(x)`
+                    },
+                    {
+                        title: "Clustering K-Means",
+                        description: "Algorithme partitionnement données - Minimisation variance intra-cluster - k clusters centroïdes - Distance euclidienne",
+                        category: "clustering",
+                        tags: ["kmeans", "clustering", "partitionnement", "centroïdes"],
+                        fullContent: `DÉFINITION MATHÉMATIQUE : Algorithme de partitionnement de données qui vise à diviser un ensemble de n observations en k clusters où chaque observation appartient au cluster dont le centroïde est le plus proche.\n\nOBJECTIF : Minimiser la variance intra-cluster\nargmin_S Σ_{i=1}^k Σ_{x∈S_i} ||x - μ_i||²\n\nOÙ :\n• S = {S₁, S₂, ..., Sₖ} : Partition des données\n• μ_i : Centroïde du cluster i\n• ||x - μ_i|| : Distance euclidienne\n\nALGORITHME ITÉRATIF :\n1. Initialisation : Choix aléatoire k centroïdes\n2. Affectation : Assignation points au centroïde le plus proche\n3. Mise à jour : Recalcul des centroïdes\n4. Critère arrêt : Convergence ou itérations maximales`
+                    },
+                    {
+                        title: "Simulation Monte-Carlo Avancée",
+                        description: "Échantillonnage préférentiel Importance Sampling - Distribution composite q(x) = 0.4·q₁ + 0.3·q₂ + 0.3·q₃ - Réduction variance",
+                        category: "simulation",
+                        tags: ["montecarlo", "avancée", "échantillonnage", "préférentiel"],
+                        fullContent: `PRINCIPE FONDAMENTAL : Méthode de résolution de problèmes déterministes par des moyens probabilistes : E[f(X)] ≈ (1/N) × Σ f(X₍ᵢ₎) où X₍ᵢ₎ ~ π(x)\n\nÉCHANTILLONNAGE PRÉFÉRENTIEL : Au lieu d'échantillonner selon la distribution cible π(x), on échantillonne selon une distribution instrumentale q(x) qui favorise les régions importantes.\n\nDISTRIBUTION COMPOSITE :\nq(x) = α·q₁(x) + β·q₂(x) + γ·q₃(x)\navec α=0.4, β=0.3, γ=0.3\n\nCOMPOSANTES :\n• q₁(x) ∝ Fréquence_historique(x) + ε (40%)\n• q₂(x) ∝ exp(-Gap(x)/τ) (30%)\n• q₃(x) ∝ Fréquence_récente(x) (30%)\n\nALGORITHME DÉTAILLÉ :\nPhase 1 : Calcul poids importance\nPhase 2 : Simulation avec Importance Sampling  \nPhase 3 : Agrégation et classement`
+                    },
+                    {
+                        title: "Matrice",
+                        description: "Système expert composition modulaire - Combinaison intelligente modèles - Synergie > Somme parties - Architecture modulaire",
+                        category: "matrice",
+                        tags: ["matrice", "modulaire", "synergie", "composition"],
+                        fullContent: `CONCEPT FONDAMENTAL : Système expert de composition modulaire permettant de créer des architectures d'analyse sur mesure en combinant intelligemment différents modèles statistiques et algorithmes d'apprentissage automatique.\n\nPRINCIPE : Synergie > Somme des parties\n\nARCHITECTURE MODULAIRE :\n1. MODÈLES STATISTIQUES FONDAMENTAUX\n   • Distribution de Poisson\n   • Distribution Binomiale  \n   • Loi de Zipf\n   • Distribution de Dirichlet\n\n2. ALGORITHMES MACHINE LEARNING\n   • Random Forest\n   • Gradient Boosting\n   • LSTM (Long Short-Term Memory)\n\n3. TECHNIQUES AVANCÉES\n   • Clustering K-Means\n   • Simulation Monte-Carlo\n   • Ensemble Stacking\n\nSYSTÈMES DE PONDÉRATION :\n• Méthode 1 : Pondération Égale\n• Méthode 2 : Pondération par Performance  \n• Méthode 3 : Pondération Personnalisée\n\nMÉCANISMES DE FUSION :\n• Vote Majoritaire\n• Fusion Pondérée\n• Stacking Avancé`
+                    },
+                    {
+                        title: "Analyse des Fréquences",
+                        description: "Calcul fréquences historiques - Histogramme visualisation - Top 10/Bottom 10 - Identification tendances long terme",
+                        category: "analyse",
+                        tags: ["fréquences", "histogramme", "tendances", "historique"],
+                        fullContent: `CALCUL : Fréquence(n) = Nombre d'apparitions(n) / Total tirages\n\nDISTRIBUTION :\n• Histogramme : Visualisation des fréquences relatives\n• Top 10 : Numéros les plus fréquents  \n• Bottom 10 : Numéros les moins fréquents\n\nINTERPRÉTATION : Identification des tendances historiques long terme.`
+                    },
+                    {
+                        title: "Évaluation de Grille",
+                        description: "Scores composites multiples - Fréquence, Parité, Statistique, Cluster, Équilibre - Score global moyenne pondérée",
+                        category: "evaluation",
+                        tags: ["grille", "scores", "évaluation", "composite"],
+                        fullContent: `SCORES COMPOSITES :\n\n1. SCORE FRÉQUENCE (0-100) :\n   Σ(fréquence numéros) / max_fréquence * 100\n\n2. SCORE PARITÉ (0-100) :\n   min(pairs, impairs) * 20\n\n3. SCORE STATISTIQUE (0-100) :\n   max(0, 100 - |somme - 125| / 2)\n\n4. SCORE CLUSTER (0-100) :\n   nombre_clusters_distincts * 20\n\n5. SCORE ÉQUILIBRE (0-100) :\n   max(0, 100 - (max_dizaine - 1) * 25)\n\nSCORE GLOBAL : Moyenne pondérée des scores individuels.`
+                    },
+                    {
+                        title: "Technologies Mathématiques",
+                        description: "TensorFlow.js réseaux neuronaux - Math.js calcul symbolique - Chart.js visualisation interactive - Optimisation GPU/CPU",
+                        category: "technologies",
+                        tags: ["tensorflow", "mathjs", "chartjs", "visualisation"],
+                        fullContent: `TENSORFLOW.JS :\n• Réseaux Neuronaux : Création et entraînement in-browser\n• Tenseurs : Calcul numérique optimisé GPU/CPU\n• Autograd : Différentiation automatique  \n• Layers API : Construction modulaire de modèles\n\nMATH.JS :\n• Calcul Symbolique : Évaluation d'expressions complexes\n• Matrices : Opérations algébriques avancées\n• Distributions : Fonctions statistiques intégrées\n• Précision : Calculs numériques haute précision\n\nCHART.JS :\n• Visualisation : Représentation graphique interactive\n• Animations : Transitions fluides des données\n• Responsive : Adaptation automatique aux devices\n• Types multiples : Barres, lignes, radar, doughnut, scatter`
+                    },
+                    {
+                        title: "Entraînement Apprentissage Automatique",
+                        description: "Algorithmes implémentés RF, GB, LR, LSTM, Stacking - Processus entraînement complet - Optimisations avancées",
+                        category: "machinelearning",
+                        tags: ["entraînement", "optimisation", "validation", "performance"],
+                        fullContent: `ALGORITHMES IMPLÉMENTÉS :\n• FORÊT ALÉATOIRE (Random Forest)\n• GRADIENT BOOSTING  \n• RÉGRESSION LOGISTIQUE MULTICLASSE\n• RÉSEAUX NEURONAUX RÉCURRENTS (LSTM)\n• MÉTA-APPRENTISSAGE (Stacking)\n\nPROCESSUS D'ENTRAÎNEMENT :\n1. PRÉPARATION DES DONNÉES\n   • Encodage des Tirages\n   • Création des Séries Temporelles\n\n2. CONFIGURATION DES MODÈLES\n   • Architecture Réseau de Neurones\n   • Hyperparamètres\n\n3. FONCTIONS DE PERTE\n   • Entropie Croisée Binaire\n\nÉVALUATION ET VALIDATION :\n• Métriques de Performance\n• Techniques de Validation\n\nOPTIMISATIONS AVANCÉES :\n• Régularisation\n• Arrêt Précoce (Early Stopping)\n• Adaptation du Taux d'Apprentissage`
                     }
-                });
+                ];
 
-                document.getElementById('loginForm').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('loginEmail').value.trim();
-                    const pass = document.getElementById('loginPassword').value.trim();
-                    console.log(`Tentative de connexion: ${email} / ${pass ? '••••••••' : ''}`);
-                    alert('Connexion en cours...');
-                    loginModal.style.display = 'none';
-                });
+                // Initialisation de la recherche
+                function initSearch() {
+                    const searchToggle = document.getElementById('searchToggle');
+                    const searchOverlay = document.getElementById('searchOverlay');
+                    const searchClose = document.getElementById('searchClose');
+                    const searchInput = document.getElementById('searchInput');
+                    const searchResults = document.getElementById('searchResults');
+                    const searchCount = document.getElementById('searchCount');
+
+                    // Ouvrir la recherche
+                    searchToggle.addEventListener('click', () => {
+                        searchOverlay.classList.add('active');
+                        searchInput.focus();
+                        performSearch(''); // Afficher tous les résultats au début
+                    });
+
+                    // Fermer la recherche
+                    searchClose.addEventListener('click', () => {
+                        searchOverlay.classList.remove('active');
+                    });
+
+                    // Recherche en temps réel
+                    searchInput.addEventListener('input', (e) => {
+                        performSearch(e.target.value);
+                    });
+
+                    // Fermer avec ESC
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                            searchOverlay.classList.remove('active');
+                        }
+                    });
+                }
+
+                // Fonction de recherche principale
+                function performSearch(query) {
+                    const searchResults = document.getElementById('searchResults');
+                    const searchCount = document.getElementById('searchCount');
+
+                    if (!query.trim()) {
+                        // Afficher tous les éléments si recherche vide
+                        displayResults(searchIndex);
+                        searchCount.textContent = searchIndex.length;
+                        return;
+                    }
+
+                    const results = searchIndex.filter(item => {
+                        const searchText = query.toLowerCase();
+
+                        // Recherche dans le titre
+                        if (item.title.toLowerCase().includes(searchText)) return true;
+
+                        // Recherche dans la description
+                        if (item.description.toLowerCase().includes(searchText)) return true;
+
+                        // Recherche dans les tags
+                        if (item.tags.some(tag => tag.toLowerCase().includes(searchText))) return true;
+
+                        // Recherche dans la catégorie
+                        if (item.category.toLowerCase().includes(searchText)) return true;
+
+                        // Recherche dans le contenu complet
+                        if (item.fullContent.toLowerCase().includes(searchText)) return true;
+
+                        return false;
+                    });
+
+                    displayResults(results);
+                    searchCount.textContent = results.length;
+                }
+
+                // Affichage des résultats
+                function displayResults(results) {
+                    const searchResults = document.getElementById('searchResults');
+
+                    if (results.length === 0) {
+                        searchResults.innerHTML = `
+                        <div class="search-empty">
+                        <i>🔍</i>
+                        <p>Aucun résultat trouvé</p>
+                        <div class="search-suggestions">
+                        Essayez avec d'autres termes comme "Poisson", "Random Forest", ou "Monte-Carlo"
+                        </div>
+                    </div>
+                `;
+                        return;
+                    }
+
+                    // Grouper par catégorie
+                    const categories = {};
+                    results.forEach(item => {
+                        if (!categories[item.category]) {
+                            categories[item.category] = [];
+                        }
+                        categories[item.category].push(item);
+                    });
+
+                    let html = '';
+
+                    for (const [category, items] of Object.entries(categories)) {
+                        const categoryName = getCategoryDisplayName(category);
+
+                        html += `
+                        <div class="search-category">
+                        <h4>${categoryName}</h4>
+                        <div class="search-items-grid">
+                `;
+
+                        items.forEach(item => {
+                            html += `
+                        <div class="search-item" onclick="selectSearchItem('${item.title}')">
+                        <div class="search-item-header">
+                        <h5>${item.title}</h5>
+                        <span class="search-item-type">${categoryName}</span>
+                        </div>
+                        <p>${item.description}</p>
+                        <div class="search-tags">
+                        ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
+                         </div>
+                    </div>
+                `;
+                        });
+
+                        html += `
+                        </div>
+                    </div>
+                `;
+                    }
+
+                    searchResults.innerHTML = html;
+                }
+
+                // Sélection d'un élément de recherche
+                function selectSearchItem(title) {
+                    const item = searchIndex.find(i => i.title === title);
+                    if (item) {
+                        // Afficher le contenu complet dans une modale ou nouvelle section
+                        showItemDetail(item);
+                    }
+                }
+
+                // Afficher les détails d'un élément
+                function showItemDetail(item) {
+                    // Créer une modale pour afficher le contenu complet
+                    const modal = document.createElement('div');
+                    modal.className = 'search-detail-modal';
+                    modal.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+                    backdrop-filter: blur(20px);
+                    border: 1px solid rgba(255,255,255,0.2);
+                    border-radius: 15px;
+                    padding: 30px;
+                    max-width: 800px;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                    z-index: 10000;
+                    color: white;
+                `;
+
+                    modal.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h3 style="margin: 0; color: #4da3ff;">${item.title}</h3>
+                    <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
+                    </div>
+                    <div style="white-space: pre-line; line-height: 1.6;">${item.fullContent}</div>
+                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    ${item.tags.map(tag => `<span style="background: rgba(77,163,255,0.2); padding: 5px 10px; border-radius: 12px; font-size: 0.8rem;">${tag}</span>`).join('')}
+                    </div>
+                `;
+
+                    document.body.appendChild(modal);
+
+                    // Fermer en cliquant à l'extérieur
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.remove();
+                        }
+                    });
+                }
+
+                // Noms d'affichage des catégories
+                function getCategoryDisplayName(category) {
+                    const names = {
+                        'programme': ' Programme',
+                        'probabilistes': ' Modèles Probabilistes',
+                        'machinelearning': ' Machine Learning',
+                        'clustering': ' Clustering',
+                        'simulation': ' Simulation',
+                        'matrice': ' Matrice',
+                        'analyse': ' Analyse',
+                        'evaluation': ' Évaluation',
+                        'technologies': ' Technologies'
+                    };
+                    return names[category] || category;
+                }
+
+                // Initialiser la recherche au chargement
+                document.addEventListener('DOMContentLoaded', initSearch);
             </script>
-
-
 </body>
 
 </html>
