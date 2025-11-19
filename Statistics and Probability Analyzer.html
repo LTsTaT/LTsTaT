@@ -10,11 +10,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
 
     <style>
-        /* ============================================================================
-   1. VARIABLES CSS
+        
+/* ============================================================================
+   1. VARIABLES CSS MODE SOMBRE
    ============================================================================ */
 
-        :root {
+   :root {
             /* Couleurs principales */
             --primary-color: #343a40;
             /* Couleur principale sombre */
@@ -45,7 +46,7 @@
         }
 
         /* ============================================================================
-   2. RESET ET BASE
+   2. RESET ET BASE MODE SOMBRE
    ============================================================================ */
 
         /* Réinitialisation des marges et paddings par défaut */
@@ -73,12 +74,14 @@
             display: flex;
             /* Utilise Flexbox pour la disposition */
 
-        }
 
+
+        }
 
         /* ============================================================================
    3. LAYOUT PRINCIPAL
    ============================================================================ */
+
 
         /* Barre latérale */
         .sidebar {
@@ -118,7 +121,7 @@
         .header {
             height: var(--header-height);
             /* Hauteur définie par variable */
-            background-color: var(--secondary-color);
+            color: #fff;
             /* Fond avec couleur secondaire (non définie) */
             border-bottom: 1px solid var(--border-color);
             /* Bordure bas fine */
@@ -203,7 +206,7 @@
             /* Taille de police très grande */
             font-weight: 700;
             /* Poids de police gras */
-            color: var(--text-primary);
+            color: #fff;
             /* Couleur de texte principale */
         }
 
@@ -211,7 +214,7 @@
         .logo p {
             font-size: 1rem;
             /* Taille de police normale */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
             margin-top: 2px;
             /* Marge supérieure très fine */
@@ -231,7 +234,7 @@
             /* Centre verticalement les éléments */
             padding: 10px 10px;
             /* Padding interne */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
             text-decoration: none;
             /* Supprime le soulignement */
@@ -259,7 +262,7 @@
             background: linear-gradient(135deg,
                     rgba(255, 255, 255, 0.15) 0%,
                     rgba(255, 255, 255, 0.08) 100%);
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Change la couleur du texte */
             border-color: rgba(255, 255, 255, 0.2);
             /* Change la couleur de la bordure */
@@ -273,7 +276,7 @@
         .nav-item.active {
             background-color: rgba(255, 255, 255, 0.04);
             /* Fond légèrement plus clair */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
             border-left-color: var(--highlight-color);
             /* Bordure gauche colorée */
@@ -344,7 +347,7 @@
             /* Taille de police grande */
             margin-bottom: 20px;
             /* Marge bas */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
             font-weight: 400;
             /* Poids de police normal */
@@ -360,7 +363,7 @@
             /* Taille de police moyenne */
             margin: 0;
             /* Supprime les marges */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
             font-weight: 400;
             /* Poids de police normal */
@@ -456,7 +459,7 @@
             /* Marge bas */
             font-weight: 400;
             /* Poids de police normal */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
         }
 
@@ -479,7 +482,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin: 15px 0;
-            color: var(--text-primary);
+            color: var(--text-secondary);
         }
 
         /* Formulaires */
@@ -490,7 +493,7 @@
             /* Padding interne */
             border: 1px solid var(--border-color);
             /* Bordure fine */
-            background-color: var(--primary-color);
+            color: var(--text-secondary);
             /* Fond avec couleur principale */
             color: var(--text-primary);
             /* Couleur de texte principale */
@@ -507,7 +510,7 @@
         select:focus {
             outline: none;
             /* Supprime le contour par défaut */
-            border-color: var(--accent-color);
+            color: var(--text-secondary);
             /* Change la couleur de bordure */
             box-shadow: 0 0 0 2px rgba(15, 52, 96, 0.3);
             /* Ajoute un halo bleu */
@@ -724,7 +727,7 @@
         th {
             background-color: var(--accent-color);
             /* Fond avec couleur d'accent (non définie) */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
             font-weight: 400;
             /* Poids de police normal */
@@ -816,7 +819,6 @@
             max-width: 1400px;
             /* Largeur maximum */
         }
-
 
         /* Header glass */
         .header {
@@ -980,9 +982,9 @@
         .number-ball-chance-select {
             border-radius: 50%;
             /* Forme circulaire */
-            width: 43px;
+            width: 41px;
             /* Largeur fixe */
-            height: 43px;
+            height: 41px;
             /* Hauteur fixe (carré) */
             display: flex;
             /* Utilise Flexbox */
@@ -1198,7 +1200,7 @@
             /* Marge supérieure */
             font-size: 0.9em;
             /* Taille de police réduite */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
         }
 
@@ -1315,7 +1317,7 @@
             /* Marge supérieure */
             padding: 20px;
             /* Padding interne */
-            background-color: var(--accent-color);
+            color: var(--text-secondary);
             /* Fond avec couleur d'accent (non définie) */
             border-left: 4px solid var(--accent-color);
             /* Bordure gauche épaisse */
@@ -1335,7 +1337,7 @@
         }
 
         #loginIcon:hover {
-            color: #4da3ff;
+            color: var(--text-secondary);
             transform: translateY(-50%) scale(1.15);
         }
 
@@ -1372,7 +1374,7 @@
         .modal-content h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #4da3ff;
+            color: var(--text-secondary);
         }
 
         /* === Bouton fermeture === */
@@ -1436,7 +1438,7 @@
         }
 
         .forgot-link:hover {
-            color: #4da3ff;
+            color: var(--text-secondary);
         }
 
         /* === Animation === */
@@ -1489,7 +1491,7 @@
         .model-info {
             font-size: 0.85rem;
             /* Taille de police réduite */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
             margin-top: 4px;
             /* Marge supérieure fine */
@@ -1634,7 +1636,7 @@
         .model-info {
             font-size: 0.85rem;
             /* Taille de police réduite */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
             margin-top: 4px;
             /* Marge supérieure fine */
@@ -1677,7 +1679,7 @@
         .setting-item label {
             font-size: 0.9rem;
             /* Taille de police réduite */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
         }
 
@@ -1740,7 +1742,7 @@
             /* Marge bas seulement */
             font-size: 1rem;
             /* Taille de police normale */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
             text-align: center;
             /* Centre le texte */
@@ -1776,7 +1778,7 @@
         #matrice .prediction-confidence small {
             font-size: 0.8rem;
             /* Taille de police réduite */
-            color: var(--text-secondary);
+            color: #fff;
             /* Couleur de texte secondaire */
             background: rgba(255, 255, 255, 0.1);
             /* Fond blanc transparent */
@@ -1982,7 +1984,7 @@
         .prediction-item h5 {
             margin-bottom: 10px;
             /* Marge bas */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
         }
 
@@ -2592,6 +2594,7 @@
             /* Marge bas seulement */
             padding: 20;
             /* padding idem effet glass */
+
         }
 
         /* Options de période */
@@ -3376,7 +3379,6 @@
         }
 
         /* Icône de recherche avec emoji */
-        /* Icône de recherche avec emoji */
         .search-icon {
             all: unset !important;
             width: 10px !important;
@@ -3436,7 +3438,7 @@
             z-index: 9999;
             justify-content: center;
             align-items: flex-start;
-            padding-top: 40px;
+            padding-top: 1px;
         }
 
         .search-overlay.active {
@@ -3577,7 +3579,7 @@
         }
 
         .search-stats span {
-            color: #4da3ff;
+            color: var(--text-secondary);
             font-weight: 600;
         }
 
@@ -3599,7 +3601,7 @@
         .search-category h4 {
             font-size: 1.15rem;
             margin-bottom: 18px;
-            color: #4da3ff;
+            color: var(--text-secondary);
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-weight: 600;
@@ -3677,7 +3679,7 @@
 
         .search-item-type {
             background: rgba(77, 163, 255, 0.2);
-            color: #4da3ff;
+            color: var(--text-secondary);
             padding: 4px 10px;
             border-radius: 12px;
             font-size: 0.75rem;
@@ -3718,7 +3720,7 @@
 
         .search-tag {
             background: rgba(77, 163, 255, 0.15);
-            color: #4da3ff;
+            color: var(--text-secondary);
             padding: 3px 9px;
             border-radius: 10px;
             font-size: 0.72rem;
@@ -3902,6 +3904,77 @@
             }
         }
 
+        /* Animation pour le bouton Développer */
+        .expand-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expand-btn:hover {
+            background: rgba(77, 163, 255, 0.1) !important;
+            border-color: rgba(77, 163, 255, 0.6) !important;
+            color: #67daff !important;
+            transform: translateX(3px);
+            box-shadow: 0 2px 8px rgba(77, 163, 255, 0.3) !important;
+        }
+
+        .expand-btn:active {
+            transform: translateX(0);
+        }
+
+        /* Effet de brillance au survol */
+        .expand-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(77, 163, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .expand-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Animation de déroulement du contenu */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                max-height: 2000px;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation de repli */
+        @keyframes slideUp {
+            from {
+                opacity: 1;
+                max-height: 2000px;
+            }
+
+            to {
+                opacity: 0;
+                max-height: 0;
+            }
+        }
+
+        /* Style pour le contenu développé */
+        .item-detail-content {
+            overflow: hidden;
+        }
+
+        .item-detail-content.closing {
+            animation: slideUp 0.3s ease forwards;
+        }
+
         /* ============================================================================
    FIN CSS
    ============================================================================ */
@@ -3966,6 +4039,10 @@
                 <i></i> Programme
             </div>
 
+            <div class="nav-item" onclick="showTab('index')">
+                <i></i> Index Complet
+            </div>
+
         </div>
     </div>
 
@@ -3991,8 +4068,16 @@
                     </button>
 
                     <div class="search-header">
-                        <h3>🔍 Index des Algorithmes Mathématiques</h3>
+                        <h3> Index des Algorithmes Mathématiques</h3>
                         <p>Explorez l'ensemble des modèles statistiques et algorithmes de machine learning</p>
+
+                        <!-- Lien vers l'index complet -->
+                        <a href="#" onclick="openFullIndex(); return false;" style="display: inline-block; margin-top: 15px; padding: 10px 20px; 
+                                  background: linear-gradient(135deg, #4da3ff 0%, #67daff 100%); 
+                                  color: white; text-decoration: none; border-radius: 8px; 
+                                  font-weight: 600; transition: all 0.3s ease;">
+                            Accéder à l'index complet
+                        </a>
                     </div>
 
                     <div class="search-input-container">
@@ -4006,6 +4091,7 @@
                     </div>
 
                     <div class="search-results" id="searchResults">
+
                         <!-- Les résultats seront injectés ici -->
                     </div>
                 </div>
@@ -4090,7 +4176,7 @@
 
                     <!-- Contrôles pour la sélection de la période d'analyse -->
                     <div class="control-group">
-                        <h3 style="color: var(--text-primary); margin-bottom: 15px;">Sélection de la Période d'Analyse
+                        <h3 style="color: var(--text-secondary); margin-bottom: 15px;">Sélection de la Période d'Analyse
                         </h3>
                         <div class="period-selector">
                             <div class="period-options">
@@ -4167,7 +4253,7 @@
 
                     <!-- Boîte d'information sur les fonctionnalités -->
                     <div class="info-box" style="margin-top: 30px;">
-                        <h3 style="color: var(--text-primary); margin-bottom: 10px;">Fonctionnalités du programme</h3>
+                        <h3 style="color: var(--text-secondary); margin-bottom: 10px;">Fonctionnalités du programme</h3>
                         <ul style="line-height: 2; margin-left: 20px;">
                             <li><strong>Analyse des Fréquences :</strong> Visualisez les numéros les plus et moins
                                 fréquents</li>
@@ -5123,6 +5209,32 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Onglet Index -->
+            <div id="index" class="tab-content">
+
+                <!-- Dans <div id="index" class="tab-content"> -->
+                <div style="margin: 20px 0;">
+                    <input type="text" id="indexSearchInput" placeholder="🔍 Rechercher dans l'index..." style="width: 100%; padding: 15px; border-radius: 10px; 
+                            border: 1px solid rgba(255,255,255,0.2); 
+                            background: rgba(255,255,255,0.05); color: white; 
+                            font-size: 1rem;">
+                </div>
+
+                <div class="section">
+                    <h2> Index Complet des Algorithmes</h2>
+                    <p style="font-size: 1.05em; margin-bottom: 30px;">
+                        Catalogue exhaustif des modèles statistiques, algorithmes de machine learning et techniques
+                        d'analyse implémentés dans la plateforme.
+                    </p>
+
+                    <!-- Conteneur pour afficher tous les résultats -->
+                    <div id="indexFullResults"></div>
+                </div>
+            </div>
+
+
+
             <script>
 
                 // ============================================================================
@@ -9942,14 +10054,10 @@
                             break;
                         case 'predictions':
                             // Génération de probabilités : ne pas lancer automatiquement à l'affichage.
-                            // L'utilisateur doit cliquer sur le bouton "Générer les probabilités" pour démarrer.
-                            // -> conserve l'UI, supprime l'appel automatique.
                             break;
 
                         case 'ml':
                             // Entraînement ML : ne pas lancer automatiquement à l'affichage.
-                            // L'utilisateur doit cliquer sur le bouton "Entraîner et Prédire" pour démarrer.
-                            // -> conserve l'UI, supprime l'appel automatique.
                             break;
 
                         case 'clusters':
@@ -9957,6 +10065,10 @@
                             break;
                         case 'statistics':
                             performStatAnalysis();
+                            break;
+
+                        case 'index':
+                            populateFullIndex();  // ⬅️ AJOUTEZ CETTE LIGNE
                             break;
 
                         case 'matrice':
@@ -10387,7 +10499,7 @@
                                 results += `
                     <div class="prediction-card">
                         <h4>Top ${pred.rank} - Score: ${pred.avgScore}</h4>
-                        <p style="font-size: 0.9em; color: var(--text-secondary);">
+                        <p style="font-size: 0.9em; color: #fff;">
                             Fréquence: ${pred.frequency}× | Probabilité: ${pred.probability}
                         </p>
                         <div style="display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap;">
@@ -11944,7 +12056,7 @@
                         <div class="selected-numbers-display">
                             ${prediction.map(num =>
                             `<div class="number-ball" style="background: ${getBallColor(num)}">${num}</div>`
-                            ).join('')}
+                        ).join('')}
                             <div class="number-ball number-ball-chance"
                             style="background: ${getChanceBallColor(Math.floor(Math.random() * 10) + 1)}">
                             ${Math.floor(Math.random() * 10) + 1}
@@ -13863,6 +13975,343 @@
                     });
                 }
 
+                // Fonction pour ouvrir l'index complet
+                function openFullIndex() {
+                    // Fermer la modale de recherche
+                    document.getElementById('searchOverlay').classList.remove('active');
+
+                    // Afficher l'onglet Index
+                    showTab('index');
+
+                    // Remplir l'index avec tous les résultats
+                    populateFullIndex();
+                }
+
+                // Fonction pour peupler l'index complet
+                function populateFullIndex() {
+                    const container = document.getElementById('indexFullResults');
+
+                    // Grouper par catégorie
+                    const categories = {};
+                    searchIndex.forEach(item => {
+                        if (!categories[item.category]) {
+                            categories[item.category] = [];
+                        }
+                        categories[item.category].push(item);
+                    });
+
+                    let html = '';
+
+                    // Générer le HTML pour chaque catégorie
+                    for (const [category, items] of Object.entries(categories)) {
+                        const categoryName = getCategoryDisplayName(category);
+
+                        html += `
+                            <div class="search-category" style="margin-bottom: 40px;">
+                                <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: #4da3ff; 
+                                        border-bottom: 2px solid rgba(77,163,255,0.3); padding-bottom: 10px;">
+                                    ${categoryName}
+                                </h4>
+                                <div class="search-items-grid">
+                        `;
+
+                        items.forEach(item => {
+                            html += `
+                                <div class="search-item" onclick="selectSearchItem('${item.title}')" 
+                                    style="cursor: pointer;">
+                                    <div class="search-item-header">
+                                        <h5>${item.title}</h5>
+                                        <span class="search-item-type">${categoryName}</span>
+                                    </div>
+                                    <p>${item.description}</p>
+                                    <div class="search-tags">
+                                        ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    container.innerHTML = html;
+                }
+
+                // Gestion du clic sur l'icône mobile
+                function initMobileIndexAccess() {
+                    if (window.innerWidth <= 768) {
+                        const header = document.querySelector('.header');
+                        header.addEventListener('click', (e) => {
+                            // Si clic sur l'icône (partie droite du header)
+                            if (e.clientX > window.innerWidth - 60) {
+                                openFullIndex();
+                            }
+                        });
+                    }
+                }
+
+                // Appeler au chargement
+                document.addEventListener('DOMContentLoaded', () => {
+                    initSearch();
+                    initMobileIndexAccess();
+                });
+
+                // Fonction pour peupler l'index complet
+                function populateFullIndex() {
+                    const container = document.getElementById('indexFullResults');
+
+                    // Grouper par catégorie
+                    const categories = {};
+                    searchIndex.forEach(item => {
+                        if (!categories[item.category]) {
+                            categories[item.category] = [];
+                        }
+                        categories[item.category].push(item);
+                    });
+
+                    let html = '';
+
+                    // Générer le HTML pour chaque catégorie
+                    for (const [category, items] of Object.entries(categories)) {
+                        const categoryName = getCategoryDisplayName(category);
+
+                        html += `
+                    <div class="search-category" style="margin-bottom: 40px;">
+                        <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--text-secondary); 
+                                border-bottom: 2px solid rgba(77,163,255,0.3); padding-bottom: 10px;">
+                            ${categoryName}
+                        </h4>
+                        <div class="search-items-grid">
+                `;
+
+                        items.forEach(item => {
+                            const safeTitle = item.title.replace(/'/g, "\\'");
+
+                            html += `
+                    <div class="search-item" style="cursor: pointer; position: relative;">
+                        <div class="search-item-header">
+                            <h5>${item.title}</h5>
+                            <span class="search-item-type">${categoryName}</span>
+                        </div>
+                        <p>${item.description}</p>
+                        
+                        <!-- Bouton Développer (style tag) -->
+                        <div style="margin: 15px 0 10px 0; text-align: left;">
+                            <button onclick="toggleItemDetail('${safeTitle}', event)" 
+                                    class="expand-btn"
+                                    style="background: rgba(102, 187, 106, 0.15);
+                                        color: #66bb6a;
+                                        border: 1px solid rgba(102, 187, 106, 0.3);
+                                        padding: 1.5px 8px;
+                                        border-radius: 10px;
+                                        font-size: 0.72rem;
+                                        font-weight: 600;
+                                        cursor: pointer;
+                                        transition: all 0.3s ease;
+                                        text-transform: none;
+                                        letter-spacing: 0;">
+                                📖 Développer
+                            </button>
+                        </div>
+                        
+                        <div class="search-tags">
+                            ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
+                        </div>
+                        
+                        <!-- Conteneur pour le contenu développé -->
+                        <div class="item-detail-content" 
+                            id="detail-${safeTitle.replace(/\s+/g, '-')}"
+                            style="display: none; 
+                                    margin-top: 20px; 
+                                    padding: 20px; 
+                                    background: rgba(77, 163, 255, 0.1); 
+                                    border-left: 4px solid #4da3ff; 
+                                    border-radius: 8px;
+                                    animation: slideDown 0.3s ease;">
+                            <div style="white-space: pre-line; line-height: 1.8; color: rgba(255,255,255,0.9);">
+                                ${item.fullContent}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                        });
+
+                        html += `
+                        </div>
+                    </div>
+                `;
+                    }
+
+                    container.innerHTML = html;
+
+                    // Initialiser le filtrage de recherche dans l'index
+                    const searchInput = document.getElementById('indexSearchInput');
+                    if (searchInput) {
+                        // Supprimer les anciens écouteurs pour éviter les doublons
+                        const newSearchInput = searchInput.cloneNode(true);
+                        searchInput.parentNode.replaceChild(newSearchInput, searchInput);
+
+                        // Ajouter le nouvel écouteur
+                        newSearchInput.addEventListener('input', (e) => {
+                            const query = e.target.value.toLowerCase();
+                            const items = document.querySelectorAll('#indexFullResults .search-item');
+
+                            items.forEach(item => {
+                                // Échapper les apostrophes
+                                const safeTitle = item.title.replace(/'/g, "\\'");
+
+                                html += `
+                                    <div class="search-item" style="position: relative;">
+                                        <div class="search-item-header">
+                                            <h5>${item.title}</h5>
+                                            <span class="search-item-type">${categoryName}</span>
+                                        </div>
+                                        <p>${item.description}</p>
+                                        
+                                        <!-- Bouton Développer (style tag) -->
+                                        <div style="margin: 15px 0 10px 0; text-align: left;">
+                                            <button onclick="toggleModalItemDetail('${safeTitle}', event)" 
+                                                    class="expand-btn modal-expand-btn"
+                                                    style="background: rgba(102, 187, 106, 0.15);
+                                                        color: #66bb6a;
+                                                        border: 1px solid rgba(102, 187, 106, 0.3);
+                                                        padding: 3px 9px;
+                                                        border-radius: 10px;
+                                                        font-size: 0.72rem;
+                                                        font-weight: 600;
+                                                        cursor: pointer;
+                                                        transition: all 0.3s ease;">
+                                                📖 Développer
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="search-tags">
+                                            ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
+                                        </div>
+                                        
+                                        <!-- Conteneur pour le contenu développé -->
+                                        <div class="modal-item-detail-content" 
+                                            id="modal-detail-${safeTitle.replace(/\s+/g, '-')}"
+                                            style="display: none; 
+                                                    margin-top: 20px; 
+                                                    padding: 20px; 
+                                                    background: rgba(77, 163, 255, 0.1); 
+                                                    border-left: 4px solid #4da3ff; 
+                                                    border-radius: 8px;
+                                                    animation: slideDown 0.3s ease;">
+                                            <div style="white-space: pre-line; line-height: 1.8; color: rgba(255,255,255,0.9);">
+                                                ${item.fullContent}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+
+                            // Masquer les catégories vides
+                            const categories = document.querySelectorAll('#indexFullResults .search-category');
+                            categories.forEach(category => {
+                                const visibleItems = category.querySelectorAll('.search-item[style*="display: block"], .search-item:not([style*="display: none"])');
+                                category.style.display = visibleItems.length > 0 ? 'block' : 'none';
+                            });
+                        });
+                    }
+                }
+
+                // Fonction pour développer/réduire le contenu d'un item
+                function toggleItemDetail(title, event) {
+                    // Empêcher la propagation du clic (évite de déclencher selectSearchItem)
+                    if (event) {
+                        event.stopPropagation();
+                    }
+
+                    // Restaurer les apostrophes échappées
+                    const originalTitle = title.replace(/\\'/g, "'");
+                    const safeId = title.replace(/\s+/g, '-');
+                    const detailDiv = document.getElementById(`detail-${safeId}`);
+                    const button = event.target;
+
+                    if (!detailDiv) {
+                        console.error('Élément de détail non trouvé:', `detail-${safeId}`);
+                        return;
+                    }
+
+                    // Basculer l'affichage
+                    if (detailDiv.style.display === 'none' || detailDiv.style.display === '') {
+                        // Développer
+                        detailDiv.style.display = 'block';
+                        detailDiv.classList.remove('closing');
+                        button.innerHTML = '📕 Réduire';
+                        button.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%)';
+
+                        // Scroll doux vers le contenu
+                        setTimeout(() => {
+                            detailDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 100);
+
+                    } else {
+                        // Réduire avec animation
+                        detailDiv.classList.add('closing');
+                        button.innerHTML = '📖 Développer';
+                        button.style.background = 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)';
+
+                        setTimeout(() => {
+                            detailDiv.style.display = 'none';
+                            detailDiv.classList.remove('closing');
+                        }, 300);
+                    }
+                }
+
+                // Fonction pour développer/réduire le contenu dans la modale de recherche
+                function toggleModalItemDetail(title, event) {
+                    // Empêcher la propagation du clic
+                    if (event) {
+                        event.stopPropagation();
+                    }
+
+                    // Restaurer les apostrophes échappées
+                    const originalTitle = title.replace(/\\'/g, "'");
+                    const safeId = title.replace(/\s+/g, '-');
+                    const detailDiv = document.getElementById(`modal-detail-${safeId}`);
+                    const button = event.target;
+
+                    if (!detailDiv) {
+                        console.error('Élément de détail modal non trouvé:', `modal-detail-${safeId}`);
+                        return;
+                    }
+
+                    // Basculer l'affichage
+                    if (detailDiv.style.display === 'none' || detailDiv.style.display === '') {
+                        // Développer → devient "Réduire" en rouge (style tag)
+                        detailDiv.style.display = 'block';
+                        detailDiv.classList.remove('closing');
+                        button.innerHTML = '📕 Réduire';
+                        button.style.background = 'rgba(244, 67, 54, 0.15)';
+                        button.style.borderColor = 'rgba(244, 67, 54, 0.3)';
+                        button.style.color = '#f44336';
+
+                        // Scroll doux vers le contenu
+                        setTimeout(() => {
+                            detailDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 100);
+
+                    } else {
+                        // Réduire → redevient "Développer" en vert (style tag)
+                        detailDiv.classList.add('closing');
+                        button.innerHTML = '📖 Développer';
+                        button.style.background = 'rgba(102, 187, 106, 0.15)';
+                        button.style.borderColor = 'rgba(102, 187, 106, 0.3)';
+                        button.style.color = '#66bb6a';
+
+                        setTimeout(() => {
+                            detailDiv.style.display = 'none';
+                            detailDiv.classList.remove('closing');
+                        }, 300);
+                    }
+                }
+
                 // Fonction de recherche principale
                 function performSearch(query) {
                     const searchResults = document.getElementById('searchResults');
@@ -13994,7 +14443,7 @@
 
                     modal.innerHTML = `
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                    <h3 style="margin: 0; color: #4da3ff;">${item.title}</h3>
+                    <h3 style="margin: 0; color: var(--text-secondary);">${item.title}</h3>
                     <button onclick="this.parentElement.parentElement.remove()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
                     </div>
                     <div style="white-space: pre-line; line-height: 1.6;">${item.fullContent}</div>
