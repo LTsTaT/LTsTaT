@@ -21,7 +21,7 @@
             /* Couleur principale sombre */
             --highlight-color: rgba(15, 52, 96, 0.3);
             /* Couleur de surbrillance bleue transparente */
-            --text-primary: #fff;
+            --text-primary: #ced4da;
             /* Couleur du texte principal (blanc cassé) */
             --text-secondary: #fff;
             /* Couleur du texte secondaire (identique au principal) */
@@ -123,7 +123,7 @@
             /* Hauteur définie par variable */
             color: #fff;
             /* Fond avec couleur secondaire (non définie) */
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 0px solid var(--border-color);
             /* Bordure bas fine */
             display: flex;
             /* Utilise Flexbox */
@@ -145,35 +145,25 @@
             /* ← Ajoute ça pour le positionnement de l'icône */
         }
 
-        /* Ligne 1 - ARÔME */
-        .site-name {
-            font-size: 2.1rem;
-            /* Grande taille */
-            font-weight: 700;
-            /* Très gras */
-            color: #fff;
-            /* Blanc pur */
-            margin: 0;
-            line-height: 1.1;
-            text-transform: uppercase;
-            /* Optionnel : majuscules */
-            letter-spacing: 1px;
-            /* Espacement entre lettres */
-            font-family: 'Inter', sans-serif;
-            /* Même police mais plus épaisse */
+        /* ===== STYLES PERSONNALISÉS POUR LES TITRES ===== */
+
+        #appHeader {
+            text-align: center;
+            margin-bottom: 2px;
+            padding: 1px;
+        }
+        #mainTitle {
+            font-size: 1.4em;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 1px;       
         }
 
-        /* Ligne 2 - Sous-titre */
-        .site-subtitle {
-            font-size: 1rem;
-            /* Taille normale */
+        #subTitle {
+            font-size: 0.7em;
             font-weight: 400;
-            /* Léger */
-            color: rgba(255, 255, 255, 0.8);
-            /* Blanc légèrement transparent */
-            margin: 1px 0 0 0;
-            line-height: 1.3;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            margin-top: 0;
         }
 
         /* Zone de contenu */
@@ -192,7 +182,7 @@
 
         /* Logo */
         .logo {
-            padding: 17px;
+            padding: 23px;
             /* Padding interne */
             border-bottom: 0px solid var(--border-color);
             /* Bordure bas invisible */
@@ -202,7 +192,7 @@
 
         /* Titre du logo */
         .logo h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             /* Taille de police très grande */
             font-weight: 700;
             /* Poids de police gras */
@@ -216,7 +206,7 @@
             /* Taille de police normale */
             color: #fff;
             /* Couleur de texte secondaire */
-            margin-top: 2px;
+            margin-top: 0px;
             /* Marge supérieure très fine */
         }
 
@@ -825,7 +815,6 @@
 
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Cartes de contenu */
@@ -835,7 +824,7 @@
         .info-box {
             background: linear-gradient(1deg,
                     rgba(255, 255, 255, 0.08) 0%,
-                    rgba(255, 255, 255, 0.03) 100%) !important;
+                    rgba(255, 255, 255, 0.03) 100%)
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -898,7 +887,7 @@
             /* Marge bas */
             font-weight: 400;
             /* Poids de police normal */
-            color: var(--text-primary);
+            color: var(--text-secondary);
             /* Couleur de texte principale */
             font-size: 1.1rem;
             /* Taille de police légèrement agrandie */
@@ -2201,7 +2190,7 @@
         /* Titre grand avec marge bas */
         #ml .section p {
             font-size: 1.05rem;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         /* Paragraphe légèrement agrandi avec marge bas importante */
@@ -3620,14 +3609,14 @@
 
         .search-items-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(1, minmax(350px, 1fr));
             gap: 15px;
         }
 
         .search-item {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -3995,7 +3984,7 @@
     <div class="sidebar">
         <div class="logo">
             <h1>LTsTaT</h1>
-            <p>Analyse et Probabilité</p>
+            <p></p>
         </div>
         <div class="nav-menu">
 
@@ -4040,7 +4029,7 @@
             </div>
 
             <div class="nav-item" onclick="showTab('index')">
-                <i></i> Index Complet
+                <i></i> Index
             </div>
 
         </div>
@@ -8462,7 +8451,12 @@
                         applyMLPeriodFilter();                              // Initialise les tirages ML
                         displayLatestDraw();                                // Appel displayLatestDraw
 
-                        document.getElementById('appStatus').innerHTML = `Analyse Statistique et Prédictive de jeux de loterie`;
+                        document.getElementById('appStatus').innerHTML = `
+                            <div id="appHeader">
+                                <h1 id="mainTitle">ARÔME</h1>
+                                <h2 id="subTitle">Analyse Statistique de jeux de loterie</h2>
+                            </div>
+                        `;
 
                         if (charts.frequencyChart) {                        // Si graphique fréquences existe
                             updateFrequencyChart();                         // Met à jour graphique
@@ -13781,34 +13775,25 @@
                 const searchIndex = [
                     {
                         title: "Programme",
-                        description: "Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées",
+                        description: "Le programme proprose une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées",
                         category: "programme",
                         tags: ["plateforme", "analyse", "prévisions", "optimisées"],
-                        fullContent: "Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées"
+                        fullContent: "Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées. Cette section technique détaille les méthodes, architectures et technologies utilisées dans le développement de l’application."
+                        
                     },
                     {
                         title: "Simulation Monte-Carlo",
                         description: "Méthode d'échantillonnage aléatoire massif avec Importance Sampling - 10,000+ simulations pondérées",
                         category: "probabilistes",
                         tags: ["montecarlo", "simulation", "échantillonnage", "variance"],
-                        fullContent: `MODÈLES PROBABILISTES STATISTIQUES
-
-                        Simulation Monte-Carlo
+                        fullContent: `Simulation Monte-Carlo
 
                         Principe Mathématique : Méthode d'échantillonnage aléatoire massif pour résoudre des problèmes déterministes par des moyens probabilistes.
 
-                        Formule Clé :
-
-                        E[f(X)] ≈ (1/N) * Σ f(X_i) où X_i ~ Distribution cible
-
-                        Processus :
-
-                        10,000+ simulations de tirages pondérées
-
+                        Formule Clé : E[f(X)] ≈ (1/N) * Σ f(X_i) où X_i ~ Distribution cible
+                        Processus : 10,000+ simulations de tirages pondérées
                         Importance Sampling : Combinaison fréquences (40%), écarts (30%), tendances (30%)
-
                         Distribution stationnaire : Convergence vers les probabilités réelles
-
                         Réduction de variance : Optimisation par pondération intelligente
 
                         Rôle : Identification des combinaisons les plus probables via l'analyse de millions de scénarios simulés.`
@@ -13818,49 +13803,58 @@
                         description: "Modélisation des événements rares - λ = fréquence historique - Pondération λ × e^(-λ) pour éviter la sur-représentation",
                         category: "probabilistes",
                         tags: ["poisson", "distribution", "fréquence", "événements rares"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Modélisation des probabilités d'apparition basée sur la distribution de Poisson pour événements rares dans un intervalle fixe.\n\nFORMULE : P(X=k) = (λ^k * e^(-λ)) / k! où λ = fréquence moyenne du numéro\n\nAPPLICATION :\n• λ = fréquence historique relative de chaque numéro\n• Pondération : λ × e^(-λ) pour éviter la sur-représentation\n• Sélection : Tirage aléatoire selon les probabilités de Poisson\n\nRÔLE : Privilégier les numéros avec des fréquences historiques optimales.`
+                        fullContent: `Principe Mathématique : Modélisation des probabilités d'apparition basée sur la distribution de Poisson pour événements rares dans un intervalle fixe.
+                        
+                        Formule Clé : P(X=k) = (λ^k * e^(-λ)) / k! où λ = fréquence moyenne du numéro
+
+                        Application :
+                        • λ = fréquence historique relative de chaque numéro
+                        • Pondération : λ × e^(-λ) pour éviter la sur-représentation
+                        • Sélection : Tirage aléatoire selon les probabilités de Poisson
+                        
+                        RÔLE : Privilégier les numéros avec des fréquences historiques optimales.`
                     },
                     {
                         title: "Distribution de Dirichlet",
                         description: "Distribution multivariée bayésienne - Répartition par dizaines 1-10, 11-20, 21-30, 31-40, 41-49 - Paramètres α = fréquences historiques",
                         category: "probabilistes",
                         tags: ["dirichlet", "multivariée", "bayésien", "répartition"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Distribution multivariée pour modéliser les probabilités des différents numéros dans un cadre bayésien.\n\nFORMULE : f(x₁,...,xₖ; α₁,...,αₖ) = (1/B(α)) * Π x_i^(α_i-1) où B(α) = fonction Bêta multivariée\n\nAPPLICATION :\n• Dizaines : 1-10, 11-20, 21-30, 31-40, 41-49\n• Paramètres α : Fréquences historiques par tranche + 1 (régularisation)\n• Répartition : Génération de proportions optimales\n\nRÔLE : Assurer une répartition équilibrée des numéros sur l'ensemble des dizaines.`
+                        fullContent: `Principe Mathématique : Distribution multivariée pour modéliser les probabilités des différents numéros dans un cadre bayésien.\n\nFormule Clé : f(x₁,...,xₖ; α₁,...,αₖ) = (1/B(α)) * Π x_i^(α_i-1) où B(α) = fonction Bêta multivariée\n\nApplication :\n• Dizaines : 1-10, 11-20, 21-30, 31-40, 41-49\n• Paramètres α : Fréquences historiques par tranche + 1 (régularisation)\n• Répartition : Génération de proportions optimales\n\nRÔLE : Assurer une répartition équilibrée des numéros sur l'ensemble des dizaines.`
                     },
                     {
                         title: "Distribution Binomiale",
                         description: "Modélisation pairs/impairs - n=5 numéros par tirage - p = probabilité empirique d'un numéro pair - Contrôle équilibre",
                         category: "probabilistes",
                         tags: ["binomiale", "succès", "pairs-impairs", "équilibre"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Modélisation des probabilités de succès sur une série d'essais indépendants pour chaque numéro.\n\nFORMULE : P(X=k) = C(n,k) * p^k * (1-p)^(n-k)\n\nAPPLICATION :\n• n = 5 (numéros par tirage)\n• p = probabilité empirique d'un numéro pair\n• k = nombre de pairs dans la combinaison (0 à 5)\n\nRÔLE : Contrôler l'équilibre pairs/impairs selon les distributions historiques.`
+                        fullContent: `Principe Mathématique : Modélisation des probabilités de succès sur une série d'essais indépendants pour chaque numéro.\n\nFormule Clé : P(X=k) = C(n,k) * p^k * (1-p)^(n-k)\n\nApplication :\n• n = 5 (numéros par tirage)\n• p = probabilité empirique d'un numéro pair\n• k = nombre de pairs dans la combinaison (0 à 5)\n\nRÔLE : Contrôler l'équilibre pairs/impairs selon les distributions historiques.`
                     },
                     {
                         title: "Distribution Gamma",
                         description: "Modélisation temps d'attente - k = nombre d'apparitions - θ = temps moyen d'attente/k - Identification numéros en retard",
                         category: "probabilistes",
                         tags: ["gamma", "temps attente", "réapparition", "paramètre forme"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Modélisation des temps d'attente entre événements.\n\nFORMULE : f(x; k, θ) = x^(k-1) * e^(-x/θ) / (θ^k * Γ(k))\n\nAPPLICATION :\n• k = nombre d'apparitions (paramètre de forme)\n• θ = temps moyen d'attente / k (paramètre d'échelle)\n• Score = PDF Gamma pour chaque numéro\n\nRÔLE : Identifier les numéros "en retard" ayant une probabilité élevée de réapparaître.`
+                        fullContent: `Principe Mathématique : Modélisation des temps d'attente entre événements.\n\nFormule Clé : f(x; k, θ) = x^(k-1) * e^(-x/θ) / (θ^k * Γ(k))\n\nApplication :\n• k = nombre d'apparitions (paramètre de forme)\n• θ = temps moyen d'attente / k (paramètre d'échelle)\n• Score = PDF Gamma pour chaque numéro\n\nRÔLE : Identifier les numéros "en retard" ayant une probabilité élevée de réapparaître.`
                     },
                     {
                         title: "Test T de Student",
                         description: "Test paramétrique comparaison moyennes - X̄ = fréquence observée - μ = fréquence moyenne globale - Détection sur/sous-représentation",
                         category: "probabilistes",
                         tags: ["student", "test paramétrique", "moyennes", "significativité"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Test paramétrique pour comparer les moyennes de différents groupes de numéros et valider les différences significatives.\n\nFORMULE : t = (X̄ - μ) / (s/√n)\n\nAPPLICATION :\n• X̄ = fréquence observée du numéro\n• μ = fréquence moyenne globale\n• s = écart-type des fréquences\n• n = 49 (nombre de numéros)\n\nRÔLE : Détecter les numéros significativement sur/sous-représentés.`
+                        fullContent: `Principe Mathématique : Test paramétrique pour comparer les moyennes de différents groupes de numéros et valider les différences significatives.\n\nFormule Clé : t = (X̄ - μ) / (s/√n)\n\nApplication :\n• X̄ = fréquence observée du numéro\n• μ = fréquence moyenne globale\n• s = écart-type des fréquences\n• n = 49 (nombre de numéros)\n\nRÔLE : Détecter les numéros significativement sur/sous-représentés.`
                     },
                     {
                         title: "Test du Chi-carré",
                         description: "Test non paramétrique adéquation - O_i = fréquence observée - E_i = fréquence attendue - Vérification uniformité distribution",
                         category: "probabilistes",
                         tags: ["chi-carré", "adéquation", "uniformité", "degrés liberté"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Test non paramétrique pour vérifier l'adéquation entre la distribution observée et une distribution théorique attendue.\n\nFORMULE : χ² = Σ [(O_i - E_i)² / E_i]\n\nAPPLICATION :\n• O_i = fréquence observée du numéro i\n• E_i = fréquence attendue (moyenne uniforme)\n• ddl = 48 (degrés de liberté)\n\nRÔLE : Vérifier l'hypothèse d'uniformité de la distribution des numéros.`
+                        fullContent: `Principe Mathématique : Test non paramétrique pour vérifier l'adéquation entre la distribution observée et une distribution théorique attendue.\n\nFormule Clé : χ² = Σ [(O_i - E_i)² / E_i]\n\nApplication :\n• O_i = fréquence observée du numéro i\n• E_i = fréquence attendue (moyenne uniforme)\n• ddl = 48 (degrés de liberté)\n\nRÔLE : Vérifier l'hypothèse d'uniformité de la distribution des numéros.`
                     },
                     {
                         title: "Loi de Zipf",
                         description: "Distribution rang-fréquence - r = rang du numéro - s ≈ 1.0 paramètre pente - Pondération inverse du rang",
                         category: "probabilistes",
                         tags: ["zipf", "rang-fréquence", "hiérarchie", "patterns"],
-                        fullContent: `PRINCIPE MATHÉMATIQUE : Application de la loi de Zipf pour modéliser la distribution rang-fréquence et identifier les patterns hiérarchiques.\n\nFORMULE : f(r) = 1 / r^s\n\nAPPLICATION :\n• r = rang du numéro (1 = plus fréquent)\n• s ≈ 1.0 (paramètre de pente)\n• Pondération : Inverse du rang\n\nRÔLE : Privilégier structurellement les numéros historiquement fréquents.`
+                        fullContent: `Principe Mathématique : Application de la loi de Zipf pour modéliser la distribution rang-fréquence et identifier les patterns hiérarchiques.\n\nFormule Clé : f(r) = 1 / r^s\n\nApplication :\n• r = rang du numéro (1 = plus fréquent)\n• s ≈ 1.0 (paramètre de pente)\n• Pondération : Inverse du rang\n\nRÔLE : Privilégier structurellement les numéros historiquement fréquents.`
                     },
                     {
                         title: "Random Forest",
@@ -13888,7 +13882,7 @@
                         description: "Meta-algorithme combinaison modèles - Niveau 1: RF, GB, LR - Niveau 2: Régression linéaire - Amélioration performances",
                         category: "machinelearning",
                         tags: ["stacking", "meta-algorithme", "combinaison", "performance"],
-                        fullContent: `ARCHITECTURE : Meta-algorithme combinant les prédictions de multiples modèles via un meta-modèle pour améliorer les performances.\n\nNIVEAU 1 (Base) :\n• Random Forest, Gradient Boosting, Régression Logistique\n\nNIVEAU 2 (Méta) :\n• Régression linéaire combinant les prédictions\n\nFORMULE : Prédiction_finale = w₁·RF(x) + w₂·GB(x) + w₃·LR(x)`
+                        fullContent: `ARCHITECTURE : Meta-algorithme combinant les prédictions de multiples modèles via un meta-modèle pour améliorer les performances.\n\nNIVEAU 1 (Base) :\n• Random Forest, Gradient Boosting, Régression Logistique\n\nNIVEAU 2 (Méta) :\n• Régression linéaire combinant les prédictions\n\nFormule Clé : Prédiction_finale = w₁·RF(x) + w₂·GB(x) + w₃·LR(x)`
                     },
                     {
                         title: "Clustering K-Means",
