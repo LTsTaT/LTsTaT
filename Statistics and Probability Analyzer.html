@@ -305,6 +305,38 @@
    5. COMPOSANTS RÉUTILISABLES
    ============================================================================ */
 
+        .tab-content .section,
+        .tab-content .control-group,
+        .tab-content .info-box,
+        .tab-content .success-box,
+        .tab-content .stat-card,
+        .tab-content .grid-selection,
+        .tab-content .number-grid,
+        .tab-content .chart-container,
+        .tab-content .latest-draw,
+        .tab-content .results,
+        .tab-content .prediction-card,
+        .tab-content .matrix-config,
+        .tab-content .model-selection,
+        .tab-content .advanced-settings,
+        .tab-content .prediction-container,
+        .tab-content .model-contributions,
+        .tab-content .technical-metrics,
+        .tab-content .results-grid,
+        .tab-content .matrix-result-card,
+        .tab-content .matrix-visualization,
+        .tab-content .matrix-stats,
+        .tab-content .math-explanations,
+        .tab-content .math-section,
+        .tab-content .checkbox-grid,
+        .tab-content .settings-grid,
+        .tab-content .matrix-actions,
+        .tab-content .progress-container,
+        .tab-content .loading {
+            margin-bottom: 16px !important;
+
+        }
+
         /* Sections */
         .section {
             background-color: var(--card-bg);
@@ -742,9 +774,7 @@
         }
 
         .glass-card {
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.1) 0%,
-                    rgba(255, 255, 255, 0.05) 100%);
+            background: linear-gradient(1deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
             /* Dégradé verre */
             backdrop-filter: blur(12px);
             /* Flou arrière-plan */
@@ -2040,7 +2070,7 @@
             font-size: 1.05rem;
             margin-bottom: 30px;
             font-weight: 300;
-            
+
         }
 
         /* Paragraphe légèrement agrandi avec marge bas */
@@ -2188,7 +2218,7 @@
             font-size: 1.05rem;
             margin-bottom: 15px;
             font-weight: 200;
-            
+
         }
 
         /* Paragraphe légèrement agrandi avec marge bas importante */
@@ -4010,8 +4040,9 @@
    ============================================================================ */
     </style>
 </head>
+
 <body>
-    
+
 
     <!-- Bouton menu hamburger -->
 
@@ -4184,24 +4215,32 @@
                 alert('Connexion en cours...');
                 loginModal.style.display = 'none';
             });
+        
+        
         </script>
 
-        <!-- Zone de contenu où s'affichent les différents onglets -->
+                <!-- Zone de contenu où s'affichent les différents onglets -->
 
-        <div class="content">
+                    <div class="content">
 
-            <!-- Onglet Accueil -->
+                        <!-- Onglet Accueil -->
 
-            <div id="overview" class="tab-content active">
-                <div class="section">
-                    <h2>Accueil</h2>
-                    <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0;">
-                        Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles
-                        statistiques de pointe, des algorithmes d'apprentissage automatique et des approches
-                        probabilistes pour identifier des tendances et proposer des prévisions optimisées
-                    </p>
+                        <div id="overview" class="tab-content active">
+                            <div class="section">
+                                <h2>Accueil</h2>
+                                <p style="font-size: 1.05em; line-height: 1.5; margin: 10px 0;">
+                                    ARÔME est une plateforme d'analyse avancée combinant des modèles statistiques de pointe et
+                                    algorithmes d'apprentissage automatique pour l'étude approfondie des tirages de loterie. Le programme intègre des méthodes probabilistes sophistiquées et des techniques d'apprentissage automatique pour identifier les tendances historiques et générer des prévisions optimisées.<br>
 
-                    <!-- Section loterie -->
+                                    <br>L'architecture modulaire permet d'explorer les données sous différents approches :
+                                    Analyses fréquentielles, clustering K-Means pour la détection de patterns, simulations
+                                    Monte-Carlo massives, et évaluations statistiques avancées. La fonctionnalité unique de la Matrice personnalisée offre la possibilité de composer des architectures d'analyse sur mesure en
+                                    combinant plusieurs modèles pour une synergie optimisée. La plateforme constitue un outil d'exploration statistique complet pour comprendre les
+                                    mécanismes probabilistes régissant les tirages aléatoires.
+                                </p>
+                            </p>
+                
+                <!-- Section loterie -->
 
                     <div class="info-box">
                         <h3 style="color: var(--text-secondary); margin-bottom: 1px;">Sélectionner une loterie
@@ -4310,30 +4349,36 @@
 
                     <!-- Boîte d'information sur les fonctionnalités -->
 
-                    <div class="info-box" style="margin-top: 30px;">
-                        <h3 style="color: var(--text-secondary); margin-bottom: 10px;">Fonctionnalités du programme</h3>
-                        <ul style="line-height: 2; margin-left: 20px;">
-                            <li><strong>Analyse des Fréquences :</strong> Visualisez les numéros les plus et moins
-                                fréquents</li>
-                            <li><strong>Prévisions Statistiques :</strong> Algorithmes basés sur les distributions de
-                                Poisson, Loi de Zipf, Test T Student, Test Chi-carré, Distribution Binomiale,
-                                Distribution de Dirichlet</li>
-                            <li><strong>Machine Learning Réel :</strong> Modèles de classification avancés (Random
-                                Forest, Gradient Boosting, Régression Logistique, LSTM Deep Learning, Ensemble Stacking)
-                            </li>
-                            <li><strong>Clustering K-Means :</strong> Identification de groupes de numéros similaires
-                            </li>
-                            <li><strong>Simulations Monte Carlo :</strong> Testez vos stratégies avec des milliers de
-                                tirages simulés</li>
-                            <li><strong>Analyses Statistiques :</strong> Tests de significativité, corrélations, et
-                                tendances temporelles</li>
-                        </ul>
+                    <div class="info-box" style="margin-top: 5px;">
+                        <h3 style="color: var(--text-secondary); margin-bottom: 0px;">
+                            <h3>Fonctionnalités du programme</h3>
+                            <ul style="line-height: 2; margin-left: 20px;">
+                                <p></p>
+                                <li><strong>Analyse des Fréquences :</strong> Visualisez les numéros les plus et moins
+                                    fréquents</li>
+                                <li><strong>Prévisions Statistiques :</strong> Algorithmes basés sur les distributions
+                                    de
+                                    Poisson, Loi de Zipf, Test T Student, Test Chi-carré, Distribution Binomiale,
+                                    Distribution de Dirichlet</li>
+                                <li><strong>Machine Learning Réel :</strong> Modèles de classification avancés (Random
+                                    Forest, Gradient Boosting, Régression Logistique, LSTM Deep Learning, Ensemble
+                                    Stacking)
+                                </li>
+                                <li><strong>Clustering K-Means :</strong> Identification de groupes de numéros
+                                    similaires
+                                </li>
+                                <li><strong>Simulations Monte Carlo :</strong> Testez vos stratégies avec des milliers
+                                    de
+                                    tirages simulés</li>
+                                <li><strong>Analyses Statistiques :</strong> Tests de significativité, corrélations, et
+                                    tendances temporelles</li>
+                            </ul>
                     </div>
 
                     <!-- Bouton pour commencer l'analyse -->
 
                     <button onclick="showTab('frequencies')"
-                        style="margin-top: 20px; width: 100%; padding: 15px; font-size: 1.1em;">
+                        style="margin-top: 1px; width: 100%; padding: 10px; font-size: 1.1em;">
                         Commencer l'Analyse →
                     </button>
                 </div>
@@ -4388,12 +4433,14 @@
 
                     <!-- Boîte d'information détaillée sur les modèles probabilistes -->
                     <div class="info-box">
-                        <h4>Modèle de Probabilités</h4><p>
+                        <h4>Modèle de Probabilités</h4>
+                        <p>
                         <p>Les simulations sont des algorithmes utilisés dans le but d'estimer la probabilité
                             d'occurrence d'un scénario dans lequel interviennent des paramètres aléatoires. C'est une
                             technique statistique permettant de comprendre l'influence de l'incertitude dans les modèles
                             de Probabilités.</p>
-                            <p><strong>Distributions Statistiques Utilisées :</strong><p></p>
+                        <p><strong>Distributions Statistiques Utilisées :</strong>
+                        <p></p>
                         <p><strong>Loi de Poisson :</strong> Modélise la probabilité qu'un certain nombre d'événements
                             (apparitions d'un numéro) se produisent dans un intervalle de temps donné. Utile pour les
                             faibles fréquences (numéros "en retard").</p>
@@ -4499,15 +4546,21 @@
 
                     <!-- Boîte d'information sur les algorithmes ML -->
                     <div class="info-box">
-                        <h4>Algorithmes ML Implémentés</h4><p></p>
+                        <h4>Algorithmes ML Implémentés</h4>
+                        <p></p>
                         <div id="mlExplanationContent">
-                            <p>Random Forest : Forêt de 100 arbres de décision<p>
-                            Gradient Boosting : Algorithme de boosting construisant séquentiellement des modèles faibles pour minimiser la fonction de perte.<p></p>
-                            Régression Logistique : Modèle linéaire généralisé pour la classification avec fonction logistique et régularisation <p></p>
+                            <p>Random Forest : Forêt de 100 arbres de décision
+                            <p>
+                                Gradient Boosting : Algorithme de boosting construisant séquentiellement des modèles
+                                faibles pour minimiser la fonction de perte.
+                            <p></p>
+                            Régression Logistique : Modèle linéaire généralisé pour la classification avec fonction
+                            logistique et régularisation <p></p>
                             LSTM (Deep Learning) : Un modèle de réseau neuronal récurrent adapté aux données
-                                    séquentielles.<p></p>
+                            séquentielles.<p></p>
                             Ensemble Stacking : Combine plusieurs modèles pour améliorer la précision.
-                            </ul></p>
+                            </ul>
+                            </p>
                             <p>Features utilisées : fréquences historiques, temps depuis dernière apparition, patterns
                                 statistiques, tendances temporelles
                         </div>
@@ -4622,14 +4675,15 @@
 
                     <!-- Boîte d'information sur le clustering -->
                     <div class="info-box">
-                        <p></p><h4>Clustering K-means</h4><p></p>
+                        <h4>Clustering K-means</h4>
+                        <p>
                         <p>Cette technique est essentielle pour regrouper les numéros de tirage qui partagent des
                             profils historiques similaires (basés sur la fréquence, l'écart, la tendance). L'utilisateur
                             peut choisir des numéros au sein d'un "cluster gagnant".</p>
-                        <p><strong>Analyse en Composantes Principales (PCA) :</strong> Outil de réduction de dimension.
-                            Elle permet de transformer un grand nombre de caractéristiques statistiques en un ensemble
-                            plus petit de variables non corrélées, tout en conservant la majeure partie de
-                            l'information.</p>
+                        <strong>Analyse en Composantes Principales (PCA) :</strong> Outil de réduction de dimension.
+                        Elle permet de transformer un grand nombre de caractéristiques statistiques en un ensemble
+                        plus petit de variables non corrélées, tout en conservant la majeure partie de
+                        l'information.
                     </div>
 
                     <!-- Contrôles pour le clustering -->
@@ -4679,8 +4733,9 @@
 
                     <!-- Boîte d'information sur les analyses statistiques -->
                     <div class="info-box">
-                        <p></p><h4>Analyse Statistique</h4><p></p>
-                        <p>Techniques avancées pour l'analyse des données de tirage.</p>
+                        <h4>Analyse Statistique</h4>
+                        <p>
+                        <p>Techniques avancées pour l'analyse des données de tirage.
                     </div>
 
                     <!-- Contrôles pour le type d'analyse statistique -->
@@ -4716,11 +4771,12 @@
 
                     <!-- Boîte d'information sur l'évaluation -->
                     <div class="info-box">
-                        <h4>Évaluation</h4>
+                        <h4>Évaluation :</h4>
+                        <p></p>
                         <p>Analyse complète de votre grille selon divers critères statistiques.</p>
                     </div>
 
-                    
+
 
                     <!-- Contrôles pour la sélection des numéros -->
                     <div class="control-group">
@@ -5168,7 +5224,8 @@
                         <p>Algorithmes disponibles :</p>
                         <ul>
                             <li>Random Forest : Forêt de 100 arbres de décision</li>
-                            <li>Gradient Boosting : Algorithme de boosting construisant séquentiellement des modèles faibles pour minimiser la fonction de perte.</li>
+                            <li>Gradient Boosting : Algorithme de boosting construisant séquentiellement des modèles
+                                faibles pour minimiser la fonction de perte.</li>
                             <li>Régression Logistique</li>
                             <li>LSTM (Deep Learning) : Un modèle de réseau neuronal récurrent adapté aux données
                                 séquentielles.</li>
@@ -5299,8 +5356,6 @@
                     <div id="indexFullResults"></div>
                 </div>
             </div>
-
-
 
             <script>
 
@@ -5678,8 +5733,8 @@
                 // DONNÉES RÉELLES INTÉGRÉES
                 // ============================================================================
 
-                const realLotoDataCSV = 
-                `date;boule_1;boule_2;boule_3;boule_4;boule_5;numero_chance
+                const realLotoDataCSV =
+                    `date;boule_1;boule_2;boule_3;boule_4;boule_5;numero_chance
                 
                 Mercredi 26/11/2025;9;14;16;26;33;5
                 Lundi 24/11/2025;22;28;29;36;47;1
@@ -13879,7 +13934,7 @@
                         description: "Le programme proprose une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées",
                         category: "programme",
                         tags: ["plateforme", "analyse", "prévisions", "optimisées"],
-                        fullContent: "Le programme est une plateforme d'analyse avancée des tirages de loterie combinant des modèles statistiques de pointe, des algorithmes d'apprentissage automatique et des approches probabilistes pour identifier des tendances et proposer des prévisions optimisées. Cette section technique détaille les méthodes, architectures et technologies utilisées dans le développement de l’application."
+                        fullContent: "ARÔME est une plateforme d'analyse avancée combinant des modèles statistiques de pointe et algorithmes d'apprentissage automatique pour l'étude approfondie des tirages de loterie. Le programme intègre des méthodes probabilistes sophistiquées et des techniques d'apprentissage automatique pour identifier les tendances historiques et générer des prévisions optimisées.L'architecture modulaire permet d'explorer les données sous différents approches : Analyses fréquentielles, clustering K-Means pour la détection de patterns, simulations Monte-Carlo massives, et évaluations statistiques avancées. La fonctionnalité unique de la Matrice personnalisée offre la possibilité de composer des architectures d'analyse sur mesure en combinant plusieurs modèles pour une synergie optimisée. La plateforme constitue un outil d'exploration statistique complet pour comprendre les mécanismes probabilistes régissant les tirages aléatoires."
 
                     },
                     {
@@ -14148,12 +14203,11 @@
                         <div class="item-detail-content" 
                             id="detail-${safeTitle.replace(/\s+/g, '-')}"
                             style="display: none; 
-                                    margin-top: 10px; 
-                                    padding: 20px; 
-                                    background: rgba(77, 163, 255, 0.1); 
-                                    border-left: 0px solid #4da3ff; 
+                                    margin-top: 15px; 
+                                    padding: 20px;                           
+                                    border: 1px solid rgba(255, 255, 255, 0.1);
                                     border-radius: 8px;
-                                    animation: slideDown 0.3s ease;">
+                                    animation: slideDown 0.0s ease;">
                             <div style="white-space: pre-line; line-height: 1.8; color: rgba(255,255,255,0.9);">
                                 ${item.fullContent}
                             </div>
