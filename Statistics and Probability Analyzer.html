@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<!-- Github-8.5copie-->
+<!-- Github-8.5-copie-->
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
-    
+
 
     <style>
         /* ============================================================================
@@ -1190,17 +1190,17 @@
 
         /* Statistiques de progression */
         .progress-stats {
-            display: 3;
-            /* Utilise Flexbox */
+            display: flex;
+            /* CORRIGÉ */
             justify-content: center;
             /* Centre horizontalement */
+            gap: 20px;
+            /* Ajoute un espacement entre les éléments */
             margin-top: 10px;
-            /* Marge supérieure */
             font-size: 0.9em;
-            /* Taille de police réduite */
             color: #fff;
-            /* Couleur de texte secondaire */
         }
+
 
         /* Pourcentage de progression */
         .progress-percentage {
@@ -1451,10 +1451,10 @@
                 transform: translateY(0);
             }
         }
-  
-         /* Style pour l'encre universelle */
 
-         .floating-top-button {
+        /* Style pour l'encre universelle */
+
+        .floating-top-button {
             position: fixed;
             bottom: 10px;
             right: 10px;
@@ -1478,8 +1478,8 @@
             font-family: inherit;
             /* Paramètre ajouté pour empêcher le débordement */
             max-width: calc(100vw - 40px);
-             
-             max-width: 55px;
+
+            max-width: 55px;
             /* Largeur maximum fixe */
         }
 
@@ -1497,7 +1497,7 @@
         /* Bouton Haut de page */
         #floatingOngletButton {
             bottom: 26px;
-        
+
         }
 
         /* Styles pour la coloration syntaxique JavaScript */
@@ -1505,22 +1505,54 @@
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-         padding: 20px;
+            padding: 20px;
             font-family: 'Courier New', monospace;
-         font-size: 0.9em;
-         overflow-x: auto;
-         line-height: 1.5;
+            font-size: 0.9em;
+            overflow-x: auto;
+            line-height: 1.5;
         }
 
         /* Couleurs pour JavaScript */
-            .code-keyword { color: #569cd6; }        /* const, let, function */
-            .code-string { color: #ce9178; }         /* Chaînes de caractères */
-            .code-number { color: #b5cea8; }         /* Nombres */
-            .code-comment { color: #6a9955; }        /* Commentaires */
-            .code-property { color: #9cdcfe; }       /* Propriétés d'objets */
-            .code-operator { color: #d4d4d4; }       /* Opérateurs */
-            .code-bracket { color: #ffd700; }        /* Crochets, parenthèses */
-            .code-function { color: #dcdcaa; }       /* Noms de fonctions */
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        /* const, let, function */
+        .code-string {
+            color: #ce9178;
+        }
+
+        /* Chaînes de caractères */
+        .code-number {
+            color: #b5cea8;
+        }
+
+        /* Nombres */
+        .code-comment {
+            color: #6a9955;
+        }
+
+        /* Commentaires */
+        .code-property {
+            color: #9cdcfe;
+        }
+
+        /* Propriétés d'objets */
+        .code-operator {
+            color: #d4d4d4;
+        }
+
+        /* Opérateurs */
+        .code-bracket {
+            color: #ffd700;
+        }
+
+        /* Crochets, parenthèses */
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        /* Noms de fonctions */
 
         /* ============================================================================
    9. STYLES SPÉCIFIQUES ONGLET MATRICE
@@ -2364,7 +2396,7 @@
 
         /* Contenu d'explication avec marge bas */
         #ml .control-group {
-            margin: 1px 1px 1px px;
+            margin: 20px 0;
             padding: 20px;
             font-weight: 200;
         }
@@ -2783,12 +2815,11 @@
 
         .period-btn {
             flex: 1 1 calc(50% - 5px);
-            /* Flexibilité : peut grandir/rétrécir, base = 50% moins espacement */
-            font-size: 0.rem;
-            /* Taille de police (valeur invalide) */
+            font-size: 0.8rem;
+            /* CORRIGÉ */
             padding: 8px 5px;
-            /* Padding interne */
         }
+
 
         /* Menu mobile */
         .mobile-menu-toggle {
@@ -2918,6 +2949,69 @@
             #matrice .model-contributions {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .grid-2,
+            #matrice .technical-metrics,
+            #matrice .results-grid,
+            #matrice .prediction-container,
+            #matrice .model-contributions {
+                /* Force le passage à une seule colonne pour toutes les grilles principales */
+                grid-template-columns: 1fr;
+            }
+
+            .chart-container {
+                /* Réduit la hauteur des graphiques pour mieux s'adapter */
+                height: 320px;
+            }
+
+            .number-grid-select {
+                /* Rend la grille de numéros plus flexible au lieu d'un nombre fixe de colonnes */
+                grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
+            }
+
+            .section h2 {
+                /* Réduit légèrement la taille des titres de section */
+                font-size: 1.5rem;
+            }
+
+            .section,
+            .control-group,
+            .info-box {
+                /* Réduit le padding pour donner plus d'espace au contenu */
+                padding: 15px;
+            }
+
+            /* Forcer toutes les grilles principales en une seule colonne */
+            .grid-2,
+            #matrice .prediction-container,
+            #matrice .model-contributions,
+            #matrice .technical-metrics,
+            #matrice .settings-grid,
+            #matrice .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Gérer les cartes qui utilisent des largeurs en pourcentage */
+            .prediction-card {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            /* Rendre les grilles de sélection de numéros entièrement flexibles */
+            .number-grid-select {
+                grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+                max-width: 100%;
+                /* Permet à la grille d'utiliser toute la largeur disponible */
+            }
+
+            /* Réduire les espacements pour un affichage plus compact */
+            .section,
+            .control-group,
+            .info-box {
+                padding: 15px;
+            }
+
         }
 
         /* Tablettes et smartphones (< 768px) */
@@ -2935,7 +3029,7 @@
             .sidebar {
                 position: fixed;
                 /* Position fixe */
-                left: -100%;
+                left: -280px;
                 /* Positionnée hors écran à gauche */
                 top: 0;
                 /* Alignement en haut */
@@ -3838,11 +3932,13 @@
 
         .search-item-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
+            /* CORRIGÉ */
             align-items: flex-start;
             margin-bottom: 12px;
             gap: 15px;
         }
+
 
         .search-item h5 {
             font-size: 1.05rem;
@@ -5051,26 +5147,47 @@
                                         Distribution de Poisson
                                         <div class="model-info">λ = fréquence historique</div>
                                     </label>
-
                                     <label class="checkbox-item">
                                         <input type="checkbox" id="matrixBinomial" data-model="binomial">
                                         <span class="checkmark"></span>
                                         Distribution Binomiale
                                         <div class="model-info">B(n,p) - Pairs/Impairs</div>
                                     </label>
-
                                     <label class="checkbox-item">
                                         <input type="checkbox" id="matrixZipf" data-model="zipf">
                                         <span class="checkmark"></span>
                                         Loi de Zipf
                                         <div class="model-info">Poids = 1/rang^α</div>
                                     </label>
-
                                     <label class="checkbox-item">
                                         <input type="checkbox" id="matrixDirichlet" data-model="dirichlet">
                                         <span class="checkmark"></span>
                                         Distribution de Dirichlet
                                         <div class="model-info">Répartition par dizaines</div>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixGamma" data-model="gamma">
+                                        <span class="checkmark"></span>
+                                        Distribution Gamma
+                                        <div class="model-info">Temps d'attente</div>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixChiSquare" data-model="chisquare">
+                                        <span class="checkmark"></span>
+                                        Test du Chi-carré
+                                        <div class="model-info">Adéquation à l'uniformité</div>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixStudent" data-model="student">
+                                        <span class="checkmark"></span>
+                                        Test T de Student
+                                        <div class="model-info">Écarts à la moyenne</div>
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="matrixHybrid" data-model="hybrid">
+                                        <span class="checkmark"></span>
+                                        Modèle Hybride
+                                        <div class="model-info">Coche toutes les cases</div>
                                     </label>
                                 </div>
                             </div>
@@ -10145,6 +10262,7 @@
                     });
 
                     initMobileMenu();  // Appel fonction initMobileMenu
+                    initResizeListener();
                 });
 
                 // Initialisation principale de l'application
@@ -10699,79 +10817,65 @@
                     metricsDiv.innerHTML = '';
                     resultsDiv.innerHTML = '';
 
+                    // Utiliser un timeout pour ne pas bloquer l'UI
                     setTimeout(() => {
                         const results = simulateDraws(simSelectedMainNumbers, simSelectedChanceNumber, numSims);
 
                         metricsDiv.innerHTML = `
-                    <div class="stat-card">
-                        <h4>Rang 1 (5+1)</h4>
-                        <div class="value">${results.rank1}</div>
-                        <small>${(results.rank1 / numSims * 100).toFixed(4)}%</small>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Rang 2 (5)</h4>
-                        <div class="value">${results.rank2}</div>
-                        <small>${(results.rank2 / numSims * 100).toFixed(4)}%</small>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Rang 3 (4+1)</h4>
-                        <div class="value">${results.rank3}</div>
-                        <small>${(results.rank3 / numSims * 100).toFixed(4)}%</small>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Rang 4 (4)</h4>
-                        <div class="value">${results.rank4}</div>
-                        <small>${(results.rank4 / numSims * 100).toFixed(4)}%</small>
-                    </div>
-                `;
+                            <div class="stat-card"><h4>Rang 1 (5+1)</h4><div class="value">${results.rank1}</div><small>${(results.rank1 / numSims * 100).toFixed(4)}%</small></div>
+                            <div class="stat-card"><h4>Rang 2 (5+0)</h4><div class="value">${results.rank2}</div><small>${(results.rank2 / numSims * 100).toFixed(4)}%</small></div>
+                            <div class="stat-card"><h4>Rang 3 (4+1)</h4><div class="value">${results.rank3}</div><small>${(results.rank3 / numSims * 100).toFixed(4)}%</small></div>
+                            <div class="stat-card"><h4>Rang 4 (4+0)</h4><div class="value">${results.rank4}</div><small>${(results.rank4 / numSims * 100).toFixed(4)}%</small></div>
+                            <div class="stat-card"><h4>Rang 5 (3+1)</h4><div class="value">${results.rank5}</div><small>${(results.rank5 / numSims * 100).toFixed(3)}%</small></div>
+                            <div class="stat-card"><h4>Rang 6 (3+0)</h4><div class="value">${results.rank6}</div><small>${(results.rank6 / numSims * 100).toFixed(3)}%</small></div>
+                            <div class="stat-card"><h4>Rang 7 (2+1)</h4><div class="value">${results.rank7}</div><small>${(results.rank7 / numSims * 100).toFixed(3)}%</small></div>
+                            <div class="stat-card"><h4>Rang 8 (2+0)</h4><div class="value">${results.rank8}</div><small>${(results.rank8 / numSims * 100).toFixed(2)}%</small></div>
+                            <div class="stat-card"><h4>Rang 9 (Chance)</h4><div class="value">${results.rank9}</div><small>${(results.rank9 / numSims * 100).toFixed(2)}%</small></div>
+                            <div class="stat-card"><h4>Total Gains</h4><div class="value">${results.totalWins}</div><small>${(results.totalWins / numSims * 100).toFixed(2)}%</small></div>
+                        `;
 
                         updateSimulationChart(results, numSims);
                         updateSimulationDistributionChart(results, numSims);
 
                         let detailedResults = `
-                    <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
-                    <div class="grid-2">
-                        <div class="info-box">
-                            <h4> Statistiques Globales</h4>
-                            <p><strong>Total des gains:</strong> ${results.totalWins} tirages</p>
-                            <p><strong>Pourcentage de gains:</strong> ${(results.totalWins / numSims * 100).toFixed(2)}%</p>
-                            <p><strong>Espérance mathématique:</strong> ${calculateExpectedValue(results, numSims).toFixed(6)}€ par tirage</p>
-                        </div>
-                        <div class="info-box">
-                            <h4> Probabilités</h4>
-                            <p><strong>Jackpot (5+1):</strong> ${results.rank1 > 0 ? `1 sur ${Math.round(numSims / results.rank1).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-                            <p><strong>5 numéros:</strong> ${results.rank2 > 0 ? `1 sur ${Math.round(numSims / results.rank2).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-                            <p><strong>4+1 numéros:</strong> ${results.rank3 > 0 ? `1 sur ${Math.round(numSims / results.rank3).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-                            <p><strong>4 numéros:</strong> ${results.rank4 > 0 ? `1 sur ${Math.round(numSims / results.rank4).toLocaleString()}` : `Aucune occurrence en ${numSims.toLocaleString()} simulations`}</p>
-                        </div>
-                    </div>
-                `;
-
-                        const winRate = results.totalWins / numSims;
-                        if (winRate > 0.1) {
-                            detailedResults += `<div class="success-box">
-                        <strong> Bonnes chances !</strong> Votre grille a un taux de gain supérieur à la moyenne.
-                    </div>`;
-                        } else if (winRate > 0.05) {
-                            detailedResults += `<div class="info-box">
-                        <strong> Chances raisonnables</strong> Votre grille a des caractéristiques intéressantes.
-                    </div>`;
-                        } else {
-                            detailedResults += `<div class="info-box">
-                        <strong> Difficulté élevée</strong> Les combinaisons comme la vôtre sont rares. Pensez à varier vos numéros.
-                    </div>`;
-                        }
+                            <h3>Résultats de la Simulation (${numSims.toLocaleString()} tirages)</h3>
+                            <div class="grid-2">
+                                <div class="info-box">
+                                    <h4>Statistiques Globales</h4>
+                                    <p><strong>Total des gains :</strong> ${results.totalWins.toLocaleString()} tirages</p>
+                                    <p><strong>Pourcentage de gains :</strong> ${(results.totalWins / numSims * 100).toFixed(2)}%</p>
+                                    <p><strong>Espérance mathématique :</strong> ${calculateExpectedValue(results, numSims).toFixed(4)} € par grille de 2.20€</p>
+                                </div>
+                                <div class="info-box">
+                                    <h4>Probabilités d'occurrence</h4>
+                                    ${Object.keys(results).filter(k => k.startsWith('rank')).map((key, i) => {
+                            const rank = i + 1;
+                            const wins = results[key];
+                            const probText = wins > 0 ? `1 sur ${Math.round(numSims / wins).toLocaleString()}` : `~ 0 en ${numSims.toLocaleString()} sims`;
+                            return `<p><strong>Rang ${rank}:</strong> ${probText}</p>`;
+                        }).join('')}
+                                </div>
+                            </div>
+                        `;
 
                         resultsDiv.innerHTML = detailedResults;
                         loading.classList.remove('active');
-                    }, 1500);
+                    }, 500);
                 }
 
                 // Simulation de tirages
+                // Simulation de tirages
                 function simulateDraws(userNumbers, userChance, numSims) {
                     const results = {
-                        rank1: 0, rank2: 0, rank3: 0, rank4: 0,
-                        rank5: 0, rank6: 0, rank7: 0, rank8: 0,
+                        rank1: 0, // 5 + 1
+                        rank2: 0, // 5 + 0
+                        rank3: 0, // 4 + 1
+                        rank4: 0, // 4 + 0
+                        rank5: 0, // 3 + 1
+                        rank6: 0, // 3 + 0
+                        rank7: 0, // 2 + 1
+                        rank8: 0, // 2 + 0
+                        rank9: 0, // 0+1 ou 1+1
                         totalWins: 0
                     };
 
@@ -10782,16 +10886,39 @@
                         const matchingNumbers = userNumbers.filter(num => drawNumbers.includes(num)).length;
                         const matchingChance = userChance === drawChance;
 
-                        if (matchingNumbers === 5 && matchingChance) results.rank1++;
-                        else if (matchingNumbers === 5) results.rank2++;
-                        else if (matchingNumbers === 4 && matchingChance) results.rank3++;
-                        else if (matchingNumbers === 4) results.rank4++;
-                        else if (matchingNumbers === 3 && matchingChance) results.rank5++;
-                        else if (matchingNumbers === 3) results.rank6++;
-                        else if (matchingNumbers === 2 && matchingChance) results.rank7++;
-                        else if (matchingNumbers === 2) results.rank8++;
+                        let win = false;
+                        if (matchingNumbers === 5 && matchingChance) {
+                            results.rank1++;
+                            win = true;
+                        } else if (matchingNumbers === 5) {
+                            results.rank2++;
+                            win = true;
+                        } else if (matchingNumbers === 4 && matchingChance) {
+                            results.rank3++;
+                            win = true;
+                        } else if (matchingNumbers === 4) {
+                            results.rank4++;
+                            win = true;
+                        } else if (matchingNumbers === 3 && matchingChance) {
+                            results.rank5++;
+                            win = true;
+                        } else if (matchingNumbers === 3) {
+                            results.rank6++;
+                            win = true;
+                        } else if (matchingNumbers === 2 && matchingChance) {
+                            results.rank7++;
+                            win = true;
+                        } else if (matchingNumbers === 2) {
+                            results.rank8++;
+                            win = true;
+                        } else if (matchingChance) { // Rang 9: 1+1 ou 0+1
+                            results.rank9++;
+                            win = true;
+                        }
 
-                        if (matchingNumbers >= 2) results.totalWins++;
+                        if (win) {
+                            results.totalWins++;
+                        }
                     }
 
                     return results;
@@ -10802,23 +10929,22 @@
                     const prizeValues = {
                         rank1: 2000000,
                         rank2: 100000,
-                        rank3: 5000,
+                        rank3: 1000,
                         rank4: 500,
                         rank5: 50,
                         rank6: 20,
                         rank7: 10,
-                        rank8: 5
+                        rank8: 5,
+                        rank9: 2.20 // Remboursement du ticket
                     };
 
                     let totalValue = 0;
-                    totalValue += results.rank1 * prizeValues.rank1;
-                    totalValue += results.rank2 * prizeValues.rank2;
-                    totalValue += results.rank3 * prizeValues.rank3;
-                    totalValue += results.rank4 * prizeValues.rank4;
-                    totalValue += results.rank5 * prizeValues.rank5;
-                    totalValue += results.rank6 * prizeValues.rank6;
-                    totalValue += results.rank7 * prizeValues.rank7;
-                    totalValue += results.rank8 * prizeValues.rank8;
+                    for (let i = 1; i <= 9; i++) {
+                        const rankKey = `rank${i}`;
+                        if (results[rankKey] && prizeValues[rankKey]) {
+                            totalValue += results[rankKey] * prizeValues[rankKey];
+                        }
+                    }
 
                     return totalValue / numSims;
                 }
@@ -12527,60 +12653,147 @@
                 function performStatAnalysis() {
                     // Récupérer le type d'analyse sélectionné
                     const type = document.getElementById('statType').value;
-                    let labels = [];   // Labels pour le graphique
-                    let data = [];     // Données pour le graphique
-                    let title = '';    // Titre du graphique
+                    let labels = []; // Labels pour le graphique
+                    let data = []; // Données pour le graphique
+                    let title = ''; // Titre du graphique
+                    let resultsHTML = ''; // Pour les résultats textuels
+
+                    // S'assurer que les données sont chargées
+                    if (!historicalData || !filteredDraws || filteredDraws.length === 0) {
+                        document.getElementById('statResults').innerHTML = '<p>Données non disponibles. Veuillez charger les données depuis l\'onglet Accueil.</p>';
+                        return;
+                    }
 
                     // Préparer les données selon le type d'analyse
                     switch (type) {
                         case 'distribution':
                             // DISTRIBUTION DES NUMÉROS : Fréquence de chaque numéro de 1 à 49
-                            labels = Array.from({ length: 49 }, (_, i) => i + 1);
+                            labels = Array.from({
+                                length: 49
+                            }, (_, i) => i + 1);
                             data = labels.map(num => historicalData.frequencies[num] || 0);
                             title = 'Distribution des Numéros';
+                            const sortedFreq = Object.entries(historicalData.frequencies).sort((a, b) => b[1] - a[1]);
+                            resultsHTML = `
+                <p><strong>Numéro le plus fréquent :</strong> ${sortedFreq[0][0]} (apparu ${sortedFreq[0][1]} fois)</p>
+                <p><strong>Numéro le moins fréquent :</strong> ${sortedFreq[sortedFreq.length - 1][0]} (apparu ${sortedFreq[sortedFreq.length - 1][1]} fois)</p>
+            `;
                             break;
 
                         case 'parite':
                             // ANALYSE DE PARITÉ : Nombre de pairs vs impairs dans tous les tirages
                             labels = ['Pairs', 'Impairs'];
-                            const pairs = filteredDraws.reduce((sum, draw) =>
-                                sum + draw.numbers.filter(n => n % 2 === 0).length, 0);
-                            const impairs = filteredDraws.reduce((sum, draw) =>
-                                sum + draw.numbers.filter(n => n % 2 !== 0).length, 0);
+                            const pairs = filteredDraws.reduce((sum, draw) => sum + draw.numbers.filter(n => n % 2 === 0).length, 0);
+                            const impairs = filteredDraws.reduce((sum, draw) => sum + draw.numbers.filter(n => n % 2 !== 0).length, 0);
+                            const totalNumbers = pairs + impairs;
                             data = [pairs, impairs];
                             title = 'Répartition Pairs/Impairs';
+                            resultsHTML = `
+                <p><strong>Total de numéros pairs :</strong> ${pairs.toLocaleString()} (${(pairs / totalNumbers * 100).toFixed(1)}%)</p>
+                <p><strong>Total de numéros impairs :</strong> ${impairs.toLocaleString()} (${(impairs / totalNumbers * 100).toFixed(1)}%)</p>
+            `;
                             break;
 
                         case 'somme':
                             // DISTRIBUTION DES SOMMES : Répartition des sommes des numéros par tirage
-                            labels = ['<100', '100-150', '150-200', '>200'];
+                            labels = ['<100', '101-125', '126-150', '151-175', '>175'];
                             const sums = filteredDraws.map(draw => draw.numbers.reduce((a, b) => a + b, 0));
                             data = [
-                                sums.filter(s => s < 100).length,
-                                sums.filter(s => s >= 100 && s <= 150).length,
-                                sums.filter(s => s > 150 && s <= 200).length,
-                                sums.filter(s => s > 200).length
+                                sums.filter(s => s <= 100).length,
+                                sums.filter(s => s > 100 && s <= 125).length,
+                                sums.filter(s => s > 125 && s <= 150).length,
+                                sums.filter(s => s > 150 && s <= 175).length,
+                                sums.filter(s => s > 175).length
                             ];
-                            title = 'Distribution des Sommes';
+                            title = 'Distribution des Sommes des 5 numéros';
+                            const averageSum = sums.reduce((a, b) => a + b, 0) / sums.length;
+                            resultsHTML = `<p><strong>Somme moyenne des tirages :</strong> ${averageSum.toFixed(2)}</p>`;
+                            break;
+
+                        case 'gaps':
+                            // ANALYSE DES ÉCARTS : Distribution des écarts entre numéros dans un même tirage
+                            const gapCounts = {};
+                            filteredDraws.forEach(draw => {
+                                const sorted = [...draw.numbers].sort((a, b) => a - b);
+                                for (let i = 0; i < sorted.length - 1; i++) {
+                                    const gap = sorted[i + 1] - sorted[i];
+                                    gapCounts[gap] = (gapCounts[gap] || 0) + 1;
+                                }
+                            });
+                            labels = Object.keys(gapCounts).map(Number).sort((a, b) => a - b);
+                            data = labels.map(label => gapCounts[label]);
+                            title = 'Analyse des Écarts entre Numéros';
+                            const mostFrequentGap = Object.entries(gapCounts).sort((a, b) => b[1] - a[1])[0];
+                            resultsHTML = `<p><strong>Écart le plus fréquent :</strong> ${mostFrequentGap[0]} (observé ${mostFrequentGap[1].toLocaleString()} fois)</p>`;
+                            break;
+
+                        case 'consecutive':
+                            // ANALYSE DES NUMÉROS CONSÉCUTIFS
+                            const consecutiveCounts = {
+                                0: 0,
+                                2: 0,
+                                3: 0,
+                                4: 0,
+                                5: 0
+                            };
+                            let tiragesAvecSuite = 0;
+                            filteredDraws.forEach(draw => {
+                                const sorted = [...draw.numbers].sort((a, b) => a - b);
+                                let maxSuite = 0;
+                                let currentSuite = 1;
+                                let hasSuite = false;
+                                for (let i = 0; i < sorted.length - 1; i++) {
+                                    if (sorted[i + 1] - sorted[i] === 1) {
+                                        currentSuite++;
+                                        hasSuite = true;
+                                    } else {
+                                        maxSuite = Math.max(maxSuite, currentSuite);
+                                        currentSuite = 1;
+                                    }
+                                }
+                                maxSuite = Math.max(maxSuite, currentSuite);
+
+                                if (maxSuite > 1) {
+                                    consecutiveCounts[maxSuite] = (consecutiveCounts[maxSuite] || 0) + 1;
+                                    tiragesAvecSuite++;
+                                } else {
+                                    consecutiveCounts[0]++;
+                                }
+                            });
+
+                            labels = ['Aucune suite', 'Suite de 2', 'Suite de 3', 'Suite de 4', 'Suite de 5'];
+                            data = [
+                                consecutiveCounts[0] + (consecutiveCounts[1] || 0),
+                                consecutiveCounts[2],
+                                consecutiveCounts[3],
+                                consecutiveCounts[4],
+                                consecutiveCounts[5]
+                            ];
+                            title = 'Analyse des Numéros Consécutifs';
+                            resultsHTML = `<p><strong>Tirages avec au moins une suite :</strong> ${tiragesAvecSuite} (${(tiragesAvecSuite / filteredDraws.length * 100).toFixed(1)}%)</p>`;
                             break;
                     }
 
                     // Mettre à jour le graphique statistique
-                    charts.statChart.data.labels = labels;
-                    charts.statChart.data.datasets = [{
-                        label: title,
-                        data: data,
-                        backgroundColor: 'rgba(102, 126, 234, 0.7)',  // Couleur bleue cohérente
-                        borderColor: 'rgba(102, 126, 234, 1)',
-                        borderWidth: 1
-                    }];
-                    charts.statChart.options.plugins.title.text = title;
-                    charts.statChart.update();
+                    if (charts.statChart) {
+                        charts.statChart.data.labels = labels;
+                        charts.statChart.data.datasets = [{
+                            label: title,
+                            data: data,
+                            backgroundColor: 'rgba(102, 126, 234, 0.7)',
+                            borderColor: 'rgba(102, 126, 234, 1)',
+                            borderWidth: 1
+                        }];
+                        charts.statChart.options.plugins.title.text = title;
+                        charts.statChart.update();
+                    }
+
 
                     // Générer les résultats textuels
-                    let results = `<p><h4>Résultats de l'analyse: ${title}</h4><p>`;
-                    results += `<p>Total des tirages analysés: ${filteredDraws.length}</p>`;
-                    document.getElementById('statResults').innerHTML = results;
+                    let finalResults = `<h4>Résultats de l'analyse : ${title}</h4>`;
+                    finalResults += `<p>Total des tirages analysés : ${filteredDraws.length}</p>`;
+                    finalResults += resultsHTML; // Ajout des résultats spécifiques à l'analyse
+                    document.getElementById('statResults').innerHTML = finalResults;
                 }
 
                 // ============================================================================
@@ -13228,22 +13441,35 @@
                 /**
                  * Crée et configure les cases à cocher pour la sélection des modèles
                  */
-
                 function createMatrixCheckboxes() {
                     // Récupérer toutes les cases à cocher dans la section matrice
                     const checkboxes = document.querySelectorAll('#matrice .checkbox-item input[type="checkbox"]');
 
                     // Ajouter un écouteur d'événement sur chaque case à cocher
-
                     checkboxes.forEach(checkbox => {
-                        checkbox.addEventListener('change', updateMatrixConfiguration);
+                        if (checkbox.id !== 'matrixHybrid') { // Ne pas mettre à jour la configuration pour le clic sur hybride lui-même
+                            checkbox.addEventListener('change', updateMatrixConfiguration);
+                        }
                     });
 
                     // Écouter les changements sur les sélecteurs de configuration
-
                     document.getElementById('weightingMethod').addEventListener('change', updateMatrixConfiguration);
                     document.getElementById('fusionMethod').addEventListener('change', updateMatrixConfiguration);
                     document.getElementById('matrixNumPredictions').addEventListener('change', updateMatrixConfiguration);
+
+                    // Logique spécifique pour la case "Modèle Hybride"
+                    const hybridCheckbox = document.getElementById('matrixHybrid');
+                    if (hybridCheckbox) {
+                        hybridCheckbox.addEventListener('change', function (event) {
+                            // Cocher/décocher toutes les autres cases
+                            const allCheckboxes = document.querySelectorAll('#matrice .checkbox-grid input[type="checkbox"]:not(#matrixHybrid)');
+                            allCheckboxes.forEach(cb => {
+                                cb.checked = event.target.checked;
+                            });
+                            // Mettre à jour la configuration après avoir modifié les autres cases
+                            updateMatrixConfiguration();
+                        });
+                    }
                 }
 
                 /**
@@ -14178,6 +14404,10 @@
                         'binomial': 'Distribution Binomiale',
                         'zipf': 'Loi de Zipf',
                         'dirichlet': 'Distribution de Dirichlet',
+                        'gamma': 'Distribution Gamma',
+                        'chisquare': 'Test du Chi-carré',
+                        'student': 'Test T de Student',
+                        'hybrid': 'Modèle Hybride',
                         'rf': 'Random Forest',
                         'gb': 'Gradient Boosting',
                         'lstm': 'LSTM',
@@ -15833,69 +16063,70 @@
                         const categoryName = getCategoryDisplayName(category);
 
                         html += `
-                    <div class="search-category" style="margin-bottom: 40px;">
-                        <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--text-secondary); 
-                                border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
-                            ${categoryName}
-                        </h4>
-                        <div class="search-items-grid">
-                `;
+            <div class="search-category" style="margin-bottom: 40px;">
+                <h4 style="font-size: 1.4rem; margin-bottom: 20px; color: var(--text-secondary); 
+                        border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                    ${categoryName}
+                </h4>
+                <div class="search-items-grid">
+        `;
 
                         items.forEach(item => {
-                            const safeTitle = item.title.replace(/'/g, "\\'");
+                            // Échapper les apostrophes pour l'attribut onclick
+                            const safeTitle = item.title.replace(/\'/g, "\\'");
 
                             html += `
-                    <div class="search-item" style="cursor: pointer; position: relative;">
-                        <div class="search-item-header">
-                            <h5>${item.title}</h5>
-                            <span class="search-item-type">${categoryName}</span>
-                        </div>
-                        <p>${item.description}</p>
-                        
-                        <!-- Bouton Développer (style tag) -->
-                        <div style="margin: 15px 0 10px 0; text-align: left;">
-                            <button onclick="toggleItemDetail('${safeTitle}', event)" 
-                                    class="expand-btn"
-                                    style="background: rgba(102, 187, 106, 0.15);
-                                        color: #66bb6a;
-                                        border: 1px solid rgba(102, 187, 106, 0.3);
-                                        padding: 8px 15px;
-                                        border-radius: 10px;
-                                        font-size: 0.72rem;
-                                        font-weight: 400;
-                                        cursor: pointer;
-                                        transition: all 0.3s ease;
-                                        text-transform: none;
-                                        letter-spacing: 0;">
-                                📖 Développer
-                            </button>
-                        </div>
-                        
-                        <div class="search-tags">
-                            ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
-                        </div>
-                        
-                        <!-- Conteneur pour le contenu développé -->
-                        <div class="item-detail-content" 
-                            id="detail-${safeTitle.replace(/\s+/g, '-')}"
-                            style="display: none; 
-                                    margin-top: 15px; 
-                                    padding: 20px;                           
-                                    border: 1px solid rgba(255, 255, 255, 0.1);
-                                    border-radius: 8px;
-                                    animation: slideDown 0.0s ease;">
-                            <div style="white-space: pre-line; line-height: 1.8; color: rgba(255,255,255,0.9);">
-                                ${item.fullContent}
-                            </div>
-                        </div>
+            <div class="search-item" style="position: relative;">
+                <div class="search-item-header">
+                    <h5>${item.title}</h5>
+                    <span class="search-item-type">${categoryName}</span>
+                </div>
+                <p>${item.description}</p>
+                
+                <!-- Bouton Développer -->
+                <div style="margin: 15px 0 10px 0; text-align: left;">
+                    <button onclick="toggleItemDetail('${safeTitle}', event)" 
+                            class="expand-btn"
+                            style="background: rgba(102, 187, 106, 0.15);
+                                color: #66bb6a;
+                                border: 1px solid rgba(102, 187, 106, 0.3);
+                                padding: 8px 15px;
+                                border-radius: 10px;
+                                font-size: 0.72rem;
+                                font-weight: 400;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                text-transform: none;
+                                letter-spacing: 0;">
+                        📖 Développer
+                    </button>
+                </div>
+                
+                <div class="search-tags">
+                    ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
+                </div>
+                
+                <!-- Conteneur pour le contenu développé -->
+                <div class="item-detail-content" 
+                    id="detail-${safeTitle.replace(/\s+/g, '-')}"
+                    style="display: none; 
+                            margin-top: 15px; 
+                            padding: 20px;                           
+                            border: 1px solid rgba(255, 255, 255, 0.1);
+                            border-radius: 8px;
+                            animation: slideDown 0.3s ease-out;">
+                    <div style="white-space: pre-line; line-height: 1.8; color: rgba(255,255,255,0.9);">
+                        ${item.fullContent}
                     </div>
-                `;
+                </div>
+            </div>
+        `;
                         });
 
                         html += `
-                        </div>
-                    </div>
-                `;
+                </div>
+            </div>
+        `;
                     }
 
                     container.innerHTML = html;
@@ -15903,73 +16134,26 @@
                     // Initialiser le filtrage de recherche dans l'index
                     const searchInput = document.getElementById('indexSearchInput');
                     if (searchInput) {
-                        // Supprimer les anciens écouteurs pour éviter les doublons
+                        // Remplacer l'input pour être sûr de ne pas avoir d'écouteurs multiples
                         const newSearchInput = searchInput.cloneNode(true);
                         searchInput.parentNode.replaceChild(newSearchInput, searchInput);
 
-                        // Ajouter le nouvel écouteur
+                        // Ajouter le nouvel écouteur pour la recherche
                         newSearchInput.addEventListener('input', (e) => {
-                            const query = e.target.value.toLowerCase();
+                            const query = e.target.value.toLowerCase().trim();
                             const items = document.querySelectorAll('#indexFullResults .search-item');
 
+                            // Filtrer les items
                             items.forEach(item => {
-                                // Échapper les apostrophes
-                                const safeTitle = item.title.replace(/'/g, "\\'");
-
-                                html += `
-                                    <div class="search-item" style="position: relative;">
-                                        <div class="search-item-header">
-                                            <h5>${item.title}</h5>
-                                            <span class="search-item-type">${categoryName}</span>
-                                        </div>
-                                        <p>${item.description}</p>
-                                        
-                                            <!-- Bouton Développer (style tag) -->
-                            <div style="margin: 15px 0 10px 0; text-align: left;">
-                                <button onclick="toggleItemDetail('${safeTitle}', event)" 
-                                        class="expand-btn"
-                                        style="background: rgba(102, 187, 106, 0.15);
-                                            color: #66bb6a;
-                                            border: 1px solid rgba(102, 187, 106, 0.3);
-                                            padding: 8px 15px;
-                                            border-radius: 10px;
-                                            font-size: 0.72rem;
-                                            font-weight: 400;
-                                            cursor: pointer;
-                                            transition: all 0.3s ease;
-                                            text-transform: none;
-                                            letter-spacing: 0;">
-                                    📖 Développer
-                                </button>
-                            </div>
-                                        
-                                        <div class="search-tags">
-                                            ${item.tags.map(tag => `<span class="search-tag">${tag}</span>`).join('')}
-                                        </div>
-                                        
-                                        <!-- Conteneur pour le contenu développé -->
-                                        <div class="modal-item-detail-content" 
-                                            id="modal-detail-${safeTitle.replace(/\s+/g, '-')}"
-                                            style="display: none; 
-                                                    margin-top: 20px; 
-                                                    padding: 20px; 
-                                                    background: rgba(77, 163, 255, 0.1); 
-                                                    border-left: 4px solid #4da3ff; 
-                                                    border-radius: 8px;
-                                                    animation: slideDown 0.3s ease;">
-                                            <div style="white-space: pre-line; line-height: 1.8; color: rgba(255,255,255,0.9);">
-                                                ${item.fullContent}
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
+                                const itemText = item.textContent.toLowerCase();
+                                item.style.display = itemText.includes(query) ? 'block' : 'none';
                             });
 
                             // Masquer les catégories vides
                             const categories = document.querySelectorAll('#indexFullResults .search-category');
                             categories.forEach(category => {
-                                const visibleItems = category.querySelectorAll('.search-item[style*="display: block"], .search-item:not([style*="display: none"])');
-                                category.style.display = visibleItems.length > 0 ? 'block' : 'none';
+                                const isCategoryVisible = Array.from(category.querySelectorAll('.search-item')).some(item => item.style.display !== 'none');
+                                category.style.display = isCategoryVisible ? 'block' : 'none';
                             });
                         });
                     }
@@ -16235,77 +16419,78 @@
 
                 // Initialiser la recherche au chargement
                 document.addEventListener('DOMContentLoaded', initSearch);
+                
             </script>
 
-            
+
             <!-- Boutons dans le HTML -->
             <class="floating-top-button" id="floatingSommaireButton">
-            <button class="floating-top-button" id="floatingOngletButton"> ⇧ </button>
+                <button class="floating-top-button" id="floatingOngletButton"> ⇧ </button>
 
-            <script>
-                // Script universel simplifié
-                document.addEventListener('DOMContentLoaded', function () {
-                    const buttons = {
-                        sommaire: {
-                            element: document.getElementById('floatingSommaireButton'),
-                            target: 'table-matières',
-                            threshold: 300
-                        },
-                        onglet: {
-                            element: document.getElementById('floatingOngletButton'),
-                            target: null, // Haut de page
-                            threshold: 500
-                        }
-                    };
+                <script>
+                    // Script universel simplifié
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const buttons = {
+                            sommaire: {
+                                element: document.getElementById('floatingSommaireButton'),
+                                target: 'table-matières',
+                                threshold: 300
+                            },
+                            onglet: {
+                                element: document.getElementById('floatingOngletButton'),
+                                target: null, // Haut de page
+                                threshold: 500
+                            }
+                        };
 
-                    // Gérer le défilement
-                    window.addEventListener('scroll', function () {
-                        const scrollY = window.scrollY;
+                        // Gérer le défilement
+                        window.addEventListener('scroll', function () {
+                            const scrollY = window.scrollY;
 
+                            Object.values(buttons).forEach(button => {
+                                if (scrollY > button.threshold) {
+                                    button.element.classList.add('visible');
+                                } else {
+                                    button.element.classList.remove('visible');
+                                }
+                            });
+                        });
+
+                        // Gérer les clics
                         Object.values(buttons).forEach(button => {
-                            if (scrollY > button.threshold) {
-                                button.element.classList.add('visible');
-                            } else {
-                                button.element.classList.remove('visible');
-                            }
+                            button.element.addEventListener('click', function () {
+                                if (button.target) {
+                                    document.getElementById(button.target)?.scrollIntoView({ behavior: 'smooth' });
+                                } else {
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                            });
                         });
                     });
 
-                    // Gérer les clics
-                    Object.values(buttons).forEach(button => {
-                        button.element.addEventListener('click', function () {
-                            if (button.target) {
-                                document.getElementById(button.target)?.scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                            }
-                        });
-                    });
-                });
+                    function colorizeJavaScript(code) {
+                        return code
+                            // Commentaires
+                            .replace(/(\/\/.*$)/gm, '<span class="code-comment">$1</span>')
 
-                function colorizeJavaScript(code) {
-                    return code
-                        // Commentaires
-                        .replace(/(\/\/.*$)/gm, '<span class="code-comment">$1</span>')
-                        
-                        // Strings
-                        .replace(/(".*?"|'.*?')/g, '<span class="code-string">$1</span>')
-                        
-                        // Numbers
-                        .replace(/\b(\d+)\b/g, '<span class="code-number">$1</span>')
-                        
-                        // Keywords
-                        .replace(/\b(const|let|var|function|return|if|else|for|while|class|export|import|default)\b/g, 
+                            // Strings
+                            .replace(/(".*?"|'.*?')/g, '<span class="code-string">$1</span>')
+
+                            // Numbers
+                            .replace(/\b(\d+)\b/g, '<span class="code-number">$1</span>')
+
+                            // Keywords
+                            .replace(/\b(const|let|var|function|return|if|else|for|while|class|export|import|default)\b/g,
                                 '<span class="code-keyword">$1</span>')
-                        
-                        // Properties (avant les :)
-                        .replace(/(\w+)(?=\s*:)/g, '<span class="code-property">$1</span>')
-                        
-                        // Operators
-                        .replace(/([{}()[\]=+,])/g, '<span class="code-operator">$1</span>');
-                }
 
-        </script>
+                            // Properties (avant les :)
+                            .replace(/(\w+)(?=\s*:)/g, '<span class="code-property">$1</span>')
+
+                            // Operators
+                            .replace(/([{}()[\]=+,])/g, '<span class="code-operator">$1</span>');
+                    }
+
+                </script>
 </body>
 
 </html>
