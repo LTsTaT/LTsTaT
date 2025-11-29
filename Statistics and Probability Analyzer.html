@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<!-- Github-8.5 copie -->
+<!-- Github-8.5 copie-->
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+    
 
     <style>
         /* ============================================================================
@@ -1450,7 +1451,76 @@
                 transform: translateY(0);
             }
         }
+  
+         /* Style pour l'encre universelle */
 
+         .floating-top-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border-radius: 8px;
+            padding: 25px 3px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 14px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            /* Paramètre ajouté pour empêcher le débordement */
+            max-width: calc(100vw - 40px);
+             
+             max-width: 55px;
+            /* Largeur maximum fixe */
+        }
+
+        .floating-top-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .floating-top-button:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Bouton Haut de page */
+        #floatingOngletButton {
+            bottom: 26px;
+        
+        }
+
+        /* Styles pour la coloration syntaxique JavaScript */
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+         padding: 20px;
+            font-family: 'Courier New', monospace;
+         font-size: 0.9em;
+         overflow-x: auto;
+         line-height: 1.5;
+        }
+
+        /* Couleurs pour JavaScript */
+            .code-keyword { color: #569cd6; }        /* const, let, function */
+            .code-string { color: #ce9178; }         /* Chaînes de caractères */
+            .code-number { color: #b5cea8; }         /* Nombres */
+            .code-comment { color: #6a9955; }        /* Commentaires */
+            .code-property { color: #9cdcfe; }       /* Propriétés d'objets */
+            .code-operator { color: #d4d4d4; }       /* Opérateurs */
+            .code-bracket { color: #ffd700; }        /* Crochets, parenthèses */
+            .code-function { color: #dcdcaa; }       /* Noms de fonctions */
 
         /* ============================================================================
    9. STYLES SPÉCIFIQUES ONGLET MATRICE
@@ -4275,10 +4345,11 @@
                 <div class="section">
                     <h2>Accueil</h2>
                     <p style="font-size: 1.05em; line-height: 1.5; margin: 10px 0;">
-                        ARÔME est une plateforme d'analyse avancée combinant des modèles statistiques de pointe et
-                        algorithmes d'apprentissage automatique pour l'étude approfondie des tirages de loterie. Le
-                        programme intègre des méthodes probabilistes sophistiquées et des techniques d'apprentissage
-                        automatique pour identifier les tendances historiques et générer des prévisions optimisées.<br>
+                        ARÔME propose une plateforme d'analyse avancée innovante combinant des modèles statistiques
+                        de pointe et des algorithmes d'apprentissage automatique pour l'étude approfondie des tirages de
+                        loterie.
+                        Le programme intègre des méthodes probabilistes sophistiquées et des techniques d'apprentissage
+                        automatique pour identifier les tendances historiques et générer des prévisions optimisées..<br>
 
                         <br>L'architecture modulaire permet d'explorer les données sous différents approches :
                         Analyses fréquentielles, clustering K-Means pour la détection de patterns, simulations
@@ -5250,7 +5321,7 @@
                             </div>
 
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>Couche 2 - COMPUTATION LAYER</strong>
                                 </p>
                                 <p style="margin: 5px 0 0 20px; line-height: 1.8;">
@@ -5276,7 +5347,7 @@
                             </div>
 
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>Couche 4 - VISUALIZATION LAYER</strong>
                                 </p>
                                 <p style="margin: 5px 0 0 20px; line-height: 1.8;">
@@ -5288,7 +5359,7 @@
                             </div>
 
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>Couche 5 - UI LAYER</strong></p>
                                 <p style="margin: 5px 0 0 20px; line-height: 1.8;">
                                     • Navigation multi-onglets (10 sections)<br>
@@ -5299,7 +5370,7 @@
                             </div>
 
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>Couche 6 - UTILITIES LAYER</strong></p>
                                 <p style="margin: 5px 0 0 20px; line-height: 1.8;">
                                     • Fonctions utilitaires transversales<br>
@@ -5319,23 +5390,23 @@
                             <div
                                 style="background: rgba(255,255,255,0.05); padding: 0px; border-radius: 8px; margin-bottom: 15px;">
                                 <pre style="margin: 0; color: #4da3ff; line-height: 1.6;">
-CSV Raw Data
-    ↓
-parseDrawDate() + Validation
-    ↓
-historicalData.draws (Structure normalisée)
-    ↓
-Filtres temporels → filteredDraws / mlFilteredDraws
-    ↓
-recalculateFrequencies() → Métriques statistiques
-    ↓
-Algorithmes (Probabilistes / ML / Avancés)
-    ↓
-Fusion matricielle (si applicable)
-    ↓
-Formatage résultats + Visualisations
-    ↓
-Affichage UI interactif</pre>
+                                CSV Raw Data
+                                    ↓
+                                parseDrawDate() + Validation
+                                    ↓
+                                historicalData.draws (Structure normalisée)
+                                    ↓
+                                Filtres temporels → filteredDraws / mlFilteredDraws
+                                    ↓
+                                recalculateFrequencies() → Métriques statistiques
+                                    ↓
+                                Algorithmes (Probabilistes / ML / Avancés)
+                                    ↓
+                                Fusion matricielle (si applicable)
+                                    ↓
+                                Formatage résultats + Visualisations
+                                    ↓
+                                Affichage UI interactif</pre>
                             </div>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">1.4 Gestion
@@ -5366,10 +5437,11 @@ Affichage UI interactif</pre>
                         </div>
 
                         <!-- 2. STACK TECHNIQUE -->
+
                         <div id="stack-technique" class="info-box" style="margin-bottom: 30px;">
                             <h3
                                 style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
-                                 2. Stack Technique et Dépendances
+                                2. Stack Technique et Dépendances
                             </h3>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">2.1
@@ -5387,7 +5459,8 @@ Affichage UI interactif</pre>
                                 <ul style="line-height: 1.8; margin-left: 20px;">
                                     <li><strong>Tensors API</strong> : <code>tf.tensor2d()</code>,
                                         <code>tf.tensor3d()</code>
-                                        pour manipulation matricielle</li>
+                                        pour manipulation matricielle
+                                    </li>
                                     <li><strong>Layers API</strong> : Construction modulaire modèles
                                         (<code>tf.layers.dense</code>, <code>tf.layers.lstm</code>)</li>
                                     <li><strong>Sequential Model</strong> : <code>tf.sequential()</code> pour réseaux
@@ -5504,10 +5577,11 @@ Affichage UI interactif</pre>
                         </div>
 
                         <!-- 3. GESTION DES DONNÉES -->
+
                         <div id="gestion-donnees" class="info-box" style="margin-bottom: 30px;">
                             <h3
                                 style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
-                                 3. Gestion des Données et Parsing
+                                3. Gestion des Données et Parsing
                             </h3>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">3.1 Parsing
@@ -5559,10 +5633,10 @@ Affichage UI interactif</pre>
                                         intelligente
                                         année 2 chiffres :</strong></p>
                                 <pre>if (year < 100) {
-    year += (year < 50) ? 2000 : 1900;  // 25 → 2025, 98 → 1998
-}</pre>
+                                year += (year < 50) ? 2000 : 1900;  // 25 → 2025, 98 → 1998
+                            }</pre>
                                 <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #ff9800;">
-                                     Validation stricte : Rejet dates invalides (30/02, 32/01, etc.) avec fallback
+                                    Validation stricte : Rejet dates invalides (30/02, 32/01, etc.) avec fallback
                                     Date
                                     courante.
                                 </p>
@@ -5575,27 +5649,27 @@ Affichage UI interactif</pre>
                                 L'objet <code>historicalData</code> centralise toutes les informations :
                             </p>
                             <pre>historicalData = {
-    draws: [
-        {
-            date: "24/11/25",           // String format original
-            numbers: [22, 28, 29, 36, 47],  // Array[5] triés
-            chance: 1                   // Number 1-10
-        },
-        // ... 400+ tirages historiques
-    ],
-    
-    frequencies: {
-        1: 45,   // Nombre d'apparitions du numéro 1
-        2: 52,
-        // ... 49 entrées
-    },
-    
-    chanceFrequencies: {
-        1: 38,   // Nombre d'apparitions du numéro chance 1
-        2: 41,
-        // ... 10 entrées
-    }
-}</pre>
+                            draws: [
+                                {
+                                    date: "24/11/25",           // String format original
+                                    numbers: [22, 28, 29, 36, 47],  // Array[5] triés
+                                    chance: 1                   // Number 1-10
+                                },
+                                // ... 400+ tirages historiques
+                            ],
+                            
+                            frequencies: {
+                                1: 45,   // Nombre d'apparitions du numéro 1
+                                2: 52,
+                                // ... 49 entrées
+                            },
+                            
+                            chanceFrequencies: {
+                                1: 38,   // Nombre d'apparitions du numéro chance 1
+                                2: 41,
+                                // ... 10 entrées
+                            }
+                        }</pre>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">3.4 Système
                                 de
@@ -5646,23 +5720,23 @@ Affichage UI interactif</pre>
                                 filtre :
                             </p>
                             <pre>function recalculateFrequencies() {
-    // Réinitialisation
-    historicalData.frequencies = {};
-    historicalData.chanceFrequencies = {};
-    
-    // Parcours tirages filtrés
-    filteredDraws.forEach(draw => {
-        // Incrément compteurs numéros principaux
-        draw.numbers.forEach(num => {
-            historicalData.frequencies[num] = 
-                (historicalData.frequencies[num] || 0) + 1;
-        });
-        
-        // Incrément compteur chance
-        historicalData.chanceFrequencies[draw.chance] = 
-            (historicalData.chanceFrequencies[draw.chance] || 0) + 1;
-    });
-}</pre>
+                                // Réinitialisation
+                                historicalData.frequencies = {};
+                                historicalData.chanceFrequencies = {};
+                                
+                                // Parcours tirages filtrés
+                                filteredDraws.forEach(draw => {
+                                    // Incrément compteurs numéros principaux
+                                    draw.numbers.forEach(num => {
+                                        historicalData.frequencies[num] = 
+                                            (historicalData.frequencies[num] || 0) + 1;
+                                    });
+                                    
+                                    // Incrément compteur chance
+                                    historicalData.chanceFrequencies[draw.chance] = 
+                                        (historicalData.chanceFrequencies[draw.chance] || 0) + 1;
+                                });
+                            }</pre>
                             <p style="line-height: 1.8; margin-top: 15px; color: #4da3ff;">
                                 Complexité : O(n×m) où n = tirages filtrés, m = 5 numéros → Performance linéaire
                                 optimale
@@ -5693,34 +5767,34 @@ Affichage UI interactif</pre>
                                         poissonPrediction()
                                         :</strong></p>
                                 <pre>function poissonPrediction(frequencies, numPredictions = 5) {
-    const predictions = [];
-    const lambda = {};
-    const totalDraws = Object.values(frequencies).reduce((a,b) => a + b, 0);
-    
-    // Calcul λ pour chaque numéro (fréquence relative)
-    for (let i = 1; i <= 49; i++) {
-        lambda[i] = (frequencies[i] || 0) / totalDraws;
-    }
-    
-    // Génération prédictions
-    for (let pred = 0; pred < numPredictions; pred++) {
-        const weights = [];
-        for (let i = 1; i <= 49; i++) {
-            // Poids = λ × e^(-λ) pour éviter sur-représentation
-            const weight = lambda[i] * Math.exp(-lambda[i]);
-            weights.push({ 
-                number: i, 
-                weight: weight > 0 ? weight : 0.0001 
-            });
-        }
-        
-        // Sélection pondérée
-        const selected = weightedRandomSelection(weights, 5);
-        predictions.push(selected);
-    }
-    
-    return predictions;
-}</pre>
+                                const predictions = [];
+                                const lambda = {};
+                                const totalDraws = Object.values(frequencies).reduce((a,b) => a + b, 0);
+                                
+                                // Calcul λ pour chaque numéro (fréquence relative)
+                                for (let i = 1; i <= 49; i++) {
+                                    lambda[i] = (frequencies[i] || 0) / totalDraws;
+                                }
+                                
+                                // Génération prédictions
+                                for (let pred = 0; pred < numPredictions; pred++) {
+                                    const weights = [];
+                                    for (let i = 1; i <= 49; i++) {
+                                        // Poids = λ × e^(-λ) pour éviter sur-représentation
+                                        const weight = lambda[i] * Math.exp(-lambda[i]);
+                                        weights.push({ 
+                                            number: i, 
+                                            weight: weight > 0 ? weight : 0.0001 
+                                        });
+                                    }
+                                    
+                                    // Sélection pondérée
+                                    const selected = weightedRandomSelection(weights, 5);
+                                    predictions.push(selected);
+                                }
+                                
+                                return predictions;
+                            }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Justification mathématique
                                         :</strong>
@@ -5736,7 +5810,7 @@ Affichage UI interactif</pre>
                                 </ul>
 
                                 <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #667eea;">
-                                     <strong>Avantage clé</strong> : Modèle simple mais efficace pour identifier
+                                    <strong>Avantage clé</strong> : Modèle simple mais efficace pour identifier
                                     numéros
                                     "moyennement fréquents" souvent négligés.
                                 </p>
@@ -5759,80 +5833,80 @@ Affichage UI interactif</pre>
                                         binomialPrediction()
                                         :</strong></p>
                                 <pre>function binomialPrediction(frequencies, numPredictions = 5) {
-    const predictions = [];
-    
-    // 1. Calcul probabilités empiriques pairs/impairs
-    let totalEven = 0, totalOdd = 0;
-    for (let i = 1; i <= 49; i++) {
-        const freq = frequencies[i] || 0;
-        if (i % 2 === 0) totalEven += freq;
-        else totalOdd += freq;
-    }
-    
-    const total = totalEven + totalOdd;
-    const pEven = totalEven / total;  // P(pair)
-    const pOdd = totalOdd / total;     // P(impair)
-    
-    // 2. Séparation numéros pairs/impairs avec fréquences
-    const evenNumbers = [], oddNumbers = [];
-    for (let i = 1; i <= 49; i++) {
-        const freq = frequencies[i] || 0;
-        const obj = { number: i, weight: freq + 1 };
-        if (i % 2 === 0) evenNumbers.push(obj);
-        else oddNumbers.push(obj);
-    }
-    
-    // 3. Génération prédictions selon loi binomiale
-    for (let pred = 0; pred < numPredictions; pred++) {
-        const selected = [];
-        
-        // Simulation binomiale : combien de pairs parmi 5 ?
-        let numEven = 0;
-        for (let i = 0; i < 5; i++) {
-            if (Math.random() < pEven) numEven++;
-        }
-        const numOdd = 5 - numEven;
-        
-        // Sélection pondérée pairs
-        if (numEven > 0) {
-            const selectedEven = weightedRandomSelection(
-                evenNumbers, 
-                Math.min(numEven, evenNumbers.length)
-            );
-            selected.push(...selectedEven);
-        }
-        
-        // Sélection pondérée impairs
-        if (numOdd > 0) {
-            const availableOdd = oddNumbers.filter(
-                n => !selected.includes(n.number)
-            );
-            const selectedOdd = weightedRandomSelection(
-                availableOdd, 
-                Math.min(numOdd, availableOdd.length)
-            );
-            selected.push(...selectedOdd);
-        }
-        
-        // Compléter si nécessaire
-        while (selected.length < 5) {
-            const random = Math.floor(Math.random() * 49) + 1;
-            if (!selected.includes(random)) selected.push(random);
-        }
-        
-        predictions.push(selected.sort((a,b) => a - b));
-    }
-    
-    return { 
-        predictions, 
-        stats: { 
-            pEven: (pEven * 100).toFixed(1) + '%',
-            pOdd: (pOdd * 100).toFixed(1) + '%',
-            expectedEvenPerDraw: (5 * pEven).toFixed(1),
-            expectedOddPerDraw: (5 * pOdd).toFixed(1)
-        }
-    };
-}</pre>
+                                const predictions = [];
+                                
+                                // 1. Calcul probabilités empiriques pairs/impairs
+                                let totalEven = 0, totalOdd = 0;
+                                for (let i = 1; i <= 49; i++) {
+                                    const freq = frequencies[i] || 0;
+                                    if (i % 2 === 0) totalEven += freq;
+                                    else totalOdd += freq;
+                                }
+                                
+                                const total = totalEven + totalOdd;
+                                const pEven = totalEven / total;  // P(pair)
+                                const pOdd = totalOdd / total;     // P(impair)
+                                
+                                // 2. Séparation numéros pairs/impairs avec fréquences
+                                const evenNumbers = [], oddNumbers = [];
+                                for (let i = 1; i <= 49; i++) {
+                                    const freq = frequencies[i] || 0;
+                                    const obj = { number: i, weight: freq + 1 };
+                                    if (i % 2 === 0) evenNumbers.push(obj);
+                                    else oddNumbers.push(obj);
+                                }
+                                
+                                // 3. Génération prédictions selon loi binomiale
+                                for (let pred = 0; pred < numPredictions; pred++) {
+                                    const selected = [];
+                                    
+                                    // Simulation binomiale : combien de pairs parmi 5 ?
+                                    let numEven = 0;
+                                    for (let i = 0; i < 5; i++) {
+                                        if (Math.random() < pEven) numEven++;
+                                    }
+                                    const numOdd = 5 - numEven;
+                                    
+                                    // Sélection pondérée pairs
+                                    if (numEven > 0) {
+                                        const selectedEven = weightedRandomSelection(
+                                            evenNumbers, 
+                                            Math.min(numEven, evenNumbers.length)
+                                        );
+                                        selected.push(...selectedEven);
+                                    }
+                                    
+                                    // Sélection pondérée impairs
+                                    if (numOdd > 0) {
+                                        const availableOdd = oddNumbers.filter(
+                                            n => !selected.includes(n.number)
+                                        );
+                                        const selectedOdd = weightedRandomSelection(
+                                            availableOdd, 
+                                            Math.min(numOdd, availableOdd.length)
+                                        );
+                                        selected.push(...selectedOdd);
+                                    }
+                                    
+                                    // Compléter si nécessaire
+                                    while (selected.length < 5) {
+                                        const random = Math.floor(Math.random() * 49) + 1;
+                                        if (!selected.includes(random)) selected.push(random);
+                                    }
+                                    
+                                    predictions.push(selected.sort((a,b) => a - b));
+                                }
+                                
+                                return { 
+                                    predictions, 
+                                    stats: { 
+                                        pEven: (pEven * 100).toFixed(1) + '%',
+                                        pOdd: (pOdd * 100).toFixed(1) + '%',
+                                        expectedEvenPerDraw: (5 * pEven).toFixed(1),
+                                        expectedOddPerDraw: (5 * pOdd).toFixed(1)
+                                    }
+                                };
+                            }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Points techniques clés
                                         :</strong></p>
@@ -5851,7 +5925,7 @@ Affichage UI interactif</pre>
                                 </ul>
 
                                 <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #4caf50;">
-                                     <strong>Usage optimal</strong> : Respecte équilibre pairs/impairs historique tout
+                                    <strong>Usage optimal</strong> : Respecte équilibre pairs/impairs historique tout
                                     en
                                     introduisant variabilité naturelle.
                                 </p>
@@ -5874,40 +5948,40 @@ Affichage UI interactif</pre>
                                         zipfPrediction()
                                         :</strong></p>
                                 <pre>function zipfPrediction(frequencies, numPredictions = 5) {
-    const predictions = [];
-    
-    // 1. Tri numéros par fréquence décroissante (attribution rangs)
-    const sortedNumbers = Object.entries(frequencies)
-        .filter(([num]) => num >= 1 && num <= 49)
-        .sort((a, b) => b[1] - a[1])  // Tri décroissant
-        .map((entry, index) => ({
-            number: parseInt(entry[0]),
-            rank: index + 1,           // Rang commence à 1
-            frequency: entry[1]
-        }));
-    
-    // 2. Calcul poids Zipf : 1/rang^1.0
-    const weights = sortedNumbers.map(item => ({
-        number: item.number,
-        weight: 1 / Math.pow(item.rank, 1.0)
-    }));
-    
-    // 3. Normalisation poids (somme = 1)
-    const totalWeight = weights.reduce((sum, item) => 
-        sum + item.weight, 0
-    );
-    weights.forEach(item => 
-        item.weight = item.weight / totalWeight
-    );
-    
-    // 4. Génération prédictions
-    for (let pred = 0; pred < numPredictions; pred++) {
-        const selected = weightedRandomSelection(weights, 5);
-        predictions.push(selected);
-    }
-    
-    return predictions;
-}</pre>
+                                const predictions = [];
+                                
+                                // 1. Tri numéros par fréquence décroissante (attribution rangs)
+                                const sortedNumbers = Object.entries(frequencies)
+                                    .filter(([num]) => num >= 1 && num <= 49)
+                                    .sort((a, b) => b[1] - a[1])  // Tri décroissant
+                                    .map((entry, index) => ({
+                                        number: parseInt(entry[0]),
+                                        rank: index + 1,           // Rang commence à 1
+                                        frequency: entry[1]
+                                    }));
+                                
+                                // 2. Calcul poids Zipf : 1/rang^1.0
+                                const weights = sortedNumbers.map(item => ({
+                                    number: item.number,
+                                    weight: 1 / Math.pow(item.rank, 1.0)
+                                }));
+                                
+                                // 3. Normalisation poids (somme = 1)
+                                const totalWeight = weights.reduce((sum, item) => 
+                                    sum + item.weight, 0
+                                );
+                                weights.forEach(item => 
+                                    item.weight = item.weight / totalWeight
+                                );
+                                
+                                // 4. Génération prédictions
+                                for (let pred = 0; pred < numPredictions; pred++) {
+                                    const selected = weightedRandomSelection(weights, 5);
+                                    predictions.push(selected);
+                                }
+                                
+                                return predictions;
+                            }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Caractéristiques Zipf
                                         :</strong></p>
@@ -5923,7 +5997,7 @@ Affichage UI interactif</pre>
                                 </ul>
 
                                 <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #ff9800;">
-                                     <strong>Limite</strong> : Tendance conservatrice (favorise historique), moins
+                                    <strong>Limite</strong> : Tendance conservatrice (favorise historique), moins
                                     adapté si
                                     recherche de "surprises".
                                 </p>
@@ -5946,98 +6020,98 @@ Affichage UI interactif</pre>
                                         dirichletPrediction()
                                         :</strong></p>
                                 <pre>function dirichletPrediction(frequencies, numPredictions = 5) {
-    const predictions = [];
-    
-    // 1. Partition numéros par dizaines
-    const decades = {
-        '1-10': [],  '11-20': [], '21-30': [], 
-        '31-40': [], '41-49': []
-    };
-    
-    for (let i = 1; i <= 49; i++) {
-        const freq = frequencies[i] || 0;
-        const obj = { num: i, freq };
-        
-        if (i <= 10) decades['1-10'].push(obj);
-        else if (i <= 20) decades['11-20'].push(obj);
-        else if (i <= 30) decades['21-30'].push(obj);
-        else if (i <= 40) decades['31-40'].push(obj);
-        else decades['41-49'].push(obj);
-    }
-    
-    // 2. Calcul paramètres α (fréquences totales par dizaine)
-    const alphas = {};
-    for (const [decade, nums] of Object.entries(decades)) {
-        const totalFreq = nums.reduce((sum, n) => sum + n.freq, 0);
-        alphas[decade] = totalFreq + 1;  // +1 régularisation
-    }
-    
-    // 3. Normalisation α (somme = 1 pour distribution)
-    const totalAlpha = Object.values(alphas).reduce((a,b) => a + b, 0);
-    for (const decade in alphas) {
-        alphas[decade] = alphas[decade] / totalAlpha;
-    }
-    
-    // 4. Génération prédictions selon répartition Dirichlet
-    for (let pred = 0; pred < numPredictions; pred++) {
-        const selected = [];
-        const decadeNames = Object.keys(decades);
-        const numPerDecade = [0, 0, 0, 0, 0];  // Compteurs
-        
-        // 4a. Simulation Dirichlet : tirer dizaine pour chaque position
-        for (let i = 0; i < 5; i++) {
-            let random = Math.random();
-            let cumulative = 0;
-            
-            for (let d = 0; d < decadeNames.length; d++) {
-                cumulative += alphas[decadeNames[d]];
-                if (random <= cumulative) {
-                    numPerDecade[d]++;
-                    break;
-                }
-            }
-        }
-        
-        // 4b. Sélection numéros dans chaque dizaine
-        for (let d = 0; d < decadeNames.length; d++) {
-            const decadeName = decadeNames[d];
-            const numsInDecade = decades[decadeName];
-            const count = numPerDecade[d];
-            
-            for (let c = 0; c < count && selected.length < 5; c++) {
-                const weights = numsInDecade
-                    .filter(n => !selected.includes(n.num))
-                    .map(n => ({ 
-                        number: n.num, 
-                        weight: n.freq + 1 
-                    }));
-                
-                if (weights.length > 0) {
-                    const selectedNums = weightedRandomSelection(weights, 1);
-                    selected.push(...selectedNums);
-                }
-            }
-        }
-        
-        // 4c. Compléter si nécessaire
-        while (selected.length < 5) {
-            const random = Math.floor(Math.random() * 49) + 1;
-            if (!selected.includes(random)) selected.push(random);
-        }
-        
-        predictions.push(selected.sort((a,b) => a - b));
-    }
-    
-    return {
-        predictions,
-        alphas,
-        interpretation: Object.entries(alphas)
-            .sort((a,b) => b[1] - a[1])
-            .map(([decade, weight]) => 
-                `${decade}: ${(weight * 100).toFixed(1)}%`
-            )
-    };
-}</pre>
+                                const predictions = [];
+                                
+                                // 1. Partition numéros par dizaines
+                                const decades = {
+                                    '1-10': [],  '11-20': [], '21-30': [], 
+                                    '31-40': [], '41-49': []
+                                };
+                                
+                                for (let i = 1; i <= 49; i++) {
+                                    const freq = frequencies[i] || 0;
+                                    const obj = { num: i, freq };
+                                    
+                                    if (i <= 10) decades['1-10'].push(obj);
+                                    else if (i <= 20) decades['11-20'].push(obj);
+                                    else if (i <= 30) decades['21-30'].push(obj);
+                                    else if (i <= 40) decades['31-40'].push(obj);
+                                    else decades['41-49'].push(obj);
+                                }
+                                
+                                // 2. Calcul paramètres α (fréquences totales par dizaine)
+                                const alphas = {};
+                                for (const [decade, nums] of Object.entries(decades)) {
+                                    const totalFreq = nums.reduce((sum, n) => sum + n.freq, 0);
+                                    alphas[decade] = totalFreq + 1;  // +1 régularisation
+                                }
+                                
+                                // 3. Normalisation α (somme = 1 pour distribution)
+                                const totalAlpha = Object.values(alphas).reduce((a,b) => a + b, 0);
+                                for (const decade in alphas) {
+                                    alphas[decade] = alphas[decade] / totalAlpha;
+                                }
+                                
+                                // 4. Génération prédictions selon répartition Dirichlet
+                                for (let pred = 0; pred < numPredictions; pred++) {
+                                    const selected = [];
+                                    const decadeNames = Object.keys(decades);
+                                    const numPerDecade = [0, 0, 0, 0, 0];  // Compteurs
+                                    
+                                    // 4a. Simulation Dirichlet : tirer dizaine pour chaque position
+                                    for (let i = 0; i < 5; i++) {
+                                        let random = Math.random();
+                                        let cumulative = 0;
+                                        
+                                        for (let d = 0; d < decadeNames.length; d++) {
+                                            cumulative += alphas[decadeNames[d]];
+                                            if (random <= cumulative) {
+                                                numPerDecade[d]++;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 4b. Sélection numéros dans chaque dizaine
+                                    for (let d = 0; d < decadeNames.length; d++) {
+                                        const decadeName = decadeNames[d];
+                                        const numsInDecade = decades[decadeName];
+                                        const count = numPerDecade[d];
+                                        
+                                        for (let c = 0; c < count && selected.length < 5; c++) {
+                                            const weights = numsInDecade
+                                                .filter(n => !selected.includes(n.num))
+                                                .map(n => ({ 
+                                                    number: n.num, 
+                                                    weight: n.freq + 1 
+                                                }));
+                                            
+                                            if (weights.length > 0) {
+                                                const selectedNums = weightedRandomSelection(weights, 1);
+                                                selected.push(...selectedNums);
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 4c. Compléter si nécessaire
+                                    while (selected.length < 5) {
+                                        const random = Math.floor(Math.random() * 49) + 1;
+                                        if (!selected.includes(random)) selected.push(random);
+                                    }
+                                    
+                                    predictions.push(selected.sort((a,b) => a - b));
+                                }
+                                
+                                return {
+                                    predictions,
+                                    alphas,
+                                    interpretation: Object.entries(alphas)
+                                        .sort((a,b) => b[1] - a[1])
+                                        .map(([decade, weight]) => 
+                                            `${decade}: ${(weight * 100).toFixed(1)}%`
+                                        )
+                                };
+                            }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Innovation Dirichlet
                                         :</strong></p>
@@ -6054,7 +6128,7 @@ Affichage UI interactif</pre>
                                         1-10"</li>
                                 </ul>
 
-                                <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #4caf50;"  >
+                                <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #4caf50;">
                                     <strong>Cas d'usage idéal</strong> : Joueur cherchant diversité géographique sur
                                     grille
                                     (numéros répartis).
@@ -6078,74 +6152,74 @@ Affichage UI interactif</pre>
                                         gammaPrediction()
                                         :</strong></p>
                                 <pre>function gammaPrediction(frequencies, numPredictions = 5) {
-    const predictions = [];
-    
-    // 1. Calcul temps moyen attente pour chaque numéro
-    const waitTimes = {};
-    const totalDraws = Object.values(frequencies)
-        .reduce((a,b) => a + b, 0) / 5;
-    
-    for (let i = 1; i <= 49; i++) {
-        const freq = frequencies[i] || 0;
-        // Temps moyen entre apparitions
-        waitTimes[i] = freq > 0 ? 
-            totalDraws / freq : 
-            totalDraws * 2;  // Pénalité pour jamais tirés
-    }
-    
-    // 2. Modélisation Gamma : calcul scores
-    const gammaScores = [];
-    for (let i = 1; i <= 49; i++) {
-        const freq = frequencies[i] || 0;
-        const avgWait = waitTimes[i];
-        
-        // Paramètres Gamma
-        const k = Math.max(1, freq);        // Shape (nombre occurrences)
-        const theta = avgWait / k;          // Scale
-        
-        // PDF Gamma simplifié (sans Γ(k) complet)
-        const gammaScore = Math.pow(avgWait, k - 1) * 
-                          Math.exp(-avgWait / theta) / 
-                          Math.pow(theta, k);
-        
-        gammaScores.push({
-            number: i,
-            score: gammaScore,
-            avgWait: avgWait.toFixed(1),
-            frequency: freq,
-            params: { k, theta: theta.toFixed(2) }
-        });
-    }
-    
-    // 3. Tri par score Gamma décroissant
-    gammaScores.sort((a,b) => b.score - a.score);
-    
-    // 4. Normalisation scores pour pondération
-    const maxScore = gammaScores[0].score;
-    const weights = gammaScores.map(item => ({
-        number: item.number,
-        weight: (item.score / maxScore) * 100
-    }));
-    
-    // 5. Génération prédictions
-    for (let pred = 0; pred < numPredictions; pred++) {
-        const selected = weightedRandomSelection(weights, 5);
-        predictions.push(selected);
-    }
-    
-    return {
-        predictions,
-        stats: {
-            avgWaitTime: (Object.values(waitTimes)
-                .reduce((a,b) => a + b, 0) / 49)
-                .toFixed(1) + " tirages",
-            totalDraws: totalDraws.toFixed(0),
-            topNumbers: gammaScores.slice(0, 5).map(s =>
-                `#${s.number} (attente: ${s.avgWait} tirages, freq: ${s.frequency})`
-            )
-        }
-    };
-}</pre>
+                                    const predictions = [];
+                                    
+                                    // 1. Calcul temps moyen attente pour chaque numéro
+                                    const waitTimes = {};
+                                    const totalDraws = Object.values(frequencies)
+                                        .reduce((a,b) => a + b, 0) / 5;
+                                    
+                                    for (let i = 1; i <= 49; i++) {
+                                        const freq = frequencies[i] || 0;
+                                        // Temps moyen entre apparitions
+                                        waitTimes[i] = freq > 0 ? 
+                                            totalDraws / freq : 
+                                            totalDraws * 2;  // Pénalité pour jamais tirés
+                                    }
+                                    
+                                    // 2. Modélisation Gamma : calcul scores
+                                    const gammaScores = [];
+                                    for (let i = 1; i <= 49; i++) {
+                                        const freq = frequencies[i] || 0;
+                                        const avgWait = waitTimes[i];
+                                        
+                                        // Paramètres Gamma
+                                        const k = Math.max(1, freq);        // Shape (nombre occurrences)
+                                        const theta = avgWait / k;          // Scale
+                                        
+                                        // PDF Gamma simplifié (sans Γ(k) complet)
+                                        const gammaScore = Math.pow(avgWait, k - 1) * 
+                                                        Math.exp(-avgWait / theta) / 
+                                                        Math.pow(theta, k);
+                                        
+                                        gammaScores.push({
+                                            number: i,
+                                            score: gammaScore,
+                                            avgWait: avgWait.toFixed(1),
+                                            frequency: freq,
+                                            params: { k, theta: theta.toFixed(2) }
+                                        });
+                                    }
+                                    
+                                    // 3. Tri par score Gamma décroissant
+                                    gammaScores.sort((a,b) => b.score - a.score);
+                                    
+                                    // 4. Normalisation scores pour pondération
+                                    const maxScore = gammaScores[0].score;
+                                    const weights = gammaScores.map(item => ({
+                                        number: item.number,
+                                        weight: (item.score / maxScore) * 100
+                                    }));
+                                    
+                                    // 5. Génération prédictions
+                                    for (let pred = 0; pred < numPredictions; pred++) {
+                                        const selected = weightedRandomSelection(weights, 5);
+                                        predictions.push(selected);
+                                    }
+                                    
+                                    return {
+                                        predictions,
+                                        stats: {
+                                            avgWaitTime: (Object.values(waitTimes)
+                                                .reduce((a,b) => a + b, 0) / 49)
+                                                .toFixed(1) + " tirages",
+                                            totalDraws: totalDraws.toFixed(0),
+                                            topNumbers: gammaScores.slice(0, 5).map(s =>
+                                                `#${s.number} (attente: ${s.avgWait} tirages, freq: ${s.frequency})`
+                                            )
+                                        }
+                                    };
+                                }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Logique Gamma :</strong></p>
                                 <ul style="line-height: 1.8; margin-left: 20px;">
@@ -6162,7 +6236,7 @@ Affichage UI interactif</pre>
                                 </ul>
 
                                 <p style="line-height: 1.8; margin-top: 15px; font-style: italic; color: #ff9800;">
-                                     <strong>Limite philosophique</strong> : Hypothèse "retour à la moyenne"
+                                    <strong>Limite philosophique</strong> : Hypothèse "retour à la moyenne"
                                     critiquable si
                                     tirages parfaitement indépendants.
                                 </p>
@@ -6185,75 +6259,75 @@ Affichage UI interactif</pre>
                                         studentTestPrediction()
                                         :</strong></p>
                                 <pre>function studentTestPrediction(frequencies, numPredictions = 5) {
-    const predictions = [];
-    const values = Object.values(frequencies);
-    const n = values.length;
-    
-    // 1. Calcul statistiques descriptives
-    const mean = values.reduce((a,b) => a + b, 0) / n;
-    const variance = values.reduce((sum, val) => 
-        sum + Math.pow(val - mean, 2), 0
-    ) / (n - 1);
-    const stdDev = Math.sqrt(variance);
-    
-    // 2. Calcul t-scores pour chaque numéro
-    const tScores = [];
-    for (let i = 1; i <= 49; i++) {
-        const observed = frequencies[i] || 0;
-        const tScore = Math.abs((observed - mean) / (stdDev / Math.sqrt(n)));
-        
-        tScores.push({
-            number: i,
-            tScore,
-            deviation: observed - mean
-        });
-    }
-    
-    // 3. Tri par t-score décroissant (plus significatifs)
-    tScores.sort((a,b) => b.tScore - a.tScore);
-    
-    // 4. Stratégie mixte : sur-représentés + sous-représentés
-    for (let pred = 0; pred < numPredictions; pred++) {
-        const selected = [];
-        
-        // 4a. Sélection 3 sur-représentés (top 10)
-        const overRep = tScores
-            .filter(t => t.deviation > 0)
-            .slice(0, 10);
-        
-        for (let i = 0; i < 3; i++) {
-            const idx = Math.floor(Math.random() * Math.min(overRep.length, 10));
-            if (overRep[idx] && !selected.includes(overRep[idx].number)) {
-                selected.push(overRep[idx].number);
-            }
-        }
-        
-        // 4b. Compléter avec sous-représentés (top 10)
-        const underRep = tScores
-            .filter(t => t.deviation < 0)
-            .slice(0, 10);
-        
-        while (selected.length < 5) {
-            const idx = Math.floor(Math.random() * Math.min(underRep.length, 10));
-            if (underRep[idx] && !selected.includes(underRep[idx].number)) {
-                selected.push(underRep[idx].number);
-            }
-        }
-        
-        predictions.push(selected.sort((a,b) => a - b));
-    }
-    
-    return {
-        predictions,
-        stats: {
-            mean: mean.toFixed(2),
-            stdDev: stdDev.toFixed(2),
-            mostSignificant: tScores.slice(0, 5).map(t =>
-                `#${t.number} (t=${t.tScore.toFixed(2)})`
-            )
-        }
-    };
-}</pre>
+                                const predictions = [];
+                                const values = Object.values(frequencies);
+                                const n = values.length;
+                                
+                                // 1. Calcul statistiques descriptives
+                                const mean = values.reduce((a,b) => a + b, 0) / n;
+                                const variance = values.reduce((sum, val) => 
+                                    sum + Math.pow(val - mean, 2), 0
+                                ) / (n - 1);
+                                const stdDev = Math.sqrt(variance);
+                                
+                                // 2. Calcul t-scores pour chaque numéro
+                                const tScores = [];
+                                for (let i = 1; i <= 49; i++) {
+                                    const observed = frequencies[i] || 0;
+                                    const tScore = Math.abs((observed - mean) / (stdDev / Math.sqrt(n)));
+                                    
+                                    tScores.push({
+                                        number: i,
+                                        tScore,
+                                        deviation: observed - mean
+                                    });
+                                }
+                                
+                                // 3. Tri par t-score décroissant (plus significatifs)
+                                tScores.sort((a,b) => b.tScore - a.tScore);
+                                
+                                // 4. Stratégie mixte : sur-représentés + sous-représentés
+                                for (let pred = 0; pred < numPredictions; pred++) {
+                                    const selected = [];
+                                    
+                                    // 4a. Sélection 3 sur-représentés (top 10)
+                                    const overRep = tScores
+                                        .filter(t => t.deviation > 0)
+                                        .slice(0, 10);
+                                    
+                                    for (let i = 0; i < 3; i++) {
+                                        const idx = Math.floor(Math.random() * Math.min(overRep.length, 10));
+                                        if (overRep[idx] && !selected.includes(overRep[idx].number)) {
+                                            selected.push(overRep[idx].number);
+                                        }
+                                    }
+                                    
+                                    // 4b. Compléter avec sous-représentés (top 10)
+                                    const underRep = tScores
+                                        .filter(t => t.deviation < 0)
+                                        .slice(0, 10);
+                                    
+                                    while (selected.length < 5) {
+                                        const idx = Math.floor(Math.random() * Math.min(underRep.length, 10));
+                                        if (underRep[idx] && !selected.includes(underRep[idx].number)) {
+                                            selected.push(underRep[idx].number);
+                                        }
+                                    }
+                                    
+                                    predictions.push(selected.sort((a,b) => a - b));
+                                }
+                                
+                                return {
+                                    predictions,
+                                    stats: {
+                                        mean: mean.toFixed(2),
+                                        stdDev: stdDev.toFixed(2),
+                                        mostSignificant: tScores.slice(0, 5).map(t =>
+                                            `#${t.number} (t=${t.tScore.toFixed(2)})`
+                                        )
+                                    }
+                                };
+                            }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Stratégie Student :</strong>
                                 </p>
@@ -6271,7 +6345,7 @@ Affichage UI interactif</pre>
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">4.7 Test du
                                 Chi-Carré</h4>
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Formule mathématique
                                         :</strong></p>
                                 <div
@@ -6283,30 +6357,30 @@ Affichage UI interactif</pre>
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Implémentation chiSquareTest()
                                         :</strong></p>
                                 <pre>function chiSquareTest(frequencies) {
-    const values = Object.values(frequencies);
-    const totalDraws = values.reduce((a, b) => a + b, 0);
-    const expectedFreq = totalDraws / 49; // Fréquence attendue uniforme
-    
-    // Calcul du χ²
-    let chiSquare = 0;
-    for (let i = 1; i <= 49; i++) {
-        const observed = frequencies[i] || 0;
-        chiSquare += Math.pow(observed - expectedFreq, 2) / expectedFreq;
-    }
-    
-    const degreesOfFreedom = 48; // 49 numéros - 1
-    const criticalValue = 65.17; // Seuil α=0.05, ddl=48
-    const pValue = calculatePValue(chiSquare, degreesOfFreedom);
-    
-    return {
-        chiSquare: chiSquare.toFixed(2),
-        isUniform: chiSquare < criticalValue,
-        pValue: pValue.toFixed(4),
-        interpretation: chiSquare < criticalValue 
-            ? "Distribution uniforme (pas de biais détecté)" 
-            : "Distribution non-uniforme (biais possible)"
-    };
-}</pre>
+                                const values = Object.values(frequencies);
+                                const totalDraws = values.reduce((a, b) => a + b, 0);
+                                const expectedFreq = totalDraws / 49; // Fréquence attendue uniforme
+                                
+                                // Calcul du χ²
+                                let chiSquare = 0;
+                                for (let i = 1; i <= 49; i++) {
+                                    const observed = frequencies[i] || 0;
+                                    chiSquare += Math.pow(observed - expectedFreq, 2) / expectedFreq;
+                                }
+                                
+                                const degreesOfFreedom = 48; // 49 numéros - 1
+                                const criticalValue = 65.17; // Seuil α=0.05, ddl=48
+                                const pValue = calculatePValue(chiSquare, degreesOfFreedom);
+                                
+                                return {
+                                    chiSquare: chiSquare.toFixed(2),
+                                    isUniform: chiSquare < criticalValue,
+                                    pValue: pValue.toFixed(4),
+                                    interpretation: chiSquare < criticalValue 
+                                        ? "Distribution uniforme (pas de biais détecté)" 
+                                        : "Distribution non-uniforme (biais possible)"
+                                };
+                            }</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Tests d'hypothèses :</strong>
                                 </p>
@@ -6329,7 +6403,7 @@ Affichage UI interactif</pre>
                         <div id="machine-learning" class="info-box" style="margin-bottom: 30px;">
                             <h3
                                 style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
-                                 5. Module Machine Learning Complet
+                                5. Module Machine Learning Complet
                             </h3>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">5.1
@@ -6345,36 +6419,36 @@ Affichage UI interactif</pre>
                                 style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>Modèle Dense de Base :</strong></p>
                                 <pre>function createDenseModel(units1 = 64, units2 = 32) {
-    const model = tf.sequential();
-    
-    // Couche 1 : 64 neurones ReLU
-    model.add(tf.layers.dense({
-        units: units1,
-        activation: 'relu',
-        inputShape: [49] // 49 features (un par numéro)
-    }));
-    
-    // Couche 2 : 32 neurones ReLU
-    model.add(tf.layers.dense({
-        units: units2,
-        activation: 'relu'
-    }));
-    
-    // Couche de sortie : 49 sorties sigmoid (probabilités)
-    model.add(tf.layers.dense({
-        units: 49,
-        activation: 'sigmoid'
-    }));
-    
-    // Compilation
-    model.compile({
-        optimizer: 'adam',                  // Adaptive Moment Estimation
-        loss: 'binaryCrossentropy',        // Perte pour classification multi-label
-        metrics: ['accuracy']               // Métrique de précision
-    });
-    
-    return model;
-}</pre>
+                                const model = tf.sequential();
+                                
+                                // Couche 1 : 64 neurones ReLU
+                                model.add(tf.layers.dense({
+                                    units: units1,
+                                    activation: 'relu',
+                                    inputShape: [49] // 49 features (un par numéro)
+                                }));
+                                
+                                // Couche 2 : 32 neurones ReLU
+                                model.add(tf.layers.dense({
+                                    units: units2,
+                                    activation: 'relu'
+                                }));
+                                
+                                // Couche de sortie : 49 sorties sigmoid (probabilités)
+                                model.add(tf.layers.dense({
+                                    units: 49,
+                                    activation: 'sigmoid'
+                                }));
+                                
+                                // Compilation
+                                model.compile({
+                                    optimizer: 'adam',                  // Adaptive Moment Estimation
+                                    loss: 'binaryCrossentropy',        // Perte pour classification multi-label
+                                    metrics: ['accuracy']               // Métrique de précision
+                                });
+                                
+                                return model;
+                            }</pre>
                             </div>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">5.2
@@ -6397,9 +6471,9 @@ Affichage UI interactif</pre>
                                 </ol>
 
                                 <pre>// Exemple d'encodage
-Tirage {numbers: [5, 12, 23, 34, 47], chance: 3}
-    ↓
-Vecteur [0,0,0,0,1,0,0,0,0,0,0,1,...,1,0] // Position 5, 12, 23, 34, 47 = 1</pre>
+                                Tirage {numbers: [5, 12, 23, 34, 47], chance: 3}
+                                    ↓
+                                Vecteur [0,0,0,0,1,0,0,0,0,0,0,1,...,1,0] // Position 5, 12, 23, 34, 47 = 1</pre>
                             </div>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">5.3 Random
@@ -6413,11 +6487,11 @@ Vecteur [0,0,0,0,1,0,0,0,0,0,0,1,...,1,0] // Position 5, 12, 23, 34, 47 = 1</pre
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Algorithme :</strong></p>
                                 <pre>Pour chaque arbre i = 1..N_trees :
-    1. Bootstrap : Échantillon aléatoire avec remise
-    2. Entraîner modèle dense (32-16 neurones)
-    3. Stocker le modèle
+                                    1. Bootstrap : Échantillon aléatoire avec remise
+                                    2. Entraîner modèle dense (32-16 neurones)
+                                    3. Stocker le modèle
 
-Prédiction finale = Moyenne(prédictions de tous les arbres)</pre>
+                                Prédiction finale = Moyenne(prédictions de tous les arbres)</pre>
 
                                 <p style="line-height: 1.8; margin-top: 15px; color: #667eea;">
                                     <strong>Avantages</strong> : Robuste au surapprentissage, variance réduite
@@ -6468,19 +6542,19 @@ Prédiction finale = Moyenne(prédictions de tous les arbres)</pre>
 
                                 <pre>model = tf.sequential();
 
-// Couche LSTM : 64 unités avec mémoire long terme
-model.add(tf.layers.lstm({
-    units: 64,
-    inputShape: [1, 49], // [timesteps, features]
-    returnSequences: false,
-    dropout: 0.2 // Régularisation
-}));
+                            // Couche LSTM : 64 unités avec mémoire long terme
+                            model.add(tf.layers.lstm({
+                                units: 64,
+                                inputShape: [1, 49], // [timesteps, features]
+                                returnSequences: false,
+                                dropout: 0.2 // Régularisation
+                            }));
 
-// Couche de sortie
-model.add(tf.layers.dense({
-    units: 49,
-    activation: 'sigmoid'
-}));</pre>
+                            // Couche de sortie
+                            model.add(tf.layers.dense({
+                                units: 49,
+                                activation: 'sigmoid'
+                            }));</pre>
 
                                 <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Portes LSTM :</strong></p>
                                 <ul style="line-height: 1.8; margin-left: 20px;">
@@ -6539,19 +6613,19 @@ model.add(tf.layers.dense({
                             </p>
 
                             <pre>await model.fit(xs, ys, {
-    epochs: 30,
-    batchSize: 8,
-    shuffle: true,
-    callbacks: {
-        onEpochEnd: async (epoch, logs) => {
-            // Mise à jour UI
-            updateProgress(epoch, logs.loss, logs.acc);
-            
-            // Libérer frame pour réactivité
-            await tf.nextFrame();
-        }
-    }
-});</pre>
+                            epochs: 30,
+                            batchSize: 8,
+                            shuffle: true,
+                            callbacks: {
+                                onEpochEnd: async (epoch, logs) => {
+                                    // Mise à jour UI
+                                    updateProgress(epoch, logs.loss, logs.acc);
+                                    
+                                    // Libérer frame pour réactivité
+                                    await tf.nextFrame();
+                                }
+                            }
+                        });</pre>
 
                             <p style="line-height: 1.8; margin-bottom: 10px;"><strong>Techniques d'optimisation
                                     :</strong></p>
@@ -6672,7 +6746,7 @@ model.add(tf.layers.dense({
                                 3 Couches</h4>
 
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>COUCHE 1 - Modèles Statistiques</strong>
                                 </p>
                                 <ul style="line-height: 1.8; margin-left: 20px; margin-top: 10px;">
@@ -6683,7 +6757,7 @@ model.add(tf.layers.dense({
                             </div>
 
                             <div
-                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                 <p style="margin: 0; line-height: 1.8;"><strong>COUCHE 2 - Algorithmes Machine
                                         Learning</strong>
                                 </p>
@@ -6797,7 +6871,7 @@ model.add(tf.layers.dense({
                         <div id="performance-optimisation" class="info-box" style="margin-bottom: 30px;">
                             <h3
                                 style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
-                                 9. Performance et Optimisations Mémoire
+                                9. Performance et Optimisations Mémoire
                             </h3>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">9.1 Gestion
@@ -6817,11 +6891,11 @@ model.add(tf.layers.dense({
                                 </ul>
 
                                 <pre>// Exemple de gestion mémoire optimale
-const result = tf.tidy(() => {
-    const xs = tf.tensor2d(features);
-    const prediction = model.predict(xs);
-    return prediction.arraySync(); // Extrait données avant dispose
-}); // xs et prediction automatiquement libérés</pre>
+                        const result = tf.tidy(() => {
+                            const xs = tf.tensor2d(features);
+                            const prediction = model.predict(xs);
+                            return prediction.arraySync(); // Extrait données avant dispose
+                        }); // xs et prediction automatiquement libérés</pre>
                             </div>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">9.2
@@ -6845,13 +6919,13 @@ const result = tf.tidy(() => {
                                 callbacks de progression :
                             </p>
                             <pre>await model.fit(xs, ys, {
-    callbacks: {
-        onEpochEnd: async (epoch, logs) => {
-            updateProgressBar(epoch, logs);
-            await tf.nextFrame(); //  CRITIQUE pour UI responsive
-        }
-    }
-});</pre>
+                            callbacks: {
+                                onEpochEnd: async (epoch, logs) => {
+                                    updateProgressBar(epoch, logs);
+                                    await tf.nextFrame(); //  CRITIQUE pour UI responsive
+                                }
+                            }
+                        });</pre>
                         </div>
 
                         <!-- 10. QUALITÉ DU CODE -->
@@ -6878,22 +6952,24 @@ const result = tf.tidy(() => {
                                 Gestion des
                                 Erreurs</h4>
                             <pre>try {
-    const data = await loadRealData();
-    if (!data || data.length === 0) {
-        throw new Error("Aucune donnée valide");
-    }
-    processData(data);
-} catch (error) {
-    console.error('❌ Erreur chargement:', error);
-    alert('Erreur: ' + error.message);
-    // Fallback sur données simulées
-    initApp();
-}</pre>
+                                const data = await loadRealData();
+                                if (!data || data.length === 0) {
+                                    throw new Error("Aucune donnée valide");
+                                }
+                                processData(data);
+                            } catch (error) {
+                                console.error('❌ Erreur chargement:', error);
+                                alert('Erreur: ' + error.message);
+                                // Fallback sur données simulées
+                                initApp();
+                            }</pre>
 
                             <h4 style="color: var(--text-secondary); margin-top: 20px; margin-bottom: 10px;">10.3
                                 Métriques </h4>
-                            <div style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
-                                <div style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                            <div
+                                style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                                <div
+                                    style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                                     <p style="margin: 0; line-height: 1.8;"><strong> Points forts</strong></p>
                                     <ul style="line-height: 1.8; margin-left: 20px; margin-top: 10px;">
                                         <li>Fichier unique auto-contenu (4000+ lignes)</li>
@@ -6901,15 +6977,16 @@ const result = tf.tidy(() => {
                                         <li>100% JavaScript vanilla (pas de framework)</li>
                                         <li>Architecture modulaire claire (6 couches)</li>
                                     </ul>
-                            
-                                
+
+
                                 </div>
                             </div>
                         </div>
 
                         <!-- CONCLUSION -->
+
                         <div class="info-box"
-                        style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
+                            style="/*! background: var(--glass-bg); */ padding: 20px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 15px;">
                             <h3 style="color: var(--text-secondary); margin-bottom: 15px;"> Conclusion Technique</h3>
                             <p style="line-height: 1.8;">
                                 ARÔME représente une <strong>synthèse réussie</strong> entre rigueur mathématique et
@@ -6930,6 +7007,7 @@ const result = tf.tidy(() => {
                     </div>
                 </div>
             </div>
+
 
             <!-- Onglet Index -->
 
@@ -16158,6 +16236,76 @@ const result = tf.tidy(() => {
                 // Initialiser la recherche au chargement
                 document.addEventListener('DOMContentLoaded', initSearch);
             </script>
+
+            
+            <!-- Boutons dans le HTML -->
+            <class="floating-top-button" id="floatingSommaireButton">
+            <button class="floating-top-button" id="floatingOngletButton"> ⇧ </button>
+
+            <script>
+                // Script universel simplifié
+                document.addEventListener('DOMContentLoaded', function () {
+                    const buttons = {
+                        sommaire: {
+                            element: document.getElementById('floatingSommaireButton'),
+                            target: 'table-matières',
+                            threshold: 300
+                        },
+                        onglet: {
+                            element: document.getElementById('floatingOngletButton'),
+                            target: null, // Haut de page
+                            threshold: 500
+                        }
+                    };
+
+                    // Gérer le défilement
+                    window.addEventListener('scroll', function () {
+                        const scrollY = window.scrollY;
+
+                        Object.values(buttons).forEach(button => {
+                            if (scrollY > button.threshold) {
+                                button.element.classList.add('visible');
+                            } else {
+                                button.element.classList.remove('visible');
+                            }
+                        });
+                    });
+
+                    // Gérer les clics
+                    Object.values(buttons).forEach(button => {
+                        button.element.addEventListener('click', function () {
+                            if (button.target) {
+                                document.getElementById(button.target)?.scrollIntoView({ behavior: 'smooth' });
+                            } else {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        });
+                    });
+                });
+
+                function colorizeJavaScript(code) {
+                    return code
+                        // Commentaires
+                        .replace(/(\/\/.*$)/gm, '<span class="code-comment">$1</span>')
+                        
+                        // Strings
+                        .replace(/(".*?"|'.*?')/g, '<span class="code-string">$1</span>')
+                        
+                        // Numbers
+                        .replace(/\b(\d+)\b/g, '<span class="code-number">$1</span>')
+                        
+                        // Keywords
+                        .replace(/\b(const|let|var|function|return|if|else|for|while|class|export|import|default)\b/g, 
+                                '<span class="code-keyword">$1</span>')
+                        
+                        // Properties (avant les :)
+                        .replace(/(\w+)(?=\s*:)/g, '<span class="code-property">$1</span>')
+                        
+                        // Operators
+                        .replace(/([{}()[\]=+,])/g, '<span class="code-operator">$1</span>');
+                }
+
+        </script>
 </body>
 
 </html>
